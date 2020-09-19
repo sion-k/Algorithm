@@ -1,25 +1,33 @@
 package baekjoon.p1339;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
-	private static char[][] EXP = new char[10][8];
+	private static int[] A = new int[26];
+	private static int[] D = { 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000 };
 
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int N = Integer.parseInt(br.readLine());
-
-		for (int i = 0; i < N; i++) {
-			String word = br.readLine();
-			
-		}
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int N = Integer.parseInt(sc.nextLine());
 		
-		for (char[] e : EXP) {
-			System.out.println(Arrays.toString(e));
+		for (int i = 0; i < N; i++) {
+			String word = sc.nextLine();
+			for (int w = 0; w < word.length(); w++) {
+				A[(int)(word.charAt(word.length() - 1 - w) - 'A')] += D[w];
+			}
 		}
+		sc.close();
+		
+		int sum = 0;
+		for (int c = 0; c < 9; c++) {
+			int max = 0;
+			for (int i =1; i < A.length; i++) {
+				max = A[i] > A[max] ? i : max;
+			}
+			sum += ((9 - c) * A[max]);
+			A[max] = 0;
+		}
+		System.out.println(sum);
 	}
 
 }
