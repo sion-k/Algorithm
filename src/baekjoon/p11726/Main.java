@@ -1,7 +1,6 @@
 package baekjoon.p11726;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 	static int[] cache;
