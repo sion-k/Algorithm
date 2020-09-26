@@ -8,14 +8,11 @@ public class Main {
 		public int p;
 		public int d;
 
-		public Lecture(int p, int d) {
-			this.p = p;
-			this.d = d;
-		}
+		public Lecture(int p, int d) {this.p = p;this.d = d;}
 
 		@Override
 		public int compareTo(Lecture o) {
-			return p == o.p ? d - o.d : o.p - p;
+			return d == o.d ? o.p - p : o.d - d ;
 		}
 
 		@Override
@@ -36,13 +33,20 @@ public class Main {
 		}
 		System.out.println(queue);
 		int sum = 0;
-		int d = 1;
-		while (!queue.isEmpty() && d <= 10000) {
-			Lecture l = queue.poll();
-			if (d <= l.d) {
+		int date = 10000;
+		boolean[] booked = new boolean[10000 + 1];
+		while (!queue.isEmpty() && date >= 1) {
+			if(booked[date]) {date--; continue;}
+			// 마감 기한이 같은 일 중에서 가장 비싼걸 뽑는다
+			Lecture l = queue.peek();
+			// 현재 날짜가 뽑은 강연의 기한 내라면
+			if (date <= l.d) {
+				l = queue.poll();
+				System.out.println(date + "날에" + l + "예약");
 				sum += l.p;
-				d++;
+				booked[date] = true;
 			}
+			date--;
 		}
 		System.out.println(sum);
 	}

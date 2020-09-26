@@ -8,30 +8,9 @@ public class Main {
 	static int[] C;
 	static int   N;
 	
-	//here에서 끝 도시까지 가는데 최소 비용을 반환한다
-	static int costMin(int here) {
-		if (here == N - 1) {return 0;}
-		int next = here + 1; int movedDis = R[here];
-		
-		while(next < N - 1 && C[next] >= C[here]) {
-			movedDis += R[next]; next++;
-		}
-		
-		return movedDis * C[here] + costMin(next);
-	}
-
-	static int costMinIter(int start) {
-		int ret = 0;
-		int i = start;
-		while (i < N) {
-			int toMove = 0;
-			while(i < N && C[i] >= C[start]) {
-				toMove += R[i];
-				i++;
-			}
-			ret += (toMove * C[start]);
-			start = i;
-		}
+	static long dis(int start, int end) {
+		long ret = 0;
+		for(int i = start; i < end; i++) {ret += R[i];}
 		return ret;
 	}
 	
@@ -52,8 +31,14 @@ public class Main {
 			C[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		System.out.println(costMin(0));
-		//System.out.println(costMinIter(0));
+		int min = 0; long cost = 0;
+		for (int i = 1; i < N; i++) {
+			if(C[i] < C[min] || i == N - 1) {
+				cost += (dis(min, i) * C[min]);
+				min = i;
+			}
+		}
+		System.out.println(cost);
 	}
 
 }
