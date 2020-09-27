@@ -3,9 +3,9 @@ package baekjoon.p2193;
 import java.util.Scanner;
 
 public class Main {
-	static int[] cache;
+	static long[] cache;
 	
-	static int pinary(int N) {
+	static long pinary(int N) {
 		if (N <= 2) {return 1;}
 		if (cache[N] != 0) { return cache[N];}
 		return cache[N] = pinary(N - 1) + pinary(N - 2);
@@ -15,7 +15,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		int N = sc.nextInt();
 		sc.close();
-		cache = new int[N + 1];
+		cache = new long[N + 1];
 		System.out.println(pinary(N));
 	}
 
