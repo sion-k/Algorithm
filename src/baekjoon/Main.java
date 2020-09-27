@@ -1,12 +1,14 @@
 package baekjoon;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 /*
- * 빠른 입  출력, 문자열 처리
+ * 빠른 입 출력, 문자열 처리
  */
 public class Main {
 
@@ -15,6 +17,10 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		st.nextToken();
 		br.close();
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		bw.write("");
+		bw.newLine();
+		bw.close();
 	}
 
 }
