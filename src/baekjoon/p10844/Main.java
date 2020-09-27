@@ -6,9 +6,9 @@ public class Main {
 	static int[] cache;
 	
 	static int stair(int N) {
-		if (N == 1) { return 9;}
+		if (N == 1) {return 9;}
 		if (cache[N] != 0) {return cache[N];}
-		return cache[N] = (2 * stair(N - 1) - 1) % 1_000_000_000 ;
+		return cache[N] = (2 * stair(N - 1) - (N - 1)) % 1_000_000_000 ;
 	}
 	
 	public static void main(String[] args) {
