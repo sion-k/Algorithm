@@ -16,7 +16,12 @@ public class Main {
 			}
 			chair++;
 		}
-		System.out.println(chair + 1);
+		// 컵홀더 수보다 사람이 많다면 컵홀더 수 만큼
+		if(N > chair + 1) {
+			System.out.println(chair + 1);
+		} else {// 컵 홀더 수보다 사람이 적으면 사람 만큼 쓸 수 있음
+			System.out.println(N);
+		}
 	}
 
 }

@@ -15,8 +15,8 @@ public class Main {
 		if (i >= N) {return 0;}
 		if (i  == N - 1) {return W[i];}
 		if (cache[i] != -1) { return cache[i];}
-		
-		return cache[i] = W[i] + Math.max(W[i + 1] + dp(i + 3), dp(i + 2));
+		int max = Math.max(W[i + 1] + dp(i + 3), dp(i + 2));
+		return cache[i] = W[i] + Math.max(max, dp(i + 3));
 	}
 	
 	public static void main(String[] args) throws IOException {
