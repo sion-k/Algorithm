@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 /*
  * 빠른 입 출력, 문자열 처리
  */
-public class Main {
+public class FastInputOutput {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
