@@ -15,6 +15,7 @@ public class Main {
 		int M = Integer.parseInt(st.nextToken());
 		
 		st = new StringTokenizer(br.readLine(), " ");
+		br.close();
 		PriorityQueue<Long> queue = new PriorityQueue<>();
 		long sum = 0;
 		for (int i = 0; i < N; i++) {
@@ -25,7 +26,6 @@ public class Main {
 		
 		for (int i = 0; i < M; i++) {
 			long comb = queue.poll() + queue.poll();
-			System.out.println(comb);
 			sum += comb;
 			queue.offer(comb);
 			queue.offer(comb);
