@@ -1,4 +1,4 @@
-package baekjoon.p15651;
+package baekjoon.p15650;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -18,24 +18,34 @@ public class Main {
 		bw.newLine();
 	}
 	
-	// [1, N] 자연수중에서 M개를 고른 수열 (중복 가능)
-	static void pick(int N , int M) throws IOException {
+	// 맨 마지막으로 lastPick을 골랐을 때 N개에서 M개를 고르는 수열 모두 출력
+	// [1, N] 자연수, 오름차순
+	static void pick(int N , int M, int lastPick) throws IOException {
 		if (M == 0) {print(); return;}
 		
-		for (int pick = 1; pick <= N; pick++) {
+		for (int pick = lastPick + 1; pick <= N; pick++) {
 			S.add(pick);
-			pick(N, M - 1);
+			pick(N, M - 1, pick);
 			S.remove(S.size() - 1);
 		}
 	}
+	
+//	static void pick(int N , int M) throws IOException {
+//		if (M == 0) {print(); return;}
+//		int lastPick = S.size() == 0 ? 0 : S.size() - 1;
+//		for (int pick = lastPick + 1; pick <= N; pick++) {
+//			S.add(pick);
+//			pick(N, M - 1);
+//			S.remove(S.size() - 1);
+//		}
+//	}
 	
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
 		int N = sc.nextInt(); int M = sc.nextInt();
 		sc.close();
-		pick(N, M);
+		pick(N, M, 0);
 		bw.close();
 	}
 
 }
-
