@@ -1,59 +1,46 @@
 package baekjoon;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class DFSandBFS {
-	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-	
-	static int N;
-	// 인접 행렬 표현법
-	static int M;
-	static boolean[][] EDGE;
+	static int N; // 정점 수
+	static int M; // 간선 수
+	static boolean[][] EDGE;// 인접 행렬 표현법
 	// DFS용
 	static boolean[] VISIT;
 	// BFS용
 	static boolean[] BOOKED;
 	
 	// 정점 here에서 dfs
-	static void dfs(int here) throws IOException {
+	static void dfs(int here) {
 		VISIT[here] = true;
-		bw.write(String.valueOf(here));
 		for (int next = 1; next <= N; next++) {
 			if(EDGE[here][next] && !VISIT[next]) {
-				bw.write(" ");
 				dfs(next);
 			}
 		}
-		bw.flush();
 	}
 	
 	// 정점 start에서 bfs
-	static void bfs(int start) throws IOException {
+	static void bfs(int start) {
 		Queue<Integer> q = new LinkedList<>();
 		q.add(start);
 		BOOKED[start] = true;
 		
 		while(!q.isEmpty()) {
 			int here = q.poll();
-			bw.write(String.valueOf(here));
 			for (int next = 1; next <= N; next++) {
 				if(EDGE[here][next] && !BOOKED[next]) {
 					q.offer(next);
 					BOOKED[next] = true;
 				}
 			}
-			if(!q.isEmpty()) {
-				bw.write(" ");
-			}
 		}
-		bw.flush();
 	}
 	
 	public static void main(String[] args) throws IOException {
@@ -74,12 +61,8 @@ public class DFSandBFS {
 			int next = Integer.parseInt(st.nextToken());
 			EDGE[here][next] = EDGE[next][here]  = true;
 		}
-		
 		dfs(V);
-		bw.newLine();
 		bfs(V);
-		bw.newLine();
-		bw.close();
 	}
 
 }
