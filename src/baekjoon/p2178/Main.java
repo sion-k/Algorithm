@@ -13,9 +13,6 @@ public class Main {
 		public Pos(int y, int x) {
 			this.y = y; this.x = x;
 		}
-		public String toString() {
-			return y + " " + x;
-		}
 	}
 	
 	// ╩С го аб ©Л ╪Ь
