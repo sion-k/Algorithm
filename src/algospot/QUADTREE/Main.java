@@ -1,4 +1,4 @@
-package QUADTREE;
+package algospot.QUADTREE;
 import java.util.Scanner;
 public class Main {
 	public String ref(String s){

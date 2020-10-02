@@ -1,4 +1,4 @@
-package ALGOSPOT;
+package algospot.LIS;
 import java.util.Scanner;
 
 public class LIS {

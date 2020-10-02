@@ -1,4 +1,4 @@
-package CLOCKSYNC;
+package algospot.CLOCKSYNC;
 
 import java.util.Scanner;
 public class Main {
@@ -30,7 +30,7 @@ public class Main {
 	public boolean pushAligned(int n, int first){
 		if(n==0){if(aligned())return true;else return false;}
 		for(int i=first; i<10; i++){
-			if(n>30-3*i) return false;//i번째 인덱스를 포함해 고르게 될 나머지가 모두 3이여도 n보다 작은경우 
+			if(n>30-3*i) return false;//i踰덉㎏ �씤�뜳�뒪瑜� �룷�븿�빐 怨좊Ⅴ寃� �맆 �굹癒몄�媛� 紐⑤몢 3�씠�뿬�룄 n蹂대떎 �옉��寃쎌슦 
 			if(pushed[i]==3) continue;
 			pushed[i] += 1; pushSwitch(i);
 			if(pushAligned(n-1,i)) return true;

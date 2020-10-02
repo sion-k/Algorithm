@@ -1,4 +1,4 @@
-package FENCE;
+package algospot.FENCE;
 import java.util.Scanner;
 public class Main {
 	public int[] array;

@@ -1,4 +1,4 @@
-package ALGOSPOT.wildcard;
+package algospot.WILDCARD;
 
 import java.util.Scanner;
 

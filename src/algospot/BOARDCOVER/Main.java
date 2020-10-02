@@ -1,12 +1,12 @@
-package BOARDCOVER;
+package algospot.BOARDCOVER;
 import java.util.Scanner;
 public class Main {
 	public boolean board[][];
 	public int Ltypesdydx[][][] = {
-	{{0,0}, {0,1}, {1,0}},//r 모양
-	{{0,0}, {0,1}, {1,1}},//ㄱ 모양
-	{{0,0}, {1,-1},{1,0}},//ㄴ 옆으로 뒤집은 모양
-	{{0,0}, {1,0}, {1,1}}//ㄴ모양
+	{{0,0}, {0,1}, {1,0}},//r 紐⑥뼇
+	{{0,0}, {0,1}, {1,1}},//�꽦 紐⑥뼇
+	{{0,0}, {1,-1},{1,0}},//�꽩 �쁿�쑝濡� �뮘吏묒� 紐⑥뼇
+	{{0,0}, {1,0}, {1,1}}//�꽩紐⑥뼇
 	};
 	public int height;
 	public int width;
@@ -24,24 +24,24 @@ public class Main {
 				if(!board[i][j]){
 					firsty = i; firstx = j; i = height; break; 
 				}
-		//모두 덮여있는 경우
+		//紐⑤몢 �뜮�뿬�엳�뒗 寃쎌슦
 		if(firsty == -1) return 1;
 		
 		int ret = 0;
-		//처음 선택한 위치에 4가지 타입의 도형을 경우마다 모두 각각 놓고 재귀호출한다
+		//泥섏쓬 �꽑�깮�븳 �쐞移섏뿉 4媛�吏� ���엯�쓽 �룄�삎�쓣 寃쎌슦留덈떎 紐⑤몢 媛곴컖 �넃怨� �옱洹��샇異쒗븳�떎
 		for(int type=0; type<4; type++){
-			int tyx[][] = new int[3][2];//3칸의 yx값을 저장
+			int tyx[][] = new int[3][2];//3移몄쓽 yx媛믪쓣 ���옣
 			for(int i=0; i<3; i++){
 				tyx[i][0] = firsty + Ltypesdydx[type][i][0];
 				tyx[i][1] = firstx + Ltypesdydx[type][i][1];			
 			}
-			//그 3칸에 모두 놓을수 있는지 확인
+			//洹� 3移몄뿉 紐⑤몢 �넃�쓣�닔 �엳�뒗吏� �솗�씤
 			boolean canCover = true;
 			for(int i=0; i<3; i++)
 				if(!isRange(tyx[i][0], tyx[i][1]))
 					canCover = false;
 					
-			//놓을수 있다면 3칸에 모두 놓고 재귀호출하고 다시 걷어낸다
+			//�넃�쓣�닔 �엳�떎硫� 3移몄뿉 紐⑤몢 �넃怨� �옱洹��샇異쒗븯怨� �떎�떆 嫄룹뼱�궦�떎
 			if(canCover){
 				for(int i=0; i<3; i++)
 					board[tyx[i][0]][tyx[i][1]] = true;  
@@ -83,14 +83,14 @@ public class Main {
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		//System.out.print("케이스의 수를 입력 : ");
+		//System.out.print("耳��씠�뒪�쓽 �닔瑜� �엯�젰 : ");
 		int caseNum = sc.nextInt();
 		int ret[] = new int[caseNum];
 		for(int c=0; c<caseNum; c++){
-			//System.out.print(c+"번째 케이스의 행과 열을 입력 : ");
+			//System.out.print(c+"踰덉㎏ 耳��씠�뒪�쓽 �뻾怨� �뿴�쓣 �엯�젰 : ");
 			Main a = new Main(sc.nextInt(), sc.nextInt());
 			
-			//입력부 시작
+			//�엯�젰遺� �떆�옉
 			for(int i=0; i<a.height; i++){
 				String temp = sc.next();		
 				for(int j=0; j<a.width; j++){
@@ -100,7 +100,7 @@ public class Main {
 						a.board[i][j] = false;
 				}  
 			}
-			//입력부 끝
+			//�엯�젰遺� �걹
 			ret[c] = a.countCover();
 		}
 		
