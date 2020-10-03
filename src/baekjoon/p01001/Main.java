@@ -1,4 +1,4 @@
-package baekjoon.p1001;
+package baekjoon.p01001;
 
 import java.io.*;
 import java.util.StringTokenizer;

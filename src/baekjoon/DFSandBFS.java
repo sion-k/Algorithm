@@ -11,10 +11,13 @@ public class DFSandBFS {
 	static int N; // 정점 수
 	static int M; // 간선 수
 	static boolean[][] EDGE;// 인접 행렬 표현법
-	// DFS용
-	static boolean[] VISIT;
-	// BFS용
-	static boolean[] BOOKED;
+	static boolean[] VISIT;// DFS용
+	static boolean[] BOOKED;// BFS용
+	static int[] DIS;// 최단 거리
+	
+	// 상하좌우 이동
+	static final int[] dy = {-1, 1, 0, 0};
+	static final int[] dx = {0, 0, -1, 1};
 	
 	// 정점 here에서 dfs
 	static void dfs(int here) {
