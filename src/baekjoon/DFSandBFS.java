@@ -19,6 +19,11 @@ public class DFSandBFS {
 	static final int[] dy = {-1, 1, 0, 0};
 	static final int[] dx = {0, 0, -1, 1};
 	
+	//[0, N)
+	static boolean inRange(int y, int x) {
+		return 0 <= y && y < N && 0 <= x && x < N;
+	}
+	
 	// 정점 here에서 dfs
 	static void dfs(int here) {
 		VISIT[here] = true;
