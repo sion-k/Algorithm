@@ -46,6 +46,24 @@ public class DFSandBFS {
 		}
 	}
 	
+	// 정점 from에서 to까지 최단 거리 반환. 도달 불가능하면 -1 반환
+	static int bfs(int from, int to) {
+		Queue<Integer> q = new LinkedList<>();
+		q.add(from); BOOKED[from] = true; DIS[from] = 0;
+		
+		while(!q.isEmpty()) {
+			int here = q.poll();
+			for (int next = 1; next <= N; next++) {
+				if(EDGE[here][next] && !BOOKED[next]) {
+					if (next == to) {return DIS[here] + 1;}
+					q.offer(next); BOOKED[next] = true;
+					DIS[next] = DIS[here] + 1;
+				}
+			}
+		}
+		return -1;
+	}
+	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
