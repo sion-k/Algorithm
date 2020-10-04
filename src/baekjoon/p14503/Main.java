@@ -3,7 +3,6 @@ package baekjoon.p14503;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -53,10 +52,6 @@ public class Main {
 			}
 			// 후진 할 수 없으면 종료
 			return cnt;
-		}
-		
-		public String toString() {
-			return "("+ y +", " + x + ", " + dir + ")";
 		}
 	}
 	
