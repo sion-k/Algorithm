@@ -1,4 +1,4 @@
-package baekjoon.p1149;
+package baekjoon.p01149;
 import java.util.Scanner;
 public class Main {
 	int[][] array;

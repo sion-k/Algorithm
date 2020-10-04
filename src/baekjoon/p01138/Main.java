@@ -1,4 +1,4 @@
-package baekjoon.p1138;
+package baekjoon.p01138;
 
 import java.util.LinkedList;
 import java.util.Scanner;
