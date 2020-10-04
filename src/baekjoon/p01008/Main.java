@@ -1,4 +1,4 @@
-package baekjoon.p1008;
+package baekjoon.p01008;
 
 import java.util.Scanner;
 

@@ -11,6 +11,16 @@ public class DFSandBFS {
 	static int N; // 정점 수
 	static int M; // 간선 수
 	static boolean[][] EDGE;// 인접 행렬 표현법
+	
+	// 인접 리스트 표현법
+	static class Pair implements Comparable<Pair> {
+		int num; int cost;
+		public Pair(int n, int c) {num = n; cost = c;}
+		public int compareTo(Pair o) {
+			return cost - o.cost;
+		}
+	}
+	
 	static boolean[] VISIT;// DFS용
 	static boolean[] BOOKED;// BFS용
 	static int[] DIS;// 최단 거리
