@@ -1,4 +1,4 @@
-package baekjoon.p1744;
+package baekjoon.p01744;
 
 import java.io.*;
 import java.util.Arrays;
