@@ -31,7 +31,7 @@ public class Main {
 		for(int i = 0; i < N; i++) {
 			int rank = 0;
 			for (int j = 0; j < N; j++) {
-				if(S[j].compareTo(S[i]) == 1) {rank++;}// i가 j보다 덩치가 크다면
+				if(S[j].compareTo(S[i]) == 1) {rank++;}// j가 i보다 덩치가 크다면
 			}
 			bw.write(String.valueOf(rank + 1));
 			if (i != N - 1) {bw.write(" ");}
