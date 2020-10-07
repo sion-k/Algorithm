@@ -15,20 +15,10 @@ public class Main {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 			int[] S = new int[N]; 
 			for (int i = 0; i < N; i++) {S[i] = Integer.parseInt(st.nextToken());}
-			
-			int maxIndex = 0; int stock = 0; long profit = 0;
-			for(int index = 0; index < N; index++) {
-				if(index == maxIndex) {
-					profit += (S[maxIndex] * stock); 
-					maxIndex++;
-					stock = 0;
-					for (int m = maxIndex; m < N; m++) {
-						maxIndex = S[m] > S[maxIndex] ? m : maxIndex;
-					}
-					System.out.println("max : " + maxIndex);
-				} else {
-					profit -= S[index]; stock++;
-				}
+			int max = 0; long profit = 0;
+			for (int i = N - 1; i >= 0; i--) {
+				if (S[i] > max) {max = S[i];} 
+				else {profit += (max - S[i]);}
 			}
 			System.out.println(profit);
 		}
