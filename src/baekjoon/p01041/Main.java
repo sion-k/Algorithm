@@ -14,7 +14,7 @@ public class Main {
 	};
 	
 	static final int[][] edge = { // 주사위의 i번째 면과 인접하는 면들
-		{ 1, 2, 3, 4 }, { 2, 3, 5 }, { 4, 5 }, { 4 }, { 5 }
+		{ 1, 2, 3, 4 }, { 2, 3, 5 }, { 4, 5 }, { 4, 5 }, { 5 }
 	};
 	
 	public static void main(String[] args) throws IOException {
@@ -47,8 +47,8 @@ public class Main {
 		} else {
 			min += 4 * minPoint;
 			min += 4 * minEdge * ((N - 1) + (N - 2));
-			min += (4 * minFace *((long)(N - 1) * (long)(N - 2)));
-			min += (minFace * ((long)(N - 2) * (long)(N - 2)));
+			min += (4 * minFace *((long)(N - 1) * (N - 2)));
+			min += (minFace * ((long)(N - 2) * (N - 2)));
 		}
 		System.out.println(min);
 	}
