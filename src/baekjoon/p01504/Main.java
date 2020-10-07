@@ -52,10 +52,8 @@ public class Main {
 		int E = Integer.parseInt(st.nextToken());
 		
 		adj = new ArrayList<>(V);
-		adj.add(new ArrayList<>());
 		for (int i = 0; i < V; i++) {
 			adj.add(new ArrayList<>());
-			adj.set(i, new ArrayList<>());
 		}
 		
 		int K = Integer.parseInt(br.readLine());
@@ -71,14 +69,6 @@ public class Main {
 		br.close();
 		
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		int[] dist = dijkstra(K);
-		for (int i = 1; i <= V; i++) {
-			if (dist[i] != Integer.MAX_VALUE) {
-				bw.write(String.valueOf(dist[i])); bw.newLine();
-			} else {
-				bw.write("INF"); bw.newLine();
-			}
-		}
 		bw.close();
 	}
 
