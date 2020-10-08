@@ -1,10 +1,8 @@
 package baekjoon.p01504;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.PriorityQueue;
@@ -19,12 +17,12 @@ public class Main {
 		}
 	}
 	
-	static int V; // 정점의 개수, 정점의 번호는 [0, V)이다
+	static int N; // 정점의 개수, 정점의 번호는 [1, N]이다
 	static ArrayList<ArrayList<Pair>> adj;
 	
 	// 시작점 src로 부터 최단 경로 길이를 담은 배열을 반환한다
 	static int[] dijkstra(int src) {
-		int[] dist = new int[V + 1];
+		int[] dist = new int[N + 1];
 		Arrays.fill(dist, Integer.MAX_VALUE);
 		dist[src] = 0;// src 자신으로의 최단 경로 길이는 0
 		PriorityQueue<Pair> pq = new PriorityQueue<>();
@@ -44,32 +42,62 @@ public class Main {
 		}
 		return dist;
 	}
+	static int solution(int A, int B) {
+		// 1에서 최단 경로들
+		int[] first = dijkstra(1);
+		// N에서 최단 경로들
+		int[] last = dijkstra(N);
+		// A-B 최단 경로
+		int ab = dijkstra(A)[B];
+		if(ab == Integer.MAX_VALUE) {return -1;}
+		// 1-A-B-N
+		int sol1 = 0;
+		if(first[A] == Integer.MAX_VALUE || last[B] == Integer.MAX_VALUE) {
+			sol1 = Integer.MAX_VALUE;
+		} else {
+			sol1 = first[A] + ab + last[B];			
+		}
+		// 1-B-A-N
+		int sol2 = 0;
+		if(first[B] == Integer.MAX_VALUE || last[A] == Integer.MAX_VALUE) {
+			sol2 = Integer.MAX_VALUE;
+		} else {			
+			sol2 = first[B] + ab + last[A];
+		}
+		int min = Math.min(sol1, sol2);
+		if (min == Integer.MAX_VALUE) {
+			return -1;
+		} else {
+			return min;
+		}
+	}
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-		V = Integer.parseInt(st.nextToken());
+		N = Integer.parseInt(st.nextToken());
 		int E = Integer.parseInt(st.nextToken());
 		
-		adj = new ArrayList<>(V);
-		for (int i = 0; i < V; i++) {
-			adj.add(new ArrayList<>());
-		}
-		
-		int K = Integer.parseInt(br.readLine());
-		
+		adj = new ArrayList<>(N);
+		adj.add(new ArrayList<>());
+		for (int i = 1; i <= N; i++) {adj.add(new ArrayList<>());}
+
 		for (int e = 0; e < E; e++) {
 			st = new StringTokenizer(br.readLine(), " ");
 			int from = Integer.parseInt(st.nextToken());
 			int to   = Integer.parseInt(st.nextToken());
 			int weight = Integer.parseInt(st.nextToken());
+			// 양방향 간선 추가
 			adj.get(from).add(new Pair(to, weight));
+			adj.get(to).add(new Pair(from, weight));
 		}
-		
+		st = new StringTokenizer(br.readLine(), " ");
 		br.close();
+		// 무조건 지나야 하는 두 정점
+		int A = Integer.parseInt(st.nextToken());
+		int B = Integer.parseInt(st.nextToken());
+		System.out.println(solution(A, B));
 		
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		bw.close();
 	}
 
 }
