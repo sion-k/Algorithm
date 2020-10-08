@@ -3,6 +3,8 @@ package baekjoon.p01912;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.StringTokenizer;
 
 /*
@@ -10,36 +12,27 @@ import java.util.StringTokenizer;
  */
 public class Main {
 	static int[] S;
-	static int[] cache;
-
+	static ArrayList<Integer> cache;
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
-		S = new int[N + 1];
-		cache = new int[N + 1];
+		S = new int[N];
+		cache = new ArrayList<>(N);
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-		br.close();
-		for (int i = 1; i <= N; i++) {S[i] = Integer.parseInt(st.nextToken());}
-		
 		int sum = 0;
 		// cache[i] = [0, i] 까지의 부분 합
-		// [i, j] = cache[j] - cache[i - 1];
-		for(int i = 1 ; i <= N; i++) {
+		// 연속합[i, j] = cache[j] - cache[i - 1];
+		for(int i = 0 ; i < N; i++) {
+			S[i] = Integer.parseInt(st.nextToken());
 			sum += S[i];
-			cache[i] = sum;
+			cache.add(sum);
 		}
-		
-		int max = -1000 * 100000;
-		// 모든 [i, j] 구간 순회
-		for(int i = 1; i <= N; i++) {
-			for(int j = i; j <= N; j++) {
-				max = Math.max(max, cache[j] - cache[i - 1]);
-			}
-		}
-		
-		System.out.println(max);
+		br.close();
+		System.out.println(cache);
+		Collections.sort(cache);
+		System.out.println(cache);
+		System.out.println(cache.get(N - 1) - cache.get(0));
 	}
 
 }
-
