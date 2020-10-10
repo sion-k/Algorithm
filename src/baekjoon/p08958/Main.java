@@ -12,21 +12,20 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int T = Integer.parseInt(br.readLine());
+		StringBuilder sb = new StringBuilder();
+		int score = 0; int ds = 1; String quiz = "";
 		for (int c = 0; c < T; c++) {
-			int score = 0;
-			String quiz = br.readLine();
-			int ds = 1;
+			score = 0; ds = 1;
+			quiz = br.readLine();
 			for (int i = 0; i < quiz.length(); i++) {
 				if (quiz.charAt(i) == 'O') {
-					score += ds;
-					ds++;
+					score += (ds++);
 				} else {ds = 1;}
 			}
-			bw.write(String.valueOf(score));
-			bw.newLine();
+			sb.append(score).append('\n');
 		}
-		br.close();
-		bw.close();
+		bw.write(sb.toString());
+		bw.flush();
 	}
 
 }
