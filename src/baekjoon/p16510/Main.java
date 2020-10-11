@@ -21,7 +21,6 @@ public class Main {
 		for (int i = 0; i < N; i++) {
 			prefixSum[i] = (tempSum += Integer.parseInt(st.nextToken()));
 		}
-		
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		for (int i = 0; i < M; i++) {
 			int index = Arrays.binarySearch(prefixSum, Integer.parseInt(br.readLine()));
