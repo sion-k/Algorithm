@@ -22,13 +22,14 @@ public class Main {
 		return cache[start] = ret;
 	}
 	
+	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		N = Integer.parseInt(br.readLine());
-		S = new int[N]; cache = new int[N];
+		S = new int[N + 1]; cache = new int[N + 1];
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		br.close();
-		for (int i = 0; i < N; i++) {S[i] = Integer.parseInt(st.nextToken());}
+		for (int i = 1; i <= N; i++) {S[i] = Integer.parseInt(st.nextToken());}
 		int max = 1;
 		for (int i = 0; i < N; i++) {max = Math.max(max, bis(i));}
 		System.out.println(max);
