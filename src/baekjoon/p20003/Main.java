@@ -24,7 +24,7 @@ public class Main {
 
 	static long gcd(long[] term) {
 		long ret = 1;
-		for (int i = 0; i < term.length; i++) {
+		for (int i = 1; i < term.length; i++) {
 			if (ret < term[i]) {
 				long temp = ret;
 				ret = term[i];
