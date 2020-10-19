@@ -9,15 +9,12 @@ import java.util.StringTokenizer;
 
 public class Main {
 	static int[] adj;
-	static int start;
 	static boolean[] VISIT;
 
 	// DFS과정에서 사이클이 존재하는지 반환
-	static boolean DFS(int here) {
+	static void DFS(int here) {
 		VISIT[here] = true;
-		if (here == start) {return true;}
-		if (!VISIT[adj[here]]) {return DFS(adj[here]);}
-		return false;
+		if (!VISIT[adj[here]]) {DFS(adj[here]);}
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -31,10 +28,10 @@ public class Main {
 			for (int i = 1; i <= N; i++) {adj[i] = Integer.parseInt(st.nextToken());}
 			int cnt = 0;
 			for (int i = 1; i <= N; i++) {
-				boolean[] temp = VISIT.clone();
-				start = i;
-				if (!DFS(adj[i])) {VISIT = temp;}
-				else {cnt++;}
+				if (!VISIT[i]) {
+					DFS(i);
+					cnt++;
+				}
 			}
 			bw.write(String.valueOf(cnt));
 			bw.newLine();
