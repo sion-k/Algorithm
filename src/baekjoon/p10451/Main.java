@@ -11,7 +11,6 @@ public class Main {
 	static int[] adj;
 	static boolean[] VISIT;
 
-	// DFS과정에서 사이클이 존재하는지 반환
 	static void DFS(int here) {
 		VISIT[here] = true;
 		if (!VISIT[adj[here]]) {DFS(adj[here]);}
