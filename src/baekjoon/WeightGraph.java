@@ -44,7 +44,7 @@ public class WeightGraph {
 		for (int n = 1; n <= N - 1; n++) {
 			updated = false;
 			for (int here = 1; here <= N; here++) {
-				for (int i = 1; i <= adjList.get(here).size(); i++) {
+				for (int i = 0; i < adjList.get(here).size(); i++) {
 					int there = adjList.get(here).get(i).num;
 					int cost = adjList.get(here).get(i).cost;
 					// (here, there) 간선을 따라 완화 시도
@@ -59,7 +59,7 @@ public class WeightGraph {
 		}
 		// N번째의 완화 시도
 		for (int here = 1; here <= N; here++) {
-			for (int i = 1; i <= adjList.get(here).size(); i++) {
+			for (int i = 0; i < adjList.get(here).size(); i++) {
 				int there = adjList.get(here).get(i).num;
 				int cost = adjList.get(here).get(i).cost;
 				// (here, there) 간선을 따라 완화 시도했는데 완화되고
