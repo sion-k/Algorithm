@@ -3,10 +3,7 @@ package baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
@@ -14,16 +11,6 @@ public class Graph {
 	static int N; // 정점 수
 	static int M; // 간선 수
 	static boolean[][] EDGE;// 인접 행렬 표현법
-
-	// 인접 리스트 표현법
-	static class Pair implements Comparable<Pair> {
-		int num; int cost;
-		public Pair(int n, int c) {num = n; cost = c;}
-		@Override
-		public int compareTo(Pair o) {
-			return cost - o.cost;
-		}
-	}
 
 	static boolean[] VISIT;// DFS용
 	static boolean[] BOOKED;// BFS용
@@ -105,39 +92,4 @@ public class Graph {
 		bfs(V);
 	}
 
-}
-class Dijkstra {
-	static class Pair implements Comparable<Pair> {
-		int num; int cost;
-		public Pair(int n, int c) {num = n; cost = c;}
-		@Override
-		public int compareTo(Pair o) {
-			return cost - o.cost;
-		}
-	}
-	static int V; // 정점의 개수, 정점의 번호는 [1, V]이다
-	static ArrayList<ArrayList<Pair>> adj;
-
-	// 시작점 src로 부터 최단 경로 길이를 담은 배열을 반환한다
-	static int[] dijkstra(int src) {
-		int[] dist = new int[V + 1];
-		Arrays.fill(dist, Integer.MAX_VALUE);
-		dist[src] = 0;// src 자신으로의 최단 경로 길이는 0
-		PriorityQueue<Pair> pq = new PriorityQueue<>();
-		pq.offer(new Pair(src, 0));
-		while(!pq.isEmpty()) {
-			Pair p = pq.poll(); int here = p.num; int cost = p.cost;
-			if(dist[here] < cost) {continue;}
-			for (int i = 0; i < adj.get(here).size(); i++) {
-				int there = adj.get(here).get(i).num;
-				int nextDist = cost + adj.get(here).get(i).cost;
-				// 기존에 발견한 것보다 더 짧은 경로를 발견 한 경우
-				if (dist[there] > nextDist) {
-					dist[there] = nextDist;
-					pq.offer(new Pair(there, nextDist));
-				}
-			}
-		}
-		return dist;
-	}
 }
