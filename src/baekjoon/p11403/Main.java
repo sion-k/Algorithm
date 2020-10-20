@@ -10,6 +10,7 @@ import java.util.StringTokenizer;
 public class Main {
 	static int N; // 정점의 개수
 	static boolean[][] EDGE;
+	/*
 	static boolean[] VISIT;
 
 	static void dfsFirst(int here) {
@@ -29,7 +30,7 @@ public class Main {
 			}
 		}
 	}
-
+	 */
 	static void Folyd() {
 		for (int k = 0; k < N; k++) {
 			for (int i = 0; i < N; i++) {
@@ -48,7 +49,6 @@ public class Main {
 		for (int i = 0; i < N; i++) {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 			for (int j = 0; j < N; j++) {
-				if (i == j) {st.nextToken(); continue;}
 				EDGE[i][j] = st.nextToken().equals("1");
 			}
 		}
