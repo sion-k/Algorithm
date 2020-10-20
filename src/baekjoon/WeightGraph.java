@@ -8,7 +8,8 @@ public class WeightGraph {
 	static int N; // [1, N] 정점의 개수
 	static final int INF = 0; // 존재할 수 있는 최대 경로의 길이 + 1
 	static int[][] adjArray; // 인접 행렬 표현법
-	static ArrayList<ArrayList<Pair>> adjList;
+	static ArrayList<ArrayList<Pair>> adjList; // 인접 리스트 표현법
+	static boolean[][] reachable;
 
 	static int[] dijkstra(int src) {
 		int[] dist = new int[N + 1];
@@ -44,9 +45,8 @@ public class WeightGraph {
 		for (int n = 1; n <= N - 1; n++) {
 			updated = false;
 			for (int here = 1; here <= N; here++) {
-				for (int i = 0; i < adjList.get(here).size(); i++) {
-					int there = adjList.get(here).get(i).num;
-					int cost = adjList.get(here).get(i).cost;
+				for (Pair edge : adjList.get(here)) {
+					int there = edge.num; int cost = edge.cost;
 					// (here, there) 간선을 따라 완화 시도
 					if (upper[there] > upper[here] + cost) {
 						upper[there] = upper[here] + cost;
@@ -59,9 +59,8 @@ public class WeightGraph {
 		}
 		// N번째의 완화 시도
 		for (int here = 1; here <= N; here++) {
-			for (int i = 0; i < adjList.get(here).size(); i++) {
-				int there = adjList.get(here).get(i).num;
-				int cost = adjList.get(here).get(i).cost;
+			for (Pair edge : adjList.get(here)) {
+				int there = edge.num; int cost = edge.cost;
 				// (here, there) 간선을 따라 완화 시도했는데 완화되고
 				// 시작지점에서 그 지점까지 경로가 있는 경우
 				if (upper[there] > upper[here] + cost && adjArray[src][there] < INF) {
@@ -85,6 +84,16 @@ public class WeightGraph {
 		}
 	}
 
+	// 선 조건 : adj(i, j) 간선이 존재하면 true
+	static void FolydReachable() {
+		for (int k = 1; k <= N; k++) {
+			for (int i = 1; i <= N; i++) {
+				for (int j = 1; j <= N; j++) {
+					reachable[i][j] = reachable[i][j] || (reachable[i][k] && reachable[k][j]);
+				}
+			}
+		}
+	}
 }
 
 class Pair implements Comparable<Pair> {
