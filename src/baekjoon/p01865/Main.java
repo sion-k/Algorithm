@@ -17,7 +17,6 @@ class Pair {
 public class Main {
 	static int N;
 	static ArrayList<ArrayList<Pair>> adj; // 인접 리스트 표현법
-	static boolean[][] reachable;
 
 	static int[] BellmanFord(int src) {
 		int[] upper = new int[N + 1];
@@ -44,26 +43,13 @@ public class Main {
 		for (int here = 1; here <= N; here++) {
 			for (Pair edge : adj.get(here)) {
 				int there = edge.num; int cost = edge.cost;
-				// (here, there) 간선을 따라 완화 시도했는데 완화되고
-				// 시작지점에서 그 지점까지 경로가 있고, 돌아올 수도 있는 경우
-				if (upper[there] > upper[here] + cost &&
-					reachable[src][there] && reachable[there][src]) {
+				// 음수 사이클이 존재하는 경우
+				if (upper[there] > upper[here] + cost) {
 					return new int[0];
 				}
 			}
 		}
 		return upper;
-	}
-
-	// 선 조건 : adj(i, j) 간선이 존재하면 true
-	static void Folyd() {
-		for (int k = 1; k <= N; k++) {
-			for (int i = 1; i <= N; i++) {
-				for (int j = 1; j <= N; j++) {
-					reachable[i][j] = reachable[i][j] || (reachable[i][k] && reachable[k][j]);
-				}
-			}
-		}
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -76,7 +62,6 @@ public class Main {
 			adj = new ArrayList<>(N + 1);
 			adj.add(new ArrayList<>());
 			for (int i = 0; i < N; i++) {adj.add(new ArrayList<>());}
-			reachable = new boolean[N + 1][N + 1];
 
 			int M = Integer.parseInt(st.nextToken());
 			int W = Integer.parseInt(st.nextToken());
@@ -88,24 +73,16 @@ public class Main {
 				int weight = Integer.parseInt(st.nextToken());
 				adj.get(start).add(new Pair(end, weight));
 				adj.get(end).add(new Pair(start, weight));
-				reachable[start][end] = reachable[end][start] = true;
 			}
-
 			for (int i = 0; i < W; i++) {
 				st = new StringTokenizer(br.readLine(), " ");
 				int start = Integer.parseInt(st.nextToken());
 				int end = Integer.parseInt(st.nextToken());
 				int weight = Integer.parseInt(st.nextToken());
 				adj.get(start).add(new Pair(end, -weight));
-				reachable[start][end] = true;
 			}
-			Folyd();
-			boolean ret = false;
-			for (int i = 1; i <= N; i++) {
-				int[] dist = BellmanFord(i);
-				if (dist.length == 0) {ret = true;}
-			}
-			if (ret) {bw.write("YES");}
+			int[] dist = BellmanFord(1);
+			if (dist.length == 0) {bw.write("YES");}
 			else {bw.write("NO");}
 			bw.newLine();
 		}
