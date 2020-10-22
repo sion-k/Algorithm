@@ -25,7 +25,7 @@ public class Main {
 		Collections.sort(S);
 		long sum = 0;
 		for (int i = 0, j = 0; i < N; i++) {
-			sum += (j * S.get(i));
+			sum += ((long)j * S.get(i));
 			if (j < K) {j++;}
 		}
 		bw.write(String.valueOf(sum));
