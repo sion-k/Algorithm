@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 class Pair {
@@ -18,10 +17,8 @@ public class Main {
 	static int N;
 	static ArrayList<ArrayList<Pair>> adj; // 인접 리스트 표현법
 
-	static int[] BellmanFord(int src) {
+	static boolean hasCycle() {
 		int[] upper = new int[N + 1];
-		Arrays.fill(upper, Integer.MAX_VALUE);
-		upper[src] = 0;
 		boolean updated = false;
 		// N - 1번 완화 시도
 		for (int i = 1; i <= N - 1; i++) {
@@ -36,20 +33,18 @@ public class Main {
 					}
 				}
 			}
-			// 모든 간선에 대해 완화시도했는데 완화되지 않으면 최단 경로
-			if (!updated) {break;}
+			// 모든 간선에 대해 완화시도했는데 완화되지 않으면 음수 사이클 없음
+			if (!updated) {return false;}
 		}
 		// N번째의 완화 시도
 		for (int here = 1; here <= N; here++) {
 			for (Pair edge : adj.get(here)) {
 				int there = edge.num; int cost = edge.cost;
 				// 음수 사이클이 존재하는 경우
-				if (upper[there] > upper[here] + cost) {
-					return new int[0];
-				}
+				if (upper[there] > upper[here] + cost) {return true;}
 			}
 		}
-		return upper;
+		return false;
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -81,8 +76,8 @@ public class Main {
 				int weight = Integer.parseInt(st.nextToken());
 				adj.get(start).add(new Pair(end, -weight));
 			}
-			int[] dist = BellmanFord(1);
-			if (dist.length == 0) {bw.write("YES");}
+			boolean ret = hasCycle();
+			if (ret) {bw.write("YES");}
 			else {bw.write("NO");}
 			bw.newLine();
 		}
