@@ -12,18 +12,22 @@ public class Main {
 	static int[][] W;
 	static int start;
 	static boolean[] VISIT;
-	static int MIN;
 	static final int INF = 9000001;
 
 	// 정점 here에서 dfs
-	static void DFS(int here) {
-		if (here == start && MIN != INF) {return;}
-		VISIT[here] = true;
+	static int DFS(int here) {
+		boolean allVisit = true;
+		for (boolean v : VISIT) {if(!v) {allVisit = false;}}
+		if (here == start) {return allVisit ? 0 : INF;}
+		int min = INF;
 		for (int next = 0; next < N; next++) {
-			if(W[here][next] != 0 && !VISIT[next]) {
-				DFS(next);
+			if(W[here][next] != 0 && (!VISIT[next] || next == start)) {
+				VISIT[next] = true;
+				min = Math.min(min, W[here][next] + DFS(next));
+				VISIT[next] = false;
 			}
 		}
+		return min;
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -34,8 +38,18 @@ public class Main {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 			for (int j = 0; j < N; j++) {W[i][j] = Integer.parseInt(st.nextToken());}
 		}
-		boolean[] picked = new boolean[N];
-		bw.write(String.valueOf(BFC(picked, -1)));
+		VISIT = new boolean[N];
+		int min = INF;
+		for (int here = 0; here < N; here++) {
+			start = here;
+			for (int there = 0; there < N; there++) {
+				if (W[here][there] == 0) {continue;}
+				VISIT[there] = true;
+				min = Math.min(min, W[here][there] + DFS(there));
+				VISIT[there] = false;
+			}
+		}
+		bw.write(String.valueOf(min));
 		bw.close();
 	}
 
