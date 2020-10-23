@@ -17,6 +17,9 @@ public class Main {
 	static final int[] dy = { 0, 0, 0, 1, -1 };
 	static final int[] dx = { 0, 1, -1, 0, 0 };
 
+	static final int[] dl = {0, 4, 3, 1, 2};
+	static final int[] dr = {0, 3, 4, 2, 1};
+
 	static boolean inRange(int y, int x) {
 		return 0 <= y && y < N && 0 <= x && x < M;
 	}
@@ -49,7 +52,7 @@ public class Main {
 				}
 			}
 			// Turn left
-			int ld = turnLeft(d);
+			int ld = dl[d];
 			if (!BOOKED[y][x][ld]) {
 				q.offer(new int[] {y, x, ld});
 				BOOKED[y][x][ld] = true;
@@ -59,7 +62,7 @@ public class Main {
 				}
 			}
 			// Turn right
-			int rd = turnRight(d);
+			int rd = dr[d];
 			if (!BOOKED[y][x][rd]) {
 				q.offer(new int[] {y, x, rd});
 				BOOKED[y][x][rd] = true;
@@ -68,26 +71,6 @@ public class Main {
 					return DIST[y][x][rd];
 				}
 			}
-		}
-		return -1;
-	}
-
-	static int turnLeft(int d) {
-		switch (d) {
-		case 1 : return 4;
-		case 2 : return 3;
-		case 3 : return 1;
-		case 4 : return 2;
-		}
-		return -1;
-	}
-
-	static int turnRight(int d) {
-		switch (d) {
-		case 1 : return 3;
-		case 2 : return 4;
-		case 3 : return 2;
-		case 4 : return 1;
 		}
 		return -1;
 	}
