@@ -15,6 +15,10 @@ public class Main {
 	static final int[] dy = {-1, 1, 0, 0};
 	static final int[] dx = {0, 0, -1, 1};
 
+	static StringBuilder[][][][] PATH = new StringBuilder[10][10][10][10];
+	static StringBuilder ANS;
+	static final char[] CHOICE = {'U', 'D', 'L', 'R'};
+
 	// 빨간 구슬과 파란 구슬 초기 상태에서 10번 안에 빼낼 수 있는지 반환
 	static int BFS(int[] s) {
 		Queue<int[]> q = new LinkedList<>();
@@ -23,6 +27,7 @@ public class Main {
 		BOOKED[s[0]][s[1]][s[2]][s[3]] = true;
 		int[][][][] DIST = new int[N][M][N][M];
 		DIST[s[0]][s[1]][s[2]][s[3]] = 0;
+		PATH[s[0]][s[1]][s[2]][s[3]] = new StringBuilder("");
 
 		while (!q.isEmpty()) {
 			int[] here = q.poll();
@@ -34,7 +39,12 @@ public class Main {
 				int nby = there[2]; int nbx = there[3];
 				if (!(nby == 0 && nbx == 0) && !BOOKED[nry][nrx][nby][nbx]) {
 					DIST[nry][nrx][nby][nbx] = DIST[ry][rx][by][bx] + 1;
-					if (nry == 0 && nrx == 0) {return DIST[nry][nrx][nby][nbx];}
+					StringBuilder temp = new StringBuilder(PATH[ry][rx][by][bx]);
+					PATH[nry][nrx][nby][nbx] = temp.append(CHOICE[dir]);
+					if (nry == 0 && nrx == 0) {
+						ANS = PATH[nry][nrx][nby][nbx];
+						return DIST[nry][nrx][nby][nbx];
+					}
 					// (nry, nrx)까지 거리가 10 이상이라면 그 다음은 할 필요 없음
 					if (DIST[nry][nrx][nby][nbx] < 10) {
 						q.offer(new int[] {nry, nrx, nby, nbx});
@@ -97,7 +107,12 @@ public class Main {
 			}
 		}
 		int ret = BFS(RB);
-		System.out.println(ret <= 10 ? ret : -1);
+		if (ret != -1) {
+			System.out.println(ret);
+			System.out.println(ANS);
+		} else {
+			System.out.println("-1");
+		}
 	}
 
 }
