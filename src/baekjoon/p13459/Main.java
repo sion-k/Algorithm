@@ -1,77 +1,102 @@
 package baekjoon.p13459;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int[] RandB;// 빨간 구슬, 파란 구슬 위치
-	static int N;
-	static int M;
-	static char[][] BOARD;
-	static boolean[][][][] BOOKED;
-	static int[][][][] DIST;
-	
-	// 상하좌우 이동
+	static int N; static int M;
+	static boolean[][] MAP;
+	static int gy; static int gx;
+
 	static final int[] dy = {-1, 1, 0, 0};
 	static final int[] dx = {0, 0, -1, 1};
-	
-	static boolean inRange(int y, int x) {
-		return 0 <= y && y < N && 0 <= x && x < M;
+
+	// 빨간 구슬과 파란 구슬 초기 상태에서 10번 안에 빼낼 수 있는지 반환
+	static boolean BFS(int[] s) {
+		Queue<int[]> q = new LinkedList<>();
+		q.offer(s);
+		boolean[][][][] BOOKED = new boolean[N][M][N][M];
+		BOOKED[s[0]][s[1]][s[2]][s[3]] = true;
+		int[][][][] DIST = new int[N][M][N][M];
+		DIST[s[0]][s[1]][s[2]][s[3]] = 0;
+
+		while (!q.isEmpty()) {
+			int[] here = q.poll();
+			int ry = here[0]; int rx = here[1];
+			int by = here[2]; int bx = here[3];
+			for (int dir = 0; dir < 4; dir++) {
+				int[] there = tilt(here, dir);
+				int nry = there[0]; int nrx = there[1];
+				int nby = there[2]; int nbx = there[3];
+				if (!(nby == 0 && nbx == 0) && !BOOKED[nry][nrx][nby][nbx]) {
+					if (nry == 0 && nrx == 0) {return true;}
+					DIST[nry][nrx][nby][nbx] = DIST[ry][rx][by][bx] + 1;
+					// (nry, nrx)까지 거리가 10 이상이라면 그 다음은 할 필요 없음
+					if (DIST[nry][nrx][nby][nbx] < 10) {
+						q.offer(new int[] {nry, nrx, nby, nbx});
+						BOOKED[nry][nrx][nby][nbx] = true;
+					}
+				}
+			}
+		}
+		return false;
 	}
-	
-//	static int[] tilt(int yr, int xr, int yb, int xb, int dir) {
-//		int tyr = yr + dy[dir]; int txr = xr + dx[dir];
-//		int tyb = yb + dy[dir]; int txb = xb + dx[dir];
-//		while (BOARD[tyr][txr] != '#' || BOARD[tyb][txb] != '#') {
-//			
-//		}
-//	}
-//	// 정점 a에서 b까지 최단 거리 반환. 도달 불가능하면 -1 반환
-//	static int bfs(int[] a, int[] b) {
-//		Queue<int[]> q = new LinkedList<>();
-//		q.add(a); BOOKED[a[0]][a[1]][a[2]][a[3]] = true; 
-//		DIST[a[0]][a[1]][a[2]][a[3]] = 0;
-//		
-//		while(!q.isEmpty()) {
-//			int[] loc = q.poll();
-//			int yr = loc[0]; int xr = loc[1];
-//			int yb = loc[2]; int xb = loc[3];
-//			
-//			for (int next = 0; next < 4; next++) {
-//				if(EDGE[here][next] && !BOOKED[next]) {
-//					if (next == b) {return DIS[here] + 1;}
-//					q.offer(next); BOOKED[next] = true;
-//					DIS[next] = DIS[here] + 1;
-//				}
-//			}
-//		}
-//		return -1;
-//	}
-	
+
+	// 상하좌우[0, 3]으로 기울여서 구슬이 멈췄을 때 도달한 위치들 반환
+	// 구슬은 기본적으로 겹칠 수 없지만 구멍에 빠진 경우 둘다 (0, 0)
+	static int[] tilt(int[] p, int d) {
+		boolean moved = true;
+		int ry = p[0]; int rx = p[1]; int by = p[2]; int bx = p[3];
+		while (moved) {
+			moved = false;
+			int nry = ry; int nrx = rx;
+			int nby = by; int nbx = bx;
+			if (!(ry == 0 && rx == 0)) {nry = ry + dy[d]; nrx = rx + dx[d];}
+			if (!(by == 0 && bx == 0)) {nby = by + dy[d]; nbx = bx + dx[d];}
+
+			if (MAP[nry][nrx] && !(nry == by && nrx == bx)) {
+				ry += dy[d]; rx += dx[d];
+				if (ry == gy && rx == gx) {ry = 0; rx = 0;}
+				moved = true;
+			}
+			if (MAP[nby][nbx] && !(nby == ry && nbx == rx)) {
+				by += dy[d]; bx += dx[d];
+				if (by == gy && bx == gx) {by = 0; bx = 0;}
+				moved = true;
+			}
+		}
+		return new int[] {ry, rx, by, bx};
+	}
+
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
-		RandB = new int[4];
-		BOARD = new char[N][M];
-		BOOKED = new boolean[N][M][N][M];
-		DIST = new int[N][M][N][M];
+		MAP = new boolean[N][M];
+		int[] RB = new int[4];
 		for (int i = 0; i < N; i++) {
 			String row = br.readLine();
 			for (int j = 0; j < M; j++) {
-				BOARD[i][j] = row.charAt(j);
-				if (BOARD[i][j] == 'R') {RandB[0] = i; RandB[1] = j;}
-				if (BOARD[i][j] == 'B') {RandB[2] = i; RandB[3] = j;}
+				MAP[i][j] = (row.charAt(j) != '#');
+				switch (row.charAt(j)) {
+				case 'R':
+					RB[0] = i; RB[1] = j;
+					break;
+				case 'B':
+					RB[2] = i; RB[3] = j;
+					break;
+				case 'O':
+					gy = i; gx = j;
+					break;
+				}
 			}
 		}
-		br.close();
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		bw.close();
+		System.out.println(BFS(RB) ? 1 : 0);
 	}
 
 }
