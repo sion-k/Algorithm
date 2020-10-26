@@ -51,7 +51,8 @@ public class Main {
 			for (int j = 0; j < N; j++) {
 				if (!VISIT[i][j]) {
 					int[] pair = DFS(i, j);
-					moveSelected(pair);
+					int mean = pair[0] / pair[1];
+					selectDFS(i, j, mean);
 					if (pair[1] >= 2) {moved = true;}
 				}
 			}
@@ -60,14 +61,13 @@ public class Main {
 		return moved;
 	}
 
-	static void moveSelected(int[] pair) {
-		int mean = pair[0] / pair[1];
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++) {
-				if (SELECT[i][j]) {
-					NEWMAP[i][j] = mean;
-					SELECT[i][j] = false;
-				}
+	static void selectDFS(int y, int x, int mean) {
+		SELECT[y][x] = false;
+		NEWMAP[y][x] = mean;
+		for (int next = 0; next < 4; next++) {
+			int ny = y + dy[next]; int nx = x + dx[next];
+			if (inRange(ny, nx) && SELECT[ny][nx]) {
+				selectDFS(ny, nx, mean);
 			}
 		}
 	}
