@@ -21,4 +21,5 @@ public class Main {
 		bw.write(H + " " + M);
 		bw.close();
 	}
+
 }
