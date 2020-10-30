@@ -17,7 +17,7 @@ public class FastInputOutput {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		st.nextToken();
-		bw.write(String.valueOf(""));
+		bw.close();
 	}
 
 }
