@@ -6,42 +6,33 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
-
-class Pair implements Comparable<Pair> {
-	int num; int cost;
-	public Pair(int n, int c) {num = n; cost = c;}
-	@Override
-	public int compareTo(Pair o) {return cost - o.cost;}
-}
 
 public class Main {
 	static int N;
 	static int K;
 	static ArrayList<ArrayList<Pair>> adj;
+	static ArrayList<PriorityQueue<Integer>> dist;
 
-	static ArrayList<ArrayList<Integer>> dijkstra(int src) {
-		ArrayList<ArrayList<Integer>> dist =
-		new ArrayList<ArrayList<Integer>>(N + 1);
-		dist.add(new ArrayList<>());
-		for (int i = 0; i < N; i++) {dist.add(new ArrayList<>(K));}
+	static ArrayList<PriorityQueue<Integer>> dijkstra(int src) {
 		PriorityQueue<Pair> pq = new PriorityQueue<>();
-		dist.get(src).add(0);
 		pq.offer(new Pair(src, 0));
+		dist.get(src).offer(0);
+
 		while (!pq.isEmpty()) {
 			Pair p = pq.poll();
 			int here = p.num; int cost = p.cost;
-			// 정점을 방문하고 인접 정점을 검사
+
 			for (Pair edge : adj.get(here)) {
-				int there = edge.num;
-				int nextDist = cost + edge.cost;
-				int size = dist.get(there).size();
-				if (size < K) {
-					dist.get(there).add(nextDist);
-					System.out.println("there : " + dist.get(there));
+				int there = edge.num; int nextDist = cost + edge.cost;
+				if (dist.get(there).size() < K) {
 					pq.offer(new Pair(there, nextDist));
+					dist.get(there).offer(-nextDist);
+				} else if (-dist.get(there).peek() > nextDist) {
+					pq.offer(new Pair(there, nextDist));
+					dist.get(there).poll();
+					dist.get(there).offer(-nextDist);
 				}
 			}
 		}
@@ -59,6 +50,10 @@ public class Main {
 		adj.add(new ArrayList<>());
 		for (int i = 0; i < N; i++) {adj.add(new ArrayList<>());}
 
+		dist = new ArrayList<>(N + 1);
+		dist.add(new PriorityQueue<>());
+		for (int i = 1; i <= N; i++) {dist.add(new PriorityQueue<>());}
+
 		for (int i = 0; i < M; i++) {
 			st = new StringTokenizer(br.readLine(), " ");
 			int start = Integer.parseInt(st.nextToken());
@@ -66,18 +61,26 @@ public class Main {
 			int weight = Integer.parseInt(st.nextToken());
 			adj.get(start).add(new Pair(end, weight));
 		}
-		 ArrayList<ArrayList<Integer>> dist = dijkstra(1);
-		 for (int i = 1; i < dist.size(); i++) {
-			 ArrayList<Integer> j = dist.get(i);
-			 Collections.sort(j);
-			 if (K <= j.size()) {
-				 bw.write(String.valueOf(j.get(K - 1)));
-			 } else {
-				 bw.write("-1");
-			 }
-			 bw.newLine();
-		 }
-		 bw.close();
+
+		ArrayList<PriorityQueue<Integer>> dist = dijkstra(1);
+		for (int i = 1; i <= N; i++) {
+			int cost = 0;
+			if (dist.get(i).size() >= K) {
+				cost = -dist.get(i).poll();
+			} else {
+				cost = -1;
+			}
+			bw.write(String.valueOf(cost));
+			bw.newLine();
+		}
+		bw.close();
 	}
 
+}
+
+class Pair implements Comparable<Pair> {
+	int num; int cost;
+	public Pair(int n, int c) {num = n; cost = c;}
+	@Override
+	public int compareTo(Pair o) {return cost - o.cost;}
 }
