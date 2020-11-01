@@ -7,9 +7,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-/*
- * 빠른 입 출력, 문자열 처리
- */
 public class FastInputOutput {
 
 	public static void main(String[] args) throws IOException {
