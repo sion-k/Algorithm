@@ -40,4 +40,5 @@ public class Main {
 		for (int i = 1; i <= N; i++) {max = Math.max(max, dp(i));}
 		System.out.println(max);
 	}
+
 }
