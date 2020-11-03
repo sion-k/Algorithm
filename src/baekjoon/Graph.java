@@ -8,21 +8,19 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Graph {
-	static int N; // 정점 수
-	static int M; // 간선 수
+	static int N;
+	static int M;
 	static boolean[][] EDGE;// 인접 행렬 표현법
 
 	static boolean[] VISIT;// DFS용
 	static boolean[] BOOKED;// BFS용
 	static int[] DIS;// 최단 거리
 
-	// 상하좌우 이동
 	static final int[] dy = {-1, 1, 0, 0};
 	static final int[] dx = {0, 0, -1, 1};
 
-	//[0, N)
 	static boolean inRange(int y, int x) {
-		return 0 <= y && y < N && 0 <= x && x < N;
+		return 0 <= y && y < N && 0 <= x && x < M;
 	}
 
 	// 정점 here에서 dfs
