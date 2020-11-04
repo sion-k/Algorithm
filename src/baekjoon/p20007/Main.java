@@ -54,10 +54,10 @@ public class Main {
 			int end = Integer.parseInt(st.nextToken());
 			int weight = Integer.parseInt(st.nextToken());
 			adj.get(start).add(new Pair(end, weight));
+			adj.get(end).add(new Pair(start, weight));
 		}
 
 		int[] dist = dijkstra(Y);
-		System.out.println(Arrays.toString(dist));
 		Arrays.sort(dist);
 		int days = 1; int cost = 0;
 		for (int thereDist : dist) {
