@@ -23,9 +23,9 @@ public class WeightGraph {
 			// 더 나은 경로를 알고 있다면 무시
 			if(dist[here] < cost) {continue;}
 			// 정점을 방문하고 인접 정점을 검사
-			for (int i = 0; i < adjList.get(here).size(); i++) {
-				int there = adjList.get(here).get(i).num;
-				int nextDist = cost + adjList.get(here).get(i).cost;
+			for (Pair edge : adjList.get(here)) {
+				int there = edge.num;
+				int nextDist = cost + edge.cost;
 				// 기존에 발견한 것보다 더 짧은 경로를 발견 한 경우 최신화
 				if (dist[there] > nextDist) {
 					dist[there] = nextDist;
