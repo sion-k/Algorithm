@@ -46,7 +46,7 @@ public class Main {
 		System.out.println(ans);
 
 		ans = new StringBuilder();
-		pre(0);
+		post(0);
 		System.out.println(ans);
 	}
 
