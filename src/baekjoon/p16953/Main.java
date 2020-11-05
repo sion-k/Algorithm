@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
 public class Main {
 	static long move(int here, int moveWay) {
 		if (moveWay == 0) {return 2 * here;}
-		else {return 10 * here + 1;}
+		else {return 10 * (long)here + 1;}
 	}
 
 	static int BFS(int A, int B) {
