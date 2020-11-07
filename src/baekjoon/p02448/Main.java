@@ -9,15 +9,11 @@ import java.util.Arrays;
 
 public class Main {
 	static char[][] BOARD;
-	static final int[] dy = {0, 1, 1, 2, 2, 2, 2, 2};
-	static final int[] dx=  {0, -1, 1, -2, -1, 0, 1, 2};
-
 	static void stamp(int N, int y, int x) {
 		if (N == 3) {
-			for (int m = 0; m < 8; m++) {
-				int ny = y + dy[m]; int nx = x + dx[m];
-				BOARD[ny][nx] = '*';
-			}
+			BOARD[y][x] = BOARD[y+1][x-1] = BOARD[y+1][x+1] =
+            BOARD[y+2][x-2] = BOARD[y+2][x-1] = BOARD[y+2][x] =
+            BOARD[y+2][x+1] = BOARD[y+2][x+2] = '*';
 			return;
 		}
 		stamp(N / 2, y, x);
