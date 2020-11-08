@@ -25,7 +25,7 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int N = Integer.parseInt(br.readLine());
-		BOARD = new char[N][ 2 * N - 1];
+		BOARD = new char[N][2 * N - 1];
 		for (int i = 0; i < N; i++) {Arrays.fill(BOARD[i], ' ');}
 		stamp(N, 0, N - 1);
 		for (int i = 0; i < N; i++) {
