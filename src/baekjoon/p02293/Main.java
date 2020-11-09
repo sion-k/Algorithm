@@ -3,34 +3,31 @@ package baekjoon.p02293;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int N;
-	static int[] COIN;
-	static int[][] cache;
-
-	static int dp(int K, int prev) {
-		if (K == 0) {return 1;}
-		if (cache[K][prev] != -1) {return cache[K][prev];}
-		cache[K][prev] = 0; int i = prev;
-		while (i < N && K - COIN[i] >= 0) {
-			cache[K][prev] += dp(K - COIN[i], i); i++;
-		}
-		return cache[K][prev];
-	}
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-		N = Integer.parseInt(st.nextToken());
+		int N = Integer.parseInt(st.nextToken());
+		int[] C = new int[N];
 		int K = Integer.parseInt(st.nextToken());
-		cache = new int[K + 1][N];
-		for (int i = 1; i <= K; i++) {Arrays.fill(cache[i], -1);}
-		COIN = new int[N];
-		for (int i = 0; i < N; i++) {COIN[i] = Integer.parseInt(br.readLine());}
-		Arrays.sort(COIN);
-		System.out.println(dp(K, 0));
+		for (int i = 0; i < N; i++) {C[i] = Integer.parseInt(br.readLine());}
+		int[][] cache = new int[2][K + 1];
+		cache[0][0] = 1; cache[1][0] = 1;
+		for (int j = 1; j <= K; j++) {
+			if (j % C[0] == 0) {cache[0][j] = 1;}
+		}
+		for (int i = 1; i < N; i++) {
+			for (int j = 1; j <= K; j++) {
+				cache[i % 2][j] = cache[1 - (i % 2)][j];
+				if (j - C[i] >= 0) {
+					cache[i % 2][j] += cache[i % 2][j - C[i]];
+				}
+			}
+		}
+		System.out.println(cache[(N - 1) % 2][K]);
 	}
+
 }
