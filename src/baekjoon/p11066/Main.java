@@ -13,11 +13,11 @@ public class Main {
 	static int dp(int i, int j) {
 		if (i == j) {return 0;}
 		if (cache[i][j] != 0) {return cache[i][j];}
-		int min = dp(i, i) + dp(i + 1, j) + sum(i, j);
+		int min = dp(i, i) + dp(i + 1, j);
 		for (int k = i + 1; k <= j - 1; k++) {
-			min = Math.min(min, dp(i , k) + dp(k + 1, j) + sum(i, j));
+			min = Math.min(min, dp(i , k) + dp(k + 1, j));
 		}
-		return cache[i][j] = min;
+		return cache[i][j] = min + sum(i, j);
 	}
 
 	// [i, j]구간 합 반환
