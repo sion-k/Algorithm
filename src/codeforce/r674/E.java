@@ -12,7 +12,7 @@ public class E {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int N = Integer.parseInt(br.readLine());
+	//	int N = Integer.parseInt(br.readLine());
 		int[] A = new int[3]; int[] B = new int[3];
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		for (int i = 0; i < 3; i++) {A[i] = Integer.parseInt(st.nextToken());}
