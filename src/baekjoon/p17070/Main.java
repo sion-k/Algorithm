@@ -11,22 +11,20 @@ public class Main {
 	static int[][] MAP;
 	static int[][][] cache;
 
-	static final int[] dy = { 0, 0, 1, 1, 0, 1,  0,  1, 1 };
+	// 상태는 가로, 세로, 대각선
+	// 오른쪽, 아래, 대각선 이동 위치
+	static final int[] dy = { 0, 0, 1, 0, 1, 1,  0,  1, 1 };
 	static final int[] dx = { 1, 0, 1, 0, 0, 1,  1,  0, 1 };
-	static final int[] ds = { 0, 0, 2, 0, 0, 2, -2, -1, 0 };
+	static final int[] ds = { 0, 0, 2, 0, 0, 1, -2, -1, 0 };
 
 	static boolean inRange(int y, int x, int s) {
-		return 0 <= y && y < N && 0 <= x && x < N && 0 <= s && s < 3;
+		return 0 <= y && y < N && 0 <= x && x < N;
 	}
 
 	static int[] move(int y, int x, int s, int m) {
 		int n = 3 * s + m;
-		int ny = y + dy[n]; int nx =  x + dx[n]; int ns = s + ds[n];
+		int ny = y + dy[n]; int nx = x + dx[n]; int ns = s + ds[n];
 		int[] next = new int[] {ny, nx, ns};
-		if(!inRange(ny - 1, nx, ns) || !inRange(ny, nx - 1, ns)) {return next;}
-		if (m == 2 && (MAP[ny - 1][nx] == 1 || MAP[ny][nx - 1] == 1)) {
-			next = new int[] {-1, -1, -1};
-		}
 		return next;
 	}
 
@@ -36,9 +34,11 @@ public class Main {
 		int sum = 0;
 		for (int m = 0; m < 3; m++) {
 			int[] there = move(y, x, s, m);
-			System.out.println(Arrays.toString(there));
 			int ny = there[0]; int nx = there[1]; int ns = there[2];
-			if (!inRange(ny, nx, ns) || (nx == x && ny == y && ns == s)) {
+			if (!inRange(ny, nx, ns) || (nx == x && ny == y) || (MAP[ny][nx] == 1)) {
+				continue;
+			}
+			if (ns == 2 && (MAP[ny - 1][nx] == 1 || MAP[ny][nx - 1] == 1)) {
 				continue;
 			}
 			sum += dp(ny, nx, ns);
