@@ -8,27 +8,40 @@ import java.io.OutputStreamWriter;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class A {
+public class C {
+	static int N; static int S;
+	static int[] W;
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int T = Integer.parseInt(br.readLine());
 		for (int c = 0; c < T; c++) {
-			int N = Integer.parseInt(br.readLine());
-			int[] S = new int[N];
+			N = Integer.parseInt(br.readLine());
+			W = new int[N];
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 			for (int i = 0; i < N; i++) {
-				S[i] = Integer.parseInt(st.nextToken());
+				W[i] = Integer.parseInt(st.nextToken());
 			}
-			Arrays.sort(S);
-			boolean ret = true;
-			for (int i = 0; i < N - 1; i++) {
-				if (Math.abs(S[i] - S[i + 1]) > 1) {
-					ret = false; break;
+			Arrays.sort(W);
+			int max = 0;
+			for (S = 2; S <= 2 * N; S++) {
+				boolean[] taken = new boolean[N];
+				int cnt = 0;
+				for (int i = 0; i < N; i++) {
+					if (taken[i]) {continue;}
+					for (int j = i + 1; j < N; j++) {
+						int sum = W[i] + W[j];
+						if (sum < S) {continue;}
+						if (sum > S) {break;}
+						if (!taken[i] && !taken[j]) {
+							cnt++; taken[i] = taken[j] = true;
+						}
+					}
 				}
+				max = Math.max(max, cnt);
 			}
-			bw.write(ret ? "YES" : "NO");
+			bw.write(String.valueOf(max));
 			bw.newLine();
 		}
 		bw.close();
