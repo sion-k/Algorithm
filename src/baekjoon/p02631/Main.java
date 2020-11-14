@@ -8,7 +8,7 @@ public class Main {
 	static int N; static int[] S;
 	static int[] cache;
 
-	// here에서 시작하는 LIS의 길이 반환
+	// start에서 시작하는 LIS의 길이 반환
 	static int dp(int start) {
 		if (cache[start + 1] != 0) {return cache[start + 1];}
 		int max = 1;
