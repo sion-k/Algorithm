@@ -13,7 +13,6 @@ import java.util.StringTokenizer;
 public class Main {
 	static int N;
 	static int[] y; static int[] x; static int[] r;
-
 	static int longest;
 
 	static int height(Node root) {
