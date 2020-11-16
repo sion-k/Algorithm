@@ -1,8 +1,10 @@
 package baekjoon.p02668;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class Main {
 	static int[] adj;
@@ -25,6 +27,7 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int N = Integer.parseInt(br.readLine());
 		adj = new int[N + 1]; visit = new boolean[N + 1];
 		for (int i = 1; i <= N; i++) {
@@ -33,10 +36,14 @@ public class Main {
 		int sum = 0;
 		for (int i = 1; i <= N; i++)
 			if (!visit[i]) sum += DFS(i, i);
-
-		System.out.println(sum);
-		for (int i = 1; i <= N; i++)
-			if (visit[i]) System.out.println(i);
+		bw.write(String.valueOf(sum));bw.newLine();
+		for (int i = 1; i <= N; i++) {
+			if (visit[i]) {
+				bw.write(String.valueOf(i));
+				bw.newLine();
+			}
+		}
+		bw.close();
 	}
 
 }
