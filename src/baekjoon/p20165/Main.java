@@ -11,7 +11,7 @@ import java.util.StringTokenizer;
 public class Main {
 	static int N; static int M;
 	static char[][] MAP;
-	static String S;
+	static String W;
 	static int[][][] cache;
 
 	static final int[] dy = {-1, -1, -1, 0, 0, 1, 1, 1};
@@ -27,11 +27,8 @@ public class Main {
 
 	// y x에서 시작해서 s를 만들어 낼 수 있는 경우의 수
 	static int dp(int y, int x, int s) {
-		if (s == S.length() - 1) {
-			if (MAP[y][x] == S.charAt(s)) {return 1;}
-			else {return 0;}
-		}
-		if (MAP[y][x] != S.charAt(s)) {return 0;}
+		if (MAP[y][x] != W.charAt(s)) {return 0;}
+		if (s == W.length() - 1) {return 1;}
 		if (cache[y][x][s] != -1) {return cache[y][x][s];}
 		int sum = 0;
 		for (int m = 0; m < 8; m++) {
@@ -58,10 +55,10 @@ public class Main {
 		}
 
 		for (int s = 0; s < K; s++) {
-			S = br.readLine();
-			cache = new int[N + 1][M + 1][S.length()];
-			for (int i = 0; i < N; i++) {
-				for (int j = 0; j < M; j++) {
+			W = br.readLine();
+			cache = new int[N + 1][M + 1][W.length()];
+			for (int i = 1; i <= N ; i++) {
+				for (int j = 1; j <= M; j++) {
 					Arrays.fill(cache[i][j], -1);
 				}
 			}

@@ -5,7 +5,6 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Random;
 
 public class TestCaseGenerator {
 
@@ -13,11 +12,18 @@ public class TestCaseGenerator {
 		BufferedReader br = new BufferedReader(new FileReader("testCase.txt"));
 		br.close();
 		BufferedWriter bw = new BufferedWriter(new FileWriter("testCase.txt"));
-		bw.write("1"); bw.newLine();
-		bw.write("1000000"); bw.newLine();
-		for (int w = 0; w < 1000000; w++) {
-			bw.write(String.valueOf(new Random().nextInt(1000000) + 1));
-			bw.write(" ");
+		bw.write("10 10 1000"); bw.newLine();
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
+				bw.write('a');
+			}
+			bw.newLine();
+		}
+		for (int w = 0; w < 1000; w++) {
+			for (int i = 0; i < 5; i++) {
+				bw.write('a');
+			}
+			bw.newLine();
 		}
 		bw.close();
 	}
