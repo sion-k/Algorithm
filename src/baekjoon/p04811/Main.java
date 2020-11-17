@@ -21,8 +21,8 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int N = 1;
+		cache = new long[31][31];
 		while ((N = Integer.parseInt(br.readLine())) != 0) {
-			cache = new long[N + 1][2 * N + 1];
 			bw.write(String.valueOf(dp(N, 0)));
 			bw.newLine();
 		}
