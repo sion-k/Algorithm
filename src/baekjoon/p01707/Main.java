@@ -47,7 +47,7 @@ public class Main {
 			DFSAll(); boolean bip = true;
 			for (int here = 1; here <= N; here++) {
 				for (int there : adj.get(here)) {
-					if (check[here] = check[there]) {
+					if (check[here] == check[there]) {
 						bip = false; break;
 					}
 				}
