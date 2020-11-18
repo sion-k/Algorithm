@@ -1,4 +1,4 @@
-package baekjoon.p20165;
+package baekjoon.p20166;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
