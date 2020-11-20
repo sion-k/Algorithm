@@ -23,7 +23,7 @@ public class Main {
 				if (cand > max) {max = cand; best = next;}
 			}
 		}
-		choice[here] = best;
+		choice[here + 1] = best;
 		return cache[here + 1] = max;
 	}
 
