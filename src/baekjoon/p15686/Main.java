@@ -49,9 +49,8 @@ public class Main {
 
 	static void BFC(int i, int toPick, List<int[]> picked) {
 		if (i == chicken.size()) {
-			if (toPick == 0) {
-				min = Math.min(min, cityDist(picked));
-			} return;
+			if (toPick == 0) {min = Math.min(min, cityDist(picked));}
+			return;
 		}
 		BFC(i + 1, toPick, picked);
 		picked.add(chicken.get(i));
