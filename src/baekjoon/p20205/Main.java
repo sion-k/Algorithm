@@ -1,4 +1,4 @@
-package baekjoon.p20193;
+package baekjoon.p20205;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
