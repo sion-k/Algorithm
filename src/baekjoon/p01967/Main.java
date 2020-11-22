@@ -16,8 +16,7 @@ public class Main {
 		for (Pair p : adj.get(here)) {
 			int there = p.num;
 			if (!visit[there]) {
-				Pair cand = DFS(there);
-				cand.weight += p.weight;
+				Pair cand = DFS(there); cand.weight += p.weight;
 				if (cand.weight > max.weight) {max = cand;}
 			}
 		}
