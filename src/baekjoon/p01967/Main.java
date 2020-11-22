@@ -10,23 +10,18 @@ public class Main {
 	static ArrayList<ArrayList<Pair>> adj;
 	static boolean[] visit;
 
-	static Pair DFS(Pair here) {
-		visit[here.num] = true;
-		int maxWeight = here.weight;
-		int best = here.num;
-		for (Pair there : adj.get(here.num)) {
-			if (!visit[there.num]) {
+	static Pair DFS(int here) {
+		visit[here] = true;
+		Pair max = new Pair(here, 0);
+		for (Pair p : adj.get(here)) {
+			int there = p.num;
+			if (!visit[there]) {
 				Pair cand = DFS(there);
-				int thereNum = cand.num;
-				int nextWeight = here.weight + cand.weight;
-				System.out.println(cand);
-				if (nextWeight > maxWeight) {
-					maxWeight = nextWeight;
-					best = thereNum;
-				}
+				cand.weight += p.weight;
+				if (cand.weight > max.weight) {max = cand;}
 			}
 		}
-		return new Pair(best, maxWeight);
+		return max;
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -44,8 +39,7 @@ public class Main {
 			adj.get(end).add(new Pair(start, weight));
 		}
 		visit = new boolean[N + 1];
-		Pair leaf = DFS(new Pair(1, 0));
-		System.out.println(leaf.num);
+		int leaf = DFS(1).num;
 		visit = new boolean[N + 1];
 		System.out.println(DFS(leaf).weight);
 	}
@@ -55,8 +49,4 @@ public class Main {
 class Pair {
 	int num; int weight;
 	public Pair(int n, int w) {num = n; weight = w;}
-	@Override
-	public String toString() {
-		return num + ", " + weight;
-	}
 }
