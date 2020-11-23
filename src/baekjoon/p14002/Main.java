@@ -5,18 +5,15 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int[] S;
-	static int N;
-	static int[] cache;
-	static int[] choice;
+	static int N; static int[] S;
+	static int[] cache; static int[] choice;
 
 	static int dp(int here) {
 		if (cache[here + 1] != 0) {return cache[here + 1];}
-		int max = 1; int best = 0;
+		int max = 1; int best = -1;
 		for (int next = here + 1; next < N; next++) {
 			if (here == -1 || S[here] < S[next]) {
 				int cand = 1 + dp(next);
@@ -27,23 +24,24 @@ public class Main {
 		return cache[here + 1] = max;
 	}
 
-	static StringBuilder ans;
+	static StringBuilder ans = new StringBuilder();
 
 	static void reconstruct(int here) {
-		if (choice[here] != -1) {
-
-		}
+		if (here != -1) {ans.append(S[here]).append(" ");}
+		int next = choice[here + 1];
+		if (next != -1) {reconstruct(next);}
 	}
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		N = Integer.parseInt(br.readLine());
-		S = new int[N]; cache = new int[N + 1];
-		choice = new int[N + 1]; Arrays.fill(choice, -1);
+		N = Integer.parseInt(br.readLine()); S = new int[N];
+		cache = new int[N + 1]; choice = new int[N + 1];
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		for (int i = 0; i < N; i++) {S[i] = Integer.parseInt(st.nextToken());}
-		bw.write(String.valueOf(dp(-1) - 1));
+		bw.write(String.valueOf(dp(-1) - 1)); bw.newLine();
+		reconstruct(-1);
+		bw.write(ans.toString().trim()); bw.newLine();
 		bw.close();
 	}
 
