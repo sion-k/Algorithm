@@ -3,19 +3,17 @@ package baekjoon.p02661;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class Main {
-	static int N;
-	static int[] S; static int[] min;
+	static int N; static int[] S;
+	static boolean finish = false;
+	static StringBuilder A = new StringBuilder();
 
 	static void BTK(int picked) {
+		if (finish) {return;}
 		if (picked == N) {
-			for (int i = 0; i < N; i++) {
-				if (S[i] < min[i]) {min = S.clone(); break;}
-				else if (S[i] > min[i]) {break;}
-			}
-			return;
+			for (int c : S) {A.append(c);}
+			finish = true; return;
 		}
 		for (int pick = 1; pick <= 3; pick++) {
 			S[picked] = pick;
@@ -35,12 +33,9 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		N = Integer.parseInt(br.readLine());
-		S = new int[N]; min = new int[N]; Arrays.fill(min, 4);
+		N = Integer.parseInt(br.readLine()); S = new int[N];
 		BTK(0);
-		StringBuilder ans = new StringBuilder();
-		for (int c : min) {ans.append(c);}
-		System.out.println(ans);
+		System.out.println(A);
 	}
 
 }
