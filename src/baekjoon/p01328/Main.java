@@ -13,6 +13,7 @@ public class Main {
 
 	static int dp(int N, int L, int R) {
 		if (L == 0 || R == 0) {return 0;}
+		if (L + R > N + 1) {return 0;}
 		if (N == 1) {return (L == 1 && R == 1) ? 1 : 0;}
 		if (cache[N][L][R] != -1) {return cache[N][L][R];}
 		int sum = (int)(((long)(N - 2) * dp(N - 1, L, R)) % MOD);
