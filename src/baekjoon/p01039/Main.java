@@ -3,6 +3,7 @@ package baekjoon.p01039;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
@@ -30,26 +31,25 @@ public class Main {
 	}
 
 	static void BFS(int start) {
-		Queue<Integer> q = new LinkedList<>();
-		q.offer(start);
-		boolean[][] booked = new boolean[1000001][K + 1];
-		booked[start][0] = true;
-		int[] dist = new int[1000001];
-		dist[start] = 0;
+		Queue<int[]> q = new LinkedList<>();
+		q.offer(new int[] {0, start});
+		int[][] dist = new int[K + 1][1000001];
+		for (int i = 0; i < K + 1; i++) {Arrays.fill(dist[i], -1);}
+		dist[0][start] = 0;
 
 		while (!q.isEmpty()) {
-			int here = q.poll();
-			int M = (here + "").length();
+			int[] here = q.poll();
+			int n = here[1]; int k = here[0];
+			int M = (n + "").length();
 			for (int i = 0; i < M; i++) {
 				for (int j = i + 1; j < M; j++) {
-					int there = move(here, i, j);
-					if (there != -1 && !booked[there][dist[here]]) {
-						booked[there][dist[here]] = true;
-						dist[there] = dist[here] + 1;
-						if (dist[there] == K) {
+					int there = move(n, i, j);
+					if (there != -1 && dist[k + 1][there] == -1) {
+						dist[k + 1][there] = dist[k][n] + 1;
+						if ((k + 1) == K) {
 							max = Math.max(max, there);
 						} else {
-							q.offer(there);
+							q.offer(new int[] {k + 1, there});
 						}
 					}
 				}
@@ -59,13 +59,11 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		while (true) {
-			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-			int N = Integer.parseInt(st.nextToken());
-			K = Integer.parseInt(st.nextToken());
-			BFS(N);
-			System.out.println(max);
-		}
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		int N = Integer.parseInt(st.nextToken());
+		K = Integer.parseInt(st.nextToken());
+		BFS(N);
+		System.out.println(max);
 	}
 
 }
