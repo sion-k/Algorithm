@@ -16,7 +16,7 @@ public class Main {
 		int N = Integer.parseInt(br.readLine());
 		BigInteger[] cache = new BigInteger[N + 1];
 		Arrays.fill(cache, BigInteger.ZERO);
-		cache[1] = BigInteger.ONE;
+		if (N > 0) {cache[1] = BigInteger.ONE;}
 		for (int i = 2; i <= N; i++) {
 			cache[i] = cache[i].add(cache[i - 1].add(cache[i - 2]));
 		}
