@@ -40,6 +40,12 @@ public class Main2 {
 			Math.max(dp[1][N - 1][x - 1], dp[2][N - 1][x + 1]);
 		}
 		dp[0][N - 1][M - 1] = MAP[N - 1][M - 1] + dp[1][N - 1][M - 2];
+		for (int m = 0; m < 3; m++) {
+			for (int i = 0; i < N; i++) {
+				System.out.println(Arrays.toString(dp[m][i]));
+			}
+			System.out.println();
+		}
 		// 전체 채우기
 		for (int y = N - 2; y >= 0; y--) {
 			// m = 1 왼쪽으로 움직일 수 있는 경우
@@ -63,14 +69,6 @@ public class Main2 {
 			dp[0][y][M - 1] = MAP[y][M - 1] +
 			Math.max(dp[1][y][M - 2], dp[0][y + 1][M - 1]);
 		}
-
-		for (int m = 0; m < 3; m++) {
-			for (int i = 0; i < N; i++) {
-				System.out.println(Arrays.toString(dp[m][i]));
-			}
-			System.out.println();
-		}
-
 		System.out.println(dp[0][0][0]);
 	}
 
