@@ -20,7 +20,7 @@ public class Main {
 			dp[i] = dp[i - 1].add(dp[i - 2].multiply(two));
 		}
 		String line = "";
-		while (!(line = br.readLine()).equals(" ")) {
+		while ((line = br.readLine()) != null) {
 			int N = Integer.parseInt(line);
 			bw.write(String.valueOf(dp[N]));
 			bw.newLine();
