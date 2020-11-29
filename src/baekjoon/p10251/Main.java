@@ -43,7 +43,7 @@ public class Main {
 			M = Integer.parseInt(st.nextToken());
 			L = Integer.parseInt(st.nextToken());
 			int G = Integer.parseInt(st.nextToken());
-			cache = new int[N][M][2][(N + M) * L + (N + M) + 1];
+			cache = new int[N][M][2][4001];
 			right = new int[N][M - 1];
 			for (int i = 0; i < N; i++) {
 				st = new StringTokenizer(br.readLine(), " ");
@@ -57,7 +57,7 @@ public class Main {
 					down[i][j] = Integer.parseInt(st.nextToken());
 			}
 			boolean reachable = false;
-			for (int t = 0; t <= (N + M) * L + (N + M); t++) {
+			for (int t = 0; t <= 10000; t++) {
 				int cand = Math.min(dp(0, 0, 0, t), dp(0, 0, 1, t));
 				if (cand <= G) {
 					bw.write(String.valueOf(t)); reachable = true; break;
