@@ -15,7 +15,7 @@ public class TestCaseGenerator {
 		int N = 100;
 		int M = 100;
 		int L = 10;
-		int G = 1000000;
+		int G = 30000;
 		int INF = 1000;
 		int T = 10;
 		bw.write(String.valueOf(T)); bw.newLine();
