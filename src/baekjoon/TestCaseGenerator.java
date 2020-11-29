@@ -12,8 +12,8 @@ public class TestCaseGenerator {
 		BufferedReader br = new BufferedReader(new FileReader("testCase.txt"));
 		br.close();
 		BufferedWriter bw = new BufferedWriter(new FileWriter("testCase.txt"));
-		int N = (int)(Math.random() * (40)) + 2;
-		int M = (int)(Math.random() * (40)) + 2;
+		int N = 100;
+		int M = 100;
 		int L = (int)(Math.random() * (10)) + 1;
 		int G = (int)(Math.random() * (1000000)) + 1;
 		int INF = 1000;

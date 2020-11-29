@@ -2,8 +2,8 @@ package baekjoon.p10251;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
@@ -29,11 +29,12 @@ public class Main {
 		if (inRange(y + 1, x) && downCost <= t) {
 			min = Math.min(min, down[y][x] + dp(y + 1, x, 1, t - downCost));
 		}
-		return cache[y][x][d][y] = min;
+		return cache[y][x][d][t] = min;
 	}
 
 	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader br = new BufferedReader(new FileReader("testCase.txt"));
+		//BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int T = Integer.parseInt(br.readLine());
 		for (int c = 0; c < T; c++) {
