@@ -3,7 +3,6 @@ package baekjoon.p01103;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -37,15 +36,13 @@ public class Main {
 
 	// (y, x)에서 최대 동전을 움직일 수 있는 횟수
 	static int dp(int y, int x) {
-		if (cache[y][x] != -1) {return cache[y][x];}
-		int max = 0;
+		if (cache[y][x] != 0) {return cache[y][x];}
+		// (ny, nx)가 구멍이더라도, 바깥이더라도 1번은 움직일 수 있다
+		int max = 1;
 		for (int m = 0; m < 4; m++) {
 			int d = MAP[y][x] - '0';
 			int ny = y + d * dy[m]; int nx = x + d * dx[m];
-			// (ny, nx)가 구멍이더라도, 바깥이더라도 1번은 움직일 수 있다
-			if (!inRange(ny, nx) || MAP[ny][nx] == 'H') {
-				max = Math.max(max, 1); continue;
-			}
+			if (!inRange(ny, nx) || MAP[ny][nx] == 'H') continue;
 			max = Math.max(max, 1 + dp(ny, nx));
 		}
 		return cache[y][x] = max;
@@ -67,8 +64,6 @@ public class Main {
 			System.out.println(-1);
 		} else {
 			cache = new int[N][M];
-			for (int i = 0; i < N; i++)
-				Arrays.fill(cache[i], -1);
 			System.out.println(dp(0, 0));
 		}
 	}
