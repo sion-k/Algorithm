@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -16,7 +17,6 @@ public class Main {
 	static ArrayList<ArrayList<Integer>> children;
 	static boolean[] visit;
 	static int[][] cache;
-	static boolean[] choice;
 	static List<Integer> ans = new ArrayList<>();
 
 	static void dfs(int here) {
@@ -48,7 +48,15 @@ public class Main {
 
 	// root를 선택하는가 p ? 1 : 0;
 	static void reconstruct(int p, int root) {
-
+		if (p == 1) {
+			ans.add(root);
+			for (int ch : children.get(root))
+				reconstruct(0, ch);
+		} else {
+			for (int ch : children.get(root))
+				if (dp(0, ch) < dp(1, ch)) {reconstruct(1, ch);}
+				else {reconstruct(0, ch);}
+		}
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -75,8 +83,16 @@ public class Main {
 		dfs(1);
 		cache = new int[2][N + 1];
 		Arrays.fill(cache[0], -1); Arrays.fill(cache[1], -1);
-		choice = new boolean[N + 1];
-		System.out.println(Math.max(dp(0, 1), dp(1, 1)));
+		int flag = dp(0, 1) > dp(1, 1) ? 0 : 1;
+		bw.write(String.valueOf(dp(flag, 1)));
+		bw.newLine();
+		reconstruct(flag, 1);
+		Collections.sort(ans);
+		StringBuilder sb = new StringBuilder();
+		for (int a : ans)
+			sb.append(a).append(" ");
+		bw.write(sb.toString().trim());
+		bw.newLine();
 		bw.close();
 	}
 
