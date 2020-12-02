@@ -13,7 +13,6 @@ import java.util.StringTokenizer;
 public class Main {
 	static int[] W;
 	static ArrayList<ArrayList<Integer>> adj;
-	static int[] parent;
 	static ArrayList<ArrayList<Integer>> children;
 	static boolean[] visit;
 	static int[][] cache;
@@ -24,26 +23,32 @@ public class Main {
 		visit[here] = true;
 		for (int there : adj.get(here))
 			if (!visit[there]) {
-				parent[there] = here;
 				children.get(here).add(there);
 				dfs(there);
 			}
 	}
 
-	// root의 부모를 선택했는가 p ? 1 : 0
+	// root를 선택하는가 p ? 1 : 0;
 	static int dp(int p, int root) {
 		if (cache[p][root] != -1) {return cache[p][root];}
-		int notPick = 0;
-		for (int ch : children.get(root))
-			notPick += dp(0, ch);
-		int pick = 0;
-		if (p == 0) {
-			pick = W[root];
+		if (p == 1) { // root를 선택한 경우
+			int sum = W[root];
+			// 자식은 선택할 수 없다
 			for (int ch : children.get(root))
-				pick += dp(1, ch);
+				sum += dp(0, ch);
+			return cache[p][root] = sum;
+		} else { // root를 선택하지 않은 경우
+			int sum = 0;
+			// 자식은 선택할 수도 선택하지 않을 수도 있다.
+			for (int ch : children.get(root))
+				sum += Math.max(dp(1, ch), dp(0, ch));
+			return cache[p][root] = sum;
 		}
-		if (pick > notPick) {choice[root] = true;}
-		return cache[p][root] = Math.max(pick, notPick);
+	}
+
+	// root를 선택하는가 p ? 1 : 0;
+	static void reconstruct(int p, int root) {
+
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -55,7 +60,6 @@ public class Main {
 		for (int i = 1; i <= N; i++)
 			W[i] = Integer.parseInt(st.nextToken());
 		adj = new ArrayList<>(); adj.add(new ArrayList<>());
-		parent = new int[N + 1];
 		children = new ArrayList<>(); children.add(new ArrayList<>());
 		for (int i = 1; i <= N; i++) {
 			adj.add(new ArrayList<>());
@@ -72,7 +76,7 @@ public class Main {
 		cache = new int[2][N + 1];
 		Arrays.fill(cache[0], -1); Arrays.fill(cache[1], -1);
 		choice = new boolean[N + 1];
-		System.out.println(dp(0, 1));
+		System.out.println(Math.max(dp(0, 1), dp(1, 1)));
 		bw.close();
 	}
 
