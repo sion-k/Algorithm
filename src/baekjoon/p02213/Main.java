@@ -7,8 +7,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -17,7 +15,7 @@ public class Main {
 	static ArrayList<ArrayList<Integer>> children;
 	static boolean[] visit;
 	static int[][] cache;
-	static List<Integer> ans = new ArrayList<>();
+	static boolean[] choice;
 
 	static void dfs(int here) {
 		visit[here] = true;
@@ -49,7 +47,7 @@ public class Main {
 	// root를 선택하는가 p ? 1 : 0;
 	static void reconstruct(int p, int root) {
 		if (p == 1) {
-			ans.add(root);
+			choice[root] = true;
 			for (int ch : children.get(root))
 				reconstruct(0, ch);
 		} else {
@@ -86,11 +84,12 @@ public class Main {
 		int flag = dp(0, 1) > dp(1, 1) ? 0 : 1;
 		bw.write(String.valueOf(dp(flag, 1)));
 		bw.newLine();
+		choice = new boolean[N + 1];
 		reconstruct(flag, 1);
-		Collections.sort(ans);
 		StringBuilder sb = new StringBuilder();
-		for (int a : ans)
-			sb.append(a).append(" ");
+		for (int i = 1; i <= N; i++)
+			if (choice[i])
+				sb.append(i).append(" ");
 		bw.write(sb.toString().trim());
 		bw.newLine();
 		bw.close();
