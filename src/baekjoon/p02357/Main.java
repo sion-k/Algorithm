@@ -21,8 +21,8 @@ public class Main {
 		RMQ r = new RMQ(S);
 		for (int i = 0; i < M; i++) {
 			st = new StringTokenizer(br.readLine(), " ");
-			int left = Integer.parseInt(st.nextToken());
-			int right = Integer.parseInt(st.nextToken());
+			int left = Integer.parseInt(st.nextToken()) - 1;
+			int right = Integer.parseInt(st.nextToken()) - 1;
 			int[] ret = r.query(left, right);
 			bw.write(String.valueOf(ret[0]));
 			bw.write(" ");
@@ -64,7 +64,7 @@ class RMQ {
 	private int[] query(int left, int right, int node, int nodeLeft, int nodeRight) {
 		// 두 구간의 교집합이 공집합인 경우
 		if (right < nodeLeft || nodeRight < left) {
-			return new int[] { -INF, INF };
+			return new int[] { INF, 0 };
 		}
 		// node의 범위가 array[left, right]에 완전히 포함되는 경우
 		if (left <= nodeLeft && nodeRight <= right) {
@@ -74,7 +74,7 @@ class RMQ {
 		int mid = (nodeLeft + nodeRight) / 2;
 		int[] L = query(left, right, 2 * node, nodeLeft, mid);
 		int[] R = query(left, right, 2 * node + 1, mid + 1, nodeRight);
-		int min = Math.min(L[0], R[1]);
+		int min = Math.min(L[0], R[0]);
 		int max = Math.max(L[1], R[1]);
 		return new int[] { min, max };
 	}
