@@ -28,9 +28,8 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		N = Integer.parseInt(br.readLine()); S = new int[N];
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-		for (int i = 0; i < N; i++) {
+		for (int i = 0; i < N; i++)
 			S[i] = Integer.parseInt(st.nextToken());
-		}
 		cache = new int[N][N];
 		for (int i = 0; i < N; i++)
 			Arrays.fill(cache[i], -1);
