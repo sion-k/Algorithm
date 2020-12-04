@@ -35,10 +35,19 @@ public class Main {
 		for (int i = 0; i < N; i++)
 			Arrays.fill(cache[i], -1);
 		int min = Integer.MAX_VALUE;
-		for (int j = 1; j < N; j++)
-			System.out.println(dp(0, j));
-		for (int i = 1; i < N; i++)
-			System.out.println(dp(i, 0));
+		int cost = 0;
+		min = Math.min(min, dp(0, 1));
+		for (int j = 2; j < N; j++) {
+			cost += Math.abs(S[j] - S[j - 1]);
+			System.out.println(cost);
+			min = Math.min(min, cost + dp(0, j));
+		}
+		cost = 0;
+		min = Math.min(min, dp(1, 0));
+		for (int i = 2; i < N; i++) {
+			cost += Math.abs(S[i] - S[i - 1]);
+			min = Math.min(min, cost + dp(i, 0));
+		}
 		System.out.println(min);
 	}
 
