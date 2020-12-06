@@ -10,7 +10,7 @@ public class Main {
 	static int N; static int M;
 	static int[][] MAP;
 	static int[][] NEXTMAP;
-	static int[][] filter;
+	static int[] filter;
 
 	static final int[] dy = {-1, 1, 0, 0};
 	static final int[] dx = {0, 0, -1, 1};
@@ -32,8 +32,8 @@ public class Main {
 
 	static void spreadAll() {
 		NEXTMAP = new int[N][M];
-		NEXTMAP[filter[0][0]][filter[0][1]] =
-		NEXTMAP[filter[1][0]][filter[1][1]] = -1;
+		NEXTMAP[filter[0]][0] =
+		NEXTMAP[filter[1]][0] = -1;
 		for (int y = 0; y < N; y++)
 			NEXTMAP[y] = MAP[y].clone();
 		for (int y = 0; y < N; y++)
@@ -45,12 +45,18 @@ public class Main {
 
 	static void circulate() {
 		// 공기 청정기 윗쪽
-		int uy = filter[0][0]; int ux = filter[0][1];
-
+		int uy = filter[0];
+		for (int i = uy; i > 0; i--)
+			MAP[i][0] = MAP[i - 1][0];
+		for (int j = 0; j < M - 1; j++)
+			MAP[0][j] = MAP[0][j + 1];
+		for (int i = 0; i < uy - 1; i++)
+			MAP[i][M - 1] = MAP[i + 1][M - 1];
 		// 공기 청정기 아래쪽
-		int dy = filter[1][0]; int dx = filter[1][1];
+		int dy = filter[1];
 
-
+		MAP[filter[0]][0] = -1;
+		MAP[filter[1]][0] = -1;
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -60,16 +66,17 @@ public class Main {
 		M = Integer.parseInt(st.nextToken());
 		MAP = new int[N][M]; NEXTMAP = new int[N][M];
 		int T = Integer.parseInt(st.nextToken());
-		int f = 0; filter = new int[2][2];
+		int f = 0; filter = new int[2];
 		for (int i = 0; i < N; i++) {
 			st = new StringTokenizer(br.readLine(), " ");
 			for (int j = 0; j < M; j++) {
 				MAP[i][j] = Integer.parseInt(st.nextToken());
-				if (MAP[i][j] == -1) {filter[f] = new int[] {i, j}; f++;}
+				if (MAP[i][j] == -1) {filter[f] = i; f++;}
 			}
 		}
 		for (int i = 0; i < T; i++) {
 			spreadAll();
+			circulate();
 			for (int y = 0; y < N; y++)
 				System.out.println(Arrays.toString(MAP[y]));
 			System.out.println();
