@@ -50,7 +50,7 @@ public class Main {
 			MAP[i][0] = MAP[i - 1][0];
 		for (int j = 0; j < M - 1; j++)
 			MAP[0][j] = MAP[0][j + 1];
-		for (int i = 0; i < uy - 1; i++)
+		for (int i = 0; i < uy; i++)
 			MAP[i][M - 1] = MAP[i + 1][M - 1];
 		// 공기 청정기 아래쪽
 		int dy = filter[1];
