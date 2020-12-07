@@ -3,7 +3,6 @@ package baekjoon.p17144;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -52,11 +51,23 @@ public class Main {
 			MAP[0][j] = MAP[0][j + 1];
 		for (int i = 0; i < uy; i++)
 			MAP[i][M - 1] = MAP[i + 1][M - 1];
+		for (int j = M - 1; j > 1; j--)
+			MAP[uy][j] = MAP[uy][j - 1];
 		// 공기 청정기 아래쪽
 		int dy = filter[1];
-
+		for (int i = dy; i < N - 1; i++)
+			MAP[i][0] = MAP[i + 1][0];
+		for (int j = 0; j < M - 1; j++)
+			MAP[N - 1][j] = MAP[N - 1][j + 1];
+		for (int i = N - 2; i >= dy; i--)
+			MAP[i + 1][M - 1] = MAP[i][M - 1];
+		for (int j = M - 1; j > 1; j--)
+			MAP[dy][j] = MAP[dy][j - 1];
 		MAP[filter[0]][0] = -1;
 		MAP[filter[1]][0] = -1;
+		// 공기청정기에서 나오면 정화되어있음
+		MAP[filter[0]][1] = 0;
+		MAP[filter[1]][1] = 0;
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -75,12 +86,13 @@ public class Main {
 			}
 		}
 		for (int i = 0; i < T; i++) {
-			spreadAll();
-			circulate();
-			for (int y = 0; y < N; y++)
-				System.out.println(Arrays.toString(MAP[y]));
-			System.out.println();
+			spreadAll(); circulate();
 		}
+		int sum = 0;
+		for (int i = 0; i < N; i++)
+			for (int j = 0; j < M; j++)
+				sum += MAP[i][j];
+		System.out.println(sum + 2);
 	}
 
 }
