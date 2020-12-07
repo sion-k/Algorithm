@@ -89,4 +89,5 @@ class RPQ {
 	int update(int index, int newValue) {
 		return update(index, newValue, 1, 0, n - 1);
 	}
+
 }
