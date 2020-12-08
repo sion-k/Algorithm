@@ -35,7 +35,7 @@ public class Main {
 						food[i][j] -= tree;
 						next.offer(-(tree + 1));
 					} else { // 아니라면 나머지는 모두 죽게된다
-						dead[i][j] += tree / 2;
+						dead[i][j] += (tree / 2);
 					}
 				}
 				P.get(i).set(j, next);
@@ -92,7 +92,7 @@ public class Main {
 		}
 		int M = Integer.parseInt(st.nextToken());
 		int K = Integer.parseInt(st.nextToken());
-		// 현재 땅에 존재하는 양문의 양 F[y][x], 5로 초기화 한다
+		// 현재 땅에 존재하는 양문의 양 food[y][x], 5로 초기화 한다
 		food = new int[N][N];
 		for (int i = 0; i < N; i++)
 			Arrays.fill(food[i], 5);
@@ -120,6 +120,7 @@ public class Main {
 			autumn();
 			winter();
 		}
+		print();
 		// 살아남은 나무의 수 구하기
 		int sum = 0;
 		for (int i = 0; i < N; i++)
