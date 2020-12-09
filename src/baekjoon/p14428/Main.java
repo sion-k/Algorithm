@@ -17,7 +17,7 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		for (int i = 0; i < N; i++)
 			S[i] = Integer.parseInt(st.nextToken());
-		S[N] = 1000000000;
+		S[N] = 1000000001;
 		RMQ q = new RMQ(S);
 		int M = Integer.parseInt(br.readLine());
 		for (int i = 0; i < M; i++) {
