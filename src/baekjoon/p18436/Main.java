@@ -30,6 +30,7 @@ public class Main {
 			if (com == 1) {
 				if (S[a - 1] % 2 != b % 2) {
 					t.add(a - 1, b % 2 - S[a - 1] % 2);
+					S[a - 1] = b % 2;
 				}
 			} else {
 				int oddNum = t.sum(b - 1) - t.sum(a - 2);
