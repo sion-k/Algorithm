@@ -33,6 +33,7 @@ public class Main {
 	}
 
 }
+
 class FenwickTree {
 	long[] tree;
 	public FenwickTree(int n) {tree = new long[n + 1];}
