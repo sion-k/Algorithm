@@ -15,7 +15,6 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		int N = Integer.parseInt(st.nextToken());
 		FenwickTree t = new FenwickTree(N);
-		int[] S = new int[N];
 		int Q = Integer.parseInt(st.nextToken());
 		for (int i = 0; i < Q; i++) {
 			st = new StringTokenizer(br.readLine(), " ");
@@ -23,11 +22,9 @@ public class Main {
 			int p = Integer.parseInt(st.nextToken());
 			int q = Integer.parseInt(st.nextToken());
 			if (com == 1) {
-				int diff = q - S[p - 1];
-				t.add(p - 1, diff);
-				S[p - 1] += diff;
+				t.add(p - 1, q);
 			} else {
-				long diff = t.sum(q - 1) - t.sum(p - 1);
+				long diff = t.sum(q - 1) - t.sum(p - 2);
 				bw.write(String.valueOf(diff));
 				bw.newLine();
 			}
