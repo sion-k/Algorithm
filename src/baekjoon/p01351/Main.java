@@ -13,9 +13,10 @@ public class Main {
 
 	static long dp(long i) {
 		if (i == 0) return 1;
-		if (cache.containsKey(i)) return cache.get(i);
-		cache.put(i, dp(i / P) + dp(i / Q));
-		return cache.get(i);
+		long ret = cache.getOrDefault(i, 0L);
+		if (ret != 0) return ret;
+		cache.put(i, ret = dp(i / P) + dp(i / Q));
+		return ret;
 	}
 
 	public static void main(String[] args) throws IOException {
