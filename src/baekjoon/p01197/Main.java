@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
@@ -56,8 +55,9 @@ class DisJointSet {
 	int[] parent; int[] rank;
 
 	public DisJointSet(int n) {
-		parent = new int[n]; for (int i = 0; i < n; i++) parent[i] = i;
-		rank = new int[n]; Arrays.fill(rank, 1);
+		parent = new int[n];
+		for (int i = 0; i < n; i++) parent[i] = i;
+		rank = new int[n];
 	}
 
 	void union(int u, int v) {
