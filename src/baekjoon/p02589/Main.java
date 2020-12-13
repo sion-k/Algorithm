@@ -33,7 +33,7 @@ public class Main {
 			int y = here[0]; int x = here[1];
 			for (int d = 0; d < 4; d++) {
 				int ny = y + dy[d]; int nx = x + dx[d];
-				if (!inRange(ny, nx) || !MAP[ny][nx]) continue;
+				if (!inRange(ny, nx) || !MAP[ny][nx] || dist[ny][nx] != -1) continue;
 				q.offer(new int[] {ny, nx});
 				dist[ny][nx] = dist[y][x] + 1;
 				max = Math.max(max, dist[ny][nx]);
