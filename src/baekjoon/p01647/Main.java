@@ -11,18 +11,19 @@ public class Main {
 	static int V; static int E;
 	static ArrayList<Edge> edges;
 
-	static int kruskal(ArrayList<Edge> mst) {
+	static int kruskal() {
 		int ret = 0;
 		Collections.sort(edges); // 간선의 크기 순으로 정렬
+		int max = 1;
 		DisJointSet sets = new DisJointSet(V + 1);
 		for (Edge e : edges) {
 			int u = e.start; int v = e.end; int cost = e.weight;
 			if (sets.find(u) == sets.find(v)) continue;
 			sets.union(u, v);
 			ret += cost;
-			mst.add(e);
+			max = Math.max(max, cost);
 		}
-		return ret;
+		return ret - max;
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -38,10 +39,7 @@ public class Main {
 			int weight = Integer.parseInt(st.nextToken());
 			edges.add(new Edge(start, end, weight));
 		}
-		ArrayList<Edge> mst = new ArrayList<>(E);
-		int ret = kruskal(mst);
-		ret -= mst.get(mst.size() - 1).weight;
-		System.out.println(ret);
+		System.out.println(kruskal());
 	}
 
 }
@@ -55,6 +53,7 @@ class Edge implements Comparable<Edge> {
 	public int compareTo(Edge o) {return weight - o.weight;}
 
 }
+
 class DisJointSet {
 	int[] parent; int[] rank;
 
@@ -76,4 +75,5 @@ class DisJointSet {
 		if (parent[u] == u) return u;
 		return parent[u] = find(parent[u]);
 	}
+
 }
