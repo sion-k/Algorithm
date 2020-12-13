@@ -9,20 +9,13 @@ import java.util.Collections;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int V; static int E;
-	static ArrayList<ArrayList<Pair>> adj;
+	static int V; static ArrayList<Edge> edge;
 
 	static int kruskal() {
 		int ret = 0;
-		ArrayList<Edge> edges = new ArrayList<>(E);
-		for (int here = 0; here < V; here++)
-			for (Pair p : adj.get(here)) {
-				int there = p.num; int cost = p.weight;
-				edges.add(new Edge(here, there, cost));
-			}
-		Collections.sort(edges);
+		Collections.sort(edge);
 		DisJointSet sets = new DisJointSet(V + 1);
-		for (Edge e : edges) {
+		for (Edge e : edge) {
 			int u = e.start; int v = e.end; int cost = e.weight;
 			if (sets.find(u) == sets.find(v)) continue;
 			sets.union(u, v);
@@ -35,26 +28,17 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		V = Integer.parseInt(st.nextToken());
-		adj = new ArrayList<>(V); adj.add(new ArrayList<>());
-		for (int i = 1; i <= V; i++) adj.add(new ArrayList<>());
-		E = Integer.parseInt(st.nextToken());
+		int E = Integer.parseInt(st.nextToken());
+		edge = new ArrayList<>(V);
 		for (int i = 0; i < E; i++) {
 			st = new StringTokenizer(br.readLine(), " ");
 			int A = Integer.parseInt(st.nextToken());
 			int B = Integer.parseInt(st.nextToken());
 			int C = Integer.parseInt(st.nextToken());
-			adj.get(A).add(new Pair(B, C));
-			adj.get(B).add(new Pair(A, C));
+			edge.add(new Edge(A, B, C));
 		}
 		System.out.println(kruskal());
 	}
-
-}
-
-class Pair {
-	int num; int weight;
-
-	public Pair(int n, int w) {num = n; weight = w;}
 
 }
 
