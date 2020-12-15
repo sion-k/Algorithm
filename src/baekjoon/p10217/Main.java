@@ -2,8 +2,8 @@ package baekjoon.p10217;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
@@ -11,24 +11,22 @@ public class Main {
 	static int N;
 	static int[][] C;
 	static int[][] D;
-	static long[][] cache;
+	static int[][] cache;
 
-	static final long INF = 987654321098765432L;
+	static final int INF = Integer.MAX_VALUE;
 
-	static long dp(int here, int leftCost) {
+	static int dp(int here, int leftCost) {
 		if (here == N) return 0;
 		if (cache[here][leftCost] != 0) return cache[here][leftCost];
-		long min = INF;
+		int min = INF;
 		for (int there = 1; there <= N; there++)
 			if (C[here][there] != 0 && C[here][there] <= leftCost)
 				min = Math.min(min, D[here][there] + dp(there, leftCost - C[here][there]));
-
 		return cache[here][leftCost] = min;
 	}
 
 	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new FileReader("testCase.txt"));
-		//BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int T = Integer.parseInt(br.readLine());
 		for (int t = 0; t < T; t++) {
@@ -45,8 +43,8 @@ public class Main {
 				int d = Integer.parseInt(st.nextToken());
 				C[u][v] = c; D[u][v] = d;
 			}
-			cache = new long[N + 1][M + 1];
-			long ret = dp(1, M);
+			cache = new int[N + 1][M + 1];
+			int ret = dp(1, M);
 			if (ret >= INF)
 				bw.write("Poor KCM");
 			else
