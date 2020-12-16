@@ -16,9 +16,10 @@ public class Main {
 		Collections.sort(edges);
 		DisjointSet s = new DisjointSet(N + 1);
 		for (Edge e : edges) {
-			if (s.find(e.start) == s.find(e.end)) continue;
-			s.union(e.start, e.end);
-			ret += e.weight;
+			int u = e.start; int v = e.end; int w = e.weight;
+			if (s.find(u) == s.find(v)) continue;
+			s.union(u, v);
+			ret += w;
 		}
 		return ret;
 	}
