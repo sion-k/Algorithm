@@ -12,14 +12,15 @@ public class TestCaseGenerator {
 		BufferedReader br = new BufferedReader(new FileReader("testCase.txt"));
 		br.close();
 		BufferedWriter bw = new BufferedWriter(new FileWriter("testCase.txt"));
-		int N = 5000; int M = 1;
-		bw.write(N + " " + M); bw.newLine();
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < M; j++)
-				bw.write(String.valueOf((int)(Math.random() * 1000) + 1));
-			bw.newLine();
+		int T = 1; int MAX_F = 100000;
+		bw.write(String.valueOf(T)); bw.newLine();
+		for (int c = 0; c < T; c++) {
+			bw.write(String.valueOf(MAX_F)); bw.newLine();
+			for (int f = 0; f < 2 * MAX_F - 1; f += 2) {
+				bw.write((f + 1) + " " + (f + 2));
+				bw.newLine();
+			}
 		}
-		bw.write("0 0");
 		bw.close();
 	}
 
