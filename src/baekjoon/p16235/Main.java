@@ -34,7 +34,7 @@ public class Main {
 					if (food[i][j] >= tree) {
 						food[i][j] -= tree;
 						next.offer(-(tree + 1));
-					} else { // 아니라면 나머지는 모두 죽게된다
+					} else { // 아니라면 죽게된다
 						dead[i][j] += (tree / 2);
 					}
 				}
@@ -60,7 +60,7 @@ public class Main {
 					for (int d = 0; d < 8; d++) {
 						int ny = y + dy[d]; int nx = x + dx[d];
 						if (!inRange(ny, nx)) {continue;}
-						P.get(ny).get(nx).add(-1);
+						P.get(ny).get(nx).offer(-1);
 					}
 				}
 			}
@@ -115,10 +115,7 @@ public class Main {
 		}
 		// K년을 지나게 한다
 		for (int i = 0; i < K; i++) {
-			spring();
-			summer();
-			autumn();
-			winter();
+			spring(); summer(); autumn(); winter();
 		}
 		print();
 		// 살아남은 나무의 수 구하기
