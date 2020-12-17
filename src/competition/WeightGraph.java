@@ -1,4 +1,4 @@
-package baekjoon;
+package competition;
 
 import java.util.ArrayList;
 import java.util.Arrays;

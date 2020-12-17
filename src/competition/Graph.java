@@ -1,4 +1,4 @@
-package baekjoon;
+package competition;
 
 import java.io.BufferedReader;
 import java.io.IOException;
