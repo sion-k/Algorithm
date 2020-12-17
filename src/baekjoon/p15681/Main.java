@@ -26,8 +26,8 @@ public class Main {
 
 	// here을 루트로 하는 서브트리의 속한 정점의 수 반환
 	static int dp(int here) {
-		int sum = 1;
 		if (cache[here] != 0) return cache[here];
+		int sum = 1;
 		for (int ch : children.get(here))
 			sum += dp(ch);
 		return cache[here] = sum;
