@@ -16,16 +16,16 @@ public class Main2 {
 		int m = Integer.parseInt(st.nextToken());
 		st = new StringTokenizer(br.readLine(), " ");
 		// 가장 작은 원소들 부터 뽑을 수 있도록 우선순위 큐 사용
-		PriorityQueue<Long> pq = new PriorityQueue<Long>();
+		PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
 		// 제일 처음 카드들의 합을 구해놓는다.
-		long sum = 0;
+		int sum = 0;
 		for (int i = 0; i < n; i++) {
 			int a = Integer.parseInt(st.nextToken());
 			sum += a;
-			pq.offer((long)a);
+			pq.offer(a);
 		}
 		for (int i = 0; i < m; i++) {
-			long add = (pq.poll() + pq.poll());
+			int add = (pq.poll() + pq.poll());
 			pq.offer(add); pq.offer(add);
 			sum += add;
 		}
