@@ -38,9 +38,8 @@ public class Main {
 			int N = Integer.parseInt(br.readLine());
 			int[] count = new int[16];
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-			for (int i = 0; i < N; i++) {
+			for (int i = 0; i < N; i++)
 				count[getBin(st.nextToken())]++;
-			}
 			int min = 12;
 			for (int i = 0; i < 16; i++) {
 				if (count[i] == 0) continue;
