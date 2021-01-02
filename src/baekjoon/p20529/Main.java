@@ -8,8 +8,8 @@ import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 public class Main {
-	static final String[] TYPE = { "ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP", "ISFP", "INFP", "INTP", "ESTP", "ESFP",
-			"ENFP", "ENTP", "ESTJ", "ESFJ", "ENFJ", "ENTJ" };
+	static final String[] TYPE = {"ESTJ", "ESTP", "ESFJ", "ESFP", "ENTJ", "ENTP", "ENFJ", "ENFP",
+			"ISTJ", "ISTP", "ISFJ", "ISFP", "INTJ", "INTP", "INFJ", "INFP"};
 
 	// 두 유형 사이의 심리적 거리
 	static int dist(String u, String v) {
@@ -26,7 +26,7 @@ public class Main {
 		int index = 0;
 		for (int i = 0; i < 4; i++)
 			if (s.charAt(i) != ESTJ[i])
-				index += (int)Math.pow(2, i);
+				index += (int)Math.pow(2, 3 - i);
 		return index;
 	}
 
@@ -39,8 +39,7 @@ public class Main {
 			int[] count = new int[16];
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 			for (int i = 0; i < N; i++) {
-				int here = getBin(st.nextToken());
-				if (count[here] < 3) count[here]++;
+				count[getBin(st.nextToken())]++;
 			}
 			int min = 12;
 			for (int i = 0; i < 16; i++) {
