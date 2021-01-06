@@ -133,3 +133,39 @@ while a: # 이런식으로 응용 가능하다
     print(a.pop())
 
 print(bool("")) # bool() 함수로 True False를 알 수 있음
+
+# 02-8 자료형의 값을 저장하는 공간, 변수
+print(id("abcd"))
+s = "abc" + "d"
+print(id(s))
+# 메모리 주소를 반환하는 함수, 특이하게 10진수다
+# 예상했던대로 같은 문자열 풀에 들어가있다
+
+# 동일한 주소인지 확인해주는 명령어 is
+print("abcd" is s)
+
+# 파이썬의 깊은 복사
+a = [1, 2, 3]
+b = a[:] # 인덱싱 방법을 사용하는 법
+print(a)
+print(b)
+print(a is b)
+print(str(id(a)) + " " + str(id(b)))
+# copy 모듈 이용
+from copy import copy # import를 중간에 해도 돼? ㅁㅊ
+b = copy(a) # clone()하고 똑같은거 같은데 깊은 복사인가?
+a = [1, [1, 2]]
+b = copy(a)
+print(b)
+print(str(id(a)) + " " + str(id(b))) # 재귀적으로 깊은 복사 해놓은듯?
+
+# 변수를 만드는 여러가지 방법
+a, b = 1, 2
+a += 1
+print(a) # 아니 튜플은 못바꾼다면서요...?
+# 찾아보니까 불변한 "순서"를 가지는 객체의 집합이라고 함
+b += 2
+a, b = b, a # 이런 기상천외한 짓도 가능
+# 튜플을 일시적으로 생성해서 값을 대입하는 식인듯
+print(a)
+print(b)
