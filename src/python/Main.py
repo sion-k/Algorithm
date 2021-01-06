@@ -68,7 +68,7 @@ a.append(1)
 print(a) # 자바의 List와 유사해 보인다
 # 자바는 String과 다른 자료형의 연산을 모두 String으로 캐스팅해줬는데
 # 파이썬은 명시적으로 해야한다
-#print(a[0] + "1")
+# print(a[0] + "1")
 print(str(a[0]) + "1")
 
 # del 객체 함수 (가비지 컬렉터같은 역할인가?)
@@ -83,7 +83,7 @@ a.pop()
 a.reverse()
 a.sort() # Tim sort (최악의 경우 NlgN) 리스트 내의 원소가 모두 같은 종류여야함
 print(a)
-#remove(x) 첫번째로 등장하는 x를 제거, 없으면 오류 뜨네
+# remove(x) 첫번째로 등장하는 x를 제거, 없으면 오류 뜨네
 a.remove(5)
 print(a)
 
@@ -112,10 +112,11 @@ print(ballon.get((1, 2))) # ballon[(1, 2)]와 마찬가지
 print(ballon.get((1, 2, 3), -1))
 
 # 02-6 집합 자료형
-print(set([1, 2, 3]))
+print({1, 2, 3})
 # 문자열을 집합의 인자로 할 수 있네?
 print(set("Algorithm")) # 내부적인 순서는 없는듯?
 # { } 리터럴은 딕셔너리형에서 사용해가지고 빈 집합 만들라면
+# 아닌데 ? { }이것도 set 리터럴이 맞고 dictionary가 그거를 응용하는듯 하다
 s = set()
 print(s) # 빈 집합 출력하면 set()이라고나오네?
 print(set([1, 2, 3]) - set([1, 2]))
