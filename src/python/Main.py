@@ -207,3 +207,16 @@ print(1 not in [1, 2, 3])
 # 조건문이 참인 경우 if 조건문 else 조건문이 거짓인 경우
 a = None
 print(1 if a else 2) # 신기하다
+
+# 03-3 for문
+# range함수 : range(10) [0, 10) 구간을 만들어주는 객체 생성
+sum = 0
+for i in range(1, 11): # 가끔씩은 닫힌 구간도 사용하고 싶은데...
+    sum += i
+print(sum)
+
+# 리스트 내포 사용하기
+# 표현식 for 항목 in iterable (if 조건문)
+a = [1, 2, 3]
+result = [num * 3 for num in a if num % 2 == 0]
+print(result)
