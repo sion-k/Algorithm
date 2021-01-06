@@ -220,3 +220,43 @@ print(sum)
 a = [1, 2, 3]
 result = [num * 3 for num in a if num % 2 == 0]
 print(result)
+
+# Q1
+a = "Life is too short, you need python"
+
+if "wife" in a: print("wife")
+elif "python" in a and "you" not in a: print("python")
+elif "shirt" not in a: print("shirt")
+elif "need" in a: print("need")
+else: print("none")
+
+# Q2
+sum = 0
+i = 1
+while i <= 1000:
+    if i % 3 == 0:
+        sum += i
+    i += 1
+print(sum)
+
+# Q3
+i = 1
+while i <= 5:
+    print("*" * i)
+    i += 1
+
+# Q4
+for i in range(1, 101):
+    print(i)
+
+# Q5
+s = [70, 60, 55, 75, 95, 90, 80, 80, 85, 100]
+sum = 0
+for i in s:
+    sum += i
+print("%0.2f" % (sum / 10))
+
+# Q6
+numbers = [1, 2, 3, 4, 5]
+result = [num * 2 for num in numbers if num % 2 == 1]
+print(result)
