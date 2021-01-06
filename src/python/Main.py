@@ -192,3 +192,18 @@ print(a)
 # Q10
 a = {"A" : 90, "B" : 80, "C" : 70}
 a.pop("B")
+
+# 03-1 if문
+money = {}
+if money:
+    print("!")
+
+# x in s, x not in s
+print(1 in [1, 2, 3])
+# 리스트나 튜플 문자열에 대해서 사용가능하다 특이하네
+print(1 not in [1, 2, 3])
+
+# 조건부 표현식 (자바의 삼항 연산자같은 느낌)
+# 조건문이 참인 경우 if 조건문 else 조건문이 거짓인 경우
+a = None
+print(1 if a else 2) # 신기하다
