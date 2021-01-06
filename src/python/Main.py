@@ -260,3 +260,17 @@ print("%0.2f" % (sum / 10))
 numbers = [1, 2, 3, 4, 5]
 result = [num * 2 for num in numbers if num % 2 == 1]
 print(result)
+
+# 04-1 함수
+# 매개변수에 초기값 미리 설정하기
+# 단 초기값을 설정할 매개 변수는 맨 뒤에 있어야 함
+def add(a, b, p = True):
+    if p : return a + b
+print(add(1, 2, True))
+print(add(1, 2, False))
+print(add(1, 2)) # 재정의 대신에 이렇게 매개변수 생략 가능하게 하네
+
+# lambda식
+add = lambda a, b : a + b
+# 함수형 프로그래밍이구나
+print(add(3, 4))
