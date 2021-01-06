@@ -169,3 +169,26 @@ a, b = b, a # 이런 기상천외한 짓도 가능
 # 튜플을 일시적으로 생성해서 값을 대입하는 식인듯
 print(a)
 print(b)
+
+# Q6
+s = [1, 3, 5, 4, 2]
+s.sort()
+s.reverse()
+print(s)
+
+# Q7
+print(" ".join(["Life", "is", "too", "short"]))
+
+# Q8
+print((1, 2, 3) + (4,))
+
+# Q9
+a = {} # 빈 딕셔너리
+print(type(a))
+a[1,] = "python" # 이렇게 하면 딕셔너리인줄 알아먹는건가?
+print(a[1,])
+print(a)
+
+# Q10
+a = {"A" : 90, "B" : 80, "C" : 70}
+a.pop("B")
