@@ -18,11 +18,12 @@ public class Main {
 			S[i][0] = T; S[i][1] = P;
 		}
 		int[] dp = new int[N + 2];
-		for (int i = N - 1; i >= 1; i--) {
+		for (int i = N; i >= 1; i--) {
 			int max = 0;
 			// 상담을 선택할 수 있는 경우 선택
-			if (i + S[i][0] <= N + 1)
-				max = Math.max(max, S[i][1] + dp[i + S[i][0]]);
+			int next = i + S[i][0];
+			if (next <= N + 1)
+				max = Math.max(max, S[i][1] + dp[next]);
 			// 선택하지 않는 경우
 			max = Math.max(max, dp[i + 1]);
 			dp[i] = max;
