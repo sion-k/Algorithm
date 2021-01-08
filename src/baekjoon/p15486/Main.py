@@ -2,7 +2,7 @@
 def dp(i) :
     global N, cache, S
     if i >= N + 1 : return 0
-    if cache[i] != 0 : return cache[i]
+    if cache[i] != -1 : return cache[i]
     m = 0
     # i번째 상담을 선택할 수 있으면 선택하는 경우
     if i + S[i][0] - 1 <= N :
@@ -15,7 +15,7 @@ def dp(i) :
 import sys
 sys.setrecursionlimit(1500000)
 N = int(sys.stdin.readline().rstrip())
-cache = [0] * (N + 1)
+cache = [-1] * (N + 1)
 S = [[]] * (N + 1)
 for i in range(1, N + 1) :
     S[i] = list(map(int, sys.stdin.readline().rstrip().split()))
