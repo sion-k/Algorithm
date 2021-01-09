@@ -10,19 +10,11 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
-		int[][] dp = new int[20][N + 1];
-		// ±âÀú »ç·Ê n = 0
-		for (int p = 0; p < 20; p++)
-			dp[p][0] = 1;
-		for (int n = 1; n <= N; n++) {
-			for (int p = 0; p < 20; p++) {
-				int sum = 0;
-				for (int next = p; (1 << next) <= n; next++)
-					sum = (sum + dp[next][n - (1 << next)]) % MOD;
-				dp[p][n] = sum;
-			}
-		}
-		System.out.println(dp[0][N]);
+		int[] dp = new int[N + 1];
+		dp[0] = 1;
+		for (int i = 1; i <= N; i++)
+			dp[i] = (i % 2 == 0) ? (dp[i - 1] + dp[i / 2]) % MOD : dp[i - 1];
+		System.out.println(dp[N]);
 	}
 
 }
