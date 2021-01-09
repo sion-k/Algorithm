@@ -11,7 +11,7 @@ public class Main {
 	// 오름차순으로만 2의 멱수의 집합을 나타낸다
 	// 이전에 2^p를 사용했을 때 n을 표현하는 경우의 수
 	static int dp(int p, int n) {
-		if (n <= 1) return 1;
+		if (n == 0) return 1;
 		if (cache[p][n] != 0) return cache[p][n];
 		int sum = 0;
 		for (int next = p; (1 << next) <= n; next++)
@@ -24,6 +24,8 @@ public class Main {
 		int N = Integer.parseInt(br.readLine());
 		cache = new int[20][N + 1];
 		System.out.println(dp(0, N));
+		int[][] dp = new int[20][N + 1];
+
 	}
 
 }
