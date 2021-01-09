@@ -5,27 +5,24 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
-	static int[][] cache;
 	static final int MOD = 1_000_000_000;
-
-	// 오름차순으로만 2의 멱수의 집합을 나타낸다
-	// 이전에 2^p를 사용했을 때 n을 표현하는 경우의 수
-	static int dp(int p, int n) {
-		if (n == 0) return 1;
-		if (cache[p][n] != 0) return cache[p][n];
-		int sum = 0;
-		for (int next = p; (1 << next) <= n; next++)
-			sum = (sum + dp(next, n - (1 << next))) % MOD;
-		return cache[p][n] = sum;
-	}
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
-		cache = new int[20][N + 1];
-		System.out.println(dp(0, N));
 		int[][] dp = new int[20][N + 1];
-
+		// 기저 사례 n = 0
+		for (int p = 0; p < 20; p++)
+			dp[p][0] = 1;
+		for (int n = 1; n <= N; n++) {
+			for (int p = 0; p < 20; p++) {
+				int sum = 0;
+				for (int next = p; (1 << next) <= n; next++)
+					sum = (sum + dp[next][n - (1 << next)]) % MOD;
+				dp[p][n] = sum;
+			}
+		}
+		System.out.println(dp[0][N]);
 	}
 
 }
