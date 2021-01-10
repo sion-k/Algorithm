@@ -10,16 +10,18 @@ public class Main {
 	static int N;
 	static int[][] adj;
 	static int[][] cache;
+	static final int NINF = -10000000;
 
 	// here번째 도시에서 앞으로 최대 k개의 도시를 지날 수 있을 때
 	// N번째 도시까지 갈 때 얻는 최대 기내식 점수
 	static int dp(int here, int k) {
 		if (here == N) return 0;
 		if (cache[here][k] != -1) return cache[here][k];
-		if (k == 0) return cache[here][k] = 0;
-		int max = 0;
+		if (k == 0) return cache[here][k] = NINF;
+		int max = NINF;
 		for (int there = here + 1; there <= N; there++)
-			max = Math.max(max, adj[here][there] + dp(there, k - 1));
+			if (adj[here][there] != 0)
+				max = Math.max(max, adj[here][there] + dp(there, k - 1));
 		return cache[here][k] = max;
 	}
 
