@@ -12,13 +12,12 @@ public class TestCaseGenerator {
 		BufferedReader br = new BufferedReader(new FileReader("testCase.txt"));
 		br.close();
 		BufferedWriter bw = new BufferedWriter(new FileWriter("testCase.txt"));
-		int T = 1; int MAX_N = 100000;
-		bw.write(String.valueOf(T)); bw.newLine();
-		for (int c = 0; c < T; c++) {
-			bw.write(String.valueOf(MAX_N)); bw.newLine();
-			for (int f = 0; f < MAX_N; f++) {
-				bw.write("ENTJ ");
-			}
+		int N = 500; int M = 500; int B = 64000000;
+		bw.write(N + " " + M + " " + B); bw.newLine();
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++)
+				bw.write(((int)(Math.random() * 256) + 1) + " ");
+			bw.newLine();
 		}
 		bw.close();
 	}
