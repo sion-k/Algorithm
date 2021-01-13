@@ -21,7 +21,7 @@ public class Main {
 		if (y == -1) return 0;
 		int min = 26;
 		// 덮이지 않은 칸을 n * n 크기의 색종이로 덮을수 있으면 시도해본다
-		for (int n = 5; n >= 1; n--) {
+		for (int n = 1; n <= 5; n++) {
 			if (S[n] > 0 && canCover(y, x, n)) {
 				S[n]--;
 				cover(y, x, n, true);
