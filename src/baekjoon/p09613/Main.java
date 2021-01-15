@@ -22,7 +22,7 @@ public class Main {
 			int[] S = new int[N];
 			for (int i = 0; i < N; i++)
 				S[i] = Integer.parseInt(st.nextToken());
-			int sum = 0;
+			long sum = 0;
 			for (int i = 0; i < N - 1; i++)
 				for (int j = i + 1; j < N; j++)
 					sum += gcd(S[i], S[j]);
