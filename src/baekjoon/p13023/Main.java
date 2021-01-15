@@ -12,27 +12,22 @@ public class Main {
 	static boolean[] visit;
 	static boolean found;
 
-	// here에서 시작하는 경로 길이 반환 (4를 넘을 경우 4반환)
-	static int dfs(int here) {
-		if (found) return 4;
+	// 가능한 모든 길이 4이하의 경로를 탐색한다
+	static void dfs(int here, int depth) {
+		if (depth >= 4) {found = true; return;}
 		visit[here] = true;
-		int max = 0;
 		for (int there : adj.get(here))
-			if (!visit[there]) {
-				max = Math.max(max, 1 + dfs(there));
-				if (max >= 4) {
-					found = true;
-					break;
-				}
-			}
+			if (!visit[there])
+				dfs(there, depth + 1);
 		visit[here] = false;
-		return max;
 	}
 
+	// 모든 정점에 대해 dfs하면서 길이 4의 경로를 찾았는지 반환
 	static boolean dfsAll() {
-		for (int here = 0; here < N; here++)
-			if (dfs(here) >= 4)
-				return true;;
+		for (int here = 0; here < N; here++) {
+			if (found) return true;
+			dfs(here, 0);
+		}
 		return false;
 	}
 
