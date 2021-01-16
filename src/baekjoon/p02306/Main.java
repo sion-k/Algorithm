@@ -30,6 +30,17 @@ public class Main {
 		return false;
 	}
 
+	static int[] cache2;
+
+	// S[i, )의 부분 서열중 가장 긴 KOI 유전자의 길이를 반환
+	static int dp2(int i) {
+		if (i == S.length) return 0;
+		if (cache2[i] != -1) return cache2[i];
+		int max = 0;
+
+		return cache2[i] = max;
+	}
+
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
@@ -38,6 +49,8 @@ public class Main {
 		cache = new int[S.length + 1][S.length + 1];
 		for (int i = 0 ; i < cache.length; i++)
 			Arrays.fill(cache[i], -1);
+		cache2 = new int[S.length];
+		Arrays.fill(cache2, -1);
 		System.out.println(dp(0, S.length));
 
 		}
