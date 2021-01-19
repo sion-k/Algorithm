@@ -6,8 +6,8 @@ for i in range(2, M + 1) :
 	 		prime[n] = False
 pSum = [0] + [0] * M
 for i in range(1, M + 1) : 
-	pSum[i] = pSum[i - 1]
-	if prime[i] : pSum[i] += 1
+    pSum[i] = pSum[i - 1]
+    if prime[i] : pSum[i] += 1
 import sys
 N = int(sys.stdin.readline())
 while N != 0 :
