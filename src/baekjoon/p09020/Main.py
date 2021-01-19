@@ -1,6 +1,6 @@
 import sys
 M = 10000
-isPrime = [False] + [False] + [True] * M
+isPrime = [False, False, True] + [True, False] * (M // 2)
 prime = []
 for i in range(1, M + 1) :
     if isPrime[i] :
