@@ -35,6 +35,7 @@ public class Main {
 					}
 					q.poll();
 					n++;
+				// 더 큰 원소가 있다면 Queue의 맨 뒤에 배치한다
 				} else {
 					q.offer(q.poll());
 				}
@@ -44,6 +45,7 @@ public class Main {
 	}
 
 }
+
 class Pair implements Comparable<Pair>{
 	int index; int priority;
 	public Pair(int i, int p) {index = i; priority = p;}
