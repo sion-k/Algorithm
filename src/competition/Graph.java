@@ -12,8 +12,10 @@ public class Graph {
 	static boolean[] visit;
 
 	static int N; static int M; // 2차원
+
 	static final int[] dy = { -1, 1, 0, 0 };
 	static final int[] dx = { 0, 0, -1, 1 };
+
 	static boolean inRange(int y, int x) {
 		return 0 <= y && y < N && 0 <= x && x < M;
 	}
@@ -21,9 +23,9 @@ public class Graph {
 	// 정점 here에서 dfs
 	static void dfs(int here) {
 		visit[here] = true;
-		for (int next = 0; next < V; next++)
-			if (adj[here][next] && !visit[next])
-				dfs(next);
+		for (int there = 0; there < V; there++)
+			if (adj[here][there] && !visit[there])
+				dfs(there);
 	}
 
 	// 정점 start에서 end까지 최단 거리 반환. 도달 불가능하면 -1 반환
@@ -35,11 +37,11 @@ public class Graph {
 		dist[start] = 0;
 		while (!q.isEmpty()) {
 			int here = q.poll();
-			for (int next = 0; next < V; next++) {
-				if (adj[here][next] && dist[next] != -1) {
-					if (next == end) {return dist[here] + 1;}
-					q.offer(next);
-					dist[next] = dist[here] + 1;
+			for (int there = 0; there < V; there++) {
+				if (adj[here][there] && dist[there] != -1) {
+					if (there == end) {return dist[here] + 1;}
+					q.offer(there);
+					dist[there] = dist[here] + 1;
 				}
 			}
 		}
