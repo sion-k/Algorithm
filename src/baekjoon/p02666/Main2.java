@@ -13,10 +13,10 @@ public class Main2 {
 
 	// 마지막으로 i, j번째 사용하는 벽장문을 열어놨을 때, 최소 이동 횟수
 	static int dp(int i, int j) {
-		// 둘중 하나라도 마지막 벽장문을 사용하면 끝
-		if (Math.max(i, j) + 1 == N) {return 0;}
-		if (cache[i][j] != -1) {return cache[i][j];}
 		int next = Math.max(i, j) + 1;
+		// 둘중 하나라도 마지막 벽장문을 사용하면 끝
+		if (next == N) {return 0;}
+		if (cache[i][j] != -1) {return cache[i][j];}
 		if (S[i] == S[next]) return cache[i][j] = dp(next, j);
 		if (S[j] == S[next]) return cache[i][j] = dp(i, next);
 		// 왼쪽, 오른쪽 빈 벽장문을 이동시키는 경우
@@ -33,7 +33,7 @@ public class Main2 {
 		int b = Integer.parseInt(st.nextToken());
 		N = Integer.parseInt(br.readLine()) + 2;
 		S = new int[N];
-		S[0] = a; S[1] = b;
+		S[0] = a - 1; S[1] = b - 1;
 		for (int i = 2; i < N; i++)
 			S[i] = Integer.parseInt(br.readLine()) - 1;
 		cache = new int[N][N];
