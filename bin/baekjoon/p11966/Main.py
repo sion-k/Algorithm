@@ -1,2 +1,2 @@
-N = int(input())
-print(1 if N & (N - 1) == 0 else 0)
+L = int(input())
+print(1 if L & (L - 1) == 0 else 0)

@@ -5,8 +5,8 @@ def isPal(x, i, j) :
     if x[i] == x[j] : return isPal(x, i + 1, j - 1)
     else : return False
 
-N = sys.stdin.readline().rstrip()
-while N != "0" :
-    sys.stdout.write("yes" if isPal(N, 0, len(N) - 1) else "no")
+L = sys.stdin.readline().rstrip()
+while L != "0" :
+    sys.stdout.write("yes" if isPal(L, 0, len(L) - 1) else "no")
     sys.stdout.write("\n")
-    N = sys.stdin.readline().rstrip()
+    L = sys.stdin.readline().rstrip()

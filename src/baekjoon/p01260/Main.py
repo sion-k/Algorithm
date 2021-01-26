@@ -3,8 +3,8 @@ import sys
 from collections import deque
 input = sys.stdin.readline
 
-N, M, V = list(map(int, input().split()))
-adj = [set() for i in range(N + 1)]
+L, M, V = list(map(int, input().split()))
+adj = [set() for i in range(L + 1)]
 
 for i in range(M):
     u, v = map(int, input().split())
@@ -12,7 +12,7 @@ for i in range(M):
     adj[v].add(u)
 
 # dfs
-visit = [False] * (N + 1)
+visit = [False] * (L + 1)
 stack = []
 stack.append(V)
 dfs = []
@@ -27,7 +27,7 @@ while stack :
 print(' '.join(dfs))
 
 # bfs
-visit = [False] * N
+visit = [False] * L
 queue = deque([V-1])
 visit[V - 1] = True
 bfs = []

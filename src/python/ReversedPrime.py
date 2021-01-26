@@ -8,7 +8,7 @@ for i in range(2, 100001) :
         for j in range(i * 2, 100001, i) :
             prime[j] = False
 
-N = int(input())
+L = int(input())
 S = input().split()
 
 # 문자열 x를 뒤집어서 정수로 반환한다. x의 뒤에 붙은 0은 무시한다

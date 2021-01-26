@@ -9,7 +9,7 @@ for i in range(1, M + 1) :
     pSum[i] = pSum[i - 1]
     if prime[i] : pSum[i] += 1
 import sys
-N = int(sys.stdin.readline())
-while N != 0 :
-	print(pSum[2 * N] - pSum[N])
-	N = int(sys.stdin.readline())
+L = int(sys.stdin.readline())
+while L != 0 :
+	print(pSum[2 * L] - pSum[L])
+	L = int(sys.stdin.readline())

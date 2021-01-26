@@ -9,45 +9,43 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class E {
-	static int N;
-	static int[] S;
-	static int[][][] cache;
-	static final int MOD = 1000000009;
+	static int[][] cache;
 
-	// i번째 원소부터 toPick개를 고를 때, 앞으로의 합이 k이 되도록 고르는 경우의 수
-	static int dp(int i, int toPick, int k) {
-		if (i >= N) {
-			if (toPick == 0 && k == 0) return 1;
-			return 0;
-		}
-		if (cache[i][toPick][k] != -1) return cache[i][toPick][k];
-		if (toPick == 0) return cache[i][toPick][k] = k == 0 ? 1 : 0;
-		long sum = dp(i + 1, toPick, k);
-		if (k - S[i] >= 0)
-			sum = (sum + dp(i + 1, toPick - 1, k - S[i])) % MOD;
-		return cache[i][toPick][k] = (int)sum;
+	static final int MOD = 1000000007;
+
+	static int dp(int n, int r) {
+		if (n == r || r == 0) return 1;
+		if (cache[n][r] != 0) return cache[n][r];
+		return cache[n][r] = (dp(n - 1, r - 1) + dp(n - 1 , r)) % MOD;
 	}
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		cache = new int[1001][1001];
 		int T = Integer.parseInt(br.readLine());
 		for (int tc = 0; tc < T; tc++) {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-			N = Integer.parseInt(st.nextToken());
+			int N = Integer.parseInt(st.nextToken());
 			int K = Integer.parseInt(st.nextToken());
 			st = new StringTokenizer(br.readLine(), " ");
-			S = new int[N];
+			int[] S = new int[N];
 			for (int i = 0; i < N; i++)
 				S[i] = Integer.parseInt(st.nextToken());
 			Arrays.sort(S);
-			int max = 0;
-			for (int i = 0; i < K; i++) max += S[N - i - 1];
-			cache = new int[N][K + 1][max + 1];
+			// 모든 원소가 서로 다르다면 최대값을 조합하는 경우의 수는 1개이지만
+			// 원소에 중복이 존재한다면 뒤에서 K번째 수를 고르는 경우의 수를 계산해야함
+			// 뒤에서 K번째 수의 개수를 센다
+			int cnt = 0;
 			for (int i = 0; i < N; i++)
-				for (int j = 0; j < K + 1; j++)
-					Arrays.fill(cache[i][j], -1);
-			bw.write(String.valueOf(dp(0, K, max)));
+				if (S[i] == S[N - K])
+					cnt++;
+			// K번째 수에서 몇개를 골라야 하는지 계산
+			int r = K;
+			for (int i = 0; i < N; i++)
+				if (S[i] > S[N - K])
+					r--;
+			bw.write(String.valueOf(dp(cnt, r)));
 			bw.newLine();
 		}
 		bw.close();

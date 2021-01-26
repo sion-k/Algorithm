@@ -23,7 +23,7 @@ def goldBach(n):
 
 T = int(sys.stdin.readline())
 for tc in range(T) :
-    N = int(sys.stdin.readline())
-    a, b = goldBach(N)
+    L = int(sys.stdin.readline())
+    a, b = goldBach(L)
     sys.stdout.write("%d %d" % (a, b))
     sys.stdout.write("\n")
