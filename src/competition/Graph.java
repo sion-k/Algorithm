@@ -118,7 +118,7 @@ public class Graph {
 
 	// 모든 정점간의 최단 거리를 adjArray에 저장
 	// 선 조건 : adj(i, j) (간선이 존재하지 않으면 INF로 초기화)
-	static void Floyd() {
+	static void floyd() {
 		// 자기 자신으로의 최단 경로는 0
 		for (int i = 1; i <= N; i++) {adjArray[i][i] = 0;}
 		for (int k = 1; k <= N; k++) {
@@ -132,7 +132,7 @@ public class Graph {
 
 	// 모든 정점간의 도달 가능성 여부를 reachable에 저장
 	// 선 조건 : adj(i, j) 간선이 존재하면 true
-	static void FolydReachable() {
+	static void floydReachable() {
 		for (int k = 1; k <= N; k++) {
 			for (int i = 1; i <= N; i++) {
 				for (int j = 1; j <= N; j++) {
