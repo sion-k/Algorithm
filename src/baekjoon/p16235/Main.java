@@ -29,11 +29,11 @@ public class Main {
 				PriorityQueue<Integer> here = P.get(i).get(j);
 				PriorityQueue<Integer> next = new PriorityQueue<>();
 				while (!here.isEmpty()) {
-					int tree = -here.poll();
+					int tree = here.poll();
 					// 땅에 충분한 양이 남아있다면 양분을 먹고 나이가 1 증가한다
 					if (food[i][j] >= tree) {
 						food[i][j] -= tree;
-						next.offer(-(tree + 1));
+						next.offer(tree + 1);
 					} else { // 아니라면 죽게된다
 						dead[i][j] += (tree / 2);
 					}
@@ -56,11 +56,11 @@ public class Main {
 			for (int x = 0; x < N; x++) {
 				PriorityQueue<Integer> here = P.get(y).get(x);
 				for (int tree : here) {
-					if (-tree % 5 != 0) {continue;}
+					if (tree % 5 != 0) {continue;}
 					for (int d = 0; d < 8; d++) {
 						int ny = y + dy[d]; int nx = x + dx[d];
 						if (!inRange(ny, nx)) {continue;}
-						P.get(ny).get(nx).offer(-1);
+						P.get(ny).get(nx).offer(1);
 					}
 				}
 			}
@@ -72,11 +72,6 @@ public class Main {
 		for (int i = 0; i < N; i++)
 			for (int j = 0; j < N; j++)
 				food[i][j] += A[i][j];
-	}
-
-	static void print() {
-		for (int i = 0; i < N; i++)
-			System.out.println(P.get(i));
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -92,7 +87,7 @@ public class Main {
 		}
 		int M = Integer.parseInt(st.nextToken());
 		int K = Integer.parseInt(st.nextToken());
-		// 현재 땅에 존재하는 양문의 양 food[y][x], 5로 초기화 한다
+		// 현재 땅에 존재하는 양분의 양 food[y][x], 5로 초기화 한다
 		food = new int[N][N];
 		for (int i = 0; i < N; i++)
 			Arrays.fill(food[i], 5);
@@ -111,13 +106,12 @@ public class Main {
 			int y = Integer.parseInt(st.nextToken()) - 1;
 			int x = Integer.parseInt(st.nextToken()) - 1;
 			int a = Integer.parseInt(st.nextToken());
-			P.get(y).get(x).add(-a);
+			P.get(y).get(x).add(a);
 		}
 		// K년을 지나게 한다
 		for (int i = 0; i < K; i++) {
 			spring(); summer(); autumn(); winter();
 		}
-		print();
 		// 살아남은 나무의 수 구하기
 		int sum = 0;
 		for (int i = 0; i < N; i++)
