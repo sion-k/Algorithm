@@ -9,26 +9,20 @@ public class Main {
 	static int N; static int[][] S;
 	static int min = 987654321;
 
-	// [here, )구간에서 시작해서 toPick개를 고르는 경우 모두 시도한 뒤
+	// [here, )에서 시작해서 toPick개를 고르는 경우 모두 시도한 뒤
 	// 두 팀간의 능력치 차이 최소값을 갱신
 	static void btk(int here, int toPick, boolean[] picked) {
 		if (here == N) {
+			if (toPick != 0) return;
 			// picked가 true인 경우 start팀이라 가정
 			int start = 0; int link = 0;
 			for (int i = 0; i < N; i++)
-				for (int j = i + 1; j < N; j++)
+				for (int j = 0; j < N; j++)
 					if (picked[i] == picked[j]) {
-						int sum = S[i][j] + S[j][i];
-						if (picked[i]) start += sum;
-						else link += sum;
+						if (picked[i]) start += S[i][j];
+						else link += S[i][j];
 					}
 			min = Math.min(min, Math.abs(start - link));
-			return;
-		}
-		// 앞으로 전부 다 골라야 하는 경우
-		if (N - here == toPick) {
-			for (int i = here; i < N; i++) picked[i] = true;
-			btk(N, 0, picked);
 			return;
 		}
 		// 고르지 않는 경우
