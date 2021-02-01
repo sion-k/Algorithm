@@ -29,6 +29,7 @@ public class Main {
 		if ((N - here) == toPick) {
 			for (int i = here; i < N; i++) picked[i] = true;
 			btk(N, 0, picked);
+			for (int i = here; i < N; i++) picked[i] = false;
 			return;
 		}
 		// 고르지 않는 경우
