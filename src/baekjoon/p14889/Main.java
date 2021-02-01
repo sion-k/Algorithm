@@ -25,6 +25,12 @@ public class Main {
 			min = Math.min(min, Math.abs(start - link));
 			return;
 		}
+		// 앞으로 전부 다 골라야 하는 경우
+		if ((N - here) == toPick) {
+			for (int i = here; i < N; i++) picked[i] = true;
+			btk(N, 0, picked);
+			return;
+		}
 		// 고르지 않는 경우
 		btk(here + 1, toPick, picked);
 		// 고르는 경우
