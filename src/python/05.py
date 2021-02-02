@@ -8,3 +8,25 @@ class Calculator :
 
 a = Calculator(1, 1)
 print(a.add())
+
+class UnionFind :
+    def __init__(self, n):
+        self.parent = [i for i in range(n)]
+        self.rank = [0] * n
+
+    def union(self, u, v):
+        u = self.find(u)
+        v = self.find(v)
+        if u == v : return
+        if self.rank[u] > self.rank[v] : u, v = v, u
+        self.parent[u] = v
+        if self.rank[u] == self.rank[v] : self.rank[v] += 1
+
+    def find(self, u):
+        if self.parent[u] == u : return u
+        self.parent[u] = self.find(self.parent[u])
+        return self.parnet[u]
+
+set = UnionFind(10)
+print(set.parent)
+print(set.rank)
