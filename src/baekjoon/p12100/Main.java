@@ -33,14 +33,7 @@ public class Main {
 			for (int j = 0; j < N; j++)
 				arr[i][j] = Integer.parseInt(st.nextToken());
 		}
-		Board b = new Board(arr);
-		print(b);
-		while (true) {
-			int d = Integer.parseInt(br.readLine());
-			b = b.shift(d);
-			print(b);
-		}
-		//System.out.println(dfs(new Board(arr), 0));
+		System.out.println(dfs(new Board(arr), 0));
 	}
 
 }
@@ -74,7 +67,7 @@ class Board {
 					// 방향이 위인경우 위에서부터 차례로 연속한 원소를 찾는다
 					List<Integer> nextCol = new ArrayList<Integer>();
 					for (int i = 0; i < col.size(); i++) {
-						if (i + 1 < col.size() && col.get(i) == col.get(i + 1)) {
+						if (i + 1 < col.size() && col.get(i).equals(col.get(i + 1))) {
 							nextCol.add(2 * col.get(i));
 							i++;
 						} else {
@@ -95,7 +88,7 @@ class Board {
 					// 거꾸로 담았으므로 위와 동일
 					List<Integer> nextCol = new ArrayList<Integer>();
 					for (int i = 0; i < col.size(); i++) {
-						if (i + 1 < col.size() && col.get(i) == col.get(i + 1)) {
+						if (i + 1 < col.size() && col.get(i).equals(col.get(i + 1))) {
 							nextCol.add(2 * col.get(i));
 							i++;
 						} else {
@@ -115,7 +108,7 @@ class Board {
 					// 방향이 왼쪽인경우 왼쪽에서부터 차례로 연속한 번호를 찾는다
 					List<Integer> nextRow = new ArrayList<Integer>();
 					for (int j = 0; j < row.size(); j++) {
-						if (j + 1 < row.size() && row.get(j) == row.get(j + 1)) {
+						if (j + 1 < row.size() && row.get(j).equals(row.get(j + 1))) {
 							nextRow.add(2 * row.get(j));
 							j++;
 						} else {
@@ -136,7 +129,7 @@ class Board {
 					// 거꾸로 담았으므로 위와 동일
 					List<Integer> nextRow = new ArrayList<Integer>();
 					for (int j = 0; j < row.size(); j++) {
-						if (j + 1 < row.size() && row.get(j) == row.get(j + 1)) {
+						if (j + 1 < row.size() && row.get(j).equals(row.get(j + 1))) {
 							nextRow.add(2 * row.get(j));
 							j++;
 						} else {
