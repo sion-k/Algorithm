@@ -17,10 +17,13 @@ public class Main {
 	}
 
 	static int dfs(Board b, int depth) {
-		if (depth == 5) return b.max();
-		int max = b.max();
-		for (int d = 0; d < 4; d++)
-			max = Math.max(max, dfs(b.shift(d), depth + 1));
+		if (depth == 10) return b.max();
+		int max = 2;
+		for (int d = 0; d < 4; d++) {
+			Board nextBoard = b.shift(d);
+			if (!b.equals(nextBoard))
+				max = Math.max(max, dfs(b.shift(d), depth + 1));
+		}
 		return max;
 	}
 
@@ -44,6 +47,14 @@ class Board {
 	public Board(int[][] map) {
 		this.map = map;
 		N = map.length;
+	}
+
+	public boolean equals(Board o) {
+		for (int i = 0; i < N; i++)
+			for (int j = 0; j < N; j++)
+				if (map[i][j] != o.map[i][j])
+					return false;
+		return true;
 	}
 
 	public int max() {
