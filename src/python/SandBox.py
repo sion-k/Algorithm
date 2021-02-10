@@ -1,29 +1,53 @@
-# 팰린드롬?
+# 벽 부수고 이동하기
 import sys
+from collections import deque
+
 input = sys.stdin.readline
 
-N = int(input())
-number = list(map(int, input().split()))
-M = int(input())
-cnt = [[-1 for j in range(N)] for i in range(N)]
-cnt[0] = [1]*N
+# get input & make maze
+(N, M) = list(map(int, input().split()))
+maze = [[2 for i in range(M + 2)]]
+for _ in range(N):
+    temp = list(map(int, list(input().strip())))
+    temp.insert(0, 2)
+    temp.append(2)
+    maze.append(temp)
+maze.append([2 for i in range(M + 2)])
 
-def dp(start, end):
-    global cnt
-    l = end-start
-    if cnt[l][start-1]!=-1:
-        return cnt[l][start-1]
-    have_to_compare = (True if dp(start, start+l//2-(l+1)%2)==dp(end-l//2+(l+1)%2, end) else False)
-    if have_to_compare:
-        result = 1
-        for i in range((l+1)//2):
-            if number[start+i-1]!=number[end-i-1]:
-                result = 0
-                break
-        cnt[l][start-1] = result
-        return cnt[l][start-1]
-    cnt[l][start-1] = 0
-    return cnt[l][start-1]
-for t in range(M):
-    (s, e) = list(map(int, input().split()))
-    print(dp(s, e))
+# compute with BFS
+queue = deque([(1, 1, True, 1)])  # n, m, can break, time
+
+result = -1
+visited = [[False for m in range(M + 2)] for n in range(N + 2)]
+visited[1][1] = True
+
+
+def bfs(n, m, b, v, t):
+    if not visited[n][m]:
+        if maze[n][m] == t:
+            if t == 1:
+                if b:
+                    queue.append((n, m, False, v + 1))
+            else:
+                queue.append((n, m, b, v + 1))
+            visited[n][m] = True
+
+
+while len(queue) > 0:
+    (n, m, b, v) = queue.popleft()
+    before = len(queue)
+    if n == N and m == M:
+        result = v
+        break
+
+    bfs(n - 1, m, b, v, 0)
+    bfs(n + 1, m, b, v, 0)
+    bfs(n, m - 1, b, v, 0)
+    bfs(n, m + 1, b, v, 0)
+
+    bfs(n - 1, m, b, v, 1)
+    bfs(n + 1, m, b, v, 1)
+    bfs(n, m - 1, b, v, 1)
+    bfs(n, m + 1, b, v, 1)
+
+print(result)

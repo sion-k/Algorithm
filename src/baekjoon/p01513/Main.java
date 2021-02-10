@@ -80,7 +80,7 @@ public class Main {
 				ans.append(dp(1, 1, 0, i)).append(" ");
 			}
 		}
-		System.out.print(ans.toString().trim());
+		System.out.println(ans.toString().trim());
 	}
 
 }
