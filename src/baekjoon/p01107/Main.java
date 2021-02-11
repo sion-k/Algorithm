@@ -18,6 +18,7 @@ public class Main {
 		int min = cost;
 		for (int d = 0; d <= 9; d++)
 			if (!broken[d]) {
+				if (here == -1) here = 0;
 				here += (d * (int)(Math.pow(10, i)));
 				min = Math.min(min, dfs(i + 1, here));
 				here -= (d * (int)(Math.pow(10, i)));
@@ -38,7 +39,7 @@ public class Main {
 		// +, -로만 이동하는 경우
 		int min = Math.abs(Integer.valueOf(N) - 100);
 		// 숫자 버튼도 이용하는 경우
-		min = Math.min(min, dfs(0, 0));
+		min = Math.min(min, dfs(0, -1));
 		System.out.println(min);
 	}
 
