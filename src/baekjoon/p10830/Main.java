@@ -41,7 +41,7 @@ public class Main {
 		int[][] ret = pow(B);
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++) sb.append(ret[i][j]).append(" ");
+			for (int j = 0; j < N; j++) sb.append(ret[i][j] % MOD).append(" ");
 			System.out.println(sb.toString().trim());
 			sb = new StringBuilder();
 		}
