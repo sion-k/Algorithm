@@ -20,6 +20,7 @@ public class Main {
 		// 모든 카드를 들어낸 경우
 		if (f == FULL) return 1.0;
 		if (Double.compare(cache[f], -1) != 0) return cache[f];
+		return 0;
 	}
 
 	public static void main(String[] args) throws IOException {
