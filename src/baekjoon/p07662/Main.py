@@ -29,10 +29,7 @@ for tc in range(TC):
                 if minh:
                     S[minh[0][1]] = False
                     heapq.heappop(minh)
-    # 연산이 끝난 후 집합을 출력
-    # maxh에서 실제로 집합에 존재하는 원소를 찾는다
     while maxh and not S[maxh[0][1]]: heapq.heappop(maxh)
-    # minh에서 실제로 집합에 존재하는 원소를 찾는다
     while minh and not S[minh[0][1]]: heapq.heappop(minh)
     if maxh and minh : print(-maxh[0][0], minh[0][0])
     else : print("EMPTY")
