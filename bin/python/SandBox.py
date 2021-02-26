@@ -1,69 +1,57 @@
-# 리모컨
-_now = 100
-N = list(input().strip())
-_N = int(''.join(N))
-M = int(input())
-b = [True for i in range(10)]
-_input = ([] if M==0 else list(map(int, input().split())))
-_min = 10
-_max  = -1
+# 아기 상어
+import sys
+from collections import deque
 
-for i in _input:
-    b[i%10] = False
+input = sys.stdin.readline
 
-for i in range(1, 10):
-    if b[i]:
-        if _min>i:
-            _min = i
-        if _max<i:
-            _max = i
+N = int(input())
+world = [[10 for i in range(N + 2)]]
+for n in range(N):
+    temp = list(map(int, input().split()))
+    temp.insert(0, 10)
+    temp.append(10)
+    world.append(temp)
+world.append([10 for i in range(N + 2)])
 
-if _now==_N or M==10:               # only use +, - buttons
-    print(abs(_now-_N))
-elif M==0:                          # use all buttons
-    print(min((len(N)), abs(_now-_N)))
-else:                               # use some number buttons and +, - buttons
-    _next = 0
-    if N[0]=='1':       # have to start low digit
-        if len(N)==1:
-            _next = _min
-        else:
-            for i in range(len(N)-1):
-                _next *= 10
-                _next += _max
-    else:
-        _next = _min
-        for i in range(len(N)-1):
-            _next *= 10
-            if not b[0]:
-                _next += _min
+size = 2
+grow = 2
+time = 0
+now = [-1, -1, 0]
 
-    # if only use +, - buttons is more effective than use number buttons
-    if abs(_now-_N)<=(abs(_next-_N)+len(str(_next))):
-        print(abs(_now-_N))
-    else:
-        while abs(_now-_N)>abs(_next-_N):
-            _now = _next
-            _temp = _next
-            _count = True
-            _next = 0
-            ten = 1
-            for i in range(len(str(_now))):
-                index = _temp%10
-                _temp //= 10
-                if index==_max:
-                    _next += (0 if b[0] else _min)*ten
-                else:
-                    for j in range(index+1, 10):
-                        if b[j]:
-                            index = j
-                            break
-                    _next += index*ten
-                    _next += _temp*ten*10
-                    _count = False
-                    break
-                ten *= 10
-            if _count:
-                _next += ten*_min
+for i in range(1, N + 1):
+    for j in range(1, N + 1):
+        if world[i][j] == 9:
+            now = [i, j, 0]
+            world[i][j] = 0
 
-        print(abs(_now-_N)+len(str(_now)))
+while True:
+    visited = [[False for i in range(N + 2)] for j in range(N + 2)]
+    queue = deque([now])
+    visited[now[0]][now[1]] = True
+    best = 401
+    while len(queue) > 0:
+        temp = queue.popleft()
+        if best < temp[2]:
+            break
+        if world[temp[0]][temp[1]] > 0 and world[temp[0]][temp[1]] < size:
+            if now[2] == 0 or now[0] > temp[0] or (now[0] == temp[0] and now[1] > temp[1]):
+                now = temp
+                best = temp[2]
+            continue
+        x = [temp[0] - 1, temp[0], temp[0], temp[0] + 1]
+        y = [temp[1], temp[1] - 1, temp[1] + 1, temp[1]]
+        for i in range(4):
+            if not visited[x[i]][y[i]]:
+                visited[x[i]][y[i]] = True
+                if world[x[i]][y[i]] <= size:
+                    queue.append([x[i], y[i], temp[2] + 1])
+    if now[2] == 0:
+        break
+    time += now[2]
+    now[2] = 0
+    grow -= 1
+    if grow == 0:
+        size += 1
+        grow = size
+    world[now[0]][now[1]] = 0
+print(time)
