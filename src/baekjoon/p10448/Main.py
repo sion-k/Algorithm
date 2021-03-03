@@ -1,14 +1,29 @@
-# 1부터 n까지의 합반환
-def sum(n) : return n * (n + 1) // 2
+import sys
+input = sys.stdin.readline
+print = sys.stdout.write
 
-# 마지막으로 sum(last)를 골랐을 때, 자연수 k가 n개의 삼각수의 합으로 표현 가능한지 여부
-def check(k, n, last = 1):
+sumCache = [0] * 46
+
+# 1부터 n까지의 합반환
+def sum(n) :
+    if sumCache[n] != 0 : return sumCache[n]
+    sumCache[n] = n * (n + 1) // 2
+    return sumCache[n]
+
+cache = [[0] * 4 for i in range(1001)]
+
+# 자연수 k가 n개의 삼각수의 합으로 표현 가능한지 여부
+def dp(k, n = 3):
     if n == 0 : return k == 0
-    i = last
+    if cache[k][n] != 0 : return cache[k][n]
+    i = 1
     while sum(i) <= k :
-        if check(k - sum(i), n - 1, i) : return True
+        if dp(k - sum(i), n - 1):
+            cache[k][n] = True
+            return True
         i += 1
+    cache[k][n] = False
     return False
 
 tc = int(input())
-for i in range(tc) : print("1" if check(int(input()), 3) else "0")
+for i in range(tc) : print("1\n" if dp(int(input())) else "0\n")
