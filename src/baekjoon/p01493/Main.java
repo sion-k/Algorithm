@@ -18,9 +18,16 @@ public class Main {
 		int min = Math.min(l, Math.min(w, h));
 		while (i < N && ((int)(Math.pow(2, S[i].A)) > min || S[i].B == 0)) i++;
 		if (i == N) return 0;
-		int r = (int)Math.pow(2, S[i].A); // 현재 박스에 놓을 수 있는 최대 크기 큐브
-		S[i].B--; volume -= Math.pow((long)r, 3); // 큐브를 왼쪽 아래 구석에 놓고 나머지 3부분으로 나눠서 분할정복
-		return 1 + solve(r, r, h - r, i) + solve(l, w - r, h, i) + solve(l - r, r, h, i); 
+		int r = (int)Math.pow(2, S[i].A); // 현재 박스에 놓을 수 있는 최대 크기 큐브의 한 변 길이
+		// 큐브 여러개를 한번에 정육면체 모양으로 놓을 수 있는 최대한으로 놓는다
+		int x = 1;
+		while (r * x <= min && (int)(Math.pow(x, 3)) <= S[i].B) x++;
+		x--;
+		r = r * x;
+		S[i].B -= (int)(Math.pow(x, 3));
+		volume -= Math.pow((long)r, 3);
+		// 큐브를 왼쪽 아래 구석에 놓고 나머지 3부분으로 나눠서 분할정복
+		return (int)(Math.pow(x, 3)) + solve(r, r, h - r, i) + solve(l, w - r, h, i) + solve(l - r, r, h, i); 
 	}
 	
 	public static void main(String[] args) throws IOException {
