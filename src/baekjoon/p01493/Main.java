@@ -17,17 +17,24 @@ public class Main {
 		if (l == 0 || w == 0 || h == 0) return;
 		// 현재 가지고 있는 큐브중에서 가장 큰 큐브를 놓는다
 		for (int[] p : S) {
-			if (p[1] > 0 && l >= p[0] && w >= p[0] && h >= p[0]) {
+			int r = p[0];
+			if (p[1] > 0 && l >= r && w >= r && h >= r) {
 				p[1]--;
 				ret++;
 				// 큐브를 왼쪽 아래 구석에 놓고 나머지 3부분으로 나눠서 분할정복
-				solve(l, w, h - p[0]);
-				solve(p[0], w - p[0], p[0]);
-				solve(l - p[0], w, p[0]);
+				solve(r, r, h - r);
+				solve(l, w - r, h);
+				solve(l - r, r, h);
 				return; // 한개를 놓았으면 끝
 			}
 		}
 		check = false; // 부분 문제중 한 문제라도 이곳에 도달한다면 전체 문제는 해결 불가능하다
+//		// 큐브 여러개를 한번에 정육면체 모양으로 놓을 수 있는 최대한으로 놓는다
+//		int x = 1;
+//		while (r * x <= min && (int)(Math.pow(x, 3)) <= S[i].B) x++;
+//		x--;
+//		r = r * x;
+//		S[i].B -= (int)(Math.pow(x, 3));
 	}
 	
 	public static void main(String[] args) throws IOException {
