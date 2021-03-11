@@ -7,27 +7,27 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int N;
-	static Pair[] S;
-	static long volume;
+	static int[][] S;
+	static int ret = 0;
+	static boolean check = true;
 	
-	// length × width × height 크기의 박스에 i번째 큐브를 채워 넣을 때
-	// 박스를 채우는데 필요한 최소 개수
-	static int solve(int l, int w, int h, int i) {
-		if (l == 0 || w == 0 || h == 0) return 0;
-		int min = Math.min(l, Math.min(w, h));
-		while (i < N && ((int)(Math.pow(2, S[i].A)) > min || S[i].B == 0)) i++;
-		if (i == N) return 0;
-		int r = (int)Math.pow(2, S[i].A); // 현재 박스에 놓을 수 있는 최대 크기 큐브의 한 변 길이
-		// 큐브 여러개를 한번에 정육면체 모양으로 놓을 수 있는 최대한으로 놓는다
-		int x = 1;
-		while (r * x <= min && (int)(Math.pow(x, 3)) <= S[i].B) x++;
-		x--;
-		r = r * x;
-		S[i].B -= (int)(Math.pow(x, 3));
-		volume -= Math.pow((long)r, 3);
-		// 큐브를 왼쪽 아래 구석에 놓고 나머지 3부분으로 나눠서 분할정복
-		return (int)(Math.pow(x, 3)) + solve(r, r, h - r, i) + solve(l, w - r, h, i) + solve(l - r, r, h, i); 
+	// length × width × height 크기의 박스에 큐브를 채워넣는다
+	static void solve(int l, int w, int h) {
+		if (!check) return;
+		if (l == 0 || w == 0 || h == 0) return;
+		// 현재 가지고 있는 큐브중에서 가장 큰 큐브를 놓는다
+		for (int[] p : S) {
+			if (p[1] > 0 && l >= p[0] && w >= p[0] && h >= p[0]) {
+				p[1]--;
+				ret++;
+				// 큐브를 왼쪽 아래 구석에 놓고 나머지 3부분으로 나눠서 분할정복
+				solve(l, w, h - p[0]);
+				solve(p[0], w - p[0], p[0]);
+				solve(l - p[0], w, p[0]);
+				return; // 한개를 놓았으면 끝
+			}
+		}
+		check = false; // 부분 문제중 한 문제라도 이곳에 도달한다면 전체 문제는 해결 불가능하다
 	}
 	
 	public static void main(String[] args) throws IOException {
@@ -36,21 +36,15 @@ public class Main {
 		int l = Integer.parseInt(st.nextToken());
 		int w = Integer.parseInt(st.nextToken());
 		int h = Integer.parseInt(st.nextToken());
-		N = Integer.parseInt(br.readLine());
-		S = new Pair[N];
+		int N = Integer.parseInt(br.readLine());
+		S = new int[N][2];
 		for (int i = 0; i < N; i++) {
 			st = new StringTokenizer(br.readLine(), " ");
-			S[i] = new Pair(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
+			S[i] = new int[] {(int)(Math.pow(2, Integer.parseInt(st.nextToken()))), Integer.parseInt(st.nextToken())};
 		}
-		volume = (long)l * w * h;
-		Arrays.sort(S, (u, v) -> v.A - u.A);
-		int ret = solve(l, w, h, 0);
-		System.out.println(volume == 0 ? ret : -1);
+		Arrays.sort(S, (u, v) -> v[0] - u[0]);
+		solve(l, w, h);
+		System.out.println(check ? ret : -1);
 	}
 	
-}
-class Pair {
-	int A, B;
-	public Pair(int a, int b) {A = a; B = b;}
-	public String toString() {return A + " " + B;}
 }
