@@ -19,8 +19,13 @@ public class Main {
 		for (int[] p : S) {
 			int r = p[0];
 			if (p[1] > 0 && l >= r && w >= r && h >= r) {
-				p[1]--;
-				ret++;
+				int min = (int)(Math.min(l, (int)(Math.min(w, h))));
+				int x = 1;
+				while (r * x <= min && (int)(Math.pow(x, 3)) <= p[1]) x++;
+				x--;
+				r = r * x;
+				p[1] -= (int)(Math.pow(x, 3));
+				ret += (int)(Math.pow(x, 3));
 				// 큐브를 왼쪽 아래 구석에 놓고 나머지 3부분으로 나눠서 분할정복
 				solve(r, r, h - r);
 				solve(l, w - r, h);
@@ -30,11 +35,6 @@ public class Main {
 		}
 		check = false; // 부분 문제중 한 문제라도 이곳에 도달한다면 전체 문제는 해결 불가능하다
 //		// 큐브 여러개를 한번에 정육면체 모양으로 놓을 수 있는 최대한으로 놓는다
-//		int x = 1;
-//		while (r * x <= min && (int)(Math.pow(x, 3)) <= S[i].B) x++;
-//		x--;
-//		r = r * x;
-//		S[i].B -= (int)(Math.pow(x, 3));
 	}
 	
 	public static void main(String[] args) throws IOException {
