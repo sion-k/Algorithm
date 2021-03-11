@@ -1,9 +1,9 @@
-import sys
-print = sys.stdout.write
 N = int(input())
-for i in range(2, N + 1):
+i = 2
+r = int(N ** 0.5)
+while i <= r:
     while N % i == 0:
         print(str(i))
-        print("\n")
-        N /= i
-    if N == 1: break
+        N //= i
+    i += 1
+if N > 1 : print(str(N))
