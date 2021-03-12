@@ -6,11 +6,23 @@ import java.io.InputStreamReader;
 
 public class C {
 	
+	static long bin(long x) {
+		long lo = 0; long hi = 10000;
+		while (lo + 1 < hi) {
+			long mid = (lo + hi) / 2;
+			if ((mid * mid * mid) < x) lo = mid;
+			else hi = mid;
+		}
+		return hi;
+	}
+	
 	static boolean check(long x) {
-		for (long a = 1; a <= 10000; a++)
-			for (long b = a; b <= 10000; b++) {
-				if (x == a * a * a + b * b * b) return true;
-			}
+		long a = 1;
+		while (a * a * a < x) {
+			long b = bin(x - (a * a * a));
+			if (a * a * a + b * b * b == x) return true;
+			a++;
+		}
 		return false;
 	}
 	
