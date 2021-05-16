@@ -19,14 +19,13 @@ public class Main {
 		}
 		int lo = 1; int hi = N;
 		for (int i = 1; i <= N; i++) {
-			for (int j = 1; j <= N; j++)
-				ans.append(t.sum(j)).append(" ");
-			ans.append("\n");
 			if (i % 2 == 1) {
-				ans.append(t.sum(P[lo]) - lo);
+				ans.append(t.sum(P[lo] - 1));
+				t.add(P[lo], -1);
 				lo++;
 			} else {
-				ans.append(hi - P[hi]);
+				ans.append(t.sum(N) - t.sum(P[hi]));
+				t.add(P[hi], -1);
 				hi--;
 			}
 			ans.append("\n");
