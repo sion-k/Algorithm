@@ -85,3 +85,37 @@ class FenwickTree {
 	}
 
 }
+
+// 바텀업 구간 합 트리
+class BottomUp {
+	int length; // 실제 배열의 길이
+	int N = 262144; // 실제 배열의 길이보다 큰 가장 작은 2의 거듭제곱
+	int[] t = new int[2 * N]; 
+	
+	BottomUp (int[] array) {
+		length = array.length;
+		for (int i = 0; i < array.length; i++)
+			t[length + i] = array[i];
+		build();
+	}
+	
+	void build() {
+		for (int i = length - 1; i > 0; i--)
+			t[i] = t[i << 1] + t[i << 1 | 1];
+	}
+	
+	void update(int i, int newValue) {
+		for (t[i += length] = newValue; i > 1; i >>= 1)
+			t[i >> 1] = t[i] + t[i ^ 1];
+	}
+	
+	int query(int l, int r) {
+		int sum = 0;
+		for (l += length, r += length; l < r; l >>= 1, r >>= 1) {
+			if ((l & 1) == 1) sum += t[l++];
+			if ((r & 1) == 1) sum += t[--r];
+		}
+		return sum;
+	}
+	
+}
