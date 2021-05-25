@@ -9,10 +9,9 @@ public class FastIO {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringBuilder ans = new StringBuilder();
+		StringBuilder bw = new StringBuilder();
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-		Integer.parseInt(st.nextToken());
-		System.out.print(ans);
+		System.out.print(bw);
 	}
 
 }
