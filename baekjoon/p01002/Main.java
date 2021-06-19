@@ -1,5 +1,3 @@
-package baekjoon.p01002;
-
 import java.util.*;
 
 public class Main {
