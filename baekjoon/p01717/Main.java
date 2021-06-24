@@ -47,20 +47,20 @@ class DisjointSet {
 		Arrays.fill(rank, 1);
 	}
 
-	// uº¸´Ù ·©Å©°¡ ³ôÀº v¿¡ u¸¦ ¹ØÀ¸·Î ³Ö´Â´Ù
+	// uë³´ë‹¤ ë­í¬ê°€ ë†’ì€ vì— uë¥¼ ë°‘ìœ¼ë¡œ ë„£ëŠ”ë‹¤
 	void union (int u, int v){
 		u = find(u); v = find(v);
-		if (u == v) return; // ÀÌ¹Ì °°Àº ÁıÇÕ¿¡ ¼ÓÇÑ °æ¿ì ¿¹¿Ü Ã³¸®
-		if (rank[u] > rank[v]) { // v°¡ rank°¡ ´õ ³ô°Ô ¸¸µé¾î ÁØ´Ù
+		if (u == v) return; // ì´ë¯¸ ê°™ì€ ì§‘í•©ì— ì†í•œ ê²½ìš° ì˜ˆì™¸ ì²˜ë¦¬
+		if (rank[u] > rank[v]) { // vê°€ rankê°€ ë” ë†’ê²Œ ë§Œë“¤ì–´ ì¤€ë‹¤
 			int temp = u;
 			u = v; v = temp;
 		}
-		parent[u] = v; // vÀÇ ¹Ø¿¡ u¸¦ ³Ö´Â´Ù
-		// µÑÀÌ rank°¡ °°¾Ò´Ù¸é rank°¡ Áõ°¡ÇÑ´Ù
+		parent[u] = v; // vì˜ ë°‘ì— uë¥¼ ë„£ëŠ”ë‹¤
+		// ë‘˜ì´ rankê°€ ê°™ì•˜ë‹¤ë©´ rankê°€ ì¦ê°€í•œë‹¤
 		if (rank[u] == rank[v]) rank[v]++;
 	}
 
-	// u°¡ ¼ÓÇÑ ÁıÇÕÀ» ¹İÈ¯
+	// uê°€ ì†í•œ ì§‘í•©ì„ ë°˜í™˜
 	int find(int u) {
 		if (parent[u] == u) return u;
 		return parent[u] = find(parent[u]);

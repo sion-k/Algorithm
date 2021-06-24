@@ -36,11 +36,11 @@ public class Main {
 			int[] p = q.poll();
 			int y = p[0]; int x = p[1];
 			if (F[y][x]) continue;
-			F[y][x] = true; // ¾²·¯ÁöÁö ¾Ê¾Ò´Ù¸é ÀÌ ÁöÁ¡À» ¾²·¯¶ß¸°´Ù
+			F[y][x] = true; // ì“°ëŸ¬ì§€ì§€ ì•Šì•˜ë‹¤ë©´ ì´ ì§€ì ì„ ì“°ëŸ¬ëœ¨ë¦°ë‹¤
 			score++;
 			int length = S[y][x];
 			for (int i = 0; i < length; i++) {
-				if (inRange(y, x) && !F[y][x] && !booked[y][x]) {// ¾²·¯ÁöÁö ¾Ê¾Ò°í Å¥¿¡ µé¾î°¡Áö ¾ÊÀº °æ¿ì ¾²·¯¶ß¸°´Ù
+				if (inRange(y, x) && !F[y][x] && !booked[y][x]) {// ì“°ëŸ¬ì§€ì§€ ì•Šì•˜ê³  íì— ë“¤ì–´ê°€ì§€ ì•Šì€ ê²½ìš° ì“°ëŸ¬ëœ¨ë¦°ë‹¤
 					q.offer(new int[] {y, x, d});
 					booked[y][x] = true;
 				}

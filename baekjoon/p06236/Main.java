@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 public class Main {
 	static int N; static int[] S;
 	
-	// ÇÑ ±â°£¿¡ »ç¿ë °¡´ÉÇÑ ±İ¾×ÀÌ K¿øÀÏ ¶§, M°³ÀÇ ±¸°£À¸·Î ±â°£À» ³ª´­ ¼ö ÀÖ´ÂÁö ¿©ºÎ
+	// í•œ ê¸°ê°„ì— ì‚¬ìš© ê°€ëŠ¥í•œ ê¸ˆì•¡ì´ Kì›ì¼ ë•Œ, Mê°œì˜ êµ¬ê°„ìœ¼ë¡œ ê¸°ê°„ì„ ë‚˜ëˆŒ ìˆ˜ ìˆëŠ”ì§€ ì—¬ë¶€
 	static boolean f(int K, int M) {
 		int i = 0;
 		while (i < N) {
@@ -30,7 +30,7 @@ public class Main {
 		int M = Integer.parseInt(st.nextToken());
 		S = new int[N];
 		for (int i = 0; i < N; i++) S[i] = Integer.parseInt(br.readLine());
-		// f(lo) == false && f(hi) == trueÀÎ hi¸¦ ¹İÈ¯
+		// f(lo) == false && f(hi) == trueì¸ hië¥¼ ë°˜í™˜
 		int lo = 0; int hi = 10000 * N;
 		while (lo + 1 < hi) {
 			int mid = (lo + hi) / 2;

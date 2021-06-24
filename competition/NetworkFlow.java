@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class NetworkFlow {
-	// ¾ç¹æÇâ °£¼±ÀÎÁö À¯ÀÇ
+	// ì–‘ë°©í–¥ ê°„ì„ ì¸ì§€ ìœ ì˜
 	static int[][] capacity = new int[52][52];
 	static int[][] flow = new int[52][52];
 
@@ -15,7 +15,7 @@ public class NetworkFlow {
 	static int networkFlow(int source, int sink) {
 		int totalFlow = 0;
 		while (true) {
-			// BFS·Î Áõ°¡ °æ·Î¸¦ Ã£´Â´Ù
+			// BFSë¡œ ì¦ê°€ ê²½ë¡œë¥¼ ì°¾ëŠ”ë‹¤
 			int[] parent = new int[V];
 			Arrays.fill(parent, -1);
 			parent[source] = source;
@@ -23,7 +23,7 @@ public class NetworkFlow {
 			q.offer(source);
 			while (!q.isEmpty() && parent[sink] == -1) {
 				int here = q.poll();
-				// ÀÜ¿© ¿ë·®ÀÌ ³²Àº °£¼±À» µû¶ó Å½»ö
+				// ì”ì—¬ ìš©ëŸ‰ì´ ë‚¨ì€ ê°„ì„ ì„ ë”°ë¼ íƒìƒ‰
 				for (int there = 0; there < V; there++) {
 					if (capacity[here][there] - flow[here][there] > 0 && parent[there] == -1) {
 						q.offer(there);
@@ -31,13 +31,13 @@ public class NetworkFlow {
 					}
 				}
 			}
-			// Áõ°¡ °æ·Î°¡ ¾øÀ¸¸é Á¾·á
+			// ì¦ê°€ ê²½ë¡œê°€ ì—†ìœ¼ë©´ ì¢…ë£Œ
 			if (parent[sink] == -1) break;
-			// Áõ°¡ °æ·Î¸¦ ÅëÇØ À¯·®À» ¾ó¸¶³ª º¸³¾Áö °áÁ¤
+			// ì¦ê°€ ê²½ë¡œë¥¼ í†µí•´ ìœ ëŸ‰ì„ ì–¼ë§ˆë‚˜ ë³´ë‚¼ì§€ ê²°ì •
 			int amount = INF;
 			for (int p = sink; p != source; p = parent[p])
 				amount = Math.min(amount, capacity[parent[p]][p] - flow[parent[p]][p]);
-			// Áõ°¡ °æ·Î¸¦ ÅëÇØ À¯·®À» º¸³½´Ù
+			// ì¦ê°€ ê²½ë¡œë¥¼ í†µí•´ ìœ ëŸ‰ì„ ë³´ë‚¸ë‹¤
 			for (int p = sink; p != source; p = parent[p]) {
 				flow[parent[p]][p] += amount;
 				flow[p][parent[p]] -= amount;

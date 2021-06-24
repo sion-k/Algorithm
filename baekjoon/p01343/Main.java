@@ -16,7 +16,7 @@ public class Main {
 			if (board.charAt(index) == '.') {
 				ret.append('.'); index++; continue;
 			}
-			int seq = 0; // ¿¬¼ÓÇÑ XÀÇ ¼ö
+			int seq = 0; // ì—°ì†í•œ Xì˜ ìˆ˜
 			while (index < board.length() && board.charAt(index) == 'X') {
 				seq++; index++;
 			}

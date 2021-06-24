@@ -7,13 +7,13 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int M; static int[][] S; // i¸¸¿øÀ» j±â¾÷¿¡ ÅõÀÚÇÒ¶§ ¾ò´Â ÀÌÀÍ
+	static int M; static int[][] S; // ië§Œì›ì„ jê¸°ì—…ì— íˆ¬ìí• ë•Œ ì–»ëŠ” ì´ìµ
 	static int[][] cache;
-	// i¹øÂ° ±â¾÷ºÎÅÍ ½ÃÀÛÇØ¼­ k¸¸¿øÀÌ ³²¾ÆÀÖÀ» ¶§, ¾òÀ» ¼ö ÀÖ´Â ÃÖ´ë ÀÌµæ
+	// ië²ˆì§¸ ê¸°ì—…ë¶€í„° ì‹œì‘í•´ì„œ kë§Œì›ì´ ë‚¨ì•„ìˆì„ ë•Œ, ì–»ì„ ìˆ˜ ìˆëŠ” ìµœëŒ€ ì´ë“
 	static int dp(int i, int k) {
 		if (i == M) return 0;
 		if (cache[i][k] != -1) return cache[i][k];
-		int max = dp(i + 1, k); // [0, k]¿ø ÅõÀÚÇÏ´Â °æ¿ì ¸ğµÎ ½Ãµµ
+		int max = dp(i + 1, k); // [0, k]ì› íˆ¬ìí•˜ëŠ” ê²½ìš° ëª¨ë‘ ì‹œë„
 		for (int j = 1; j <= k; j++) max = Math.max(max, S[j][i] + dp(i + 1, k - j));
 		return cache[i][k] = max;
 	}

@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class Main {
 	static String S;
 	
-	// S[t]¸¦ alpha¿¡ Ãß°¡ÇÑ´Ù¸é ¼­·Î ´Ù¸¥ ¾ËÆÄºªÀÇ °³¼ö°¡ ¸î°³°¡ µÇ´ÂÁö ¹İÈ¯
+	// S[t]ë¥¼ alphaì— ì¶”ê°€í•œë‹¤ë©´ ì„œë¡œ ë‹¤ë¥¸ ì•ŒíŒŒë²³ì˜ ê°œìˆ˜ê°€ ëª‡ê°œê°€ ë˜ëŠ”ì§€ ë°˜í™˜
 	static int getNum(int[] alpha, int num, int t) {
 		return num + (alpha[S.charAt(t) - 'a'] == 0 ? 1 : 0);
 	}
@@ -20,9 +20,9 @@ public class Main {
 		int head = 0; int tail = 0;
 		int[] alphabet = new int[26]; alphabet[S.charAt(0) - 'a']++; int num = 1;
 		int max = 1;
-		// head¿¡¼­ ½ÃÀÛÇÏ´Â ÈÄº¸ ±¸°£À» ¸ğµÎ °Ë»ç
+		// headì—ì„œ ì‹œì‘í•˜ëŠ” í›„ë³´ êµ¬ê°„ì„ ëª¨ë‘ ê²€ì‚¬
 		while (head < N) {
-			// tailÀ» ÃÖ´ëÇÑ ´Ã¸°´Ù
+			// tailì„ ìµœëŒ€í•œ ëŠ˜ë¦°ë‹¤
 			while (tail + 1 < N && getNum(alphabet, num, tail + 1) <= K) {
 				int t = S.charAt(++tail) - 'a';
 				if (alphabet[t] == 0) num++;

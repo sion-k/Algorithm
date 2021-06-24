@@ -37,11 +37,11 @@ public class Main {
 }
 
 class FenwickTree {
-	long[] tree; // S[i]¸¦ ±¸°£ÀÇ ¿À¸¥ÂÊ ³¡À¸·Î ÇÏ´Â ±¸°£ ÇÕ
+	long[] tree; // S[i]ë¥¼ êµ¬ê°„ì˜ ì˜¤ë¥¸ìª½ ëìœ¼ë¡œ í•˜ëŠ” êµ¬ê°„ í•©
 
 	public FenwickTree(int n) {tree = new long[n + 1];}
 
-	// S[0, pos]±îÁöÀÇ ºÎºĞ ÇÕ ¹İÈ¯
+	// S[0, pos]ê¹Œì§€ì˜ ë¶€ë¶„ í•© ë°˜í™˜
 	long sum(int pos) {
 		pos++; // 1-based
 		long ret = 0;

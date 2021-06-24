@@ -18,7 +18,7 @@ public class Main {
 		int T = Integer.parseInt(br.readLine());
 		for (int c = 0; c < T; c++) {
 			int F = Integer.parseInt(br.readLine());
-			// ÀÌ¸§¿¡ ´ëÇØ¼­ 1ºÎÅÍ ½ÃÀÛÇÏ´Â ¹øÈ£¸¦ ¸Å±ä´Ù
+			// ì´ë¦„ì— ëŒ€í•´ì„œ 1ë¶€í„° ì‹œì‘í•˜ëŠ” ë²ˆí˜¸ë¥¼ ë§¤ê¸´ë‹¤
 			Map<String, Integer> map = new HashMap<>();
 			DisjointSet set = new DisjointSet(200001);
 			int num = 1;
@@ -27,12 +27,12 @@ public class Main {
 				String a = st.nextToken(); String b = st.nextToken();
 				int u = 0; int v = 0;
 				if ((u = map.getOrDefault(a, 0)) == 0) {
-					u = num; // map¿¡ Á¸ÀçÇÏÁö ¾Ê´Â »ç¿ëÀÚ¸é »õ·Î¿î ¹øÈ£ ºÎ¿©
+					u = num; // mapì— ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ì‚¬ìš©ìë©´ ìƒˆë¡œìš´ ë²ˆí˜¸ ë¶€ì—¬
 					map.put(a, num);
 					num++;
 				}
 				if ((v = map.getOrDefault(b, 0)) == 0) {
-					v = num; // map¿¡ Á¸ÀçÇÏÁö ¾Ê´Â »ç¿ëÀÚ¸é »õ·Î¿î ¹øÈ£ ºÎ¿©
+					v = num; // mapì— ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ì‚¬ìš©ìë©´ ìƒˆë¡œìš´ ë²ˆí˜¸ ë¶€ì—¬
 					map.put(b, num);
 					num++;
 				}

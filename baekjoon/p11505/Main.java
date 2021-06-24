@@ -39,8 +39,8 @@ public class Main {
 
 // Range Product Query
 class RPQ {
-	int n; // ¹è¿­ÀÇ ±æÀÌ
-	int[] rangeProduct; // ±¸°£ ³ëµå
+	int n; // ë°°ì—´ì˜ ê¸¸ì´
+	int[] rangeProduct; // êµ¬ê°„ ë…¸ë“œ
 
 	static final int MOD = 1000000007;
 
@@ -50,11 +50,11 @@ class RPQ {
 		init(array, 1, 0, n - 1);
 	}
 
-	// node ³ëµå°¡ Ç¥ÇöÇÏ´Â ±¸°£ [left, right]¸¦ ·çÆ®·Î ÇÏ´Â ¼­ºêÆ®¸®¸¦ ÃÊ±âÈ­ÇÏ°í °ö ¹İÈ¯
+	// node ë…¸ë“œê°€ í‘œí˜„í•˜ëŠ” êµ¬ê°„ [left, right]ë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” ì„œë¸ŒíŠ¸ë¦¬ë¥¼ ì´ˆê¸°í™”í•˜ê³  ê³± ë°˜í™˜
 	private int init(int[] array, int node, int left, int right) {
-		// ±âÀú »ç·Ê : ¸®ÇÁ ³ëµå¿¡ µµ´ŞÇÑ °æ¿ì
+		// ê¸°ì € ì‚¬ë¡€ : ë¦¬í”„ ë…¸ë“œì— ë„ë‹¬í•œ ê²½ìš°
 		if (left == right) {return rangeProduct[node] = array[left];}
-		// ÀÌ ¿Ü¿¡ ¸ğµÎ Àç±Í È£Ãâ·Î ´äÀ» ÃÊ±âÈ­
+		// ì´ ì™¸ì— ëª¨ë‘ ì¬ê·€ í˜¸ì¶œë¡œ ë‹µì„ ì´ˆê¸°í™”
 		int mid = (left + right) / 2;
 		int leftProduct = init(array, 2 * node, left, mid);
 		int rightProduct = init(array, 2 * node + 1, mid + 1, right);
@@ -62,13 +62,13 @@ class RPQ {
 		(int)(((long)leftProduct * rightProduct) % MOD);
 	}
 
-	// array[left, right]¿Í [nodeLeft, nodeRight]ÀÇ ±³ÁıÇÕÀÇ ´ä ¹İÈ¯
+	// array[left, right]ì™€ [nodeLeft, nodeRight]ì˜ êµì§‘í•©ì˜ ë‹µ ë°˜í™˜
 	private int query(int left, int right, int node, int nodeLeft, int nodeRight) {
-		// ±³ÁıÇÕÀÌ °øÁıÇÕÀÎ °æ¿ì
+		// êµì§‘í•©ì´ ê³µì§‘í•©ì¸ ê²½ìš°
 		if (right < nodeLeft || nodeRight < left) {return 1;}
-		// ±¸°£ ³ëµå°¡ ¿ÏÀüÈ÷ Æ÷ÇÔµÇ´Â °æ¿ì
+		// êµ¬ê°„ ë…¸ë“œê°€ ì™„ì „íˆ í¬í•¨ë˜ëŠ” ê²½ìš°
 		if (left <= nodeLeft && nodeRight <= right) {return rangeProduct[node];}
-		// ÀÌ ¿Ü¿¡ ¸ğµÎ Àç±Í È£Ãâ·Î ´äÀ» ¸¸µë
+		// ì´ ì™¸ì— ëª¨ë‘ ì¬ê·€ í˜¸ì¶œë¡œ ë‹µì„ ë§Œë“¬
 		int mid = (nodeLeft + nodeRight) / 2;
 		int leftProduct = query(left, right, 2 * node, nodeLeft, mid);
 		int rightProduct = query(left, right, 2 * node + 1, mid + 1, nodeRight);
@@ -80,11 +80,11 @@ class RPQ {
 	}
 
 	private int update(int index, int newValue, int node, int left, int right) {
-		// ±âÀú »ç·Ê : »ó°ü¾ø´Â ±¸°£ÀÌ¸é ±âÁ¸ÀÇ °ª ¹İÈ¯
+		// ê¸°ì € ì‚¬ë¡€ : ìƒê´€ì—†ëŠ” êµ¬ê°„ì´ë©´ ê¸°ì¡´ì˜ ê°’ ë°˜í™˜
 		if (index < left || right < index) {return rangeProduct[node];}
-		// ¸®ÇÁ ³ëµå¿¡ µµÂøÇÑ °æ¿ì [index, index]À§Ä¡ÀÇ ±¸°£ ³ëµåÀÓ
+		// ë¦¬í”„ ë…¸ë“œì— ë„ì°©í•œ ê²½ìš° [index, index]ìœ„ì¹˜ì˜ êµ¬ê°„ ë…¸ë“œì„
 		if (left == right) {return rangeProduct[node] = newValue;}
-		// ÀÌ ¿Ü¿¡ ¸ğµÎ Àç±Í È£Ãâ·Î ´äÀ» °»½ÅÇÔ
+		// ì´ ì™¸ì— ëª¨ë‘ ì¬ê·€ í˜¸ì¶œë¡œ ë‹µì„ ê°±ì‹ í•¨
 		int mid = (left + right) / 2;
 		int leftProduct = update(index, newValue, 2 * node, left, mid);
 		int rightProduct = update(index, newValue, 2 * node + 1, mid + 1, right);

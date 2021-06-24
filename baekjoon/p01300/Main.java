@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class Main {
 	static int N;
 	
-	// A¿¡¼­ xº¸´Ù ÀÛ°Å³ª °°Àº ¼öÀÇ °³¼ö
+	// Aì—ì„œ xë³´ë‹¤ ì‘ê±°ë‚˜ ê°™ì€ ìˆ˜ì˜ ê°œìˆ˜
 	static long f(int x) {
 		long sum = 0;
 		int length = Math.min(N, x);

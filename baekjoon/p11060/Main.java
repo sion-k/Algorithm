@@ -10,7 +10,7 @@ public class Main {
 	static int[] A;
 	static int[] cache;
 
-	// i¹øÂ° Ä­[1, N)¿¡ ÀÖÀ» ¶§ ¿À¸¥ÂÊ ³¡±îÁö °É¸®´Â Á¡ÇÁ ÃÖ¼Ò È½¼ö
+	// ië²ˆì§¸ ì¹¸[1, N)ì— ìˆì„ ë•Œ ì˜¤ë¥¸ìª½ ëê¹Œì§€ ê±¸ë¦¬ëŠ” ì í”„ ìµœì†Œ íšŸìˆ˜
 	static int dp(int i) {
 		if (A[i] == 0) {return 1000;}
 		if (i + A[i] >= N) {return 1;}

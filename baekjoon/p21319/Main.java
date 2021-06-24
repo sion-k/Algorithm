@@ -9,8 +9,8 @@ import java.util.StringTokenizer;
 public class Main {
 	static int N; static int[] S;
 	
-	// i¹øÂ° ÀÖ´Â »ç¶÷ÀÌ Ã¨ÇÇ¾ğÀÌ µÉ ¼ö ÀÖ´ÂÁö ¹İÈ¯
-	// ´Ü i¹øÂ°´Â °°Àº ÀüÅõ·ÂÀ» °¡Áø »ç¶÷µé Áß¿¡¼­ °¡Àå ¿ŞÂÊ¿¡ ÀÖÀ½
+	// ië²ˆì§¸ ìˆëŠ” ì‚¬ëŒì´ ì±”í”¼ì–¸ì´ ë  ìˆ˜ ìˆëŠ”ì§€ ë°˜í™˜
+	// ë‹¨ ië²ˆì§¸ëŠ” ê°™ì€ ì „íˆ¬ë ¥ì„ ê°€ì§„ ì‚¬ëŒë“¤ ì¤‘ì—ì„œ ê°€ì¥ ì™¼ìª½ì— ìˆìŒ
 	static boolean f(int i) {
 		int here = i; int size = S[i];
 		while (here - 1 >= 0 && size > S[here - 1]) { size++; here--; }

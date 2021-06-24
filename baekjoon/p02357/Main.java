@@ -35,8 +35,8 @@ public class Main {
 }
 
 class RMQ {
-	int n; // ¹è¿­ÀÇ ±æÀÌ;
-	int[] rangeMin; int[] rangeMax; //°¢ ±¸°£ÀÇ ÃÖ¼Ò, ÃÖ´ëÄ¡
+	int n; // ë°°ì—´ì˜ ê¸¸ì´;
+	int[] rangeMin; int[] rangeMax; //ê° êµ¬ê°„ì˜ ìµœì†Œ, ìµœëŒ€ì¹˜
 
 	static final int INF = 1000000001;
 
@@ -46,8 +46,8 @@ class RMQ {
 		init(array, 0, n - 1, 1);
 	}
 
-	// node ³ëµå°¡ array[left, right]¸¦ ¹è¿­À» Ç¥ÇöÇÒ ¶§
-	// node¸¦ ·çÆ®·Î ÇÏ´Â ¼­ºêÆ®¸®¸¦ ÃÊ±âÈ­ ÇÑ µÚ, ÀÌ ±¸°£ÀÇ ÃÖ¼ÒÄ¡, ÃÖ´ëÄ¡ ¹İÈ¯
+	// node ë…¸ë“œê°€ array[left, right]ë¥¼ ë°°ì—´ì„ í‘œí˜„í•  ë•Œ
+	// nodeë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” ì„œë¸ŒíŠ¸ë¦¬ë¥¼ ì´ˆê¸°í™” í•œ ë’¤, ì´ êµ¬ê°„ì˜ ìµœì†Œì¹˜, ìµœëŒ€ì¹˜ ë°˜í™˜
 	int[] init(int[] array, int left, int right, int node) {
 		if (left == right) {
 			int ret = rangeMin[node] = rangeMax[node] = array[left];
@@ -62,15 +62,15 @@ class RMQ {
 	}
 
 	private int[] query(int left, int right, int node, int nodeLeft, int nodeRight) {
-		// µÎ ±¸°£ÀÇ ±³ÁıÇÕÀÌ °øÁıÇÕÀÎ °æ¿ì
+		// ë‘ êµ¬ê°„ì˜ êµì§‘í•©ì´ ê³µì§‘í•©ì¸ ê²½ìš°
 		if (right < nodeLeft || nodeRight < left) {
 			return new int[] { INF, 0 };
 		}
-		// nodeÀÇ ¹üÀ§°¡ array[left, right]¿¡ ¿ÏÀüÈ÷ Æ÷ÇÔµÇ´Â °æ¿ì
+		// nodeì˜ ë²”ìœ„ê°€ array[left, right]ì— ì™„ì „íˆ í¬í•¨ë˜ëŠ” ê²½ìš°
 		if (left <= nodeLeft && nodeRight <= right) {
 			return new int[] { rangeMin[node], rangeMax[node] };
 		}
-		// ÀÌ ¿Ü¿¡ ¸ğµç °æ¿ì´Â nodeÀÇ ÀÚ½Ä¿¡ ´ëÇØ Àç±Í È£Ãâ
+		// ì´ ì™¸ì— ëª¨ë“  ê²½ìš°ëŠ” nodeì˜ ìì‹ì— ëŒ€í•´ ì¬ê·€ í˜¸ì¶œ
 		int mid = (nodeLeft + nodeRight) / 2;
 		int[] L = query(left, right, 2 * node, nodeLeft, mid);
 		int[] R = query(left, right, 2 * node + 1, mid + 1, nodeRight);

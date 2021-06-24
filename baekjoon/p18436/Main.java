@@ -48,7 +48,7 @@ public class Main {
 
 }
 
-// A[, i]±îÁöÀÇ È¦¼öÀÇ °³¼öÀÇ ÇÕÀ» ÀúÀå
+// A[, i]ê¹Œì§€ì˜ í™€ìˆ˜ì˜ ê°œìˆ˜ì˜ í•©ì„ ì €ì¥
 class FenwickTree {
 	int[] tree;
 

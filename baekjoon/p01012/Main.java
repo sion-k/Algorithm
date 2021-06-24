@@ -6,30 +6,30 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-	// »ó ÇÏ ÁÂ ¿ì ¼ø
+	// ìƒ í•˜ ì¢Œ ìš° ìˆœ
 	static final int[] dy = { -1, 1, 0, 0 };
 	static final int[] dx = { 0, 0, -1, 1 };
 	static int N;
 	static int M;
-	// ¹èÃß°¡ ÀÖ´ÂÁö ¾ø´ÂÁö ¿©ºÎ
+	// ë°°ì¶”ê°€ ìˆëŠ”ì§€ ì—†ëŠ”ì§€ ì—¬ë¶€
 	static boolean[][] CABBAGE;
 	static boolean[][] VISIT;
 	
 	static boolean inRange(int y, int x) {return 0 <= y && y < N && 0 <= x && x < M;}
 	
-	// ¹èÃß°¡ ÀÖ´Â (y, x)¿¡¼­ dfs
+	// ë°°ì¶”ê°€ ìˆëŠ” (y, x)ì—ì„œ dfs
 	static void dfs(int y, int x) {
 		VISIT[y][x] = true;
 		for (int move = 0; move < 4; move++) {
 			int ty = y + dy[move]; int tx = x + dx[move];
-			// Áöµµ ¾È ÂÊÀÌ°í, ¹èÃß°¡ ÀÖÀ¸¸ç, ¹æ¹®ÇÏÁö ¾Ê¾ÒÀ» °æ¿ì¿¡¸¸
+			// ì§€ë„ ì•ˆ ìª½ì´ê³ , ë°°ì¶”ê°€ ìˆìœ¼ë©°, ë°©ë¬¸í•˜ì§€ ì•Šì•˜ì„ ê²½ìš°ì—ë§Œ
 			if(inRange(ty, tx) && CABBAGE[ty][tx] &&!VISIT[ty][tx]) {
 				dfs(ty, tx);
 			}
 		}
 	}
 	
-	// ¹ç ÀüÃ¼¿¡ dfs ÇÊ¿äÇÑ ¹èÃßÈòÁö··ÀÌ ¼ö ¹İÈ¯
+	// ë°­ ì „ì²´ì— dfs í•„ìš”í•œ ë°°ì¶”í°ì§€ë ì´ ìˆ˜ ë°˜í™˜
 	static int dfsAll() {
 		int sum = 0;
 		for (int i = 0; i < N; i++) {

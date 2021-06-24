@@ -9,23 +9,23 @@ public class Main {
 	static int N, L;
 	static int[][] MAP;
 	
-	// ÁÖ¾îÁø ³ôÀÌµéÀÇ ¼ö¿­À» Áö³ª°¥ ¼ö ÀÖ´ÂÁö ¹İÈ¯
+	// ì£¼ì–´ì§„ ë†’ì´ë“¤ì˜ ìˆ˜ì—´ì„ ì§€ë‚˜ê°ˆ ìˆ˜ ìˆëŠ”ì§€ ë°˜í™˜
 	static boolean count(int[] S) {
 		boolean[] stair = new boolean[N];
 		int here = 0;
 		while (here < N - 1) {
 			int next = here + 1;
 			int diff = S[next] - S[here];
-			if (diff == 0) {here++; continue;} // ³ôÀÌ°¡ °°Àº °æ¿ì
-			if (Math.abs(diff) >= 2) return false; // 2Ä­ ÀÌ»ó ³ôÀÌ°¡ Â÷ÀÌ³ª´Â °æ¿ì
-			if (diff == 1) { // ¿À¸£¸·
-				if (!inRange(here - L + 1)) return false; // ¹üÀ§¸¦ ¹ş¾î³ª¸é ºÒ°¡
-				// ÆòÆòÇÏÁö ¾Ê°Å³ª ÀÌ¹Ì °æ»ç·Î°¡ ¼³Ä¡µÇ¾îÀÖÀ¸¸é ºÒ°¡
+			if (diff == 0) {here++; continue;} // ë†’ì´ê°€ ê°™ì€ ê²½ìš°
+			if (Math.abs(diff) >= 2) return false; // 2ì¹¸ ì´ìƒ ë†’ì´ê°€ ì°¨ì´ë‚˜ëŠ” ê²½ìš°
+			if (diff == 1) { // ì˜¤ë¥´ë§‰
+				if (!inRange(here - L + 1)) return false; // ë²”ìœ„ë¥¼ ë²—ì–´ë‚˜ë©´ ë¶ˆê°€
+				// í‰í‰í•˜ì§€ ì•Šê±°ë‚˜ ì´ë¯¸ ê²½ì‚¬ë¡œê°€ ì„¤ì¹˜ë˜ì–´ìˆìœ¼ë©´ ë¶ˆê°€
 				for (int d = 0; d < L; d++) if (S[here - d] != S[here] || stair[here - d]) return false;
 				for (int d = 0; d < L; d++) stair[here - d] = true;
-			} else { // ³»¸®¸·
-				if (!inRange(here + L)) return false; // ¹üÀ§¸¦ ¹ş¾î³ª¸é ºÒ°¡
-				// ÆòÆòÇÏÁö ¾ÊÀ¸¸é ºÒ°¡
+			} else { // ë‚´ë¦¬ë§‰
+				if (!inRange(here + L)) return false; // ë²”ìœ„ë¥¼ ë²—ì–´ë‚˜ë©´ ë¶ˆê°€
+				// í‰í‰í•˜ì§€ ì•Šìœ¼ë©´ ë¶ˆê°€
 				for (int d = 0; d < L; d++) if (S[here + d + 1] != S[here] - 1) return false;
 				for (int d = 0; d < L; d++) stair[here + d + 1] = true;
 			}

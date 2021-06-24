@@ -27,7 +27,7 @@ public class Main {
 
 	static int BFS(int sy, int sx) {
 		if (sy == 0 || sx == 0 || sy == N - 1 || sx == M - 1) {return 1;}
-		// ºÒ ¸ÕÀú ÀÌµ¿
+		// ë¶ˆ ë¨¼ì € ì´ë™
 		while (!Q.isEmpty()){
 			int[] here = Q.poll();
 			int y = here[0]; int x = here[1];
@@ -45,7 +45,7 @@ public class Main {
 		BOOKED[sy][sx] = true;
 		int[][] dist = new int[N][M];
 		dist[sy][sx] = 0;
-		// »ç¶÷ ÀÌµ¿
+		// ì‚¬ëŒ ì´ë™
 		while (!Q.isEmpty()){
 			int[] here = Q.poll();
 			int y = here[0]; int x = here[1];

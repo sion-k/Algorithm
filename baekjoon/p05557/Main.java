@@ -7,10 +7,10 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int N; //Ç×ÀÇ °³¼ö
+	static int N; //í•­ì˜ ê°œìˆ˜
 	static int[] T;
 	static long[][] cache;
-	// i¹øÂ° µî½ÄÀ» ¼±ÅÃÇÏ°í, Áö±İ±îÁö °á°ú°¡ SÀÏ ¶§, ¿Ã¹Ù¸¥ µî½ÄÀÇ ¼ö ¹İÈ¯
+	// ië²ˆì§¸ ë“±ì‹ì„ ì„ íƒí•˜ê³ , ì§€ê¸ˆê¹Œì§€ ê²°ê³¼ê°€ Sì¼ ë•Œ, ì˜¬ë°”ë¥¸ ë“±ì‹ì˜ ìˆ˜ ë°˜í™˜
 	static long dp(int i, int S) {
 		if (i == N - 2) {return S == T[i + 1] ? 1 : 0;}
 		if (cache[i][S] != -1) {return cache[i][S];}

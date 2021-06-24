@@ -9,12 +9,12 @@ public class Main {
 	static int N; static int[][] S;
 	static int min = 987654321;
 
-	// [here, )¿¡¼­ ½ÃÀÛÇØ¼­ toPick°³¸¦ °í¸£´Â °æ¿ì ¸ğµÎ ½ÃµµÇÑ µÚ
-	// µÎ ÆÀ°£ÀÇ ´É·ÂÄ¡ Â÷ÀÌ ÃÖ¼Ò°ªÀ» °»½Å
+	// [here, )ì—ì„œ ì‹œì‘í•´ì„œ toPickê°œë¥¼ ê³ ë¥´ëŠ” ê²½ìš° ëª¨ë‘ ì‹œë„í•œ ë’¤
+	// ë‘ íŒ€ê°„ì˜ ëŠ¥ë ¥ì¹˜ ì°¨ì´ ìµœì†Œê°’ì„ ê°±ì‹ 
 	static void btk(int here, int toPick, boolean[] picked) {
 		if (here == N) {
 			if (toPick != 0) return;
-			// picked°¡ trueÀÎ °æ¿ì startÆÀÀÌ¶ó °¡Á¤
+			// pickedê°€ trueì¸ ê²½ìš° startíŒ€ì´ë¼ ê°€ì •
 			int start = 0; int link = 0;
 			for (int i = 0; i < N; i++)
 				for (int j = 0; j < N; j++)
@@ -25,16 +25,16 @@ public class Main {
 			min = Math.min(min, Math.abs(start - link));
 			return;
 		}
-		// ¾ÕÀ¸·Î ÀüºÎ ´Ù °ñ¶ó¾ß ÇÏ´Â °æ¿ì
+		// ì•ìœ¼ë¡œ ì „ë¶€ ë‹¤ ê³¨ë¼ì•¼ í•˜ëŠ” ê²½ìš°
 		if ((N - here) == toPick) {
 			for (int i = here; i < N; i++) picked[i] = true;
 			btk(N, 0, picked);
 			for (int i = here; i < N; i++) picked[i] = false;
 			return;
 		}
-		// °í¸£Áö ¾Ê´Â °æ¿ì
+		// ê³ ë¥´ì§€ ì•ŠëŠ” ê²½ìš°
 		btk(here + 1, toPick, picked);
-		// °í¸£´Â °æ¿ì
+		// ê³ ë¥´ëŠ” ê²½ìš°
 		if (toPick > 0) {
 			picked[here] = true;
 			btk(here + 1, toPick - 1, picked);

@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 
 public class Main {
 	static int N; static int M;
-	static boolean[][] MAP; //Ä¡Áî°¡ ÀÖ´ÂÁö ¿©ºÎ
+	static boolean[][] MAP; //ì¹˜ì¦ˆê°€ ìžˆëŠ”ì§€ ì—¬ë¶€
 	static boolean[][] NEXTMAP;
 	static boolean[][] VISIT;
 	static boolean[][] MELTVISIT;
@@ -21,7 +21,7 @@ public class Main {
 		return 0 <= y && y < N && 0 <= x && x < M;
 	}
 
-	// Ä¡Áî°¡ ¸ðµÎ ³ì´Âµ¥ °É¸®´Â ½Ã°£ ¹ÝÈ¯
+	// ì¹˜ì¦ˆê°€ ëª¨ë‘ ë…¹ëŠ”ë° ê±¸ë¦¬ëŠ” ì‹œê°„ ë°˜í™˜
 	static int MELT() {
 		int t = 0; int cheese = 0;
 		NEXTMAP = MAP.clone();
@@ -35,7 +35,7 @@ public class Main {
 		return t;
 	}
 
-	// Ä¡ÁîÀÇ °³º° °³¼ö ¹ÝÈ¯
+	// ì¹˜ì¦ˆì˜ ê°œë³„ ê°œìˆ˜ ë°˜í™˜
 	static int DFSAll() {
 		VISIT = new boolean[N][M];
 		int sum = 0;
@@ -49,7 +49,7 @@ public class Main {
 		return sum;
 	}
 
-	// ¹æ¹®ÇÑ Ä¡Áî °³¼ö ¹ÝÈ¯
+	// ë°©ë¬¸í•œ ì¹˜ì¦ˆ ê°œìˆ˜ ë°˜í™˜
 	static int DFS(int y, int x) {
 		VISIT[y][x] = true;
 		int sum = 1;
@@ -62,7 +62,7 @@ public class Main {
 		return sum;
 	}
 
-	// Ä¡Áî¸¦ ¸¸³ª¸é Á¦°ÅÇÔ
+	// ì¹˜ì¦ˆë¥¼ ë§Œë‚˜ë©´ ì œê±°í•¨
 	static void MELTDFS(int y, int x) {
 		MELTVISIT[y][x] = true;
 		for (int m = 0; m < 4; m++) {

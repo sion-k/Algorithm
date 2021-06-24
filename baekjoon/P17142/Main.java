@@ -10,8 +10,8 @@ import java.util.StringTokenizer;
 
 public class Main {
 	static int N;
-	static int[][] S; // º®ÀÌ ÀÖ´ÂÁö ¿©ºÎ
-	static int[][] P;// ¹ÙÀÌ·¯½º¸¦ ³õÀ» ¼ö ÀÖ´Â À§Ä¡µé
+	static int[][] S; // ë²½ì´ ìˆëŠ”ì§€ ì—¬ë¶€
+	static int[][] P;// ë°”ì´ëŸ¬ìŠ¤ë¥¼ ë†“ì„ ìˆ˜ ìˆëŠ” ìœ„ì¹˜ë“¤
 	static int empty = 0;
 	
 	static final int[] dy = {-1, 1, 0, 0}; static final int[] dx = {0, 0, -1, 1};

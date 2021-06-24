@@ -20,7 +20,7 @@ public class Main {
 		return 0 <= y && y < N && 0 <= x && x < M;
 	}
 
-	// mapÀÇ »ç°¢Áö´ë Å©±â ¹İÈ¯
+	// mapì˜ ì‚¬ê°ì§€ëŒ€ í¬ê¸° ë°˜í™˜
 	static int area() {
 		int cnt = 0;
 		for (int i = 0; i < N; i++)
@@ -34,7 +34,7 @@ public class Main {
 		if (here == cctv.size()) return area();
 		int min = 987654321;
 		CCTV c = cctv.get(here);
-		// here¹øÂ° cctv¸¦ µ¹¸®´Â °æ¿ì
+		// hereë²ˆì§¸ cctvë¥¼ ëŒë¦¬ëŠ” ê²½ìš°
 		for (int r = 0; r < 4; r++) {
 			c.rotate();
 			detect(c, 1);
@@ -44,14 +44,14 @@ public class Main {
 		return min;
 	}
 
-	// c°¡ ¹Ù¶óº¸´Â ¹æÇâÀ» °¨½ÃÇÏ°Ô ÇÑ´Ù (a°¡ -1ÀÌ¸é ÇØÁ¦ °¡´É)
+	// cê°€ ë°”ë¼ë³´ëŠ” ë°©í–¥ì„ ê°ì‹œí•˜ê²Œ í•œë‹¤ (aê°€ -1ì´ë©´ í•´ì œ ê°€ëŠ¥)
 	static void detect(CCTV c, int a) {
 		int y = c.y; int x = c.x; int d = c.dir;
 		while (inRange(y, x) && MAP[y][x] != 6) {
 			MAP[y][x] += (10 * a);
 			y += dy[d]; x += dx[d];
 		}
-		// typeÀÌ 2°Å³ª 5¸é µÚ¿¡µµ °¨½Ã
+		// typeì´ 2ê±°ë‚˜ 5ë©´ ë’¤ì—ë„ ê°ì‹œ
 		if (c.type == 2 || c.type == 5) {
 			y = c.y; x = c.x; d = CCTV.back[c.dir];
 			while (inRange(y, x) && MAP[y][x] != 6) {
@@ -59,7 +59,7 @@ public class Main {
 				y += dy[d]; x += dx[d];
 			}
 		}
-		// typeÀÌ 3 ÀÌ»óÀÌ¸é ¿À¸¥ÂÊµµ °¨½Ã
+		// typeì´ 3 ì´ìƒì´ë©´ ì˜¤ë¥¸ìª½ë„ ê°ì‹œ
 		if (c.type >= 3) {
 			y = c.y; x = c.x; d = CCTV.right[c.dir];
 			while (inRange(y, x) && MAP[y][x] != 6) {
@@ -98,18 +98,18 @@ public class Main {
 
 class CCTV {
 	int y; int x; int type;
-	int dir; // [0, 4) : »óÇÏÁÂ¿ì
+	int dir; // [0, 4) : ìƒí•˜ì¢Œìš°
 
 	public CCTV(int y, int x, int t) {
 		this.y = y; this.x = x;
 		type = t; dir = 0;
 	}
 
-	// »óÇÏÁÂ¿ì ¹æÇâ ±âÁØ
+	// ìƒí•˜ì¢Œìš° ë°©í–¥ ê¸°ì¤€
 	static final int[] left  = {2, 3, 1, 0};
 	static final int[] right = {3, 2, 0, 1};
 	static final int[] back  = {1, 0, 3, 2};
 
-	// ½Ã°è¹æÇâÀ¸·Î µ¹¸°´Ù
+	// ì‹œê³„ë°©í–¥ìœ¼ë¡œ ëŒë¦°ë‹¤
 	public void rotate() {dir = right[dir];}
 }

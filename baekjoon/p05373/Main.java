@@ -23,7 +23,7 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int TC = Integer.parseInt(br.readLine());
 		while (TC-- > 0) {
-			// 6°³ÀÇ ¸éÀ¸·Î ÀÌ·ç¾îÁø ·çºò½º Å¥ºê
+			// 6ê°œì˜ ë©´ìœ¼ë¡œ ì´ë£¨ì–´ì§„ ë£¨ë¹…ìŠ¤ íë¸Œ
 			Face[] rubik = new Face[6];
 			rubik[0] = new Face(Direction.UP);
 			rubik[3] = new Face(Direction.BACK);
@@ -76,18 +76,18 @@ public class Main {
 enum Direction { UP, DOWN, FRONT, BACK, LEFT, RIGHT }
 enum Color { WHITE, YELLOW, RED, ORANGE, GREEN, BLUE }
 
-// ·çºò½º Å¥ºêÀÇ ÇÑ ¸é
+// ë£¨ë¹…ìŠ¤ íë¸Œì˜ í•œ ë©´
 class Face {
-	Direction dir; // ·çºò½º Å¥ºêÀÇ ¸éÀÌ ¹Ù¶óº¸°í ÀÖ´Â ¹æÇâ
-	Cube[] cube; // ·çºò½º Å¥ºêÀÇ ¸éÀÇ °¡¿îµ¥ Á¤À°¸éÃ¼¸¦ Á¦¿ÜÇÏ°í ½Ã°è¹æÇâ ¼ø¼­
+	Direction dir; // ë£¨ë¹…ìŠ¤ íë¸Œì˜ ë©´ì´ ë°”ë¼ë³´ê³  ìžˆëŠ” ë°©í–¥
+	Cube[] cube; // ë£¨ë¹…ìŠ¤ íë¸Œì˜ ë©´ì˜ ê°€ìš´ë° ì •ìœ¡ë©´ì²´ë¥¼ ì œì™¸í•˜ê³  ì‹œê³„ë°©í–¥ ìˆœì„œ
 	
-	// dir¹æÇâÀ» ¹Ù¶óº¸´Â ·çºò½º Å¥ºêÀÇ ÇÑ ¸éÀ» ÃÊ±âÈ­
+	// dirë°©í–¥ì„ ë°”ë¼ë³´ëŠ” ë£¨ë¹…ìŠ¤ íë¸Œì˜ í•œ ë©´ì„ ì´ˆê¸°í™”
 	public Face(Direction d) {
 		dir = d; cube = new Cube[8];
 		for (int i = 0; i < 8; i++) cube[i] = new Cube();
 	}
 	
-	// ÀÌ ¸éÀ» ¹Ù¶óº» Ã¤ ½Ã°è¹æÇâ, È¤Àº ½Ã°è ¹Ý´ë¹æÇâÀ¸·Î È¸Àü
+	// ì´ ë©´ì„ ë°”ë¼ë³¸ ì±„ ì‹œê³„ë°©í–¥, í˜¹ì€ ì‹œê³„ ë°˜ëŒ€ë°©í–¥ìœ¼ë¡œ íšŒì „
 	public void turn(Direction d) {
 		switch(d) {
 		case LEFT : turnRight(); turnRight(); turnRight(); break;
@@ -95,9 +95,9 @@ class Face {
 		}
 	}
 	
-	// ¸éÀ» ¹Ù¶óº¸´Â ¹æÇâ ±âÁØÀ¸·Î ¿À¸¥ÂÊÀ¸·Î È¸Àü
+	// ë©´ì„ ë°”ë¼ë³´ëŠ” ë°©í–¥ ê¸°ì¤€ìœ¼ë¡œ ì˜¤ë¥¸ìª½ìœ¼ë¡œ íšŒì „
 	private void turnRight() {
-		// ÇöÀç »óÅÂÀÇ ¸ð½ÀÀ» ±×´ë·Î º¹»çÇÑµÚ ÀûÀýÇÏ°Ô ±¼¸°´Ù
+		// í˜„ìž¬ ìƒíƒœì˜ ëª¨ìŠµì„ ê·¸ëŒ€ë¡œ ë³µì‚¬í•œë’¤ ì ì ˆí•˜ê²Œ êµ´ë¦°ë‹¤
 		Cube[] rolled = new Cube[8];
 		for (int i = 0; i < 8; i++) {rolled[i] = new Cube(); rolled[i].clone(cube[i]);}
 		for (int i = 0; i < 8; i++) {
@@ -120,7 +120,7 @@ class Face {
 	private static final char[] lower = { 'w', 'y', 'r', 'o', 'g', 'b' };
 	private static final int[] sort = {0, 1, 2, 7, 0, 3, 6, 5, 4};
 	
-	// CubeµéÀÌ ·çºò½º Å¥ºêÀÇ ¸éÀÌ ¹Ù¶óº¸°í ÀÖ´Â ¹æÇâÀ» ¹ÝÈ¯
+	// Cubeë“¤ì´ ë£¨ë¹…ìŠ¤ íë¸Œì˜ ë©´ì´ ë°”ë¼ë³´ê³  ìžˆëŠ” ë°©í–¥ì„ ë°˜í™˜
 	@Override
 	public String toString() {
 		int d = dir.ordinal();
@@ -135,22 +135,22 @@ class Face {
 	
 }
 
-//¸é¿¡ 8°³ Á¸ÀçÇÏ´Â Á¤À°¸éÃ¼
+//ë©´ì— 8ê°œ ì¡´ìž¬í•˜ëŠ” ì •ìœ¡ë©´ì²´
 class Cube {
-	Color[] color; // 6¹æÇâÀÇ ¸éÀÌ ³ªÅ¸³»´Â »ö±ò
+	Color[] color; // 6ë°©í–¥ì˜ ë©´ì´ ë‚˜íƒ€ë‚´ëŠ” ìƒ‰ê¹”
 	
-	// ÃÊ±âÈ­´Â ·çºò½º Å¥ºêÀÇ ÃÊ±â »ö±ò ±¸¼º°ú °°À½
+	// ì´ˆê¸°í™”ëŠ” ë£¨ë¹…ìŠ¤ íë¸Œì˜ ì´ˆê¸° ìƒ‰ê¹” êµ¬ì„±ê³¼ ê°™ìŒ
 	public Cube() {
 		color = new Color[6];
 		for (int i = 0; i < 6; i++) color[i] = Color.values()[i];
 	}
 	
-	// ´Ù¸¥ Å¥ºê¸¦ ±×´ë·Î µû¶ó ¹Ù²Û´Ù
+	// ë‹¤ë¥¸ íë¸Œë¥¼ ê·¸ëŒ€ë¡œ ë”°ë¼ ë°”ê¾¼ë‹¤
 	public void clone(Cube o) {
 		for (int i = 0; i < 6; i++) color[i] = o.color[i];
 	}
 	
-	// d¹æÇâÀ¸·Î ±¼¸°´Ù (»óÇÏÁÂ¿ì¸¸ °¡´É)
+	// dë°©í–¥ìœ¼ë¡œ êµ´ë¦°ë‹¤ (ìƒí•˜ì¢Œìš°ë§Œ ê°€ëŠ¥)
 	public void roll(Direction d) {
 		switch(d) {
 		case FRONT : rollFront(); break;
@@ -176,7 +176,7 @@ class Cube {
 		color[5] = temp;
 	}
 	
-	// ¿ÞÂÊ È¤Àº ¿À¸¥ÂÊÀ¸·Î È¸Àü½ÃÅ²´Ù 
+	// ì™¼ìª½ í˜¹ì€ ì˜¤ë¥¸ìª½ìœ¼ë¡œ íšŒì „ì‹œí‚¨ë‹¤ 
 	public void rotate(Direction d) {
 		switch(d) {
 		case LEFT : clockwise(); clockwise(); clockwise(); break;

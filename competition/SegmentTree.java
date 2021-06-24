@@ -3,10 +3,10 @@ package competition;
 public class SegmentTree {
 
 }
-//±¸°£ ÃÖ¼Ò Äõ¸®
+//êµ¬ê°„ ìµœì†Œ ì¿¼ë¦¬
 class RMQ {
-	int n; // ¹è¿­ÀÇ Å©±â
-	int[] rangeMin; // ±¸°£ ³ëµå
+	int n; // ë°°ì—´ì˜ í¬ê¸°
+	int[] rangeMin; // êµ¬ê°„ ë…¸ë“œ
 	static final int INF = 1000000001;
 
 	public RMQ(int[] array) {
@@ -14,12 +14,12 @@ class RMQ {
 		init(array, 0, n - 1, 1);
 	}
 
-	// node°¡ array[left, right]¸¦ Ç¥ÇöÇÒ ¶§,
-	// node¸¦ ·çÆ®·Î ÇÏ´Â ¼­ºêÆ®¸®¸¦ ÃÊ±âÈ­ ÇÏ°í ÀÌ ±¸°£ÀÇ ÃÖ¼Ú°ª ¹İÈ¯
+	// nodeê°€ array[left, right]ë¥¼ í‘œí˜„í•  ë•Œ,
+	// nodeë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” ì„œë¸ŒíŠ¸ë¦¬ë¥¼ ì´ˆê¸°í™” í•˜ê³  ì´ êµ¬ê°„ì˜ ìµœì†Ÿê°’ ë°˜í™˜
 	int init(int[] array, int node, int left, int right) {
-		// ¸®ÇÁ ³ëµå¿¡ µµ´ŞÇÑ °æ¿ì ¹Ù·Î ÃÊ±âÈ­ÇÑ´Ù
+		// ë¦¬í”„ ë…¸ë“œì— ë„ë‹¬í•œ ê²½ìš° ë°”ë¡œ ì´ˆê¸°í™”í•œë‹¤
 		if (left == right) {return rangeMin[node] = array[left];}
-		// ÀÌ ¿Ü¿¡ °æ¿ì ¸ğµÎ Àç±Í È£ÃâÀ» ÅëÇØ ÇöÀç ³ëµå¸¦ ÃÊ±âÈ­ÇÑ´Ù
+		// ì´ ì™¸ì— ê²½ìš° ëª¨ë‘ ì¬ê·€ í˜¸ì¶œì„ í†µí•´ í˜„ì¬ ë…¸ë“œë¥¼ ì´ˆê¸°í™”í•œë‹¤
 		int mid = (left + right) / 2;
 		return rangeMin[node] =
 		Math.min(init(array, 2 * node, left, mid),
@@ -27,42 +27,42 @@ class RMQ {
 	}
 
 	private int query(int left, int right, int node, int nodeLeft, int nodeRight) {
-		// [left, right]¿Í node°¡ Ç¥ÇöÇÏ´Â ±¸°£ÀÇ ±³ÁıÇÕÀÌ °øÁıÇÕÀÎ °æ¿ì
+		// [left, right]ì™€ nodeê°€ í‘œí˜„í•˜ëŠ” êµ¬ê°„ì˜ êµì§‘í•©ì´ ê³µì§‘í•©ì¸ ê²½ìš°
 		if (right < nodeLeft || nodeRight < left) {return INF;}
-		// node°¡ Ç¥ÇöÇÏ´Â ±¸°£ÀÌ ¿ÏÀüÈ÷ Æ÷ÇÔµÇ´Â °æ¿ì
+		// nodeê°€ í‘œí˜„í•˜ëŠ” êµ¬ê°„ì´ ì™„ì „íˆ í¬í•¨ë˜ëŠ” ê²½ìš°
 		if (left <= nodeLeft && nodeRight <= right) {return rangeMin[node];}
-		// ÀÌ ¿Ü¿¡ °æ¿ì ¸ğµÎ Àç±Í È£ÃâÀ» ÅëÇØ ´äÀ» ¸¸µç´Ù
+		// ì´ ì™¸ì— ê²½ìš° ëª¨ë‘ ì¬ê·€ í˜¸ì¶œì„ í†µí•´ ë‹µì„ ë§Œë“ ë‹¤
 		int mid = (nodeLeft + nodeRight) / 2;
 		return Math.min(query(left, right, 2 * node, nodeLeft, mid),
 				        query(left, right, 2 * node + 1, mid + 1, nodeRight));
 	}
 
-	// ¿ÜºÎ È£Ãâ ÀÎÅÍÆäÀÌ½º
+	// ì™¸ë¶€ í˜¸ì¶œ ì¸í„°í˜ì´ìŠ¤
 	int query(int left, int right) {
 		return query(left, right, 1, 0, n - 1);
 	}
 
-	// ±¸°£ÀÇ indexÀÇ °ªÀ» newValue·Î ¹Ù²Û ÈÄ ±¸°£ ³ëµåÀÇ °ªÀ» ¹İÈ¯
+	// êµ¬ê°„ì˜ indexì˜ ê°’ì„ newValueë¡œ ë°”ê¾¼ í›„ êµ¬ê°„ ë…¸ë“œì˜ ê°’ì„ ë°˜í™˜
 	private int update(int index, int newValue, int node, int left, int right) {
-		// ¹Ù²Ù·Á´Â indexÀÇ °ª°ú »ó°ü¾ø´Â ±¸°£ÀÌ¸é ¹«½Å
+		// ë°”ê¾¸ë ¤ëŠ” indexì˜ ê°’ê³¼ ìƒê´€ì—†ëŠ” êµ¬ê°„ì´ë©´ ë¬´ì‹ 
 		if (index < left || right < index) {return rangeMin[node];}
-		// ¸®ÇÁ ³ëµå¿¡ µµ´ŞÇÑ °æ¿ì »õ·Î ÃÊ±âÈ­ÇÑ´Ù
+		// ë¦¬í”„ ë…¸ë“œì— ë„ë‹¬í•œ ê²½ìš° ìƒˆë¡œ ì´ˆê¸°í™”í•œë‹¤
 		if (left == right) {return rangeMin[node] = newValue;}
-		// ÀÌ ¿Ü¿¡ °æ¿ì ¸ğµÎ Àç±Í È£ÃâÀ» ÅëÇØ ÇöÀç ³ëµå¸¦ ÃÊ±âÈ­ÇÑ´Ù
+		// ì´ ì™¸ì— ê²½ìš° ëª¨ë‘ ì¬ê·€ í˜¸ì¶œì„ í†µí•´ í˜„ì¬ ë…¸ë“œë¥¼ ì´ˆê¸°í™”í•œë‹¤
 		int mid = (left + right) / 2;
 		return rangeMin[node] =
 		Math.min(update(index, newValue, 2 * node, left, mid),
 				 update(index, newValue, 2 * node + 1, mid + 1, right));
 	}
 
-	// ¿ÜºÎ È£Ãâ ÀÎÅÍÆäÀÌ½º
+	// ì™¸ë¶€ í˜¸ì¶œ ì¸í„°í˜ì´ìŠ¤
 	int update(int index, int newValue) {
 		return update(index, newValue, 1, 0, n - 1);
 	}
 
 }
 
-// ÆæÀ¨ Æ®¸®
+// íœìœ… íŠ¸ë¦¬
 class FenwickTree {
 	long[] tree;
 	// 1-based
@@ -86,10 +86,10 @@ class FenwickTree {
 
 }
 
-// ¹ÙÅÒ¾÷ ±¸°£ ÇÕ Æ®¸®
+// ë°”í…€ì—… êµ¬ê°„ í•© íŠ¸ë¦¬
 class BottomUp {
-	int length; // ½ÇÁ¦ ¹è¿­ÀÇ ±æÀÌ
-	int N = 262144; // ½ÇÁ¦ ¹è¿­ÀÇ ±æÀÌº¸´Ù Å« °¡Àå ÀÛÀº 2ÀÇ °ÅµìÁ¦°ö
+	int length; // ì‹¤ì œ ë°°ì—´ì˜ ê¸¸ì´
+	int N = 262144; // ì‹¤ì œ ë°°ì—´ì˜ ê¸¸ì´ë³´ë‹¤ í° ê°€ì¥ ì‘ì€ 2ì˜ ê±°ë“­ì œê³±
 	int[] t = new int[2 * N]; 
 	
 	BottomUp (int[] array) {

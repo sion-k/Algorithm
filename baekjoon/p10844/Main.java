@@ -6,9 +6,9 @@ public class Main {
 	static int[][] cache;
 	static int N;
 	
-	// [1, N]¹øÂ° ¼ıÀÚ¸¦ d¸¦ °ñ¶úÀ» ¶§ ´Ù¿À´Â °è´Ü ¼ö °æ¿ìÀÇ ¼ö
+	// [1, N]ë²ˆì§¸ ìˆ«ìë¥¼ dë¥¼ ê³¨ëì„ ë•Œ ë‹¤ì˜¤ëŠ” ê³„ë‹¨ ìˆ˜ ê²½ìš°ì˜ ìˆ˜
 	static int stair(int i, int d) {
-		// ±âÀú »ç·Ê : ¸¶Áö¸· ±ÛÀÚ´Â ¹» °í¸£°Ç ÇÑ°¡Áö
+		// ê¸°ì € ì‚¬ë¡€ : ë§ˆì§€ë§‰ ê¸€ìëŠ” ë­˜ ê³ ë¥´ê±´ í•œê°€ì§€
 		if (i == N) {return 1;}
 		if (cache[i][d] != 0) {return cache[i][d];}
 		if (d == 0) {return cache[i][d] = stair(i + 1, 1);}

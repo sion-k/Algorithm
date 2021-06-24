@@ -23,13 +23,13 @@ public class Main {
 			S[i] = Integer.parseInt(st.nextToken());
 			sorted.add(S[i]);
 		}
-		// ÁÂÇ¥ ¾ÐÃà
+		// ì¢Œí‘œ ì••ì¶•
 		Collections.sort(sorted);
 		for (int x : sorted) if (compress.get(x) == null) compress.put(x, index++);
 		for (int i = 0; i < N; i++) S[i] = compress.get(S[i]);
 		FenwickTree t = new FenwickTree(N);
 		for (int i = 1; i <= N; i++) t.add(i, 1);
-		// P[x] = x°¡ SÀÇ ¸î¹øÂ°¿¡ ÀÖ´ÂÁö ¹ÝÈ¯ (1-based), x°¡ ¿©·¯°³ÀÏ ¼ö ÀÖÀ¸¹Ç·Î ÀÛÀº °Í ºÎÅÍ 
+		// P[x] = xê°€ Sì˜ ëª‡ë²ˆì§¸ì— ìžˆëŠ”ì§€ ë°˜í™˜ (1-based), xê°€ ì—¬ëŸ¬ê°œì¼ ìˆ˜ ìžˆìœ¼ë¯€ë¡œ ìž‘ì€ ê²ƒ ë¶€í„° 
 		ArrayList<PriorityQueue<Integer>> P = new ArrayList<>(N);
 		for (int i = 0; i <= N; i++) P.add(new PriorityQueue<>());
 		for (int i = 0; i < N; i++) P.get(S[i]).add(i + 1);

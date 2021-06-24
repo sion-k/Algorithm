@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class Main {
 	static int[][] PIXEL;
 	
-	// ¸ğµÎ ÇÑ°¡Áö·Î¸¸ µÇ¾îÀÖ´ÂÁö ¹İÈ¯
+	// ëª¨ë‘ í•œê°€ì§€ë¡œë§Œ ë˜ì–´ìˆëŠ”ì§€ ë°˜í™˜
 	static boolean filled(int y1, int x1, int y2, int x2) {
 		int comp = PIXEL[y1][x1];
 		for (int i = y1; i <= y2; i++) {
@@ -20,7 +20,7 @@ public class Main {
 	
 	static String quadTree(int y1, int x1, int y2, int x2) {
 		if (filled(y1, x1, y2, x2)) {return PIXEL[y1][x1] + "";}
-		int L = (y2 - y1 + 1) / 2; // 4°³·Î ÂÉ°µ Á¤»ç°¢Çü ÇÑ º¯ÀÇ ±æÀÌ
+		int L = (y2 - y1 + 1) / 2; // 4ê°œë¡œ ìª¼ê°  ì •ì‚¬ê°í˜• í•œ ë³€ì˜ ê¸¸ì´
 		String NW = quadTree(y1, x1, y1 + L - 1, x1 + L - 1);
 		String NE = quadTree(y1, x1 + L, y1 + L - 1, x2);
 		String SW = quadTree(y1 + L, x1, y2, x1 + L - 1);

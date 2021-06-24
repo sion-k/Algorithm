@@ -18,7 +18,7 @@ public class Main {
 		bw.newLine();
 	}
 	
-	// [1, N] ÀÚ¿¬¼öÁß¿¡¼­ M°³¸¦ °í¸¥ ¼ö¿­ (Áßº¹ °¡´É)
+	// [1, N] ìì—°ìˆ˜ì¤‘ì—ì„œ Mê°œë¥¼ ê³ ë¥¸ ìˆ˜ì—´ (ì¤‘ë³µ ê°€ëŠ¥)
 	static void pick(int N , int M) throws IOException {
 		if (M == 0) {print(); return;}
 		

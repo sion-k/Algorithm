@@ -15,9 +15,9 @@ public class Main {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int N = Integer.parseInt(br.readLine());
 		PriorityQueue<Integer> low = 
-		new PriorityQueue<>(N / 2, Collections.reverseOrder()); // Áß°£°ª ¾Æ·¡ ÂÊ
-		PriorityQueue<Integer> high = new PriorityQueue<>(N / 2);; // Áß°£°ª À§ ÂÊ
-		// NÀÌ 2ÀÌÇÏÀÎ °æ¿ì ¿¹¿Ü Ã³¸®
+		new PriorityQueue<>(N / 2, Collections.reverseOrder()); // ì¤‘ê°„ê°’ ì•„ë˜ ìª½
+		PriorityQueue<Integer> high = new PriorityQueue<>(N / 2);; // ì¤‘ê°„ê°’ ìœ„ ìª½
+		// Nì´ 2ì´í•˜ì¸ ê²½ìš° ì˜ˆì™¸ ì²˜ë¦¬
 		if (N == 1) {
 			bw.write(br.readLine()); bw.newLine();
 			return;
@@ -48,9 +48,9 @@ public class Main {
 			if (Math.abs(low.size() - high.size()) >= 2) {
 				fewer.offer(richer.poll());
 			}
-			if (low.size() == high.size()) {// Áß°£ °ªÀÌ 2°³
+			if (low.size() == high.size()) {// ì¤‘ê°„ ê°’ì´ 2ê°œ
 				bw.write(String.valueOf(Math.min(low.peek(), high.peek())));
-			} else { //Áß°£ °ªÀº Å«ÂÊ
+			} else { //ì¤‘ê°„ ê°’ì€ í°ìª½
 				bw.write(String.valueOf(richer.peek()));
 			}
 			bw.newLine();

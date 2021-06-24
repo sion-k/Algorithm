@@ -12,15 +12,15 @@ public class Main {
 	static int C;
 	static int[][] cache;
 
-	// [i, ...] ±âÂ÷¿¡¼­ k°³ÀÇ ¼ÒÇü ±â°üÂ÷¸¦ ÀÌ¿ëÇØ ¿î¼ÛÇÒ ¼ö ÀÖ´Â ÃÖ´ë ¼Õ´Ô ¼ö
+	// [i, ...] ê¸°ì°¨ì—ì„œ kê°œì˜ ì†Œí˜• ê¸°ê´€ì°¨ë¥¼ ì´ìš©í•´ ìš´ì†¡í•  ìˆ˜ ìˆëŠ” ìµœëŒ€ ì†ë‹˜ ìˆ˜
 	static int dp(int i, int k) {
 		if (i == N + 1 || k == 0) {return 0;}
 		if (cache[i][k] != -1) {return cache[i][k];}
 		int max = 0;
-		// iºÎÅÍ ¼ÒÇü ±â°üÂ÷¸¦ ¿î¿ëÇÏ´Â °æ¿ì
+		// ië¶€í„° ì†Œí˜• ê¸°ê´€ì°¨ë¥¼ ìš´ìš©í•˜ëŠ” ê²½ìš°
 		int tail = Math.min(N, i + C - 1);
 		max = Math.max(max, pSum[tail] - pSum[i - 1] + dp(tail + 1, k - 1));
-		// i + 1ºÎÅÍ Àç±Í È£Ãâ
+		// i + 1ë¶€í„° ì¬ê·€ í˜¸ì¶œ
 		max = Math.max(max, dp(i + 1, k));
 		return cache[i][k] = max;
 	}

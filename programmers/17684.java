@@ -7,7 +7,7 @@ import java.util.List;
 class Compression {
 
     public int[] solution(String msg) {
-        // ¸ğµç ¾ËÆÄºª¿¡ ´ëÇØ¼­ map ÃÊ±âÈ­
+        // ëª¨ë“  ì•ŒíŒŒë²³ì— ëŒ€í•´ì„œ map ì´ˆê¸°í™”
         HashMap<String, Integer> map = new HashMap<>();
         for (int i = 0; i < 26; i++)
             map.put(String.valueOf((char)('A' + i) + ""), i + 1);
@@ -16,14 +16,14 @@ class Compression {
         List<Integer> answer = new ArrayList<>();
         for (int i = 0; i < N; i++) {
             StringBuilder sub = new StringBuilder();
-            // »çÀü¿¡ Á¸ÀçÇÏ´Â °¡Àå ±ä ¹®ÀÚ¿­ sub¸¦ Ã£´Â´Ù
+            // ì‚¬ì „ì— ì¡´ì¬í•˜ëŠ” ê°€ì¥ ê¸´ ë¬¸ìì—´ subë¥¼ ì°¾ëŠ”ë‹¤
             while (i < N &&
                    map.get(new StringBuilder(sub).append(S[i]).toString()) != null) {
                 sub.append(S[i]); i++;
             }
-            // sub¿¡ ÇØ´çÇÏ´Â »öÀÎ ¹øÈ£¸¦ Ãâ·Â
+            // subì— í•´ë‹¹í•˜ëŠ” ìƒ‰ì¸ ë²ˆí˜¸ë¥¼ ì¶œë ¥
             answer.add(map.get(sub.toString()));
-            // ´ÙÀ½ ±ÛÀÚ°¡ ³²¾Æ ÀÖ´Ù¸é »çÀü¿¡ µî·Ï
+            // ë‹¤ìŒ ê¸€ìê°€ ë‚¨ì•„ ìˆë‹¤ë©´ ì‚¬ì „ì— ë“±ë¡
             if (i < N) map.put(sub.append(S[i]).toString(), newIndex++);
             i--;
         }

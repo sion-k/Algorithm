@@ -24,7 +24,7 @@ public class Main {
 				S[i][1] = Integer.parseInt(st.nextToken());
 			}
 			double max = 0;
-			// ½Ãµµ °¡´ÉÇÑ ¸ğµç Á¶ÇÕÀ» È®ÀÎÇÑ´Ù
+			// ì‹œë„ ê°€ëŠ¥í•œ ëª¨ë“  ì¡°í•©ì„ í™•ì¸í•œë‹¤
 			for (int pick = 1; pick < (1 << N); pick++) {
 				if (Integer.bitCount(pick) < C) continue;
 				int cost = 0;
@@ -32,7 +32,7 @@ public class Main {
 					if ((pick & (1 << i)) > 0) cost += S[i][0];
 				if (cost > M) continue;
 				double sum = 0;
-				// pickÀÇ ºÎºĞÁıÇÕ ¸ğµÎ ¼øÈ¸, Á¤È®ÇÏ°Ô C¸í ¼º°øÇÏ´Â ¸ğµç È®·üÀ» ´õÇÑ´Ù
+				// pickì˜ ë¶€ë¶„ì§‘í•© ëª¨ë‘ ìˆœíšŒ, ì •í™•í•˜ê²Œ Cëª… ì„±ê³µí•˜ëŠ” ëª¨ë“  í™•ë¥ ì„ ë”í•œë‹¤
 				for (int subset = pick; subset != 0; subset = ((subset - 1) & pick)) {
 					if (Integer.bitCount(subset) != C) continue;
 					double temp = 1;

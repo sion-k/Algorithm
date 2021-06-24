@@ -21,15 +21,15 @@ public class Main {
 		}
 	}
 
-	static int N; // Á¤Á¡ÀÇ °³¼ö, Á¤Á¡ÀÇ ¹øÈ£´Â [1, N]ÀÌ´Ù
-	static ArrayList<ArrayList<Pair>> adj; // ÀÎÁ¢ ¸®½ºÆ® ¹æ½Ä Ç¥Çö
+	static int N; // ì •ì ì˜ ê°œìˆ˜, ì •ì ì˜ ë²ˆí˜¸ëŠ” [1, N]ì´ë‹¤
+	static ArrayList<ArrayList<Pair>> adj; // ì¸ì ‘ ë¦¬ìŠ¤íŠ¸ ë°©ì‹ í‘œí˜„
 	static final int INF = 500000001;
 
-	// ½ÃÀÛÁ¡ src·Î ºÎÅÍ ÃÖ´Ü °æ·Î ±æÀÌ¸¦ ´ãÀº ¹è¿­À» ¹İÈ¯ÇÑ´Ù
+	// ì‹œì‘ì  srcë¡œ ë¶€í„° ìµœë‹¨ ê²½ë¡œ ê¸¸ì´ë¥¼ ë‹´ì€ ë°°ì—´ì„ ë°˜í™˜í•œë‹¤
 	static int[] dijkstra(int src) {
 		int[] dist = new int[N + 1];
-		Arrays.fill(dist, INF);// ¾î¶² °æ·Îµµ ÀÌº¸´Ù Å¬ ¼ö ¾øÀ½
-		dist[src] = 0;// src ÀÚ½ÅÀ¸·ÎÀÇ ÃÖ´Ü °æ·Î ±æÀÌ´Â 0
+		Arrays.fill(dist, INF);// ì–´ë–¤ ê²½ë¡œë„ ì´ë³´ë‹¤ í´ ìˆ˜ ì—†ìŒ
+		dist[src] = 0;// src ìì‹ ìœ¼ë¡œì˜ ìµœë‹¨ ê²½ë¡œ ê¸¸ì´ëŠ” 0
 		PriorityQueue<Pair> pq = new PriorityQueue<>();
 		pq.offer(new Pair(src, 0));
 		while(!pq.isEmpty()) {
@@ -38,7 +38,7 @@ public class Main {
 			for (int i = 0; i < adj.get(here).size(); i++) {
 				int there = adj.get(here).get(i).num;
 				int nextDist = cost + adj.get(here).get(i).cost;
-				// ±âÁ¸¿¡ ¹ß°ßÇÑ °Íº¸´Ù ´õ ÂªÀº °æ·Î¸¦ ¹ß°ß ÇÑ °æ¿ì
+				// ê¸°ì¡´ì— ë°œê²¬í•œ ê²ƒë³´ë‹¤ ë” ì§§ì€ ê²½ë¡œë¥¼ ë°œê²¬ í•œ ê²½ìš°
 				if (dist[there] > nextDist) {
 					dist[there] = nextDist;
 					pq.offer(new Pair(there, nextDist));
@@ -56,7 +56,7 @@ public class Main {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 			N = Integer.parseInt(st.nextToken());
 			adj = new ArrayList<>(N + 1);
-			adj.add(null); // 0¹øÂ° Á¤Á¡Àº ¾øÀ½
+			adj.add(null); // 0ë²ˆì§¸ ì •ì ì€ ì—†ìŒ
 			for (int i = 1; i <= N; i++) {adj.add(new ArrayList<>());}
 
 			int M = Integer.parseInt(st.nextToken());
@@ -72,23 +72,23 @@ public class Main {
 				int from = Integer.parseInt(st.nextToken());
 				int to = Integer.parseInt(st.nextToken());
 				int weight = Integer.parseInt(st.nextToken());
-				adj.get(from).add(new Pair(to, weight));// ¾ç¹æÇâ °£¼±
-				adj.get(to).add(new Pair(from, weight));// °¡ÁßÄ¡´Â [1, 1000]
+				adj.get(from).add(new Pair(to, weight));// ì–‘ë°©í–¥ ê°„ì„ 
+				adj.get(to).add(new Pair(from, weight));// ê°€ì¤‘ì¹˜ëŠ” [1, 1000]
 			}
 
 			ArrayList<Integer> answer = new ArrayList<>();
-			int[] startTo = dijkstra(s); // ½ÃÀÛÁ¡¿¡¼­ ´ÙÀÍ½ºÆ®¶ó
-			int gh = dijkstra(g)[h]; // g-h»çÀÌ ÃÖ´Ü °Å¸®
+			int[] startTo = dijkstra(s); // ì‹œì‘ì ì—ì„œ ë‹¤ìµìŠ¤íŠ¸ë¼
+			int gh = dijkstra(g)[h]; // g-hì‚¬ì´ ìµœë‹¨ ê±°ë¦¬
 			for (int i = 0; i < T; i++) {
 				int cand = Integer.parseInt(br.readLine());
-				// ¾ÖÃÊ¿¡ ÈÄº¸Á¡¿¡ µµ´ŞÇÒ ¼ö ¾ø´Â °æ¿ì Á¦¿Ü
+				// ì• ì´ˆì— í›„ë³´ì ì— ë„ë‹¬í•  ìˆ˜ ì—†ëŠ” ê²½ìš° ì œì™¸
 				if (startTo[cand] >= INF) {continue;}
-				int[] candTo = dijkstra(cand); // ÈÄº¸Á¡¿¡¼­ ´ÙÀÍ½ºÆ®¶ó
-				// g-h·Î ÀÌµ¿ÇÒ ¶§ ÈÄº¸Á¡±îÁö ÃÖ´Ü °æ·Î ±æÀÌ
+				int[] candTo = dijkstra(cand); // í›„ë³´ì ì—ì„œ ë‹¤ìµìŠ¤íŠ¸ë¼
+				// g-hë¡œ ì´ë™í•  ë•Œ í›„ë³´ì ê¹Œì§€ ìµœë‹¨ ê²½ë¡œ ê¸¸ì´
 				int ghCand = startTo[g] + gh + candTo[h];
-				// h-g·Î ÀÌµ¿ÇÒ ¶§ ÈÄº¸Á¡±îÁö ÃÖ´Ü °æ·Î ±æÀÌ
+				// h-gë¡œ ì´ë™í•  ë•Œ í›„ë³´ì ê¹Œì§€ ìµœë‹¨ ê²½ë¡œ ê¸¸ì´
 				int hgCand = startTo[h] + gh + candTo[g];
-				// µÑÁß Àû¾îµµ ÇÏ³ª´Â ÈÄº¸Á¡±îÁöÀÇ ÃÖ´Ü °æ·Î¿Í °°¾Æ¾ß ÈÄº¸°¡ µÉ ¼ö ÀÖ´Ù
+				// ë‘˜ì¤‘ ì ì–´ë„ í•˜ë‚˜ëŠ” í›„ë³´ì ê¹Œì§€ì˜ ìµœë‹¨ ê²½ë¡œì™€ ê°™ì•„ì•¼ í›„ë³´ê°€ ë  ìˆ˜ ìˆë‹¤
 				if (startTo[cand] == ghCand || startTo[cand] == hgCand) {
 					answer.add(cand);
 				}

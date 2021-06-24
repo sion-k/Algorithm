@@ -65,17 +65,17 @@ class Board {
 		return max;
 	}
 
-	// d : »óÇÏÁÂ¿ì [0, 4)·Î ÀÌµ¿½ÃÅ² Board¸¦ ¹İÈ¯
+	// d : ìƒí•˜ì¢Œìš° [0, 4)ë¡œ ì´ë™ì‹œí‚¨ Boardë¥¼ ë°˜í™˜
 	public Board shift(int d) {
 		int[][] nextMap = new int[N][N];
 		switch (d) {
 			case 0 :
 				for (int j = 0; j < N; j++) {
-					// ¿­¿¡ Á¸ÀçÇÏ´Â ¼ö¸¦ ¼ø¼­´ë·Î ´ã´Â´Ù
+					// ì—´ì— ì¡´ì¬í•˜ëŠ” ìˆ˜ë¥¼ ìˆœì„œëŒ€ë¡œ ë‹´ëŠ”ë‹¤
 					List<Integer> col = new ArrayList<Integer>();
 					for (int i = 0; i < N; i++)
 						if (map[i][j] != 0) col.add(map[i][j]);
-					// ¹æÇâÀÌ À§ÀÎ°æ¿ì À§¿¡¼­ºÎÅÍ Â÷·Ê·Î ¿¬¼ÓÇÑ ¿ø¼Ò¸¦ Ã£´Â´Ù
+					// ë°©í–¥ì´ ìœ„ì¸ê²½ìš° ìœ„ì—ì„œë¶€í„° ì°¨ë¡€ë¡œ ì—°ì†í•œ ì›ì†Œë¥¼ ì°¾ëŠ”ë‹¤
 					List<Integer> nextCol = new ArrayList<Integer>();
 					for (int i = 0; i < col.size(); i++) {
 						if (i + 1 < col.size() && col.get(i).equals(col.get(i + 1))) {
@@ -91,12 +91,12 @@ class Board {
 				break;
 			case 1 :
 				for (int j = 0; j < N; j++) {
-					// ¿­¿¡ Á¸ÀçÇÏ´Â ¼ö¸¦ °Å²Ù·Î ´ã´Â´Ù
+					// ì—´ì— ì¡´ì¬í•˜ëŠ” ìˆ˜ë¥¼ ê±°ê¾¸ë¡œ ë‹´ëŠ”ë‹¤
 					List<Integer> col = new ArrayList<Integer>();
 					for (int i = N - 1; i >= 0; i--)
 						if (map[i][j] != 0) col.add(map[i][j]);
-					// ¹æÇâÀÌ ¾Æ·¡ÀÎ°æ¿ì ¾Æ·¡¿¡¼­ºÎÅÍ Â÷·Ê·Î ¿¬¼ÓÇÑ ¿ø¼Ò¸¦ Ã£´Â´Ù
-					// °Å²Ù·Î ´ã¾ÒÀ¸¹Ç·Î À§¿Í µ¿ÀÏ
+					// ë°©í–¥ì´ ì•„ë˜ì¸ê²½ìš° ì•„ë˜ì—ì„œë¶€í„° ì°¨ë¡€ë¡œ ì—°ì†í•œ ì›ì†Œë¥¼ ì°¾ëŠ”ë‹¤
+					// ê±°ê¾¸ë¡œ ë‹´ì•˜ìœ¼ë¯€ë¡œ ìœ„ì™€ ë™ì¼
 					List<Integer> nextCol = new ArrayList<Integer>();
 					for (int i = 0; i < col.size(); i++) {
 						if (i + 1 < col.size() && col.get(i).equals(col.get(i + 1))) {
@@ -112,11 +112,11 @@ class Board {
 				break;
 			case 2 :
 				for (int i = 0; i < N; i++) {
-					// Çà¿¡ Á¸ÀçÇÏ´Â ¼ö¸¦ ¼ø¼­´ë·Î ´ã´Â´Ù
+					// í–‰ì— ì¡´ì¬í•˜ëŠ” ìˆ˜ë¥¼ ìˆœì„œëŒ€ë¡œ ë‹´ëŠ”ë‹¤
 					List<Integer> row = new ArrayList<Integer>();
 					for (int j = 0; j < N; j++)
 						if (map[i][j] != 0) row.add(map[i][j]);
-					// ¹æÇâÀÌ ¿ŞÂÊÀÎ°æ¿ì ¿ŞÂÊ¿¡¼­ºÎÅÍ Â÷·Ê·Î ¿¬¼ÓÇÑ ¹øÈ£¸¦ Ã£´Â´Ù
+					// ë°©í–¥ì´ ì™¼ìª½ì¸ê²½ìš° ì™¼ìª½ì—ì„œë¶€í„° ì°¨ë¡€ë¡œ ì—°ì†í•œ ë²ˆí˜¸ë¥¼ ì°¾ëŠ”ë‹¤
 					List<Integer> nextRow = new ArrayList<Integer>();
 					for (int j = 0; j < row.size(); j++) {
 						if (j + 1 < row.size() && row.get(j).equals(row.get(j + 1))) {
@@ -132,12 +132,12 @@ class Board {
 				break;
 			case 3 :
 				for (int i = 0; i < N; i++) {
-					// Çà¿¡ Á¸ÀçÇÏ´Â ¼ö¸¦ °Å²Ù·Î ´ã´Â´Ù
+					// í–‰ì— ì¡´ì¬í•˜ëŠ” ìˆ˜ë¥¼ ê±°ê¾¸ë¡œ ë‹´ëŠ”ë‹¤
 					List<Integer> row = new ArrayList<Integer>();
 					for (int j = N - 1; j >= 0; j--)
 						if (map[i][j] != 0) row.add(map[i][j]);
-					// ¹æÇâÀÌ ¿À¸¥ÂÊÀÎ°æ¿ì ¿À¸¥ÂÊ¿¡¼­ºÎÅÍ Â÷·Ê·Î ¿¬¼ÓÇÑ ¹øÈ£¸¦ Ã£´Â´Ù
-					// °Å²Ù·Î ´ã¾ÒÀ¸¹Ç·Î À§¿Í µ¿ÀÏ
+					// ë°©í–¥ì´ ì˜¤ë¥¸ìª½ì¸ê²½ìš° ì˜¤ë¥¸ìª½ì—ì„œë¶€í„° ì°¨ë¡€ë¡œ ì—°ì†í•œ ë²ˆí˜¸ë¥¼ ì°¾ëŠ”ë‹¤
+					// ê±°ê¾¸ë¡œ ë‹´ì•˜ìœ¼ë¯€ë¡œ ìœ„ì™€ ë™ì¼
 					List<Integer> nextRow = new ArrayList<Integer>();
 					for (int j = 0; j < row.size(); j++) {
 						if (j + 1 < row.size() && row.get(j).equals(row.get(j + 1))) {

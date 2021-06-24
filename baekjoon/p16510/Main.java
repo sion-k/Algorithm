@@ -15,7 +15,7 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		int N = Integer.parseInt(st.nextToken());
 		int M = Integer.parseInt(st.nextToken());
-		int[] prefixSum = new int[N]; // i¹øÂ° ¿ø¼Ò ±îÁöÀÇ ÇÕÀ» ÀúÀå
+		int[] prefixSum = new int[N]; // ië²ˆì§¸ ì›ì†Œ ê¹Œì§€ì˜ í•©ì„ ì €ì¥
 		st = new StringTokenizer(br.readLine(), " ");
 		int tempSum = 0;
 		for (int i = 0; i < N; i++) {

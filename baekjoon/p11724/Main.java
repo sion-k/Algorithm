@@ -6,11 +6,11 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int N;// Á¤Á¡ÀÇ ¼ö
+	static int N;// ì •ì ì˜ ìˆ˜
 	static boolean[][] EDGE;
 	static boolean[] VISIT;
 	
-	// dfs(here)ÀÇ È£Ãâ È½¼ö ¹İÈ¯
+	// dfs(here)ì˜ í˜¸ì¶œ íšŸìˆ˜ ë°˜í™˜
 	static int dfsAll() {
 		int cnt = 0;
 		for (int here = 1; here <= N; here++) {

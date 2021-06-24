@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class Main {
 	static String CIPHER;
 	static int[] cache;
-	// ¾ÏÈ£¸¦ i¹øÂ° ÀÎµ¦½ººÎÅÍ ³¡±îÁö ÇØ¼®ÇßÀ» ¶§ ³ª¿Ã ¼ö ÀÖ´Â ÇØ¼®ÀÇ ¼ö
+	// ì•”í˜¸ë¥¼ ië²ˆì§¸ ì¸ë±ìŠ¤ë¶€í„° ëê¹Œì§€ í•´ì„í–ˆì„ ë•Œ ë‚˜ì˜¬ ìˆ˜ ìˆëŠ” í•´ì„ì˜ ìˆ˜
 	static int dp(int i) {
 		if (i == CIPHER.length()) {return 1;}
 		if (cache[i] != -1) {return cache[i];}

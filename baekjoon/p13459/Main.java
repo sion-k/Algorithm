@@ -15,7 +15,7 @@ public class Main {
 	static final int[] dy = {-1, 1, 0, 0};
 	static final int[] dx = {0, 0, -1, 1};
 
-	// »¡°£ ±¸½½°ú ÆÄ¶õ ±¸½½ ÃÊ±â »óÅÂ¿¡¼­ 10¹ø ¾È¿¡ »©³¾ ¼ö ÀÖ´ÂÁö ¹İÈ¯
+	// ë¹¨ê°„ êµ¬ìŠ¬ê³¼ íŒŒë€ êµ¬ìŠ¬ ì´ˆê¸° ìƒíƒœì—ì„œ 10ë²ˆ ì•ˆì— ë¹¼ë‚¼ ìˆ˜ ìˆëŠ”ì§€ ë°˜í™˜
 	static boolean BFS(int[] s) {
 		Queue<int[]> q = new LinkedList<>();
 		q.offer(s);
@@ -35,7 +35,7 @@ public class Main {
 				if (!(nby == 0 && nbx == 0) && !BOOKED[nry][nrx][nby][nbx]) {
 					if (nry == 0 && nrx == 0) {return true;}
 					DIST[nry][nrx][nby][nbx] = DIST[ry][rx][by][bx] + 1;
-					// (nry, nrx)±îÁö °Å¸®°¡ 10 ÀÌ»óÀÌ¶ó¸é ±× ´ÙÀ½Àº ÇÒ ÇÊ¿ä ¾øÀ½
+					// (nry, nrx)ê¹Œì§€ ê±°ë¦¬ê°€ 10 ì´ìƒì´ë¼ë©´ ê·¸ ë‹¤ìŒì€ í•  í•„ìš” ì—†ìŒ
 					if (DIST[nry][nrx][nby][nbx] < 10) {
 						q.offer(new int[] {nry, nrx, nby, nbx});
 						BOOKED[nry][nrx][nby][nbx] = true;
@@ -46,8 +46,8 @@ public class Main {
 		return false;
 	}
 
-	// »óÇÏÁÂ¿ì[0, 3]À¸·Î ±â¿ï¿©¼­ ±¸½½ÀÌ ¸ØÃèÀ» ¶§ µµ´ŞÇÑ À§Ä¡µé ¹İÈ¯
-	// ±¸½½Àº ±âº»ÀûÀ¸·Î °ãÄ¥ ¼ö ¾øÁö¸¸ ±¸¸Û¿¡ ºüÁø °æ¿ì µÑ´Ù (0, 0)
+	// ìƒí•˜ì¢Œìš°[0, 3]ìœ¼ë¡œ ê¸°ìš¸ì—¬ì„œ êµ¬ìŠ¬ì´ ë©ˆì·„ì„ ë•Œ ë„ë‹¬í•œ ìœ„ì¹˜ë“¤ ë°˜í™˜
+	// êµ¬ìŠ¬ì€ ê¸°ë³¸ì ìœ¼ë¡œ ê²¹ì¹  ìˆ˜ ì—†ì§€ë§Œ êµ¬ë©ì— ë¹ ì§„ ê²½ìš° ë‘˜ë‹¤ (0, 0)
 	static int[] tilt(int[] p, int d) {
 		boolean moved = true;
 		int ry = p[0]; int rx = p[1]; int by = p[2]; int bx = p[3];

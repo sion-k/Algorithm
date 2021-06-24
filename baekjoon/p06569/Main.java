@@ -19,8 +19,8 @@ public class Main {
 	static long btk(int i, int j, int b, int nb) {
 		if (j >= M) return dp(i + 1, nb);
 		if ((b & (1 << j)) > 0) return btk(i, j + 1, b, nb);
-		long sum = btk(i, j + 1, b, nb | (1 << j)); // ¼¼·Î·Î ³õ´Â °æ¿ì
-		if (j + 1 < M && ((b & (1 << (j + 1))) == 0)) // °¡·Î·Î ³õ´Â °æ¿ì
+		long sum = btk(i, j + 1, b, nb | (1 << j)); // ì„¸ë¡œë¡œ ë†“ëŠ” ê²½ìš°
+		if (j + 1 < M && ((b & (1 << (j + 1))) == 0)) // ê°€ë¡œë¡œ ë†“ëŠ” ê²½ìš°
 			sum += btk(i, j + 2, b, nb);
 		return sum;
 	}

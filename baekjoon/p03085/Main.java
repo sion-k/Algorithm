@@ -12,7 +12,7 @@ public class Main {
 
 	static boolean inRange(int y, int x) {return 0 <= y && y < N && 0 <= x && x < N;}
 
-	// ÇöÀç S¿¡¼­ ¸ÔÀ» ¼ö ÀÖ´Â »çÅÁÀÇ ÃÖ´ë °³¼ö ¹İÈ¯
+	// í˜„ì¬ Sì—ì„œ ë¨¹ì„ ìˆ˜ ìˆëŠ” ì‚¬íƒ•ì˜ ìµœëŒ€ ê°œìˆ˜ ë°˜í™˜
 	static int max() {
 		int ret = 1;
 		for (int i = 0; i < N; i++) {
@@ -50,12 +50,12 @@ public class Main {
 				S[i][j] = row.charAt(j);
 		}
 		int ret = 0;
-		// ¼­·Î ÀÎÁ¢ÇÑ »çÅÁ µÎ°³¸¦ °í¸¥´Ù
+		// ì„œë¡œ ì¸ì ‘í•œ ì‚¬íƒ• ë‘ê°œë¥¼ ê³ ë¥¸ë‹¤
 		for (int y = 0; y < N; y++) {
 			for (int x = 0; x < N; x++) {
 				for (int d = 0; d < 4; d++) {
 					int ny = y + dy[d]; int nx = x + dx[d];
-					if (inRange(ny, nx) && S[y][x] != S[ny][nx]) { // ¼­·Î ´Ù¸£´Ù¸é ¹Ù²Ş
+					if (inRange(ny, nx) && S[y][x] != S[ny][nx]) { // ì„œë¡œ ë‹¤ë¥´ë‹¤ë©´ ë°”ê¿ˆ
 						char temp = S[y][x]; S[y][x] = S[ny][nx]; S[ny][nx] = temp;
 						ret = Math.max(ret, max());
 						temp = S[y][x]; S[y][x] = S[ny][nx]; S[ny][nx] = temp;

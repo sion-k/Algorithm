@@ -11,22 +11,22 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String line;
 		Stack<String> s = new Stack<>();
-		while(!(line = br.readLine()).equals("°í¹«¿À¸® µğ¹ö±ë ³¡")) {
-			if(line.equals("°í¹«¿À¸®")) {
+		while(!(line = br.readLine()).equals("ê³ ë¬´ì˜¤ë¦¬ ë””ë²„ê¹… ë")) {
+			if(line.equals("ê³ ë¬´ì˜¤ë¦¬")) {
 				if(s.isEmpty()) {
-					s.push("¹®Á¦");s.push("¹®Á¦");
+					s.push("ë¬¸ì œ");s.push("ë¬¸ì œ");
 				} else {
 					s.pop();
 				}
-			} else if(line.equals("¹®Á¦")){
-				s.push("¹®Á¦");
+			} else if(line.equals("ë¬¸ì œ")){
+				s.push("ë¬¸ì œ");
 			}
 		}
 		br.close();
 		if(s.isEmpty()) {
-			System.out.println("°í¹«¿À¸®¾ß »ç¶ûÇØ");
+			System.out.println("ê³ ë¬´ì˜¤ë¦¬ì•¼ ì‚¬ë‘í•´");
 		} else {
-			System.out.println("Èş±¸");
+			System.out.println("íêµ¬");
 		}
 	}
 

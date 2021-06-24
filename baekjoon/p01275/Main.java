@@ -38,18 +38,18 @@ public class Main {
 
 // Range Sum Query
 class RSQ {
-	int n; // ¹è¿­ÀÇ ±æÀÌ
-	long[] rangeSum; // ±¸°£ ³ëµå
+	int n; // ë°°ì—´ì˜ ê¸¸ì´
+	long[] rangeSum; // êµ¬ê°„ ë…¸ë“œ
 
 	public RSQ(int[] array) {
 		n = array.length; rangeSum = new long[4 * n];
 		init(array, 0, n - 1, 1);
 	}
 
-	// node°¡ array[left, right]¸¦ Ç¥ÇöÇÒ ¶§,
-	// node¸¦ ·çÆ®·Î ÇÏ´Â ¼¼±×¸ÕÆ® Æ®¸®¸¦ ÃÊ±âÈ­ ÇÏ°í ±¸°£ ÇÕ ¹İÈ¯
+	// nodeê°€ array[left, right]ë¥¼ í‘œí˜„í•  ë•Œ,
+	// nodeë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” ì„¸ê·¸ë¨¼íŠ¸ íŠ¸ë¦¬ë¥¼ ì´ˆê¸°í™” í•˜ê³  êµ¬ê°„ í•© ë°˜í™˜
 	private long init(int[] array, int left, int right, int node) {
-		// ±âÀú »ç·Ê : ¼¼±×¸ÕÆ® Æ®¸®ÀÇ ¸®ÇÁ¿¡ µµ´ŞÇÑ °æ¿ì
+		// ê¸°ì € ì‚¬ë¡€ : ì„¸ê·¸ë¨¼íŠ¸ íŠ¸ë¦¬ì˜ ë¦¬í”„ì— ë„ë‹¬í•œ ê²½ìš°
 		if (left == right) {return rangeSum[node] = array[left];}
 		int mid = (left + right) / 2;
 		long leftSum = init(array, left, mid, 2 * node);
@@ -57,14 +57,14 @@ class RSQ {
 		return rangeSum[node] = leftSum + rightSum;
 	}
 
-	// Äõ¸®·Î ÁÖ¾îÁø ±¸°£ÀÌ [left, right]ÀÌ°í, node°¡ Ç¥ÇöÇÏ´Â ±¸°£ÀÌ [nodeLeft, nodeRight]ÀÏ¶§
-	// µÎ ±¸°£ÀÇ ±³ÁıÇÕ¿¡ ´ëÇØ¼­ Äõ¸®¸¦ ¼öÇàÇÑ´Ù.
+	// ì¿¼ë¦¬ë¡œ ì£¼ì–´ì§„ êµ¬ê°„ì´ [left, right]ì´ê³ , nodeê°€ í‘œí˜„í•˜ëŠ” êµ¬ê°„ì´ [nodeLeft, nodeRight]ì¼ë•Œ
+	// ë‘ êµ¬ê°„ì˜ êµì§‘í•©ì— ëŒ€í•´ì„œ ì¿¼ë¦¬ë¥¼ ìˆ˜í–‰í•œë‹¤.
 	private long query(int left, int right, int node, int nodeLeft, int nodeRight) {
-		// µÎ ±¸°£ÀÇ ±³ÁıÇÕÀÌ °øÁıÇÕÀÎ °æ¿ì »ó°ü¾ø´Â °ª 0 ¹İÈ¯
+		// ë‘ êµ¬ê°„ì˜ êµì§‘í•©ì´ ê³µì§‘í•©ì¸ ê²½ìš° ìƒê´€ì—†ëŠ” ê°’ 0 ë°˜í™˜
 		if (right < nodeLeft || nodeRight < left) {return 0;}
-		// µÎ ±¸°£ÀÇ ±³ÁıÇÕÀÌ [nodeLeft, nodeRight]ÀÎ °æ¿ì (Áï, Æ÷ÇÔÇÏ´Â °æ¿ì) Äõ¸®¿¡ ¹Ù·Î ´ä ÇÒ¼ö ÀÖ´Ù.
+		// ë‘ êµ¬ê°„ì˜ êµì§‘í•©ì´ [nodeLeft, nodeRight]ì¸ ê²½ìš° (ì¦‰, í¬í•¨í•˜ëŠ” ê²½ìš°) ì¿¼ë¦¬ì— ë°”ë¡œ ë‹µ í• ìˆ˜ ìˆë‹¤.
 		if (left <= nodeLeft && nodeRight <= right) {return rangeSum[node];}
-		// ³ª¸ÓÁö °æ¿ì´Â Àç±ÍÈ£Ãâ·Î ´äÀ» ÇÕÄ£´Ù
+		// ë‚˜ë¨¸ì§€ ê²½ìš°ëŠ” ì¬ê·€í˜¸ì¶œë¡œ ë‹µì„ í•©ì¹œë‹¤
 		int mid = (nodeLeft + nodeRight) / 2;
 		long leftSum = query(left, right, 2 * node, nodeLeft, mid);
 		long rightSum = query(left, right, 2 * node + 1, mid + 1 , nodeRight);
@@ -75,11 +75,11 @@ class RSQ {
 		return query(left, right, 1, 0, n - 1);
 	}
 
-	// array[index] À§Ä¡ÀÇ °ªÀ» newValue·Î ¹Ù²Ù°í ³ëµå°¡ Ç¥ÇöÇÏ´Â ±¸°£ÀÇ ÇÕ ¹İÈ¯
+	// array[index] ìœ„ì¹˜ì˜ ê°’ì„ newValueë¡œ ë°”ê¾¸ê³  ë…¸ë“œê°€ í‘œí˜„í•˜ëŠ” êµ¬ê°„ì˜ í•© ë°˜í™˜
 	private long update(int index, long newValue, int node, int nodeLeft, int nodeRight) {
-		// »ó°ü¾ø´Â ¹üÀ§¸é ±âÁ¸ÀÇ ´ä ¹İÈ¯
+		// ìƒê´€ì—†ëŠ” ë²”ìœ„ë©´ ê¸°ì¡´ì˜ ë‹µ ë°˜í™˜
 		if (index < nodeLeft || nodeRight < index) {return rangeSum[node];}
-		// ¸®ÇÁ ³ëµå¿¡ µµ´ŞÇÑ °æ¿ì indexÀ§Ä¡¿¡ µµ´ŞÇÔ
+		// ë¦¬í”„ ë…¸ë“œì— ë„ë‹¬í•œ ê²½ìš° indexìœ„ì¹˜ì— ë„ë‹¬í•¨
 		if (nodeLeft == nodeRight) {return rangeSum[node] = newValue;}
 		int mid = (nodeLeft + nodeRight) / 2;
 		return rangeSum[node] =

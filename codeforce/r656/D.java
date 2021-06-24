@@ -8,18 +8,18 @@ import java.io.OutputStreamWriter;
 
 public class D {
 
-	// C-good StringÀ¸·Î ¸¸µå´Âµ¥ ÇÊ¿äÇÑ ÃÖ¼Ò ´ëÃ¼ ¼ö ¹İÈ¯
+	// C-good Stringìœ¼ë¡œ ë§Œë“œëŠ”ë° í•„ìš”í•œ ìµœì†Œ ëŒ€ì²´ ìˆ˜ ë°˜í™˜
 	static int aGood(String S, char C) {
 		if (S.length() == 1) {return S.charAt(0) != C ? 1 : 0;}
 		int mid = S.length() / 2;
-		// 1¹ø Á¶°Ç ¸¸Á·½ÃÅ°±â
+		// 1ë²ˆ ì¡°ê±´ ë§Œì¡±ì‹œí‚¤ê¸°
 		int cand1 = 0;
 		String preFix = S.substring(0, mid);
 		for (int i = 0; i < preFix.length(); i++)
 			if (preFix.charAt(i) != C)
 				cand1++;
 		cand1 += aGood(S.substring(mid), (char)(C + 1));
-		// 2¹ø Á¶°Ç ¸¸Á·½ÃÅ°±â
+		// 2ë²ˆ ì¡°ê±´ ë§Œì¡±ì‹œí‚¤ê¸°
 		int cand2 = 0;
 		preFix = S.substring(mid);
 		for (int i = 0; i < preFix.length(); i++)

@@ -7,19 +7,19 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main2 {
-	static int L; // º®Àå¹®ÀÇ ±æÀÌ
+	static int L; // ë²½ì¥ë¬¸ì˜ ê¸¸ì´
 	static int N; static int[] S;
 	static int[][] cache;
 
-	// ¸¶Áö¸·À¸·Î i, j¹øÂ° »ç¿ëÇÏ´Â º®Àå¹®À» ¿­¾î³ùÀ» ¶§, ÃÖ¼Ò ÀÌµ¿ È½¼ö
+	// ë§ˆì§€ë§‰ìœ¼ë¡œ i, jë²ˆì§¸ ì‚¬ìš©í•˜ëŠ” ë²½ì¥ë¬¸ì„ ì—´ì–´ë†¨ì„ ë•Œ, ìµœì†Œ ì´ë™ íšŸìˆ˜
 	static int dp(int i, int j) {
 		int next = Math.max(i, j) + 1;
-		// µÑÁß ÇÏ³ª¶óµµ ¸¶Áö¸· º®Àå¹®À» »ç¿ëÇÏ¸é ³¡
+		// ë‘˜ì¤‘ í•˜ë‚˜ë¼ë„ ë§ˆì§€ë§‰ ë²½ì¥ë¬¸ì„ ì‚¬ìš©í•˜ë©´ ë
 		if (next == N) {return 0;}
 		if (cache[i][j] != -1) {return cache[i][j];}
 		if (S[i] == S[next]) return cache[i][j] = dp(next, j);
 		if (S[j] == S[next]) return cache[i][j] = dp(i, next);
-		// ¿ŞÂÊ, ¿À¸¥ÂÊ ºó º®Àå¹®À» ÀÌµ¿½ÃÅ°´Â °æ¿ì
+		// ì™¼ìª½, ì˜¤ë¥¸ìª½ ë¹ˆ ë²½ì¥ë¬¸ì„ ì´ë™ì‹œí‚¤ëŠ” ê²½ìš°
 		return cache[i][j] =
 		Math.min(Math.abs(S[next] - S[i]) + dp(next, j),
 				 Math.abs(S[next] - S[j]) + dp(i, next));

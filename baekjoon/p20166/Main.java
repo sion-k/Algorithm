@@ -17,7 +17,7 @@ public class Main {
 	static final int[] dy = {-1, -1, -1, 0, 0, 1, 1, 1};
 	static final int[] dx = {-1, 0, 1, -1, 1, -1, 0, 1};
 
-	// (y, x)¿¡¼­ m¹øÂ° ÀÌµ¿ ¹æ¹ı(¿ŞÂÊ À§ ¼ø¼­)·Î µµÂøÇÏ´Â À§Ä¡ ¹İÈ¯
+	// (y, x)ì—ì„œ më²ˆì§¸ ì´ë™ ë°©ë²•(ì™¼ìª½ ìœ„ ìˆœì„œ)ë¡œ ë„ì°©í•˜ëŠ” ìœ„ì¹˜ ë°˜í™˜
 	static int[] move(int y, int x, int m) {
 		int ny = y + dy[m]; int nx = x + dx[m];
 		if (ny > N) {ny = 1;} if (ny == 0) {ny = N;}
@@ -25,7 +25,7 @@ public class Main {
 		return new int[] {ny, nx};
 	}
 
-	// y x¿¡¼­ ½ÃÀÛÇØ¼­ s¸¦ ¸¸µé¾î ³¾ ¼ö ÀÖ´Â °æ¿ìÀÇ ¼ö
+	// y xì—ì„œ ì‹œì‘í•´ì„œ së¥¼ ë§Œë“¤ì–´ ë‚¼ ìˆ˜ ìˆëŠ” ê²½ìš°ì˜ ìˆ˜
 	static int dp(int y, int x, int s) {
 		if (s == S.length() - 1) {return 1;}
 		if (cache[y][x][s] != -1) {return cache[y][x][s];}

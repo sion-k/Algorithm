@@ -10,20 +10,20 @@ import java.util.StringTokenizer;
 public class Main {
 	static int[] S;
 
-	// [left, right]±¸°£ÀÇ °¡Àå ³ĞÀÌ°¡ Å« Á÷»ç°¢ÇüÀÇ ³ĞÀÌ
+	// [left, right]êµ¬ê°„ì˜ ê°€ì¥ ë„“ì´ê°€ í° ì§ì‚¬ê°í˜•ì˜ ë„“ì´
 	static long solve(int left, int right) {
-		// ±âÀú »ç·Ê : ±¸°£ÀÇ Å©±â°¡ 1
+		// ê¸°ì € ì‚¬ë¡€ : êµ¬ê°„ì˜ í¬ê¸°ê°€ 1
 		if (left == right) return S[left];
 		int mid = (left + right) / 2;
-		// °¡¿îµ¥¿¡ °ÉÄ¡Áö ¾Ê´Â ´ä
+		// ê°€ìš´ë°ì— ê±¸ì¹˜ì§€ ì•ŠëŠ” ë‹µ
 		long max = Math.max(solve(left, mid), solve(mid + 1, right));
 		int low = mid; int high = mid + 1;
 		int height = Math.min(S[low], S[high]);
-		// °¡¿îµ¥ 2°³ ÆÇÀÚ·Î¸¸ ÀÌ·ç¾îÁø °æ¿ì
+		// ê°€ìš´ë° 2ê°œ íŒìë¡œë§Œ ì´ë£¨ì–´ì§„ ê²½ìš°
 		max = Math.max(max, 2 * height);
-		// ³ª¸ÓÁö´Â »ç°¢ÇüÀÌ [left, right]¸¦ ¸ğµÎ µ¤À» ¶§ ±îÁö È®ÀåÇØ ³ª°£´Ù
+		// ë‚˜ë¨¸ì§€ëŠ” ì‚¬ê°í˜•ì´ [left, right]ë¥¼ ëª¨ë‘ ë®ì„ ë•Œ ê¹Œì§€ í™•ì¥í•´ ë‚˜ê°„ë‹¤
 		while (left < low || high < right) {
-			// Ç×»ó ³ôÀÌ°¡ ´õ ³ĞÀº ÂÊÀ¸·Î È®Àå
+			// í•­ìƒ ë†’ì´ê°€ ë” ë„“ì€ ìª½ìœ¼ë¡œ í™•ì¥
 			if (high < right && (low == left || S[low - 1] < S[high + 1])) {
 				high++;
 				height = Math.min(height, S[high]);

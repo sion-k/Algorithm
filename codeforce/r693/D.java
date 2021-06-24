@@ -25,11 +25,11 @@ public class D {
 			long A = 0;
 			long B = 0;
 			for (int i = 0; i < S.size(); i++) {
-				// Â¦¼ö¹øÂ° ÀÎµ¦½º´Â Alice
+				// ì§ìˆ˜ë²ˆì§¸ ì¸ë±ìŠ¤ëŠ” Alice
 				if (i % 2 == 0) {
 					if (S.get(i) % 2 == 0)
 						A += S.get(i);
-				// È¦¼ö¸é Bob
+				// í™€ìˆ˜ë©´ Bob
 				} else {
 					if (S.get(i) % 2 == 1)
 						B += S.get(i);

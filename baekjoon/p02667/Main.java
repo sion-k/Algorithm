@@ -8,27 +8,27 @@ import java.io.OutputStreamWriter;
 import java.util.PriorityQueue;
 
 public class Main {
-	// »ó ÇÏ ÁÂ ¿ì ¼ø
+	// ìƒ í•˜ ì¢Œ ìš° ìˆœ
 	static final int[] dy = { -1, 1, 0, 0 };
 	static final int[] dx = { 0, 0, -1, 1 };
-	static int N; // ÁöµµÀÇ Å©±â
-	// ÁıÀÌ ÀÖ´ÂÁö ¾ø´ÂÁö ¿©ºÎ
+	static int N; // ì§€ë„ì˜ í¬ê¸°
+	// ì§‘ì´ ìˆëŠ”ì§€ ì—†ëŠ”ì§€ ì—¬ë¶€
 	static boolean[][] HOUSE;
-	// ÀÌ¹Ì ¹æ¹®ÇÑ Áı
+	// ì´ë¯¸ ë°©ë¬¸í•œ ì§‘
 	static boolean[][] VISIT;
 	
-	// ´ÜÁö³» Áı ¼ö
+	// ë‹¨ì§€ë‚´ ì§‘ ìˆ˜
 	static PriorityQueue<Integer> pq = new PriorityQueue<>();
 	
 	static boolean inRange(int y, int x) {return 0 <= y && y < N && 0 <= x && x < N;}
 	
-	// ÁıÀÌ ÀÖ´Â (y, x)¿¡¼­ dfs
+	// ì§‘ì´ ìˆëŠ” (y, x)ì—ì„œ dfs
 	static int dfs(int y, int x) {
-		int sum = 1; // (y, x)¿¡´Â ÁıÀÌ ÀÖÀ¸¹Ç·Î
+		int sum = 1; // (y, x)ì—ëŠ” ì§‘ì´ ìˆìœ¼ë¯€ë¡œ
 		VISIT[y][x] = true;
 		for (int move = 0; move < 4; move++) {
 			int ty = y + dy[move]; int tx = x + dx[move];
-			// Áöµµ ¾È ÂÊÀÌ°í, ÁıÀÌ ÀÖÀ¸¸ç, ¹æ¹®ÇÏÁö ¾Ê¾ÒÀ» °æ¿ì¿¡¸¸
+			// ì§€ë„ ì•ˆ ìª½ì´ê³ , ì§‘ì´ ìˆìœ¼ë©°, ë°©ë¬¸í•˜ì§€ ì•Šì•˜ì„ ê²½ìš°ì—ë§Œ
 			if(inRange(ty, tx) && HOUSE[ty][tx] &&!VISIT[ty][tx]) {
 				sum += dfs(ty, tx);
 			}
@@ -36,7 +36,7 @@ public class Main {
 		return sum;
 	}
 	
-	// Áöµµ ÀüÃ¼¿¡ dfs
+	// ì§€ë„ ì „ì²´ì— dfs
 	static void dfsAll() {
 		for (int i =0 ; i< N; i++) {
 			for (int j = 0; j < N; j++) {

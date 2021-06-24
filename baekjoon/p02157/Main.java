@@ -12,8 +12,8 @@ public class Main {
 	static int[][] cache;
 	static final int NINF = -10000000;
 
-	// here¹øÂ° µµ½Ã¿¡¼­ ¾ÕÀ¸·Î ÃÖ´ë k°³ÀÇ µµ½Ã¸¦ Áö³¯ ¼ö ÀÖÀ» ¶§
-	// N¹øÂ° µµ½Ã±îÁö °¥ ¶§ ¾ò´Â ÃÖ´ë ±â³»½Ä Á¡¼ö
+	// hereë²ˆì§¸ ë„ì‹œì—ì„œ ì•ìœ¼ë¡œ ìµœëŒ€ kê°œì˜ ë„ì‹œë¥¼ ì§€ë‚  ìˆ˜ ìˆì„ ë•Œ
+	// Në²ˆì§¸ ë„ì‹œê¹Œì§€ ê°ˆ ë•Œ ì–»ëŠ” ìµœëŒ€ ê¸°ë‚´ì‹ ì ìˆ˜
 	static int dp(int here, int k) {
 		if (here == N) return 0;
 		if (cache[here][k] != -1) return cache[here][k];

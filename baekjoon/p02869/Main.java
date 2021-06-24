@@ -10,7 +10,7 @@ public class Main {
 		int B = sc.nextInt();
 		int V = sc.nextInt();
 		sc.close();
-		// (V - A)±îÁö ¿Ã¶ó°¡·Á¸é ¸çÄ¥ÀÌ °É¸®´ÂÁö
+		// (V - A)ê¹Œì§€ ì˜¬ë¼ê°€ë ¤ë©´ ë©°ì¹ ì´ ê±¸ë¦¬ëŠ”ì§€
 		int days = (V - A) / (A - B);
 		int lifted = days * (A - B);
 		if (V - lifted > A) {days++;}

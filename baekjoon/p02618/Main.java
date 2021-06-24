@@ -13,8 +13,8 @@ public class Main {
 	static int[][] P;
 	static int[][] cache;
 
-	// ¸¶Áö¸·À¸·Î °æÂûÂ÷1ÀÌ i¹øÂ° »ç°ÇÀ», °æÂûÂ÷°¡ j¹øÂ° »ç°ÇÀ» Ã³¸®ÇßÀ» ¶§,
-	// ³ª¸ÓÁö »ç°ÇÀ» ¸ğµÎ Ã³¸®ÇÏ´Âµ¥ µÎ °æÂûÂ÷ÀÇ ÀÌµ¿ÇÏ´Â °Å¸® ÇÕÀÇ ÃÖ¼Ò
+	// ë§ˆì§€ë§‰ìœ¼ë¡œ ê²½ì°°ì°¨1ì´ ië²ˆì§¸ ì‚¬ê±´ì„, ê²½ì°°ì°¨ê°€ jë²ˆì§¸ ì‚¬ê±´ì„ ì²˜ë¦¬í–ˆì„ ë•Œ,
+	// ë‚˜ë¨¸ì§€ ì‚¬ê±´ì„ ëª¨ë‘ ì²˜ë¦¬í•˜ëŠ”ë° ë‘ ê²½ì°°ì°¨ì˜ ì´ë™í•˜ëŠ” ê±°ë¦¬ í•©ì˜ ìµœì†Œ
 	static int dp(int i, int j) {
 		if (i == W - 1 || j == W - 1) {return 0;}
 		if (cache[i][j] != -1) {return cache[i][j];}
@@ -45,7 +45,7 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int N = Integer.parseInt(br.readLine());
-		// 0¹øÂ° »ç°ÇÀº (1, 1) 1¹øÂ° »ç°ÇÀº (n, n)À¸·Î ÀÓÀÇ·Î 2°³ Ãß°¡
+		// 0ë²ˆì§¸ ì‚¬ê±´ì€ (1, 1) 1ë²ˆì§¸ ì‚¬ê±´ì€ (n, n)ìœ¼ë¡œ ì„ì˜ë¡œ 2ê°œ ì¶”ê°€
 		W = Integer.parseInt(br.readLine()) + 2;
 		P = new int[W][2];
 		P[0] = new int[] {1, 1}; P[1] = new int[] {N, N};

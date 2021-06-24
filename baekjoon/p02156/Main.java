@@ -10,7 +10,7 @@ public class Main {
 	static int[] W;
 	static int[][] cache;
 	
-	// ÀÌÀü¿¡ prev ¼±ÅÃÀ» ÇßÀ» ¶§ i¹øÂ°ºÎÅÍ ¼±ÅÃÇØ¼­ ¾òÀ» ¼ö ÀÖ´Â ÃÖ´ë °ª
+	// ì´ì „ì— prev ì„ íƒì„ í–ˆì„ ë•Œ ië²ˆì§¸ë¶€í„° ì„ íƒí•´ì„œ ì–»ì„ ìˆ˜ ìˆëŠ” ìµœëŒ€ ê°’
 	static int dp(int prev, int i) {
 		if (i >= N) {return 0;}
 		if (i == N - 1 && prev != 0) {return W[i];}

@@ -8,12 +8,12 @@ import java.util.StringTokenizer;
 public class Main {
 	static int[] DICE = new int[6];
 	
-	static final int[][] point = { // ÁÖ»çÀ§ÀÇ 8°³ÀÇ ²ÀÁşÁ¡
+	static final int[][] point = { // ì£¼ì‚¬ìœ„ì˜ 8ê°œì˜ ê¼­ì§“ì 
 		{ 0, 1, 2 }, { 0, 1, 3 }, { 0, 2, 4 }, { 0, 3, 4 },
 		{ 1, 2, 5 }, { 1, 3, 5 }, { 2, 4, 5 }, { 3, 4, 5 } 
 	};
 	
-	static final int[][] edge = { // ÁÖ»çÀ§ÀÇ i¹øÂ° ¸é°ú ÀÎÁ¢ÇÏ´Â ¸éµé
+	static final int[][] edge = { // ì£¼ì‚¬ìœ„ì˜ ië²ˆì§¸ ë©´ê³¼ ì¸ì ‘í•˜ëŠ” ë©´ë“¤
 		{ 1, 2, 3, 4 }, { 2, 3, 5 }, { 4, 5 }, { 4, 5 }, { 5 }
 	};
 	

@@ -5,8 +5,8 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class Main {
-	static int N; // ½ÃÀÛ À§Ä¡
-	static int K; // µµÂø À§Ä¡
+	static int N; // ì‹œì‘ ìœ„ì¹˜
+	static int K; // ë„ì°© ìœ„ì¹˜
 	static boolean[] BOOKED = new boolean[100001];
 	static int[] DIS = new int[100001];
 

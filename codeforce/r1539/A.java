@@ -20,7 +20,7 @@ public class A {
 			for (int i = 0; i < n; i++) {
 				sum += Math.min((x * i + t), (n - 1) * x) / x;
 			}
-			// x * hi + t >= (n - 1) * x°¡ µÇ±â ½ÃÀÛÇÏ´Â hi¸¦ Ã£´Â´Ù
+			// x * hi + t >= (n - 1) * xê°€ ë˜ê¸° ì‹œì‘í•˜ëŠ” hië¥¼ ì°¾ëŠ”ë‹¤
 			// x * lo + t < (n - 1) * x
 			long lo = 0; long hi = n;
 			while (lo + 1 < hi) {

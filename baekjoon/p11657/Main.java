@@ -21,9 +21,9 @@ public class Main {
 	static final int INF = 987654321;
 	static final int INFM = 987654321 - 10000000;
 
-	// ¼± Á¶°Ç : adj(i, j) (°£¼±ÀÌ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é INF·Î ÃÊ±âÈ­)
+	// ì„  ì¡°ê±´ : adj(i, j) (ê°„ì„ ì´ ì¡´ì¬í•˜ì§€ ì•Šìœ¼ë©´ INFë¡œ ì´ˆê¸°í™”)
 	static void Floyd() {
-		// ÀÚ±â ÀÚ½ÅÀ¸·ÎÀÇ ÃÖ´Ü °æ·Î´Â 0
+		// ìê¸° ìì‹ ìœ¼ë¡œì˜ ìµœë‹¨ ê²½ë¡œëŠ” 0
 		for (int i = 1; i <= N; i++) {adjArray[i][i] = 0;}
 		for (int k = 1; k <= N; k++) {
 			for (int i = 1; i <= N; i++) {
@@ -39,30 +39,30 @@ public class Main {
 		Arrays.fill(upper, 1987654321987654321L);
 		upper[src] = 0;
 		boolean updated = false;
-		// N - 1¹ø ¿ÏÈ­ ½Ãµµ
+		// N - 1ë²ˆ ì™„í™” ì‹œë„
 		for (int n = 1; n <= N - 1; n++) {
 			updated = false;
 			for (int here = 1; here <= N; here++) {
 				for (int i = 0; i < adjList.get(here).size(); i++) {
 					int there = adjList.get(here).get(i).num;
 					int cost = adjList.get(here).get(i).cost;
-					// (here, there) °£¼±À» µû¶ó ¿ÏÈ­ ½Ãµµ
+					// (here, there) ê°„ì„ ì„ ë”°ë¼ ì™„í™” ì‹œë„
 					if (upper[there] > upper[here] + cost) {
 						upper[there] = upper[here] + cost;
 						updated = true;
 					}
 				}
 			}
-			// ¸ğµç °£¼±¿¡ ´ëÇØ ¿ÏÈ­½ÃµµÇß´Âµ¥ ¿ÏÈ­µÇÁö ¾ÊÀ¸¸é ÃÖ´Ü °æ·Î
+			// ëª¨ë“  ê°„ì„ ì— ëŒ€í•´ ì™„í™”ì‹œë„í–ˆëŠ”ë° ì™„í™”ë˜ì§€ ì•Šìœ¼ë©´ ìµœë‹¨ ê²½ë¡œ
 			if (!updated) {break;}
 		}
-		// N¹øÂ°ÀÇ ¿ÏÈ­ ½Ãµµ
+		// Në²ˆì§¸ì˜ ì™„í™” ì‹œë„
 		for (int here = 1; here <= N; here++) {
 			for (int i = 0; i < adjList.get(here).size(); i++) {
 				int there = adjList.get(here).get(i).num;
 				int cost = adjList.get(here).get(i).cost;
-				// (here, there) °£¼±À» µû¶ó ¿ÏÈ­ ½ÃµµÇß´Âµ¥ ¿ÏÈ­µÇ°í
-				// ½ÃÀÛÁöÁ¡¿¡¼­ ±× ÁöÁ¡±îÁö °æ·Î°¡ ÀÖ´Â °æ¿ì
+				// (here, there) ê°„ì„ ì„ ë”°ë¼ ì™„í™” ì‹œë„í–ˆëŠ”ë° ì™„í™”ë˜ê³ 
+				// ì‹œì‘ì§€ì ì—ì„œ ê·¸ ì§€ì ê¹Œì§€ ê²½ë¡œê°€ ìˆëŠ” ê²½ìš°
 				if (upper[there] > upper[here] + cost && adjArray[src][there] < INFM) {
 					return new long[0];
 				}

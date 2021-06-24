@@ -10,13 +10,13 @@ public class Main {
 	static int N; static int M; static int[] S;
 	static int[][][] cache;
 
-	// ºó º®Àå¹®ÀÌ (i, j)¿¡ ÀÖÀ» ¶§ k¹øÂ° º®Àå¹®À» ¾²±â À§ÇØ¼­ ÀÌµ¿ÇØ¾ßÇÏ´Â ÃÖ¼Ò ÀÌµ¿ ¼ö
+	// ë¹ˆ ë²½ì¥ë¬¸ì´ (i, j)ì— ìˆì„ ë•Œ kë²ˆì§¸ ë²½ì¥ë¬¸ì„ ì“°ê¸° ìœ„í•´ì„œ ì´ë™í•´ì•¼í•˜ëŠ” ìµœì†Œ ì´ë™ ìˆ˜
 	static int dp(int i, int j, int k) {
 		if (k == M) {return 0;}
 		if (cache[i][j][k] != -1) {return cache[i][j][k];}
 		if (i == S[k] || j == S[k])
 			return cache[i][j][k] = dp(i, j, k + 1);
-		// ¿ŞÂÊ, ¿À¸¥ÂÊ ºó º®Àå¹®À» ÀÌµ¿½ÃÅ°´Â °æ¿ì
+		// ì™¼ìª½, ì˜¤ë¥¸ìª½ ë¹ˆ ë²½ì¥ë¬¸ì„ ì´ë™ì‹œí‚¤ëŠ” ê²½ìš°
 		return cache[i][j][k] =
 		Math.min(Math.abs(S[k] - i) + dp(S[k], j, k + 1),
 				 Math.abs(S[k] - j) + dp(i, S[k], k + 1));

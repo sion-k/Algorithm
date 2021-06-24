@@ -23,7 +23,7 @@ public class Main {
 			int x = Integer.parseInt(st.nextToken());
 			int y = Integer.parseInt(st.nextToken());
 			char d = st.nextToken().charAt(0);
-			// ÁÂÇ¥°è º¯È¯, ½ºÅ©¸° ÁÂÇ¥°èÀÌ¸ç, ·Îº¿ÀÇ À§Ä¡´Â ¿ŞÂÊ À§·Î ´ëÀÀ½ÃÅ²´Ù
+			// ì¢Œí‘œê³„ ë³€í™˜, ìŠ¤í¬ë¦° ì¢Œí‘œê³„ì´ë©°, ë¡œë´‡ì˜ ìœ„ì¹˜ëŠ” ì™¼ìª½ ìœ„ë¡œ ëŒ€ì‘ì‹œí‚¨ë‹¤
 			y = N - y; x = x - 1;
 			robot[i] = new Robot(y, x, d);
 		}
@@ -93,7 +93,7 @@ class Robot {
 	void turnLeft() {d = turnLeft[d];}
 	void turnRight() {d = turnRight[d];}
 
-	// ÀÌ»ó ¾ø´Â °æ¿ì 0, ¹üÀ§¸¦ ¹ş¾î³ª´Â °æ¿ì -1, ´Ù¸¥ ·Îº¿¿¡ ºÎµúÈ÷´Â °æ¿ì ±× ·Îº¿ÀÇ ¹øÈ£
+	// ì´ìƒ ì—†ëŠ” ê²½ìš° 0, ë²”ìœ„ë¥¼ ë²—ì–´ë‚˜ëŠ” ê²½ìš° -1, ë‹¤ë¥¸ ë¡œë´‡ì— ë¶€ë”ªíˆëŠ” ê²½ìš° ê·¸ ë¡œë´‡ì˜ ë²ˆí˜¸
 	int forward() {
 		int ny = y + dy[d]; int nx = x + dx[d];
 		if (!inRange(ny, nx)) return -1;

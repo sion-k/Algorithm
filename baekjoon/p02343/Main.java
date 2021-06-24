@@ -8,8 +8,8 @@ import java.util.StringTokenizer;
 public class Main {
 	static int N; static int[] S;
 	
-	// i¹øÂ° ·¹½¼ºÎÅÍ ´ã±â ½ÃÀÛÇÒ ¶§,
-	// ÀüÃ¼ ·¹½¼À» sizeÅ©±âÀÇ m°³ÀÇ ºí·ç·¹ÀÌ¿¡ ´ãÀ» ¼ö ÀÖ´ÂÁö ¹İÈ¯
+	// ië²ˆì§¸ ë ˆìŠ¨ë¶€í„° ë‹´ê¸° ì‹œì‘í•  ë•Œ,
+	// ì „ì²´ ë ˆìŠ¨ì„ sizeí¬ê¸°ì˜ mê°œì˜ ë¸”ë£¨ë ˆì´ì— ë‹´ì„ ìˆ˜ ìˆëŠ”ì§€ ë°˜í™˜
 	static boolean f(int size, int m) {
 		int capacity = size; m--;
 		for (int i = 0; i < N; i++) {
@@ -34,7 +34,7 @@ public class Main {
 			hi = Math.max(hi, S[i]);
 		}
 		hi *= N;
-		// f(lo) == false && f(hi) == trueÀÎ hi¸¦ ¹İÈ¯
+		// f(lo) == false && f(hi) == trueì¸ hië¥¼ ë°˜í™˜
 		while (lo + 1 < hi) {
 			int mid = (lo + hi) / 2;
 			if (f(mid, M)) hi = mid;

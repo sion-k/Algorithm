@@ -15,26 +15,26 @@ public class Main {
 	
 	static int networkFlow(int source, int sink) {
 		int totalFlow = 0;
-		// ³Êºñ ¿ì¼± Å½»öÀ¸·Î Áõ°¡ °æ·Î¸¦ Ã£´Â´Ù
+		// ë„ˆë¹„ ìš°ì„  íƒìƒ‰ìœ¼ë¡œ ì¦ê°€ ê²½ë¡œë¥¼ ì°¾ëŠ”ë‹¤
 		while (true) {
 			Queue<Integer> q = new LinkedList<>();
 			q.offer(source);
 			int[] parent = new int[N + M + 2];
 			Arrays.fill(parent, -1);
 			parent[source] = source;
-			// sink¿¡ µµ´ŞÇÒ ¶§ ±îÁö ³Êºñ ¿ì¼± Å½»ö
+			// sinkì— ë„ë‹¬í•  ë•Œ ê¹Œì§€ ë„ˆë¹„ ìš°ì„  íƒìƒ‰
 			while (!q.isEmpty() && parent[sink] == -1) {
 				int here = q.poll();
-				// ÀÜ¿© ¿ë·®ÀÌ ³²Àº °£¼±À» µû¶ó Å½»ö
+				// ì”ì—¬ ìš©ëŸ‰ì´ ë‚¨ì€ ê°„ì„ ì„ ë”°ë¼ íƒìƒ‰
 				for (int there = 0; there < N + M + 2; there++)
 					if (capacity[here][there] - flow[here][there] > 0 && parent[there] == -1) {
 						q.offer(there);
 						parent[there] = here;
 					}
 			}
-			// Áõ°¡ °æ·Î°¡ ¾øÀ¸¸é Á¾·á
+			// ì¦ê°€ ê²½ë¡œê°€ ì—†ìœ¼ë©´ ì¢…ë£Œ
 			if (parent[sink] == -1) break;
-			// ¸ğµç ¿ë·®Àº 1ÀÌ¹Ç·Î Áõ°¡°æ·Î¿¡ 1¸¸Å­ Èê·Áº¸³½´Ù
+			// ëª¨ë“  ìš©ëŸ‰ì€ 1ì´ë¯€ë¡œ ì¦ê°€ê²½ë¡œì— 1ë§Œí¼ í˜ë ¤ë³´ë‚¸ë‹¤
 			for (int p = sink; p != source; p = parent[p]) {
 				flow[parent[p]][p]++;
 				flow[p][parent[p]]--;
@@ -49,16 +49,16 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
-		// 0¹øÂ° Á¤Á¡ÀÌ source, N + M + 1¹øÂ° Á¤Á¡ÀÌ sink
+		// 0ë²ˆì§¸ ì •ì ì´ source, N + M + 1ë²ˆì§¸ ì •ì ì´ sink
 		capacity = new int[N + M + 2][N + M + 2]; flow = new int[N + M + 2][N + M + 2];
-		// [1, N]Á¤Á¡ÀÌ ¼Ò, [N + 1, N + M]Á¤Á¡ÀÌ Ãà»ç¸¦ ³ªÅ¸³½´Ù
+		// [1, N]ì •ì ì´ ì†Œ, [N + 1, N + M]ì •ì ì´ ì¶•ì‚¬ë¥¼ ë‚˜íƒ€ë‚¸ë‹¤
 		for (int i = 1; i <= N; i++) {
-			capacity[0][i] = 1; // source¿Í ¼Ò »çÀÌÀÇ °£¼±
+			capacity[0][i] = 1; // sourceì™€ ì†Œ ì‚¬ì´ì˜ ê°„ì„ 
 			st = new StringTokenizer(br.readLine(), " ");
 			int K = Integer.parseInt(st.nextToken());
 			for (int j = 0; j < K; j++) capacity[i][N + Integer.parseInt(st.nextToken())] = 1;
 		}
-		// Ãà»ç¿Í sink »çÀÌÀÇ °£¼±
+		// ì¶•ì‚¬ì™€ sink ì‚¬ì´ì˜ ê°„ì„ 
 		for (int i = 1; i <= M; i++) capacity[N + i][N + M + 1] = 1;
 		System.out.println(networkFlow(0, N + M + 1));
 	}

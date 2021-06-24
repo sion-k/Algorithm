@@ -11,12 +11,12 @@ public class Main {
 	static int[] T; static int[] P;
 	static int[] cache;
 
-	// i¹øÂ° ÀÏ ÀÌÈÄ·Î ¾òÀ» ¼ö ÀÖ´Â ÃÖ´ë ÀÌµæ
+	// ië²ˆì§¸ ì¼ ì´í›„ë¡œ ì–»ì„ ìˆ˜ ìˆëŠ” ìµœëŒ€ ì´ë“
 	static int dp(int i) {
 		if (i > N) {return 0;}
 		if (cache[i] != -1) {return cache[i];}
 		cache[i] = dp(i + 1);
-		// »ó´ãÀÌ ³¡³ª´Â ³¯Â¥°¡ Åğ»ç ÀüÀÌ¶ó¸é
+		// ìƒë‹´ì´ ëë‚˜ëŠ” ë‚ ì§œê°€ í‡´ì‚¬ ì „ì´ë¼ë©´
 		if (i + T[i] - 1 <= N) {
 			cache[i] = Math.max(cache[i], P[i] + dp(i + T[i]));
 		}

@@ -11,7 +11,7 @@ public class Main {
 	static int N, C;
 	static ArrayList<Integer> S;
 	
-	// ÁÖ¾îÁø ¼ö¿­¿¡¼­ ÃÖ¼Ò °Å¸®°¡ dÀÌ»óÀÌ µÇ°Ô C°³ÀÇ °øÀ¯±â ¼³Ä¡°¡ °¡´ÉÇÑÁö ¹İÈ¯
+	// ì£¼ì–´ì§„ ìˆ˜ì—´ì—ì„œ ìµœì†Œ ê±°ë¦¬ê°€ dì´ìƒì´ ë˜ê²Œ Cê°œì˜ ê³µìœ ê¸° ì„¤ì¹˜ê°€ ê°€ëŠ¥í•œì§€ ë°˜í™˜
 	static boolean f(int d) {
 		int last = S.get(0); int cnt = 1;
 		for (int i = 0; i < N; i++) {
@@ -30,7 +30,7 @@ public class Main {
 		for (int i = 0; i < N; i++) S.add(Integer.parseInt(br.readLine()));
 		Collections.sort(S);
 		int lo = 1; int hi = S.get(S.size() - 1) - S.get(0) + 1;
-		// f(lo) == true && f(hi) == falseÀÎ lo¸¦ Ã£´Â´Ù
+		// f(lo) == true && f(hi) == falseì¸ loë¥¼ ì°¾ëŠ”ë‹¤
 		while (lo + 1 < hi) {
 			int mid = (lo + hi) / 2;
 			if (f(mid)) lo = mid;

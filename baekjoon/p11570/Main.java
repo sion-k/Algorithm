@@ -10,13 +10,13 @@ public class Main {
 	static int N; static int[] S;
 	static int[][] cache;
 
-	// ¸¶Áö¸·À¸·Î i j¹øÂ° À½À» ºÒ·¶À» ¶§ ³ë·¡ÇÒ ¶§ Èûµé ¼ö ÀÖ´Â Á¤µµÀÇ ÃÖ¼Ú°ª
+	// ë§ˆì§€ë§‰ìœ¼ë¡œ i jë²ˆì§¸ ìŒì„ ë¶ˆë €ì„ ë•Œ ë…¸ë˜í•  ë•Œ í˜ë“¤ ìˆ˜ ìˆëŠ” ì •ë„ì˜ ìµœì†Ÿê°’
 	static int dp(int i, int j) {
 		if (i > j) {int temp = i; i = j; j = temp;}
-		if (i == N|| j == N) {return 0;} // ´Ù ºÎ¸¥ °æ¿ì
-		// Èûµç Á¤µµ´Â 0ÀÏ ¼öµµ ÀÖÀ½
+		if (i == N|| j == N) {return 0;} // ë‹¤ ë¶€ë¥¸ ê²½ìš°
+		// í˜ë“  ì •ë„ëŠ” 0ì¼ ìˆ˜ë„ ìˆìŒ
 		if (cache[i][j] != -1) {return cache[i][j];}
-		// ´ÙÀ½À¸·Î ºÒ·¯¾ß ÇÒ À½
+		// ë‹¤ìŒìœ¼ë¡œ ë¶ˆëŸ¬ì•¼ í•  ìŒ
 		int next = Math.max(i, j) + 1;
 		int cost1 = 0;
 		if (i != 0) cost1 = Math.abs(S[next] - S[i]);

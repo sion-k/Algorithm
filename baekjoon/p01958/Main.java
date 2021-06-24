@@ -15,7 +15,7 @@ public class Main {
 	static final int[] dj = {0, 1, 1, 0, 0, 1};
 	static final int[] dk = {1, 0, 1, 0, 1, 0};
 
-	// A[i, ] B[j, ], C[k, ]ÀÇ LCS¹ÝÈ¯
+	// A[i, ] B[j, ], C[k, ]ì˜ LCSë°˜í™˜
 	static int dp(int i, int j, int k) {
 		if (i >= A.length() || j >= B.length() || k >= C.length()) {return 0;}
 		if (cache[i][j][k] != -1) {return cache[i][j][k];}

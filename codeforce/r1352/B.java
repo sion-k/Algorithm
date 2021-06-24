@@ -20,9 +20,9 @@ public class B {
 			if (N % 2 == 1 && K % 2 == 0) {
 				bw.write("NO"); bw.newLine(); continue;
 			}
-			// NÀÌ Â¦¼öÀÏ ¶§
+			// Nì´ ì§ìˆ˜ì¼ ë•Œ
 			if (N % 2 == 0) {
-				// K°¡ Â¦¼ö¸é 1·Î ÃÖ´ëÇÑ Ç¥Çö
+				// Kê°€ ì§ìˆ˜ë©´ 1ë¡œ ìµœëŒ€í•œ í‘œí˜„
 				if (K % 2 == 0) {
 					if (N < K) {bw.write("NO"); bw.newLine(); continue;}
 					bw.write("YES"); bw.newLine();
@@ -32,7 +32,7 @@ public class B {
 						K--;
 					}
 					if (N > 0) {bw.write(String.valueOf(N));}
-				// K°¡ È¦¼ö¸é 2·Î ÃÖ´ëÇÑ Ç¥Çö
+				// Kê°€ í™€ìˆ˜ë©´ 2ë¡œ ìµœëŒ€í•œ í‘œí˜„
 				} else {
 					if (N < 2 * K) {bw.write("NO"); bw.newLine(); continue;}
 					bw.write("YES"); bw.newLine();
@@ -43,9 +43,9 @@ public class B {
 					}
 					if (N > 0) {bw.write(String.valueOf(N));}
 				}
-			// NÀÌ È¦¼ö ÀÏ ¶§
+			// Nì´ í™€ìˆ˜ ì¼ ë•Œ
 			} else {
-				// K´Â ¹«Á¶°Ç È¦¼öÀÓ
+				// KëŠ” ë¬´ì¡°ê±´ í™€ìˆ˜ì„
 				if (N < K) {bw.write("NO"); bw.newLine(); continue;}
 				bw.write("YES"); bw.newLine();
 				while (N > 0 && K != 1) {

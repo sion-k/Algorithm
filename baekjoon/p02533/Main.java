@@ -16,15 +16,15 @@ public class Main {
 
 	static final int INF = 1000000;
 
-	// rootÀÇ ºÎ¸ð°¡ ¾ó¸® ¾î´äÅÍÀÎ°¡ p ? 1 : 0
-	// root¸¦ ·çÆ®·Î ÇÏ´Â Æ®¸®°¡ ¸ðµÎ ¾ó¸® ¾î´äÅÍ°¡ µÇ´Âµ¥ ÇÊ¿äÇÑ ÃÖ¼Ò ¾ó¸®¾î´äÅÍ ¼ö
+	// rootì˜ ë¶€ëª¨ê°€ ì–¼ë¦¬ ì–´ë‹µí„°ì¸ê°€ p ? 1 : 0
+	// rootë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” íŠ¸ë¦¬ê°€ ëª¨ë‘ ì–¼ë¦¬ ì–´ë‹µí„°ê°€ ë˜ëŠ”ë° í•„ìš”í•œ ìµœì†Œ ì–¼ë¦¬ì–´ë‹µí„° ìˆ˜
 	static int dp(int p, int root) {
 		if (children.get(root).isEmpty()) {return p == 0 ? 1 : 0;}
 		if (cache[p][root] != -1) {return cache[p][root];}
-		// root¸¦ ¾ó¸® ¾î´äÅÍ·Î ¼±ÅÃÇÏ´Â °æ¿ì
+		// rootë¥¼ ì–¼ë¦¬ ì–´ë‹µí„°ë¡œ ì„ íƒí•˜ëŠ” ê²½ìš°
 		int pick = 1;
 		for (int ch : children.get(root)) {pick += dp(1, ch);}
-		// rootÀÇ ºÎ¸ð°¡ ¾ó¸® ¾î´äÅÍÀÎ °æ¿ì root¸¦ ¾ó¸® ¾î´äÅÍ·Î ¼±ÅÃÇÏÁö ¾ÊÀ» ¼ö ÀÖ´Ù
+		// rootì˜ ë¶€ëª¨ê°€ ì–¼ë¦¬ ì–´ë‹µí„°ì¸ ê²½ìš° rootë¥¼ ì–¼ë¦¬ ì–´ë‹µí„°ë¡œ ì„ íƒí•˜ì§€ ì•Šì„ ìˆ˜ ìžˆë‹¤
 		int notPick = INF;
 		if (p == 1) {
 			notPick = 0;

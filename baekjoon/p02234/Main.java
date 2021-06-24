@@ -11,7 +11,7 @@ public class Main {
 	static boolean[][] VISIT;
 	static int MAX = 1;
 
-	// {¼­ ºÏ µ¿ ³²}ÀÇ »ó´ëÀû À§Ä¡
+	// {ì„œ ë¶ ë™ ë‚¨}ì˜ ìƒëŒ€ì  ìœ„ì¹˜
 	static final int[] dy = {0, -1, 0, 1};
 	static final int[] dx = {-1, 0, 1, 0};
 	static final int[] wall = { 1, 2, 4, 8 };
@@ -20,7 +20,7 @@ public class Main {
 		return 0 <= y && y < N && 0 <= x && x < M;
 	}
 
-	// ¹æÀÇ °³¼ö ¹İÈ¯
+	// ë°©ì˜ ê°œìˆ˜ ë°˜í™˜
 	static int DFSAll() {
 		VISIT = new boolean[N][M];
 		int cnt = 0;
@@ -35,7 +35,7 @@ public class Main {
 		return cnt;
 	}
 
-	// ¹æÀÇ ³ĞÀÌ ¹İÈ¯
+	// ë°©ì˜ ë„“ì´ ë°˜í™˜
 	static int DFS(int y, int x) {
 		VISIT[y][x] = true;
 		int cnt = 0;
@@ -70,7 +70,7 @@ public class Main {
 		MAX = 1;
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < M; j++) {
-				// ¼­ ºÏ µ¿ ³²¼øÀ¸·Î º®À» ºÎ¼ú ¼ö ÀÖÀ¸¸é ÇÏ³ª ¾¿ ºÎ¼ö¸é¼­ ½Ãµµ
+				// ì„œ ë¶ ë™ ë‚¨ìˆœìœ¼ë¡œ ë²½ì„ ë¶€ìˆ  ìˆ˜ ìˆìœ¼ë©´ í•˜ë‚˜ ì”© ë¶€ìˆ˜ë©´ì„œ ì‹œë„
 				for (int b = 0; b < 4; b++) {
 					if (MAP[i][j] - wall[b] >= 0) {
 						MAP[i][j] -= wall[b];

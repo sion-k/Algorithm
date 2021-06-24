@@ -15,32 +15,32 @@ class Pair {
 
 public class Main {
 	static int N;
-	static ArrayList<ArrayList<Pair>> adj; // ÀÎÁ¢ ¸®½ºÆ® Ç¥Çö¹ı
+	static ArrayList<ArrayList<Pair>> adj; // ì¸ì ‘ ë¦¬ìŠ¤íŠ¸ í‘œí˜„ë²•
 
 	static boolean hasCycle() {
 		int[] upper = new int[N + 1];
 		boolean updated = false;
-		// N - 1¹ø ¿ÏÈ­ ½Ãµµ
+		// N - 1ë²ˆ ì™„í™” ì‹œë„
 		for (int i = 1; i <= N - 1; i++) {
 			updated = false;
 			for (int here = 1; here <= N; here++) {
 				for (Pair edge : adj.get(here)) {
 					int there = edge.num; int cost = edge.cost;
-					// (here, there) °£¼±À» µû¶ó ¿ÏÈ­ ½Ãµµ
+					// (here, there) ê°„ì„ ì„ ë”°ë¼ ì™„í™” ì‹œë„
 					if (upper[there] > upper[here] + cost) {
 						upper[there] = upper[here] + cost;
 						updated = true;
 					}
 				}
 			}
-			// ¸ğµç °£¼±¿¡ ´ëÇØ ¿ÏÈ­½ÃµµÇß´Âµ¥ ¿ÏÈ­µÇÁö ¾ÊÀ¸¸é À½¼ö »çÀÌÅ¬ ¾øÀ½
+			// ëª¨ë“  ê°„ì„ ì— ëŒ€í•´ ì™„í™”ì‹œë„í–ˆëŠ”ë° ì™„í™”ë˜ì§€ ì•Šìœ¼ë©´ ìŒìˆ˜ ì‚¬ì´í´ ì—†ìŒ
 			if (!updated) {return false;}
 		}
-		// N¹øÂ°ÀÇ ¿ÏÈ­ ½Ãµµ
+		// Në²ˆì§¸ì˜ ì™„í™” ì‹œë„
 		for (int here = 1; here <= N; here++) {
 			for (Pair edge : adj.get(here)) {
 				int there = edge.num; int cost = edge.cost;
-				// À½¼ö »çÀÌÅ¬ÀÌ Á¸ÀçÇÏ´Â °æ¿ì
+				// ìŒìˆ˜ ì‚¬ì´í´ì´ ì¡´ì¬í•˜ëŠ” ê²½ìš°
 				if (upper[there] > upper[here] + cost) {return true;}
 			}
 		}

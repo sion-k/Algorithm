@@ -14,11 +14,11 @@ public class Main {
 	static boolean[][][] BOOKED;
 	static int[][][] DIST;
 
-	// »óÇÏÁÂ¿ì ÀÌµ¿
+	// ìƒí•˜ì¢Œìš° ì´ë™
 	static final int[] dy1 = { -1, 1, 0, 0 };
 	static final int[] dx1 = { 0, 0, -1, 1 };
 
-	// ¸» Ã³·³ ÀÌµ¿
+	// ë§ ì²˜ëŸ¼ ì´ë™
 	static final int[] dy2 = { -2, -2, -1, -1, 1, 1, 2, 2 };
 	static final int[] dx2 = { -1, 1, -2, 2, -2, 2, -1, 1 };
 
@@ -27,8 +27,8 @@ public class Main {
 		return 0 <= y && y < N && 0 <= x && x < M;
 	}
 
-	// (0, 0)¿¡¼­ (N -1, M -1)±îÁöÀÇ ÃÖ´Ü °Å¸®
-	// µµ´Ş ºÒ°¡´É ÇÏ¸é -1
+	// (0, 0)ì—ì„œ (N -1, M -1)ê¹Œì§€ì˜ ìµœë‹¨ ê±°ë¦¬
+	// ë„ë‹¬ ë¶ˆê°€ëŠ¥ í•˜ë©´ -1
 	static int BFS() {
 		Queue<int[]> q = new LinkedList<>();
 		q.offer(new int[] {0, 0, K}); BOOKED[0][0][K] = true;
@@ -36,7 +36,7 @@ public class Main {
 		while (!q.isEmpty()) {
 			int[] here = q.poll();
 			int y = here[0]; int x = here[1]; int k = here[2];
-			// ¿ø¼şÀÌ Ã³·³ ÀÌµ¿
+			// ì›ìˆ­ì´ ì²˜ëŸ¼ ì´ë™
 			for (int next = 0; next < 4; next++) {
 				int ty = y + dy1[next]; int tx = x + dx1[next];
 				if (inRange(ty, tx) && MOVABLE[ty][tx] && !BOOKED[ty][tx][k]) {
@@ -46,7 +46,7 @@ public class Main {
 					if (ty == N - 1 && tx == M - 1) {return DIST[ty][tx][k];}
 				}
 			}
-			// ¸» Ã³·³ ÀÌµ¿
+			// ë§ ì²˜ëŸ¼ ì´ë™
 			if (k > 0) {
 				for (int next = 0; next < 8; next++) {
 					int ty = y + dy2[next]; int tx = x + dx2[next];

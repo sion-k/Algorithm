@@ -41,9 +41,9 @@ class LinkedList {
 		}
 	}
 	Node first; Node last;
-	Node cursor; // ÃÊ±â¿¡ Ä¿¼­´Â ¸¶Áö¸· ¿ø¼Ò ´ÙÀ½ ¿ø¼Ò(last)¸¦ °¡¸®Å°°í ÀÖÀ½
+	Node cursor; // ì´ˆê¸°ì— ì»¤ì„œëŠ” ë§ˆì§€ë§‰ ì›ì†Œ ë‹¤ìŒ ì›ì†Œ(last)ë¥¼ ê°€ë¦¬í‚¤ê³  ìˆìŒ
 	
-	// Ä¿¼­¸¦ ¿ŞÂÊÀ¸·Î ¿Å±è °¡´ÉÇÑÁö ¿©ºÎ ¹İÈ¯
+	// ì»¤ì„œë¥¼ ì™¼ìª½ìœ¼ë¡œ ì˜®ê¹€ ê°€ëŠ¥í•œì§€ ì—¬ë¶€ ë°˜í™˜
 	boolean left() {
 		if (cursor.prev != first) {cursor = cursor.prev; return true;}
 		return false;

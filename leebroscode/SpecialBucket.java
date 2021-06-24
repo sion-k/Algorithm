@@ -8,10 +8,10 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class SpecialBucket {
-    static int N; static int[][] B; // ¶³¾îÁö´Â ºí·Ï(k, c)À» ¼ø¼­´ë·Î ÀúÀå
-    static ArrayList<Deque<Integer>> col; // [1, 4]¿­¿¡ Á¸ÀçÇÏ´Â ºí·°µéÀÇ ¸®½ºÆ®, ¹Ù´ÚºÎÅÍ À§ ¼ø¼­
+    static int N; static int[][] B; // ë–¨ì–´ì§€ëŠ” ë¸”ë¡(k, c)ì„ ìˆœì„œëŒ€ë¡œ ì €ì¥
+    static ArrayList<Deque<Integer>> col; // [1, 4]ì—´ì— ì¡´ì¬í•˜ëŠ” ë¸”ëŸ­ë“¤ì˜ ë¦¬ìŠ¤íŠ¸, ë°”ë‹¥ë¶€í„° ìœ„ ìˆœì„œ
     
-    // [1, 8]¹ø ºí·°ÀÇ ¿ì¼±¼øÀ§°¡ ³ôÀº ¼øÀ¸·Î ¹æÇâÀ» ÀúÀå
+    // [1, 8]ë²ˆ ë¸”ëŸ­ì˜ ìš°ì„ ìˆœìœ„ê°€ ë†’ì€ ìˆœìœ¼ë¡œ ë°©í–¥ì„ ì €ì¥
     static int[][] priority;
     
     static final int[] dy = {-1, -1, 0, 1, 1, 1, 0, -1};
@@ -19,14 +19,14 @@ public class SpecialBucket {
     
     static boolean inRange(int y, int x) {return 0 <= y && y <= 100 && 1 <= x && x <= 4;}
     
-    // i¹øÂ° ºí·ÏºÎÅÍ ³õÀ» ¶§, °¡´ÉÇÑ ÃÖ´ë Á¡¼ö
+    // ië²ˆì§¸ ë¸”ë¡ë¶€í„° ë†“ì„ ë•Œ, ê°€ëŠ¥í•œ ìµœëŒ€ ì ìˆ˜
     static int btk(int i) {
     	int score = getScore();
         moveAll();
         score += getScore();
         if (i == N) return score;
         int k = B[i][0]; int c = B[i][1];
-        // ºí·°ÀÇ À§Ä¡¸¦ Á¤ÇØ¾ß ÇÒ °æ¿ì j:[1, 4]À§Ä¡¿¡ ´ëÇØ ¸ğµÎ ½Ãµµ
+        // ë¸”ëŸ­ì˜ ìœ„ì¹˜ë¥¼ ì •í•´ì•¼ í•  ê²½ìš° j:[1, 4]ìœ„ì¹˜ì— ëŒ€í•´ ëª¨ë‘ ì‹œë„
         if (c == 0) {
             int max = 0; 
             for (int j = 1; j <= 4; j++) {
@@ -42,8 +42,8 @@ public class SpecialBucket {
         }
     }
     
-    // ´õ ÀÌ»ó Á¡¼ö¸¦ ¾òÀ» ¼ö ¾øÀ» ¶§ ±îÁö °è¼ÓÇØ¼­ ¶³¾î¶ß¸®°í Á¡¼ö¸¦ ¾ò´Â´Ù
-    // ºí·°µéÀÌ ¹Ù´Ú¿¡ ¿ÏÀüÈ÷ ¶³¾îÁ® ÀÖÀ» ¶§, Á¡¼ö¸¦ ¾ò°í ºí·°À» Á¦°Å
+    // ë” ì´ìƒ ì ìˆ˜ë¥¼ ì–»ì„ ìˆ˜ ì—†ì„ ë•Œ ê¹Œì§€ ê³„ì†í•´ì„œ ë–¨ì–´ëœ¨ë¦¬ê³  ì ìˆ˜ë¥¼ ì–»ëŠ”ë‹¤
+    // ë¸”ëŸ­ë“¤ì´ ë°”ë‹¥ì— ì™„ì „íˆ ë–¨ì–´ì ¸ ìˆì„ ë•Œ, ì ìˆ˜ë¥¼ ì–»ê³  ë¸”ëŸ­ì„ ì œê±°
     static int getScore() {
         int sum = 0;
         while (aligned()) {
@@ -60,9 +60,9 @@ public class SpecialBucket {
         return true;
     }
     
-    // ºí·°µéÀ» Æ¯Á¤ Á¶°Ç¿¡ ¸Â°Ô ¸ğµÎ ÀÌµ¿½ÃÅ°°í colÀ» »õ·Î ÃÊ±âÈ­
+    // ë¸”ëŸ­ë“¤ì„ íŠ¹ì • ì¡°ê±´ì— ë§ê²Œ ëª¨ë‘ ì´ë™ì‹œí‚¤ê³  colì„ ìƒˆë¡œ ì´ˆê¸°í™”
     static void moveAll() {
-        int[][] S = new int[101][5]; // 101 * 5 Å©±âÀÇ Bucket, ²À´ë±â°¡ 0, ¹Ù´ÚÀÌ 100, ¸Ç ¿ŞÂÊÀÌ 1, ¸Ç ¿À¸¥ÂÊÀÌ 4
+        int[][] S = new int[101][5]; // 101 * 5 í¬ê¸°ì˜ Bucket, ê¼­ëŒ€ê¸°ê°€ 0, ë°”ë‹¥ì´ 100, ë§¨ ì™¼ìª½ì´ 1, ë§¨ ì˜¤ë¥¸ìª½ì´ 4
         for (int i = 0; i < 101; i++) Arrays.fill(S[i], 9);
         for (int j = 1; j <= 4; j++)
             for (int i = 0; !col.get(j).isEmpty(); i++)
@@ -72,9 +72,9 @@ public class SpecialBucket {
                 if (S[i][j] != 9) col.get(j).offerFirst(S[i][j]);
     }
     
-    // (y, x)¿¡ À§Ä¡ÇÑ n¹ø ºí·°À» ÀÌµ¿½ÃÅ°°í, S¿¡ ÀúÀå
+    // (y, x)ì— ìœ„ì¹˜í•œ në²ˆ ë¸”ëŸ­ì„ ì´ë™ì‹œí‚¤ê³ , Sì— ì €ì¥
     static void move(int[][] S, int y, int x, int n) {
-        // ¿ì¼±¼øÀ§°¡ ³ôÀº ¹æÇâ ¼øÀ¸·Î ÀÌµ¿
+        // ìš°ì„ ìˆœìœ„ê°€ ë†’ì€ ë°©í–¥ ìˆœìœ¼ë¡œ ì´ë™
         for (int i = 0; i < 8; i++) {
             int d = priority[n][i];
             int ny = y + dy[d]; int nx = x + dx[d];
@@ -85,7 +85,7 @@ public class SpecialBucket {
         }
     }
     
-    // colÀÇ ±íÀº º¹»çº» ¹İÈ¯
+    // colì˜ ê¹Šì€ ë³µì‚¬ë³¸ ë°˜í™˜
     static ArrayList<Deque<Integer>> deepCopy() {
         ArrayList<Deque<Integer>> ret = new ArrayList<>();
         ret.add(new LinkedList<>());

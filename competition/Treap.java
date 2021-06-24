@@ -5,10 +5,10 @@ public class Treap {
 }
 
 class Node {
-	int key; // ³ëµå¿¡ ÀúÀåµÈ ¿ø¼Ò
-	int priority; // ³ëµåÀÇ ¿ì¼± ¼øÀ§
-	int size; // ÀÌ ³ëµå¸¦ ·çÆ®·Î ÇÏ´Â ¼­ºêÆ®¸®ÀÇ Å©±â
-	Node left, right; // ¿ŞÂÊ ÀÚ½Ä°ú ¿À¸¥ÂÊ ÀÚ½Ä
+	int key; // ë…¸ë“œì— ì €ì¥ëœ ì›ì†Œ
+	int priority; // ë…¸ë“œì˜ ìš°ì„  ìˆœìœ„
+	int size; // ì´ ë…¸ë“œë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” ì„œë¸ŒíŠ¸ë¦¬ì˜ í¬ê¸°
+	Node left, right; // ì™¼ìª½ ìì‹ê³¼ ì˜¤ë¥¸ìª½ ìì‹
 	
 	public Node(int k) { key = k; priority = (int)(Math.random() * 100000); size = 1; }
 	
@@ -22,25 +22,25 @@ class Node {
 		if (right != null) size += right.size;
 	}
 	
-	// root¸¦ ·çÆ®·Î ÇÏ´Â Æ®¸®¸¦ key¹Ì¸¸ÀÇ °ª°ú, keyÀÌ»óÀÇ °ªÀ» °®´Â µÎ Æ®¸®·Î ºĞ¸®ÇÑ´Ù
+	// rootë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” íŠ¸ë¦¬ë¥¼ keyë¯¸ë§Œì˜ ê°’ê³¼, keyì´ìƒì˜ ê°’ì„ ê°–ëŠ” ë‘ íŠ¸ë¦¬ë¡œ ë¶„ë¦¬í•œë‹¤
 	private static Node[] split(Node root, int key) {
 		if (root == null) return new Node[2];
-		// root°¡ key ¹Ì¸¸ÀÌ¸é keyº¸´Ù °°°Å³ª Å« ¿ø¼Ò°¡ ÀÖÀ» ¼ö ÀÖ´Â ¿À¸¥ÂÊÀ» ÂÉ°µ´Ù
+		// rootê°€ key ë¯¸ë§Œì´ë©´ keyë³´ë‹¤ ê°™ê±°ë‚˜ í° ì›ì†Œê°€ ìˆì„ ìˆ˜ ìˆëŠ” ì˜¤ë¥¸ìª½ì„ ìª¼ê° ë‹¤
 		if (root.key < key) {
 			Node[] pair = split(root.right, key);
 			root.right = pair[0];
 			return new Node[] { root, pair[1] };
 		}
-		// root°¡ keyÀÌ»óÀÌ¶ó¸é keyº¸´Ù ÀÛÀº ¿ø¼Ò°¡ ÀÖÀ» ¼ö ÀÖ´Â ¿ŞÂÊÀ» ÂÉ°µ´Ù
+		// rootê°€ keyì´ìƒì´ë¼ë©´ keyë³´ë‹¤ ì‘ì€ ì›ì†Œê°€ ìˆì„ ìˆ˜ ìˆëŠ” ì™¼ìª½ì„ ìª¼ê° ë‹¤
 		Node[] pair = split(root.left, key);
 		root.left = pair[1];
 		return new Node[] { pair[0], root };
 	}
 	
-	// root¸¦ ·çÆ®·Î ÇÏ´Â Æ®¸®¿¡ »õ ³ëµå node¸¦ »ğÀÔÇÑ µÚ °á°ú Æ®¸®ÀÇ ·çÆ®¸¦ ¹İÈ¯
+	// rootë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” íŠ¸ë¦¬ì— ìƒˆ ë…¸ë“œ nodeë¥¼ ì‚½ì…í•œ ë’¤ ê²°ê³¼ íŠ¸ë¦¬ì˜ ë£¨íŠ¸ë¥¼ ë°˜í™˜
 	static Node insert(Node root, Node node) {
 		if (root == null) return node;
-		// node°¡ rootÀÇ ·çÆ®¸¦ ´ëÃ¼ÇØ¾ß ÇÏ´Â °æ¿ì node.key±âÁØÀ¸·Î ¹İÀ¸·Î ÂÉ°µ´Ù
+		// nodeê°€ rootì˜ ë£¨íŠ¸ë¥¼ ëŒ€ì²´í•´ì•¼ í•˜ëŠ” ê²½ìš° node.keyê¸°ì¤€ìœ¼ë¡œ ë°˜ìœ¼ë¡œ ìª¼ê° ë‹¤
 		if (root.priority < node.priority) {
 			Node[] pair = split(root, node.key);
 			node.setLeft(pair[0]); node.setRight(pair[1]);
@@ -53,7 +53,7 @@ class Node {
 		return root;
 	}
 	
-	// max(a) < min(b)ÀÏ ¶§ ÀÌ µÑÀ» ÇÕÄ£ Æ®¸®¸¦ ¹İÈ¯
+	// max(a) < min(b)ì¼ ë•Œ ì´ ë‘˜ì„ í•©ì¹œ íŠ¸ë¦¬ë¥¼ ë°˜í™˜
 	private static Node merge(Node a, Node b) {
 		if (a == null) return b; if (b == null) return a;
 		if (a.priority < b.priority) {
@@ -64,17 +64,17 @@ class Node {
 		return a;
 	}
 	
-	// root¸¦ ·çÆ®·Î ÇÏ´Â Æ®¸®¿¡¼­ key¸¦ Áö¿ì°í °á°ú Æ®¸®ÀÇ ·çÆ®¸¦ ¹İÈ¯
+	// rootë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” íŠ¸ë¦¬ì—ì„œ keyë¥¼ ì§€ìš°ê³  ê²°ê³¼ íŠ¸ë¦¬ì˜ ë£¨íŠ¸ë¥¼ ë°˜í™˜
 	static Node erase(Node root, int key) {
 		if (root == null) return root;
-		// root¸¦ Áö¿ì°í ¾ç ¼­ºêÆ®¸®¸¦ ÇÕÄ£µÚ ¹İÈ¯
+		// rootë¥¼ ì§€ìš°ê³  ì–‘ ì„œë¸ŒíŠ¸ë¦¬ë¥¼ í•©ì¹œë’¤ ë°˜í™˜
 		if (root.key == key) return merge(root.left, root.right);
 		if (key < root.key) root.setLeft(erase(root.left, key));
 		else root.setRight(erase(root.right, key));
 		return root;
 	}
 	
-	// root¸¦ ·çÆ®·Î ÇÏ´Â Æ®¸®¿¡¼­ k¹øÂ° ¿ø¼Ò¸¦ ¹İÈ¯ÇÑ´Ù
+	// rootë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” íŠ¸ë¦¬ì—ì„œ kë²ˆì§¸ ì›ì†Œë¥¼ ë°˜í™˜í•œë‹¤
 	static Node kth(Node root, int k) {
 		int leftSize = 0;
 		if (root.left != null) leftSize = root.left.size;
@@ -83,7 +83,7 @@ class Node {
 		return kth(root.right, k - leftSize - 1);
 	}
 	
-	// root¸¦ ·çÆ®·Î ÇÏ´Â Æ®¸®¿¡¼­ keyº¸´Ù ÀÛÀº °ªÀ» °®´Â ³ëµåÀÇ ¼ö¸¦ ¹İÈ¯
+	// rootë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” íŠ¸ë¦¬ì—ì„œ keyë³´ë‹¤ ì‘ì€ ê°’ì„ ê°–ëŠ” ë…¸ë“œì˜ ìˆ˜ë¥¼ ë°˜í™˜
 	static int countLessThan(Node root, int key) {
 		if (root == null) return 0;
 		if (root.key >= key) return countLessThan(root.left, key);

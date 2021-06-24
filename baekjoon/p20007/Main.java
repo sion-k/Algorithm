@@ -22,13 +22,13 @@ public class Main {
 		while (!pq.isEmpty()) {
 			Pair p = pq.poll();
 			int here = p.num; int cost = p.cost;
-			// ´õ ³ªÀº °æ·Î¸¦ ¾Ë°í ÀÖ´Ù¸é ¹«½Ã
+			// ë” ë‚˜ì€ ê²½ë¡œë¥¼ ì•Œê³  ìˆë‹¤ë©´ ë¬´ì‹œ
 			if(dist[here] < cost) {continue;}
-			// Á¤Á¡À» ¹æ¹®ÇÏ°í ÀÎÁ¢ Á¤Á¡À» °Ë»ç
+			// ì •ì ì„ ë°©ë¬¸í•˜ê³  ì¸ì ‘ ì •ì ì„ ê²€ì‚¬
 			for (Pair edge : adj.get(here)) {
 				int there = edge.num;
 				int nextDist = cost + edge.cost;
-				// ±âÁ¸¿¡ ¹ß°ßÇÑ °Íº¸´Ù ´õ ÂªÀº °æ·Î¸¦ ¹ß°ß ÇÑ °æ¿ì ÃÖ½ÅÈ­
+				// ê¸°ì¡´ì— ë°œê²¬í•œ ê²ƒë³´ë‹¤ ë” ì§§ì€ ê²½ë¡œë¥¼ ë°œê²¬ í•œ ê²½ìš° ìµœì‹ í™”
 				if (dist[there] > nextDist) {
 					dist[there] = nextDist;
 					pq.offer(new Pair(there, nextDist));

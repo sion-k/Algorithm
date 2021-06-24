@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class B {
 	static int[] cache;
 
-	// nÀ» 2020°ú 2021ÀÇ ÇÕÀ¸·Î Ç¥Çö °¡´ÉÇÑÁö ¿©ºÎ ? 1 : 0
+	// nì„ 2020ê³¼ 2021ì˜ í•©ìœ¼ë¡œ í‘œí˜„ ê°€ëŠ¥í•œì§€ ì—¬ë¶€ ? 1 : 0
 	static int dp(int n) {
 		if (n == 0) return 1;
 		if (cache[n] != -1) return cache[n];

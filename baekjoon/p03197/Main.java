@@ -12,15 +12,15 @@ import java.util.StringTokenizer;
 
 public class Main {
 	static int R, C;
-	static boolean[][] S; // ºùÆÇÀÌ ÀÖ´ÂÁö ¿©ºÎ
+	static boolean[][] S; // ë¹™íŒì´ ìˆëŠ”ì§€ ì—¬ë¶€
 	static int[][] M;
-	static int[][] L; // µÎ ¹éÁ¶ÀÇ À§Ä¡ ÀúÀå
+	static int[][] L; // ë‘ ë°±ì¡°ì˜ ìœ„ì¹˜ ì €ì¥
 	
 	static final int[] dy = {-1, 1, 0, 0}; static final int[] dx = {0, 0, -1, 1};
 	
 	static boolean inRange(int y, int x) {return 0 <= y && y < R && 0 <= x && x < C;}
 	
-	// ¸ğµç ºùÆÇµé¿¡ ´ëÇØ¼­ ¸çÄ¥ÀÌ Áö³ª¾ß ³ì´ÂÁö ÀúÀåÇÏ´Â ¹è¿­ MÀ» ¸¸µç´Ù
+	// ëª¨ë“  ë¹™íŒë“¤ì— ëŒ€í•´ì„œ ë©°ì¹ ì´ ì§€ë‚˜ì•¼ ë…¹ëŠ”ì§€ ì €ì¥í•˜ëŠ” ë°°ì—´ Mì„ ë§Œë“ ë‹¤
 	static void bfs() {
 		Queue<int[]> q = new LinkedList<>();
 		M = new int[R][C];
@@ -44,7 +44,7 @@ public class Main {
 		}
 	}
 	
-	// tÀÏÀÌ Áö³µÀ» ¶§, ¹éÁ¶³¢¸® ¸¸³¯ ¼ö ÀÖ´ÂÁö ¿©ºÎ
+	// tì¼ì´ ì§€ë‚¬ì„ ë•Œ, ë°±ì¡°ë¼ë¦¬ ë§Œë‚  ìˆ˜ ìˆëŠ”ì§€ ì—¬ë¶€
 	static boolean rechable(int t) {
 		Queue<int[]> q = new LinkedList<>();
 		q.offer(L[0]);
@@ -90,7 +90,7 @@ public class Main {
 		}
 		bfs();
 		int lo = 0; int hi = 1500;
-		// rechable[lo] == false && rechable[hi] == trueÀ» ¸¸Á·ÇÏ´Â hi¹İÈ¯
+		// rechable[lo] == false && rechable[hi] == trueì„ ë§Œì¡±í•˜ëŠ” hië°˜í™˜
 		while (lo + 1 < hi) {
 			int mid = (lo + hi) / 2;
 			if (rechable(mid)) hi = mid;

@@ -15,7 +15,7 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
 		br.close();
-		int index = N / 14; //[0,]¹øÂ°·Î ºÎ¸£´Â ³ë·¡
+		int index = N / 14; //[0,]ë²ˆì§¸ë¡œ ë¶€ë¥´ëŠ” ë…¸ëž˜
 		String ans = "";
 		int r = N % 14;
 		switch(r) {

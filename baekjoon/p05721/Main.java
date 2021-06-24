@@ -13,7 +13,7 @@ public class Main {
 	static int[] cache;
 	static int[][] colMax;
 
-	// i¹øÂ° Çà¿¡¼­ ½ÃÀÛÇØ¼­ ¾òÀ» ¼ö ÀÖ´Â ÃÖ´ë »çÅÁ ¼ö
+	// ië²ˆì§¸ í–‰ì—ì„œ ì‹œì‘í•´ì„œ ì–»ì„ ìˆ˜ ìˆëŠ” ìµœëŒ€ ì‚¬íƒ• ìˆ˜
 	static int dp(int i) {
 		if (i >= N) return 0;
 		if (cache[i] != 0) return cache[i];
@@ -21,7 +21,7 @@ public class Main {
 		Math.max(dp(i + 1), colMax[i][0] + dp(i + 2));
 	}
 
-	// (i, j)¿¡¼­ ½ÃÀÛÇØ¼­ i¹øÂ° Çà¿¡¼­ ¾òÀ» ¼ö ÀÖ´Â ÃÖ´ë »çÅÁ ¼ö
+	// (i, j)ì—ì„œ ì‹œì‘í•´ì„œ ië²ˆì§¸ í–‰ì—ì„œ ì–»ì„ ìˆ˜ ìˆëŠ” ìµœëŒ€ ì‚¬íƒ• ìˆ˜
 	static int dp2(int i, int j) {
 		if (j >= M) return 0;
 		if (colMax[i][j] != 0) return colMax[i][j];

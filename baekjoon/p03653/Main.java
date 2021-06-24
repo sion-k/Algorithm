@@ -15,12 +15,12 @@ public class Main {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 			int N = Integer.parseInt(st.nextToken());
 			int M = Integer.parseInt(st.nextToken());
-			int[] S = new int[M]; // º¸·Á°í ÇÏ´Â ¿µÈ­
-			int[] P = new int[N]; // ÇöÀç °¡Áö°í ÀÖ´Â i¹øÂ° ¿µÈ­ÀÇ À§Ä¡
+			int[] S = new int[M]; // ë³´ë ¤ê³  í•˜ëŠ” ì˜í™”
+			int[] P = new int[N]; // í˜„ì¬ ê°€ì§€ê³  ìˆëŠ” ië²ˆì§¸ ì˜í™”ì˜ ìœ„ì¹˜
 			for (int i = 0; i < N; i++) P[i] = M + i;
 			st = new StringTokenizer(br.readLine(), " ");
 			for (int i = 0; i < M; i++) S[i] = Integer.parseInt(st.nextToken());
-			// ±¸°£ ³ëµå¸¦ [0, M) + [M, M + N)À¸·Î Á¤ÀÇÇÑ´Ù
+			// êµ¬ê°„ ë…¸ë“œë¥¼ [0, M) + [M, M + N)ìœ¼ë¡œ ì •ì˜í•œë‹¤
 			FenwickTree t = new FenwickTree(N + M);
 			for (int i = 0; i < N; i++) t.add(M + i, 1);
 			int head = M - 1;

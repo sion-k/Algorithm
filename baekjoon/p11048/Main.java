@@ -11,7 +11,7 @@ public class Main {
 	static int[][] BOARD;
 	static int[][] cache;
 
-	// ¾Æ·¡ ¿À¸¥ÂÊ ¿À¸¥ÂÊ ¾Æ·¡
+	// ì•„ëž˜ ì˜¤ë¥¸ìª½ ì˜¤ë¥¸ìª½ ì•„ëž˜
 	static final int[] dy = {1, 0, 1};
 	static final int[] dx = {0, 1, 1};
 

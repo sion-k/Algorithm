@@ -31,7 +31,7 @@ public class Main {
 
 	static boolean[] visit;
 
-	// here¿¡¼­ °¡Àå ¸Ö¸® ÀÖ´Â Á¤Á¡°ú ±×°÷ ±îÁöÀÇ °Å¸® ¹İÈ¯
+	// hereì—ì„œ ê°€ì¥ ë©€ë¦¬ ìˆëŠ” ì •ì ê³¼ ê·¸ê³³ ê¹Œì§€ì˜ ê±°ë¦¬ ë°˜í™˜
 	static Pair dfs(int here) {
 		visit[here] = true;
 		Pair max = new Pair(here, 0);
@@ -59,11 +59,11 @@ public class Main {
 			edges.add(new Edge(u, v, c));
 			edges.add(new Edge(v, u, c));
 		}
-		// ÃÖ¼Ò ½ºÆĞ´× Æ®¸®¸¦ ÃÊ±âÈ­
+		// ìµœì†Œ ìŠ¤íŒ¨ë‹ íŠ¸ë¦¬ë¥¼ ì´ˆê¸°í™”
 		mst = new ArrayList<>();
 		for (int i = 0; i < N; i++)
 			mst.add(new ArrayList<>());
-		// ÃÖ¼Ò ½ºÆĞ´× Æ®¸®ÀÇ °¡ÁßÄ¡ ÇÕ ¹İÈ¯
+		// ìµœì†Œ ìŠ¤íŒ¨ë‹ íŠ¸ë¦¬ì˜ ê°€ì¤‘ì¹˜ í•© ë°˜í™˜
 		System.out.println(kruskal());
 		visit = new boolean[N];
 		int leaf = dfs(root).num;

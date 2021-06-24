@@ -11,7 +11,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
-		// [1, 10000], 0¹øÂ° ÀÎµ¦½º´Â ¹Ì»ç¿ë
+		// [1, 10000], 0ë²ˆì§¸ ì¸ë±ìŠ¤ëŠ” ë¯¸ì‚¬ìš©
 		int[] count = new int[10001];
 		for (int i = 0; i < N; i++) {
 			count[Integer.parseInt(br.readLine())]++;

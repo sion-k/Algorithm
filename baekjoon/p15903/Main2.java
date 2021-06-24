@@ -7,16 +7,16 @@ import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class Main2 {
-	// ¸Å ÇÕÃ¼¸¶´Ù Ä«µåÀÇ ÃÑ ÇÕÀº (x + y)¸¸Å­ ´Ã¾î³²
+	// ë§¤ í•©ì²´ë§ˆë‹¤ ì¹´ë“œì˜ ì´ í•©ì€ (x + y)ë§Œí¼ ëŠ˜ì–´ë‚¨
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		int n = Integer.parseInt(st.nextToken());
 		int m = Integer.parseInt(st.nextToken());
 		st = new StringTokenizer(br.readLine(), " ");
-		// °¡Àå ÀÛÀº ¿ø¼Òµé ºÎÅÍ »ÌÀ» ¼ö ÀÖµµ·Ï ¿ì¼±¼øÀ§ Å¥ »ç¿ë
+		// ê°€ì¥ ì‘ì€ ì›ì†Œë“¤ ë¶€í„° ë½‘ì„ ìˆ˜ ìˆë„ë¡ ìš°ì„ ìˆœìœ„ í ì‚¬ìš©
 		PriorityQueue<Long> pq = new PriorityQueue<Long>();
-		// Á¦ÀÏ Ã³À½ Ä«µåµéÀÇ ÇÕÀ» ±¸ÇØ³õ´Â´Ù.
+		// ì œì¼ ì²˜ìŒ ì¹´ë“œë“¤ì˜ í•©ì„ êµ¬í•´ë†“ëŠ”ë‹¤.
 		long sum = 0;
 		for (int i = 0; i < n; i++) {
 			int a = Integer.parseInt(st.nextToken());

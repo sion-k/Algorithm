@@ -32,7 +32,7 @@ public class Main {
 		edges = new ArrayList<>(M);
 		int K = Integer.parseInt(st.nextToken());
 		st = new StringTokenizer(br.readLine(), " ");
-		// 0¹ø °£¼±¿¡¼­ ¹ßÀü¼Òµé·Î ÀÌ¾îÁö´Â °¡ÁßÄ¡ 0Â¥¸® °£¼±ÀÌ ÀÖ´Ù°í °¡Á¤
+		// 0ë²ˆ ê°„ì„ ì—ì„œ ë°œì „ì†Œë“¤ë¡œ ì´ì–´ì§€ëŠ” ê°€ì¤‘ì¹˜ 0ì§œë¦¬ ê°„ì„ ì´ ìˆë‹¤ê³  ê°€ì •
 		for (int i = 0; i < K; i++)
 			edges.add(new Edge(0, Integer.parseInt(st.nextToken()), 0));
 		for (int i = 0; i < M; i++) {

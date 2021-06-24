@@ -12,11 +12,11 @@ public class Main {
 	
 	static final int[] dy = {-1, 1, 0, 0};
 	static final int[] dx = {0, 0, -1, 1};
-	static final int[] clockwise = {2, 3, 1, 0}; // »óÇÏÁÂ¿ì ¹æÇâÀ» ½Ã°è¹æÇâÀ¸·Î È¸Àü
+	static final int[] clockwise = {2, 3, 1, 0}; // ìƒí•˜ì¢Œìš° ë°©í–¥ì„ ì‹œê³„ë°©í–¥ìœ¼ë¡œ íšŒì „
 	
 	static List<List<Integer>> curve = new ArrayList<>();
 	
-	// (y, x)À§Ä¡ d¹æÇâ¿¡¼­ g¼¼´ë µå·¡°ï Ä¿ºê¸¦ ±×¸°´Ù
+	// (y, x)ìœ„ì¹˜ dë°©í–¥ì—ì„œ gì„¸ëŒ€ ë“œë˜ê³¤ ì»¤ë¸Œë¥¼ ê·¸ë¦°ë‹¤
 	static void f(int y, int x, int d, int g) {
 		P[y][x] = true;
 		for (int i = 0; i < (1 << g); i++) {
@@ -30,7 +30,7 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		for (int d = 0; d < 4; d++) {
 			List<Integer> temp = new ArrayList<>();
-			temp.add(d); // 0¼¼´ë µå·¡°ï Ä¿ºê (¿À¸¥ÂÊ ¹æÇâ ±âÁØ)
+			temp.add(d); // 0ì„¸ëŒ€ ë“œë˜ê³¤ ì»¤ë¸Œ (ì˜¤ë¥¸ìª½ ë°©í–¥ ê¸°ì¤€)
 			for (int g = 1; g <= 10; g++)
 				for (int i = temp.size() - 1; i >= 0; i--) 
 					temp.add(clockwise[temp.get(i)]);

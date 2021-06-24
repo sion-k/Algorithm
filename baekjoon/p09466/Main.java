@@ -10,22 +10,22 @@ import java.util.StringTokenizer;
 
 public class Main {
 	static int[] adj;
-	static boolean[] currentVisit; // ÇöÀç ÁøÇàµÇ°í ÀÖ´Â DFSÇÔ¼ö°¡ ¹æ¹®Çß´ÂÁö ¿©ºÎ
-	static boolean[] visit; // ÀÌÀüÀÇ DFSÈ£Ãâ¿¡¼­ Á¤Á¡À» ¹æ¹®Çß´ÂÁö ¿©ºÎ
+	static boolean[] currentVisit; // í˜„ì¬ ì§„í–‰ë˜ê³  ìˆëŠ” DFSí•¨ìˆ˜ê°€ ë°©ë¬¸í–ˆëŠ”ì§€ ì—¬ë¶€
+	static boolean[] visit; // ì´ì „ì˜ DFSí˜¸ì¶œì—ì„œ ì •ì ì„ ë°©ë¬¸í–ˆëŠ”ì§€ ì—¬ë¶€
 	
-	static int cycle; // »çÀÌÅ¬À» ÀÌ·ç´Â ³ëµåÀÇ °³¼ö
+	static int cycle; // ì‚¬ì´í´ì„ ì´ë£¨ëŠ” ë…¸ë“œì˜ ê°œìˆ˜
 	
 	static void dfs(int here) {
 		currentVisit[here] = true;
 		int there = adj[here];
-		// ÀÌÀüÀÇ DFSÀÇ È£Ãâ¿¡¼­ ¹æ¹®ÇÏÁö ¾ÊÀº ÀÎÁ¢ Á¤Á¡À» ¹æ¹®ÇÑ´Ù
-		// ÀÌÀü¿¡ ¹æ¹®ÇÑ Á¤Á¡µéÀº »çÀÌÅ¬¿¡ Æ÷ÇÔµÇ°Å³ª Æ÷ÇÔµÇÁö ¾Ê±â ¶§¹®¿¡ È®ÀÎÇØÁÙ ÇÊ¿ä°¡ ¾ø´Ù
+		// ì´ì „ì˜ DFSì˜ í˜¸ì¶œì—ì„œ ë°©ë¬¸í•˜ì§€ ì•Šì€ ì¸ì ‘ ì •ì ì„ ë°©ë¬¸í•œë‹¤
+		// ì´ì „ì— ë°©ë¬¸í•œ ì •ì ë“¤ì€ ì‚¬ì´í´ì— í¬í•¨ë˜ê±°ë‚˜ í¬í•¨ë˜ì§€ ì•Šê¸° ë•Œë¬¸ì— í™•ì¸í•´ì¤„ í•„ìš”ê°€ ì—†ë‹¤
 		if (!visit[there]) {
 			if (!currentVisit[there]) {
 				dfs(there);
 			} else {
 				cycle++;
-				// »çÀÌÅ¬À» ÀÌ·ç´Â °£¼±ÀÇ °³¼ö¸¦ ¼¾´Ù(°£¼±ÀÇ °³¼ö°¡ ³ëµåÀÇ °³¼ö)
+				// ì‚¬ì´í´ì„ ì´ë£¨ëŠ” ê°„ì„ ì˜ ê°œìˆ˜ë¥¼ ì„¼ë‹¤(ê°„ì„ ì˜ ê°œìˆ˜ê°€ ë…¸ë“œì˜ ê°œìˆ˜)
 				for (int i = there; i != here; i = adj[i]) cycle++;
 			}
 		}

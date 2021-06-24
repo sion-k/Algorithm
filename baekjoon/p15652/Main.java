@@ -18,8 +18,8 @@ public class Main {
 		bw.newLine();
 	}
 	
-	// ¸Ç ¸¶Áö¸·À¸·Î lastPickÀ» °ñ¶úÀ» ¶§ N°³¿¡¼­ M°³¸¦ °í¸£´Â ¼ö¿­ ¸ğµÎ Ãâ·Â
-	// [1, N] ÀÚ¿¬¼ö, Áßº¹ Çã¿ë, ºñ³»¸²Â÷¼ø
+	// ë§¨ ë§ˆì§€ë§‰ìœ¼ë¡œ lastPickì„ ê³¨ëì„ ë•Œ Nê°œì—ì„œ Mê°œë¥¼ ê³ ë¥´ëŠ” ìˆ˜ì—´ ëª¨ë‘ ì¶œë ¥
+	// [1, N] ìì—°ìˆ˜, ì¤‘ë³µ í—ˆìš©, ë¹„ë‚´ë¦¼ì°¨ìˆœ
 	static void pick(int N , int M, int lastPick) throws IOException {
 		if (M == 0) {print(); return;}
 		

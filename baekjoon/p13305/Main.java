@@ -18,7 +18,7 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		N = Integer.parseInt(br.readLine());
 		
-		R = new int[N]; // °¢ µµ½Ã¸¶´Ù ¿À¸¥ÂÊ¿¡ µµ·Î°¡ ´ëÀÀµÈ´Ù. (¸Ç ¿À¸¥ÂÊ µµ½Ã Á¦¿Ü)
+		R = new int[N]; // ê° ë„ì‹œë§ˆë‹¤ ì˜¤ë¥¸ìª½ì— ë„ë¡œê°€ ëŒ€ì‘ëœë‹¤. (ë§¨ ì˜¤ë¥¸ìª½ ë„ì‹œ ì œì™¸)
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		for (int i = 0; i < N - 1; i++) {
 			R[i] = Integer.parseInt(st.nextToken());

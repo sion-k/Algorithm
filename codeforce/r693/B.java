@@ -20,7 +20,7 @@ public class B {
 			for (int i = 0; i < N; i++)
 				set[Integer.parseInt(st.nextToken())]++;
 			int sum = set[1] + 2 * set[2];
-			// 2ÀÇ °³¼ö°¡ È¦¼öÀÎ °æ¿ì 1ÀÌ 2°³ ¹Ì¸¸ÀÌ¸é ºÒ°¡
+			// 2ì˜ ê°œìˆ˜ê°€ í™€ìˆ˜ì¸ ê²½ìš° 1ì´ 2ê°œ ë¯¸ë§Œì´ë©´ ë¶ˆê°€
 			if (sum % 2 != 0 || set[1] % 2 != 0 || (set[2] % 2 == 1 && set[1] < 2)) {
 				bw.write("NO");
 				bw.newLine();

@@ -17,14 +17,14 @@ public class Main {
 		}
 	}
 	
-	static int N; // Á¤Á¡ÀÇ °³¼ö, Á¤Á¡ÀÇ ¹øÈ£´Â [1, N]ÀÌ´Ù
+	static int N; // ì •ì ì˜ ê°œìˆ˜, ì •ì ì˜ ë²ˆí˜¸ëŠ” [1, N]ì´ë‹¤
 	static ArrayList<ArrayList<Pair>> adj;
 	
-	// ½ÃÀÛÁ¡ src·Î ºÎÅÍ ÃÖ´Ü °æ·Î ±æÀÌ¸¦ ´ãÀº ¹è¿­À» ¹İÈ¯ÇÑ´Ù
+	// ì‹œì‘ì  srcë¡œ ë¶€í„° ìµœë‹¨ ê²½ë¡œ ê¸¸ì´ë¥¼ ë‹´ì€ ë°°ì—´ì„ ë°˜í™˜í•œë‹¤
 	static int[] dijkstra(int src) {
 		int[] dist = new int[N + 1];
 		Arrays.fill(dist, Integer.MAX_VALUE);
-		dist[src] = 0;// src ÀÚ½ÅÀ¸·ÎÀÇ ÃÖ´Ü °æ·Î ±æÀÌ´Â 0
+		dist[src] = 0;// src ìì‹ ìœ¼ë¡œì˜ ìµœë‹¨ ê²½ë¡œ ê¸¸ì´ëŠ” 0
 		PriorityQueue<Pair> pq = new PriorityQueue<>();
 		pq.offer(new Pair(src, 0));
 		while(!pq.isEmpty()) {
@@ -33,7 +33,7 @@ public class Main {
 			for (int i = 0; i < adj.get(here).size(); i++) {
 				int there = adj.get(here).get(i).num;
 				int nextDist = cost + adj.get(here).get(i).cost;
-				// ±âÁ¸¿¡ ¹ß°ßÇÑ °Íº¸´Ù ´õ ÂªÀº °æ·Î¸¦ ¹ß°ß ÇÑ °æ¿ì
+				// ê¸°ì¡´ì— ë°œê²¬í•œ ê²ƒë³´ë‹¤ ë” ì§§ì€ ê²½ë¡œë¥¼ ë°œê²¬ í•œ ê²½ìš°
 				if (dist[there] > nextDist) {
 					dist[there] = nextDist;
 					pq.offer(new Pair(there, nextDist));
@@ -43,11 +43,11 @@ public class Main {
 		return dist;
 	}
 	static int solution(int A, int B) {
-		// 1¿¡¼­ ÃÖ´Ü °æ·Îµé
+		// 1ì—ì„œ ìµœë‹¨ ê²½ë¡œë“¤
 		int[] first = dijkstra(1);
-		// N¿¡¼­ ÃÖ´Ü °æ·Îµé
+		// Nì—ì„œ ìµœë‹¨ ê²½ë¡œë“¤
 		int[] last = dijkstra(N);
-		// A-B ÃÖ´Ü °æ·Î
+		// A-B ìµœë‹¨ ê²½ë¡œ
 		int ab = dijkstra(A)[B];
 		if(ab == Integer.MAX_VALUE) {return -1;}
 		// 1-A-B-N
@@ -87,13 +87,13 @@ public class Main {
 			int from = Integer.parseInt(st.nextToken());
 			int to   = Integer.parseInt(st.nextToken());
 			int weight = Integer.parseInt(st.nextToken());
-			// ¾ç¹æÇâ °£¼± Ãß°¡
+			// ì–‘ë°©í–¥ ê°„ì„  ì¶”ê°€
 			adj.get(from).add(new Pair(to, weight));
 			adj.get(to).add(new Pair(from, weight));
 		}
 		st = new StringTokenizer(br.readLine(), " ");
 		br.close();
-		// ¹«Á¶°Ç Áö³ª¾ß ÇÏ´Â µÎ Á¤Á¡
+		// ë¬´ì¡°ê±´ ì§€ë‚˜ì•¼ í•˜ëŠ” ë‘ ì •ì 
 		int A = Integer.parseInt(st.nextToken());
 		int B = Integer.parseInt(st.nextToken());
 		System.out.println(solution(A, B));

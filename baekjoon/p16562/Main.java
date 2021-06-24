@@ -31,7 +31,7 @@ public class Main {
 		for (Edge e : A) {
 			int there = e.num; int cost = e.cost;
 			if (S.find(here) == S.find(there)) continue;
-			// Ä£±¸ºñ°¡ ÃæºÐÇÑ °æ¿ì
+			// ì¹œêµ¬ë¹„ê°€ ì¶©ë¶„í•œ ê²½ìš°
 			if (K >= cost) {
 				totalCost += cost; K -= cost;
 				S.union(here, there);

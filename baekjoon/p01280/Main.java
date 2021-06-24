@@ -10,9 +10,9 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
-		// Range Count Query [0, pos]¿¡ Á¸ÀçÇÏ´Â ÁÂÇ¥ÀÇ ¼ö¸¦ ´äÇÑ´Ù
+		// Range Count Query [0, pos]ì— ì¡´ì¬í•˜ëŠ” ì¢Œí‘œì˜ ìˆ˜ë¥¼ ë‹µí•œë‹¤
 		FenwickTree rcq = new FenwickTree(200001); 
-		// Range Sum Query [0, pos]¿¡ Á¸ÀçÇÏ´Â ÁÂÇ¥°ªµéÀÇ ÇÕÀ» ´äÇÑ´Ù
+		// Range Sum Query [0, pos]ì— ì¡´ì¬í•˜ëŠ” ì¢Œí‘œê°’ë“¤ì˜ í•©ì„ ë‹µí•œë‹¤
 		FenwickTree rsq = new FenwickTree(200001);
 		int ret = 1;
 		int x = Integer.parseInt(br.readLine());
@@ -31,13 +31,13 @@ public class Main {
 	
 }
 
-//ÆæÀ¨ Æ®¸®
+//íœìœ… íŠ¸ë¦¬
 class FenwickTree {
 	long[] tree;
 	public FenwickTree(int n) {tree = new long[n + 1];}
 
 	void add(int pos, int val) {
-		// ³»ºÎÀûÀ¸·Î´Â 1-based
+		// ë‚´ë¶€ì ìœ¼ë¡œëŠ” 1-based
 		pos++;
 		while (pos < tree.length) {
 			tree[pos] += val;
@@ -46,7 +46,7 @@ class FenwickTree {
 	}
 
 	long sum(int pos) {
-		// ³»ºÎÀûÀ¸·Î´Â 1-based
+		// ë‚´ë¶€ì ìœ¼ë¡œëŠ” 1-based
 		pos++;
 		long ret = 0;
 		while (pos > 0) {

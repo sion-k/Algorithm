@@ -7,38 +7,38 @@ import java.util.Arrays;
 
 public class Main {
 	static int N;
-	// S : ÃÊ±â»óÅÂ G : ¸ñÇ¥
+	// S : ì´ˆê¸°ìƒíƒœ G : ëª©í‘œ
 	static int[] S; static int[] G;
 	static int[][][][][] cache;
 
 	static final int INF = 987654321;
 
-	// hereÀÇ °ª¿¡ diff¸¸Å­ µ¹¸°ÈÄ ±× °á°ú¸¦ ¹ÝÈ¯ÇÑ´Ù (À½¼öÀÎ °æ¿ì °¨¼ÒÇÏ°Ô µ¹¸®´Â °Í)
+	// hereì˜ ê°’ì— diffë§Œí¼ ëŒë¦°í›„ ê·¸ ê²°ê³¼ë¥¼ ë°˜í™˜í•œë‹¤ (ìŒìˆ˜ì¸ ê²½ìš° ê°ì†Œí•˜ê²Œ ëŒë¦¬ëŠ” ê²ƒ)
 	static int rotate(int here, int diff, int d) {
 		return d > 0 ? (here + diff + 10) % 10 : (here - diff + 10) % 10;
 	}
 
-	// S[i, )¿¡ ´ëÇØ S[i], S[i + 1], S[i + 2]ÀÇ °ªÀÌ °¢°¢ p, q, rÀÏ¶§
-	// ±×¸®°í È¸Àü ¹æÇâÀÌ Áõ°¡ÀÎÁö °¨¼ÒÀÎÁö d (0 °¨¼Ò, 1 Áõ°¡)
-	// ÀÚ¹°¼èÀÇ Ç®±â À§ÇÑ ÃÖ¼Ò È¸Àü È½¼ö
+	// S[i, )ì— ëŒ€í•´ S[i], S[i + 1], S[i + 2]ì˜ ê°’ì´ ê°ê° p, q, rì¼ë•Œ
+	// ê·¸ë¦¬ê³  íšŒì „ ë°©í–¥ì´ ì¦ê°€ì¸ì§€ ê°ì†Œì¸ì§€ d (0 ê°ì†Œ, 1 ì¦ê°€)
+	// ìžë¬¼ì‡ ì˜ í’€ê¸° ìœ„í•œ ìµœì†Œ íšŒì „ íšŸìˆ˜
 	static int dp(int i, int p, int q, int r, int d) {
 		if (i == N) return 0;
-		// ÀÌ¹Ì ¸ÂÃçÁ®ÀÖ´Â °æ¿ì ³Ñ¾î°£´Ù
+		// ì´ë¯¸ ë§žì¶°ì ¸ìžˆëŠ” ê²½ìš° ë„˜ì–´ê°„ë‹¤
 		if (p == G[i])
 			return cache[i][p][q][r][d] = Math.min
 			(dp(i + 1, q, r, S[i + 3], 0), dp(i + 1, q, r, S[i + 3], 1));
 		if (cache[i][p][q][r][d] != -1) return cache[i][p][q][r][d];
 		cache[i][p][q][r][d] = INF;
-		// S[i]¿¡¼­ ÇÒ ¼ö ÀÖ´Â Çàµ¿Àº µð½ºÅ©ÀÇ °ªÀ» +- 1, 2, 3º¯È­½ÃÅ°´Â °Í
-		// ±×¸®°í 1, 2, 3°³ÀÇ µð½ºÅ©¸¦ °°ÀÌ µ¹¸± ¼ö ÀÖ´Ù
+		// S[i]ì—ì„œ í•  ìˆ˜ ìžˆëŠ” í–‰ë™ì€ ë””ìŠ¤í¬ì˜ ê°’ì„ +- 1, 2, 3ë³€í™”ì‹œí‚¤ëŠ” ê²ƒ
+		// ê·¸ë¦¬ê³  1, 2, 3ê°œì˜ ë””ìŠ¤í¬ë¥¼ ê°™ì´ ëŒë¦´ ìˆ˜ ìžˆë‹¤
 		for (int diff = 1; diff <= 3; diff++) {
 			int np = rotate(p, diff, d); int nq = rotate(q, diff, d); int nr = rotate(r, diff, d);
-			// 1°³ÀÇ µð½ºÅ©¸¸ µ¹¸®´Â °æ¿ì
+			// 1ê°œì˜ ë””ìŠ¤í¬ë§Œ ëŒë¦¬ëŠ” ê²½ìš°
 			cache[i][p][q][r][d] = Math.min(cache[i][p][q][r][d], 1 + dp(i, np, q, r, d));
-			// 2°³ÀÇ µð½ºÅ©¸¦ °°ÀÌ µ¹¸®´Â °æ¿ì
+			// 2ê°œì˜ ë””ìŠ¤í¬ë¥¼ ê°™ì´ ëŒë¦¬ëŠ” ê²½ìš°
 			if (i <= N - 2)
 				cache[i][p][q][r][d] = Math.min(cache[i][p][q][r][d], 1 + dp(i, np, nq, r, d));
-			// 3°³ÀÇ µð½ºÅ©¸¦ °°ÀÌ µ¹¸®´Â °æ¿ì
+			// 3ê°œì˜ ë””ìŠ¤í¬ë¥¼ ê°™ì´ ëŒë¦¬ëŠ” ê²½ìš°
 			if (i <= N - 3)
 				cache[i][p][q][r][d] = Math.min(cache[i][p][q][r][d], 1 + dp(i, np, nq, nr, d));
 		}

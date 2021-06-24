@@ -25,7 +25,7 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		int N = Integer.parseInt(st.nextToken());
 
-		// forestÀÇ 0ÇàÀº 0, 0¿­Àº 0À¸·Î Á¤ÀÇÇÑ´Ù
+		// forestì˜ 0í–‰ì€ 0, 0ì—´ì€ 0ìœ¼ë¡œ ì •ì˜í•œë‹¤
 		forest = new int[N + 1][N + 1];
 		for (int i = 1; i < N + 1; i++) {
 			st = new StringTokenizer(br.readLine(), " ");

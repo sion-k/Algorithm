@@ -6,10 +6,10 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-	// true Èò»ö false °ËÀº»ö
+	// true í°ìƒ‰ false ê²€ì€ìƒ‰
 	static boolean[][] BOARD;
 
-	// Ã¼½ºÆÇÀº 2°¡Áö °æ¿ì ¸Ç¿ŞÂÊÀÌ Èò»öÀÌ°Å³ª °ËÀº»ö
+	// ì²´ìŠ¤íŒì€ 2ê°€ì§€ ê²½ìš° ë§¨ì™¼ìª½ì´ í°ìƒ‰ì´ê±°ë‚˜ ê²€ì€ìƒ‰
 	static int paint(int y, int x) {
 		int whiteBoard = 0;
 		for (int i = y; i < y + 8; i++) {

@@ -13,7 +13,7 @@ public class Main {
 
 	static int kruskal() {
 		int ret = 0;
-		Collections.sort(edges); // °£¼±ÀÇ Å©±â ¼øÀ¸·Î Á¤·Ä
+		Collections.sort(edges); // ê°„ì„ ì˜ í¬ê¸° ìˆœìœ¼ë¡œ ì •ë ¬
 		int max = 1;
 		DisJointSet sets = new DisJointSet(V + 1);
 		for (Edge e : edges) {

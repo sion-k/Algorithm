@@ -34,24 +34,24 @@ class TrieNode {
 	
 	static int toNumber(char ch) {return ch - '0';}
 
-	// key[i,]¸¦ ÀÌ ³ëµå¸¦ ·çÆ®·Î ÇÏ´Â Æ®¶óÀÌ¿¡ »ğÀÔ
+	// key[i,]ë¥¼ ì´ ë…¸ë“œë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” íŠ¸ë¼ì´ì— ì‚½ì…
 	void insert(int i, String key) {
 		if (i == key.length()) {terminal = true; return;}
 		int next = toNumber(key.charAt(i));
-		// ÇØ´ç ÀÚ½Ä ³ëµå°¡ ¾ø´Ù¸é »ı¼º
+		// í•´ë‹¹ ìì‹ ë…¸ë“œê°€ ì—†ë‹¤ë©´ ìƒì„±
 		if (children[next] == null) children[next] = new TrieNode();
-		// ÀÚ½Ä ³ëµå·Î Àç±Í È£Ãâ
+		// ìì‹ ë…¸ë“œë¡œ ì¬ê·€ í˜¸ì¶œ
 		children[next].insert(i + 1, key);
 	}
 	
-	// ÀÌ ³ëµå¸¦ ·çÆ®·Î ÇÏ´Â Æ®¶óÀÌ¿¡¼­ key[i,]¿Í ´ëÀÀµÇ´Â ³ëµå¸¦ Ã£´Â´Ù
-	// ¾øÀ¸¸é null ¹İÈ¯
+	// ì´ ë…¸ë“œë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” íŠ¸ë¼ì´ì—ì„œ key[i,]ì™€ ëŒ€ì‘ë˜ëŠ” ë…¸ë“œë¥¼ ì°¾ëŠ”ë‹¤
+	// ì—†ìœ¼ë©´ null ë°˜í™˜
 	TrieNode find(int i, String key) {
 		if (i == key.length()) return this;
 		int next = toNumber(key.charAt(i));
-		// ÇØ´ç ÀÚ½Ä ³ëµå°¡ ¾ø´Ù¸é ´ëÀÀµÇ´Â ³ëµå°¡ ¾øÀ½
+		// í•´ë‹¹ ìì‹ ë…¸ë“œê°€ ì—†ë‹¤ë©´ ëŒ€ì‘ë˜ëŠ” ë…¸ë“œê°€ ì—†ìŒ
 		if (children[next] == null || terminal) return null;
-		// ÀÚ½Ä ³ëµå·Î Àç±Í È£Ãâ
+		// ìì‹ ë…¸ë“œë¡œ ì¬ê·€ í˜¸ì¶œ
 		return children[next].find(i + 1, key);
 	}
 	

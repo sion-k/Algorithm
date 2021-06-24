@@ -9,12 +9,12 @@ public class Main {
 	static int N; static int[][] S;// (S[i] % MOD, |S[i]|)
 	static long[][] cache;
 	static int MOD;
-	static int[] D; // 10^i ¸¦ MOD·Î ³ª´« ³ª¸ÓÁö¸¦ ÀúÀå
+	static int[] D; // 10^i ë¥¼ MODë¡œ ë‚˜ëˆˆ ë‚˜ë¨¸ì§€ë¥¼ ì €ì¥
 
-	// »ç¿ëÇÑ ¼ö¿­ÀÌ b°í Áö±İ±îÁö ¼ö¸¦ MOD·Î ³ª´« ³ª¸ÓÁö°¡ remainderÀÏ¶§, N°³ÀÇ ¼ö¿­À» ¸ğµÎ »ç¿ëÇØ ºÙ¿©¼­ ¸¸µç ¼ö°¡
-	// K·Î ³ª´©¾î ¶³¾îÁö´Â °æ¿ìÀÇ ¼ö
+	// ì‚¬ìš©í•œ ìˆ˜ì—´ì´ bê³  ì§€ê¸ˆê¹Œì§€ ìˆ˜ë¥¼ MODë¡œ ë‚˜ëˆˆ ë‚˜ë¨¸ì§€ê°€ remainderì¼ë•Œ, Nê°œì˜ ìˆ˜ì—´ì„ ëª¨ë‘ ì‚¬ìš©í•´ ë¶™ì—¬ì„œ ë§Œë“  ìˆ˜ê°€
+	// Kë¡œ ë‚˜ëˆ„ì–´ ë–¨ì–´ì§€ëŠ” ê²½ìš°ì˜ ìˆ˜
 	static long dp(int b, int remainder) {
-		// ¸ğµç ¼ö¿­ÀÇ ¿ø¼Ò¸¦ »ç¿ëÇØ ºÙ¿´À¸¸é ³ª´©¾î ¶³¾îÁö´ÂÁö È®ÀÎ
+		// ëª¨ë“  ìˆ˜ì—´ì˜ ì›ì†Œë¥¼ ì‚¬ìš©í•´ ë¶™ì˜€ìœ¼ë©´ ë‚˜ëˆ„ì–´ ë–¨ì–´ì§€ëŠ”ì§€ í™•ì¸
 		if (b == ((1 << N) - 1)) return remainder == 0 ? 1 : 0;
 		if (cache[b][remainder] != -1) return cache[b][remainder];
 		long sum = 0;
@@ -35,7 +35,7 @@ public class Main {
 		String[] temp = new String[N];
 		for (int i = 0; i < N; i++) temp[i] = br.readLine();
 		MOD = Integer.parseInt(br.readLine());
-		// D ÃÊ±âÈ­
+		// D ì´ˆê¸°í™”
 		D = new int[50 * 15]; D[0] = 1;
 		for (int i = 1; i < D.length; i++) D[i] = (D[i - 1] * 10) % MOD;
 		S = new int[N][2];
@@ -46,7 +46,7 @@ public class Main {
 		}
 		cache = new long[1 << N][MOD];
 		for (int i = 0; i < cache.length; i++) Arrays.fill(cache[i], -1);
-		// (a / b)¸¦ ±â¾àºĞ¼ö·Î ³ªÅ¸³½´Ù
+		// (a / b)ë¥¼ ê¸°ì•½ë¶„ìˆ˜ë¡œ ë‚˜íƒ€ë‚¸ë‹¤
 		long a = dp(0, 0); long b = 1;
 		for (int i = 2; i <= N; i++) b *= i;
 		long t = gcd(a, b);

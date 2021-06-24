@@ -24,7 +24,7 @@ public class Main {
 
 	static int[] cache;
 
-	// hereÀ» ·çÆ®·Î ÇÏ´Â ¼­ºêÆ®¸®ÀÇ ¼ÓÇÑ Á¤Á¡ÀÇ ¼ö ¹İÈ¯
+	// hereì„ ë£¨íŠ¸ë¡œ í•˜ëŠ” ì„œë¸ŒíŠ¸ë¦¬ì˜ ì†í•œ ì •ì ì˜ ìˆ˜ ë°˜í™˜
 	static int dp(int here) {
 		if (cache[here] != 0) return cache[here];
 		int sum = 1;
@@ -40,11 +40,11 @@ public class Main {
 		int N = Integer.parseInt(st.nextToken());
 		int R = Integer.parseInt(st.nextToken());
 		int Q = Integer.parseInt(st.nextToken());
-		// °£¼±ÀÇ Á¤º¸ adj ÃÊ±âÈ­
+		// ê°„ì„ ì˜ ì •ë³´ adj ì´ˆê¸°í™”
 		adj = new ArrayList<>(); adj.add(new ArrayList<>());
 		for (int i = 1; i <= N; i++)
 			adj.add(new ArrayList<>());
-		// Æ®¸®¸¦ ¾Ï½ÃÀûÀ¸·Î Ç¥ÇöÇÏ´Â children ÃÊ±âÈ­
+		// íŠ¸ë¦¬ë¥¼ ì•”ì‹œì ìœ¼ë¡œ í‘œí˜„í•˜ëŠ” children ì´ˆê¸°í™”
 		children = new ArrayList<>(); children.add(new ArrayList<>());
 		for (int i = 1; i <= N; i++)
 			children.add(new ArrayList<>());
@@ -54,7 +54,7 @@ public class Main {
 			int v = Integer.parseInt(st.nextToken());
 			adj.get(u).add(v); adj.get(v).add(u);
 		}
-		// ÀÔ·ÂÀ» ¿Ã¹Ù¸¥ Æ®¸®ÀÌ°í, R¹ø Á¤Á¡ÀÌ ·çÆ®ÀÌ¹Ç·Î Æ®¸®¸¦ ¸¸µç´Ù
+		// ì…ë ¥ì„ ì˜¬ë°”ë¥¸ íŠ¸ë¦¬ì´ê³ , Rë²ˆ ì •ì ì´ ë£¨íŠ¸ì´ë¯€ë¡œ íŠ¸ë¦¬ë¥¼ ë§Œë“ ë‹¤
 		visit = new boolean[N + 1];
 		dfs(R);
 		cache = new int[N + 1];

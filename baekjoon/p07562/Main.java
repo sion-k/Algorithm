@@ -8,12 +8,12 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int L; //Ã¼½ºÆÇ ÇÑ º¯ÀÇ ±æÀÌ
+	static int L; //ì²´ìŠ¤íŒ í•œ ë³€ì˜ ê¸¸ì´
 	static boolean[][] BOOKED;
 	static int[][] DIST;
-	static int gY; static int gX; //¸ñÇ¥ (y, x)
+	static int gY; static int gX; //ëª©í‘œ (y, x)
 	
-	// ¸Ç ¿ŞÂÊ À§ºÎÅÍ 8°³ÀÇ ¿òÁ÷ÀÓ
+	// ë§¨ ì™¼ìª½ ìœ„ë¶€í„° 8ê°œì˜ ì›€ì§ì„
 	static int[] dy = { -2, -2, -1, -1, 1, 1, 2, 2 };
 	static int[] dx = { -1, 1, -2, 2, -2, 2, -1, 1 };
 	
@@ -21,7 +21,7 @@ public class Main {
 		return 0 <= y && y < L && 0 <= x && x < L;
 	}
 	
-	// (y, x)¿¡¼­ (gY, gX)±îÁöÀÇ ÃÖ´Ü °Å¸® ¹İÈ¯
+	// (y, x)ì—ì„œ (gY, gX)ê¹Œì§€ì˜ ìµœë‹¨ ê±°ë¦¬ ë°˜í™˜
 	static int bfs(int y, int x) {
 		if (y == gY && x == gX) {return 0;}
 		Queue<int[]> q = new LinkedList<>();

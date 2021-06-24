@@ -9,12 +9,12 @@ import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int M; // ³ôÀÌ
-	static int N; // ³Êºñ
+	static int M; // ë†’ì´
+	static int N; // ë„ˆë¹„
 	static boolean[][] PAINTED;
 	static boolean[][] VISIT;
 	
-	// »óÇÏÁÂ¿ì
+	// ìƒí•˜ì¢Œìš°
 	static final int[] dy = {-1, 1, 0, 0};
 	static final int[] dx = {0 ,0, -1, 1};
 	
@@ -22,7 +22,7 @@ public class Main {
 		return 0 <= y && y < M && 0 <= x && x < N;
 	}
 	
-	// ¹ß°ßÇÑ ¿µ¿ªµéÀÇ Å©±â¸¦ ÀúÀåÇÏ´Â ¿ì¼±¼øÀ§ Å¥ ¹İÈ¯
+	// ë°œê²¬í•œ ì˜ì—­ë“¤ì˜ í¬ê¸°ë¥¼ ì €ì¥í•˜ëŠ” ìš°ì„ ìˆœìœ„ í ë°˜í™˜
 	static PriorityQueue<Integer> dfsAll() {
 		PriorityQueue<Integer> pq = new PriorityQueue<>();
 		for (int i = 0; i < M; i++) {
@@ -35,7 +35,7 @@ public class Main {
 		return pq;
 	}
 	
-	// dfs·Î ¹ß°ßÇÑ ¿µ¿ªÀÇ Ä­ ¼ö ¹İÈ¯
+	// dfsë¡œ ë°œê²¬í•œ ì˜ì—­ì˜ ì¹¸ ìˆ˜ ë°˜í™˜
 	static int dfs(int y, int x) {
 		int cnt = 1;
 		VISIT[y][x] = true;
@@ -62,12 +62,12 @@ public class Main {
 			int b1 = Integer.parseInt(st.nextToken());
 			int a2 = Integer.parseInt(st.nextToken());
 			int b2 = Integer.parseInt(st.nextToken());
-			// (y, x) ¹è¿­ ÇüÅÂ·Î º¯°æ (M - b, a)
+			// (y, x) ë°°ì—´ í˜•íƒœë¡œ ë³€ê²½ (M - b, a)
 			int ty1 = M - b1;
 			int tx1 = a1;
 			int ty2 = M - b2;
 			int tx2 = a2;
-			// ¿ŞÂÊ À§¿Í ¿À¸¥ÂÊ ¾Æ·¡·Î º¯°æ (y2, x1) (y1, x2)
+			// ì™¼ìª½ ìœ„ì™€ ì˜¤ë¥¸ìª½ ì•„ë˜ë¡œ ë³€ê²½ (y2, x1) (y1, x2)
 			int y1 = ty2; int x1 = tx1;
 			int y2 = ty1; int x2 = tx2;
 			for (int i = y1; i < y2; i++) {

@@ -10,13 +10,13 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
-	// [0, 8]ÀÎµ¦½ºÀÇ °ªÀ» ºÒ·¯¿È
+	// [0, 8]ì¸ë±ìŠ¤ì˜ ê°’ì„ ë¶ˆëŸ¬ì˜´
 	static int get(int mask, int index) {
 		if (((mask >> 27) & 15) == index) {return 0;}
 		return ((mask >> (index * 3)) & 7) + 1;
 	}
 
-	// ¾î¶² ÀÎµ¦½º¸¦ 0À¸·Î ¹Ù²Ù´Â °Íµµ °¡´É
+	// ì–´ë–¤ ì¸ë±ìŠ¤ë¥¼ 0ìœ¼ë¡œ ë°”ê¾¸ëŠ” ê²ƒë„ ê°€ëŠ¥
 	static int set(int mask, int index, int value) {
 		if (value == 0) {
 			mask = mask & ~(7 << (index * 3)) | (value << (index * 3));
@@ -34,7 +34,7 @@ public class Main {
 		return 0 <= y && y < 3 && 0 <= x && x < 3;
 	}
 
-	// ºóÄ­ ±âÁØÀ¸·Î ÀÎÁ¢ÇÑ »óÇÏÁÂ¿ì [0, 4)ÀÇ Ä­°ú ¼­·Î ±³È¯
+	// ë¹ˆì¹¸ ê¸°ì¤€ìœ¼ë¡œ ì¸ì ‘í•œ ìƒí•˜ì¢Œìš° [0, 4)ì˜ ì¹¸ê³¼ ì„œë¡œ êµí™˜
 	static int move(int mask, int d) {
 		int blank = ((mask >> 27) & 15);
 		int y = blank / 3; int x = blank % 3;

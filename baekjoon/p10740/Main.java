@@ -11,14 +11,14 @@ public class Main {
 	
 	static final int INF = 987654321;
 	
-	// j¹øÂ° ¹®Á¦ºÎÅÍ ½ÃÀÛÇØ¼­, Á÷Àü¿¡ prev¹øÂ° »ç¶÷ÀÌ ¹®Á¦¸¦ ¸Ã¾ÒÀ» ¶§
-	// ¹®Á¦¸¦ ¼±ÅÃÇÏ´Â°ÍÀ» ³¡³Â´ÂÁö ¿©ºÎ¸¦ b·Î ÀúÀåÇÒ ¶§, ³­ÀÌµµÀÇ ÃÖ¼Ò ÇÕ
+	// jë²ˆì§¸ ë¬¸ì œë¶€í„° ì‹œìž‘í•´ì„œ, ì§ì „ì— prevë²ˆì§¸ ì‚¬ëžŒì´ ë¬¸ì œë¥¼ ë§¡ì•˜ì„ ë•Œ
+	// ë¬¸ì œë¥¼ ì„ íƒí•˜ëŠ”ê²ƒì„ ëëƒˆëŠ”ì§€ ì—¬ë¶€ë¥¼ bë¡œ ì €ìž¥í•  ë•Œ, ë‚œì´ë„ì˜ ìµœì†Œ í•©
 	static int dp(int j, int prev, int b) {
 		if (j == N) return (b | (1 << prev)) == 15 ? 0 : INF;
 		if (cache[j][prev][b] != 0) return cache[j][prev][b];
 		int min = INF;
 		for (int i = 1; i <= 3; i++) {
-			// °í¸£±â¸¦ ³¡³»Áö ¾ÊÀº »ç¶÷ÀÌ °í¸¥´Ù
+			// ê³ ë¥´ê¸°ë¥¼ ëë‚´ì§€ ì•Šì€ ì‚¬ëžŒì´ ê³ ë¥¸ë‹¤
 			if ((b & (1 << i)) == 0) {
 				if (i == prev) min = Math.min(min, S[i][j] + dp(j + 1, i, b));
 				else min = Math.min(min, S[i][j] + dp(j + 1, i, b | (1 << prev)));

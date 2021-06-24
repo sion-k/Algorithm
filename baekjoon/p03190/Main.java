@@ -24,7 +24,7 @@ public class Main {
 		}
 		Snake s = new Snake();
 		int L = Integer.parseInt(br.readLine());
-		// °ÔÀÓ ½ÃÀÛ ½Ã°£À¸·ÎºÎÅÍ XÃÊ°¡ ³¡³­ µÚ¿¡ ¿ŞÂÊ È¸Àü ? 0 : 1;
+		// ê²Œì„ ì‹œì‘ ì‹œê°„ìœ¼ë¡œë¶€í„° Xì´ˆê°€ ëë‚œ ë’¤ì— ì™¼ìª½ íšŒì „ ? 0 : 1;
 		int[] turn = new int[10001];
 		Arrays.fill(turn, -1);
 		for (int i = 0; i < L ;i++) {
@@ -43,17 +43,17 @@ public class Main {
 }
 
 class Snake {
-	static int N; // º¸µåÀÇ Å©±â
-	static boolean[][] APPLE; // »ç°ú°¡ Á¸ÀçÇÏ´ÂÁö ¿©ºÎ
+	static int N; // ë³´ë“œì˜ í¬ê¸°
+	static boolean[][] APPLE; // ì‚¬ê³¼ê°€ ì¡´ì¬í•˜ëŠ”ì§€ ì—¬ë¶€
 
 	static final int[] dy = {-1, 1, 0, 0};
 	static final int[] dx = {0, 0, -1, 1};
-	// dir ÀÌ [0, 4) ÀÏ¶§ °¢°¢ ¿ŞÂÊ, ¿À¸¥ÂÊ È¸ÀüÇÏ°í ¹Ù²î´Â ¹æÇâ
+	// dir ì´ [0, 4) ì¼ë•Œ ê°ê° ì™¼ìª½, ì˜¤ë¥¸ìª½ íšŒì „í•˜ê³  ë°”ë€ŒëŠ” ë°©í–¥
 	static final int[][] nd = { {2, 3}, {3, 2}, {1, 0}, {0, 1} };
 
-	int dir; // ¸Ó¸®ÀÇ ¹æÇâ
-	Deque<int[]> body = new LinkedList<>(); // ¸Ó¸®ºÎÅÍ ½ÃÀÛÇØ¼­ ²¿¸®±îÁöÀÇ À§Ä¡
-	// ¸öÀÌ À§Ä¡ ÇÏ´Â À§Ä¡
+	int dir; // ë¨¸ë¦¬ì˜ ë°©í–¥
+	Deque<int[]> body = new LinkedList<>(); // ë¨¸ë¦¬ë¶€í„° ì‹œì‘í•´ì„œ ê¼¬ë¦¬ê¹Œì§€ì˜ ìœ„ì¹˜
+	// ëª¸ì´ ìœ„ì¹˜ í•˜ëŠ” ìœ„ì¹˜
 	boolean[][] occup;
 
 	public Snake() {
@@ -63,23 +63,23 @@ class Snake {
 		occup[0][0] = true;
 	}
 
-	// ÇöÀç ¹Ù¶óº¸´Â ¹æÇâÀ¸·Î ÇÑ Ä­ ÀüÁø. ºÎµúÈ÷¸é false ¹İÈ¯
+	// í˜„ì¬ ë°”ë¼ë³´ëŠ” ë°©í–¥ìœ¼ë¡œ í•œ ì¹¸ ì „ì§„. ë¶€ë”ªíˆë©´ false ë°˜í™˜
 	boolean move() {
 		int[] head = body.peekFirst();
 		int y = head[0]; int x = head[1];
 		int ny = y + dy[dir]; int nx = x + dx[dir];
-		// º®ÀÌ³ª ÀÚ±â ¸ö¿¡ ºÎµúÈ÷¸é °ÔÀÓ ³¡
+		// ë²½ì´ë‚˜ ìê¸° ëª¸ì— ë¶€ë”ªíˆë©´ ê²Œì„ ë
 		if (!inRange(ny, nx) || occup[ny][nx]) {return false;}
-		// ¸Ó¸® ±æÀÌ¸¦ ´Ã¸°´Ù
+		// ë¨¸ë¦¬ ê¸¸ì´ë¥¼ ëŠ˜ë¦°ë‹¤
 		body.offerFirst(new int[] {ny, nx});
 		occup[ny][nx] = true;
-		// »ç°ú°¡ ¾ø´Ù¸é ²¿¸®¸¦ ÇÏ³ª ÁÙÀÎ´Ù
+		// ì‚¬ê³¼ê°€ ì—†ë‹¤ë©´ ê¼¬ë¦¬ë¥¼ í•˜ë‚˜ ì¤„ì¸ë‹¤
 		if (!APPLE[ny][nx]) {
 			int[] tail = body.peekLast();
 			int ty = tail[0]; int tx = tail[1];
 			occup[ty][tx] = false;
 			body.pollLast();
-		// »ç°ú¸¦ ¸Ô´Â´Ù
+		// ì‚¬ê³¼ë¥¼ ë¨¹ëŠ”ë‹¤
 		} else {
 			APPLE[ny][nx] = false;
 		}

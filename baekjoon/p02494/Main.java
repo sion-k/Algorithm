@@ -12,19 +12,19 @@ public class Main {
 
 	static final int INF = 987654321;
 
-	// [i, ) ¹üÀ§ÀÇ ¼ıÀÚ ³ª»ç¸¦ ¿øÇÏ´Â »óÅÂ±îÁö ¸¸µå´Âµ¥ ÃÖ¼Ò È¸Àü Ä­ ¼ö
-	// [i, ) ¹üÀ§ÀÇ ¼ıÀÚ ³ª»çµéÀº k[0, 9]¹ø Ãß°¡·Î µ¹·ÁÁ® ÀÖ´Â »óÅÂÀÌ´Ù
+	// [i, ) ë²”ìœ„ì˜ ìˆ«ì ë‚˜ì‚¬ë¥¼ ì›í•˜ëŠ” ìƒíƒœê¹Œì§€ ë§Œë“œëŠ”ë° ìµœì†Œ íšŒì „ ì¹¸ ìˆ˜
+	// [i, ) ë²”ìœ„ì˜ ìˆ«ì ë‚˜ì‚¬ë“¤ì€ k[0, 9]ë²ˆ ì¶”ê°€ë¡œ ëŒë ¤ì ¸ ìˆëŠ” ìƒíƒœì´ë‹¤
 	static int dp(int i, int k) {
 		if (i == N) return 0;
 		if (cache[i][k] != -1) return cache[i][k];
 		int here = (S[i] + k) % 10;
-		// ÀÌ¹Ì ¸ÂÃçÁ® ÀÖ´Â °æ¿ì
+		// ì´ë¯¸ ë§ì¶°ì ¸ ìˆëŠ” ê²½ìš°
 		if (here == G[i]) return cache[i][k] = dp(i + 1, k);
 		int min = INF;
-		// ¿ŞÂÊÀ¸·Î È¸Àü½ÃÄÑ¼­ ¸ÂÃß´Â °æ¿ì
+		// ì™¼ìª½ìœ¼ë¡œ íšŒì „ì‹œì¼œì„œ ë§ì¶”ëŠ” ê²½ìš°
 		int leftCost = (G[i] - here + 10) % 10;
 		min = Math.min(min, leftCost + dp(i + 1, (k + leftCost) % 10));
-		// ¿À¸¥ÂÊÀ¸·Î È¸Àü½ÃÄÑ¼­ ¸ÂÃß´Â °æ¿ì
+		// ì˜¤ë¥¸ìª½ìœ¼ë¡œ íšŒì „ì‹œì¼œì„œ ë§ì¶”ëŠ” ê²½ìš°
 		int rightCost = (here - G[i] + 10) % 10;
 		min = Math.min(min, rightCost + dp(i + 1, k));
 		return cache[i][k] = min;
@@ -34,13 +34,13 @@ public class Main {
 
 	static void reconstruct(int i, int k) {
 		int here = (S[i] + k) % 10;
-		// ¿ŞÂÊÀ¸·Î È¸Àü½ÃÄÑ¼­ ¸ÂÃß´Â °æ¿ì
+		// ì™¼ìª½ìœ¼ë¡œ íšŒì „ì‹œì¼œì„œ ë§ì¶”ëŠ” ê²½ìš°
 		int leftCost = (G[i] - here + 10) % 10;
-		// ¿À¸¥ÂÊÀ¸·Î È¸Àü½ÃÄÑ¼­ ¸ÂÃß´Â °æ¿ì
+		// ì˜¤ë¥¸ìª½ìœ¼ë¡œ íšŒì „ì‹œì¼œì„œ ë§ì¶”ëŠ” ê²½ìš°
 		int rightCost = (here - G[i] + 10) % 10;
-		// ¸Ç ¸¶Áö¸·ÀÎ °æ¿ì
+		// ë§¨ ë§ˆì§€ë§‰ì¸ ê²½ìš°
 		if (i == N - 1) {
-			// ¿ŞÂÊÀ¸·Î µ¹¸®´Â°Ô ÃÖÀûÇØÀÎ °æ¿ì (°°Àº °æ¿ìµµ Æ÷ÇÔ)
+			// ì™¼ìª½ìœ¼ë¡œ ëŒë¦¬ëŠ”ê²Œ ìµœì í•´ì¸ ê²½ìš° (ê°™ì€ ê²½ìš°ë„ í¬í•¨)
 			if (leftCost <= rightCost) {
 				ans.append(i + 1).append(" ").append(leftCost).append("\n");
 			} else {
@@ -48,7 +48,7 @@ public class Main {
 			}
 			return;
 		}
-		// ¿ŞÂÊÀ¸·Î µ¹¸®´Â°Ô ÃÖÀûÇØÀÎ °æ¿ì (°°Àº °æ¿ìµµ Æ÷ÇÔ)
+		// ì™¼ìª½ìœ¼ë¡œ ëŒë¦¬ëŠ”ê²Œ ìµœì í•´ì¸ ê²½ìš° (ê°™ì€ ê²½ìš°ë„ í¬í•¨)
 		if(leftCost + cache[i + 1][(k + leftCost) % 10] <= rightCost + cache[i + 1][k]) {
 			ans.append(i + 1).append(" ").append(leftCost).append("\n");
 			reconstruct(i + 1, (k + leftCost) % 10);

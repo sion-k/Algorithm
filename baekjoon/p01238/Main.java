@@ -9,8 +9,8 @@ import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int N; // Á¤Á¡ ¹øÈ£ : [1, N]
-	static int X; // ÆÄÆ¼
+	static int N; // ì •ì  ë²ˆí˜¸ : [1, N]
+	static int X; // íŒŒí‹°
 	static ArrayList<ArrayList<Pair>> adj;
 	static final int INF = 100001;
 

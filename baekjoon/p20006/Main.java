@@ -59,11 +59,11 @@ public class Main {
 			Player player = new Player(st.nextToken(), st.nextToken());
 			
 			boolean added = false;
-			// ¹æÀ» µ¹¸é¼­ ÀÔÀå ½ÃÅ³ ¼ö ÀÖÀ¸¸é ÀÔÀå½ÃÅ°°í ³ª¿È
+			// ë°©ì„ ëŒë©´ì„œ ì…ì¥ ì‹œí‚¬ ìˆ˜ ìˆìœ¼ë©´ ì…ì¥ì‹œí‚¤ê³  ë‚˜ì˜´
 			for(Room r : room) {
 				if(r.addPlayer(player)) {added = true;break;}
 			}
-			// ´Ù µ¹¾Ò´Âµ¥ ¸ÅÄª °¡´ÉÇÑ ¹æÀÌ ¾ø´Ù¸é »õ·Î¿î ¹æ Ãß°¡
+			// ë‹¤ ëŒì•˜ëŠ”ë° ë§¤ì¹­ ê°€ëŠ¥í•œ ë°©ì´ ì—†ë‹¤ë©´ ìƒˆë¡œìš´ ë°© ì¶”ê°€
 			if(!added) {room.add(new Room(player));}
 		}
 		

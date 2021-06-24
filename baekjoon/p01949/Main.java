@@ -14,8 +14,8 @@ public class Main {
 	static ArrayList<ArrayList<Integer>> children;
 	static int[][] cache;
 
-	// ÀÌ¹ø Á¤Á¡À» ¿ì¼ö ¸¶À»·Î ¼±Á¤ÇÏ´Â°¡ p ? 1 : 0
-	// root¸¦ ·çÆ®·Î ÇÏ´Â ¼­ºêÆ®¸®¿¡¼­ ¾òÀ» ¼ö ÀÖ´Â ÃÖ´ë ¿ì¼ö¸¶À» ¸¶À» ÁÖ¹Î ¼ö
+	// ì´ë²ˆ ì •ì ì„ ìš°ìˆ˜ ë§ˆì„ë¡œ ì„ ì •í•˜ëŠ”ê°€ p ? 1 : 0
+	// rootë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” ì„œë¸ŒíŠ¸ë¦¬ì—ì„œ ì–»ì„ ìˆ˜ ìˆëŠ” ìµœëŒ€ ìš°ìˆ˜ë§ˆì„ ë§ˆì„ ì£¼ë¯¼ ìˆ˜
 	static int dp(int p, int root) {
 		if (cache[p][root] != -1) {return cache[p][root];}
 		int sum = 0;

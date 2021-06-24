@@ -11,7 +11,7 @@ public class C {
 	static int N; static int[] S;
 	static int[] cache;
 
-	// i¹øÂ° À§Ä¡¿¡¼­ ½ÃÀÛÇØ¼­ ¾òÀ» ¼ö ÀÖ´Â Á¡¼öÀÇ ÃÖ´ë °ª
+	// ië²ˆì§¸ ìœ„ì¹˜ì—ì„œ ì‹œìž‘í•´ì„œ ì–»ì„ ìˆ˜ ìžˆëŠ” ì ìˆ˜ì˜ ìµœëŒ€ ê°’
 	static int dp(int i) {
 		if (i >= N) return 0;
 		if (cache[i] != 0) return cache[i];

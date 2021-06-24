@@ -50,7 +50,7 @@ class FenwickTree {
 	public FenwickTree(int n) {tree = new long[n + 1][n + 1];}
 	
 	void add(int y, int x, int val) {
-		// ³»ºÎÀûÀ¸·Î´Â 1-based
+		// ë‚´ë¶€ì ìœ¼ë¡œëŠ” 1-based
 		y++; x++;
 		while (y < tree.length) {
 			int tx = x;
@@ -63,7 +63,7 @@ class FenwickTree {
 	}
 
 	long sum(int y, int x) {
-		// ³»ºÎÀûÀ¸·Î´Â 1-based
+		// ë‚´ë¶€ì ìœ¼ë¡œëŠ” 1-based
 		y++; x++;
 		long ret = 0;
 		while (y > 0) {

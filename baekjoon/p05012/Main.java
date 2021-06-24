@@ -15,12 +15,12 @@ public class Main {
 		int[] S = new int[N];
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		for (int i = 0; i < N; i++) S[i] = Integer.parseInt(st.nextToken());
-		// P[x] = SÀÇ ¿ø¼Ò xÀÇ À§Ä¡ (ÀÛÀº ¼øÀ¸·Î)  
+		// P[x] = Sì˜ ì›ì†Œ xì˜ ìœ„ì¹˜ (ìž‘ì€ ìˆœìœ¼ë¡œ)  
 		ArrayList<PriorityQueue<Integer>> P = new ArrayList<>();
 		for (int i = 0; i <= N; i++) P.add(new PriorityQueue<>());
 		for (int i = 0; i < N; i++) P.get(S[i]).add(i + 1);
-		long[] I = new long[N + 1]; // S[i]°¡ °¡Áö°í ÀÖ´Â InversionÀÇ °³¼ö ÀúÀå
-		FenwickTree t = new FenwickTree(N); // S[i]°¡ Á¸ÀçÇÏ´ÂÁö ¿©ºÎ
+		long[] I = new long[N + 1]; // S[i]ê°€ ê°€ì§€ê³  ìžˆëŠ” Inversionì˜ ê°œìˆ˜ ì €ìž¥
+		FenwickTree t = new FenwickTree(N); // S[i]ê°€ ì¡´ìž¬í•˜ëŠ”ì§€ ì—¬ë¶€
 		for (int i = 1; i <= N; i++) t.add(i, 1);
 		for (int i = 1; i <= N; i++) {
 			PriorityQueue<Integer> pq = P.get(i);

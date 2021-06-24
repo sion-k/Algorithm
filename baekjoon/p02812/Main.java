@@ -44,9 +44,9 @@ class LinkedList {
 		}
 	}
 	Node first; Node last;
-	Node p; // ÃÊ±â¿¡ Æ÷ÀÎÅÍ´Â ¸¶Áö¸· ¿ø¼Ò ´ÙÀ½ ¿ø¼Ò(last)¸¦ °¡¸®Å°°í ÀÖÀ½
+	Node p; // ì´ˆê¸°ì— í¬ì¸í„°ëŠ” ë§ˆì§€ë§‰ ì›ì†Œ ë‹¤ìŒ ì›ì†Œ(last)ë¥¼ ê°€ë¦¬í‚¤ê³  ìˆìŒ
 	
-	// Æ÷ÀÎÅÍ À§Ä¡ ¿ø¼Ò »èÁ¦ (¶¯°ÜÁü)
+	// í¬ì¸í„° ìœ„ì¹˜ ì›ì†Œ ì‚­ì œ (ë•¡ê²¨ì§)
 	void remove() {
 		if (p != first && p != last) {
 			Node toMove = p.next;
@@ -55,7 +55,7 @@ class LinkedList {
 			p = toMove;
 		}
 	}
-	// Æ÷ÀÎÅÍ À§Ä¡ ¿ø¼Ò Ãß°¡ (µÚ·Î ¹Ğ·Á³²)
+	// í¬ì¸í„° ìœ„ì¹˜ ì›ì†Œ ì¶”ê°€ (ë’¤ë¡œ ë°€ë ¤ë‚¨)
 	void add(char data) {
 		Node temp = new Node(data, p.prev, p);
 		temp.prev.next = temp; temp.next.prev = temp;

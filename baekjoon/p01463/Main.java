@@ -6,7 +6,7 @@ public class Main {
 	private static int[] cache;
 	
 	/*
-	 * StackOverFlow¶§¹®¿¡ ½á¸ÔÀ» ¼ö°¡ ¾ø³× ¹İº¹ÀûÀ¸·Î Ã³¸®ÇÏÀÚ
+	 * StackOverFlowë•Œë¬¸ì— ì¨ë¨¹ì„ ìˆ˜ê°€ ì—†ë„¤ ë°˜ë³µì ìœ¼ë¡œ ì²˜ë¦¬í•˜ì
 	private static int dp(int N) {
 		if (N == 1) {
 			return 0;

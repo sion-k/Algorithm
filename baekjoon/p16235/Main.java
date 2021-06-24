@@ -11,9 +11,9 @@ import java.util.StringTokenizer;
 public class Main {
 	static int N;
 	static ArrayList<ArrayList<PriorityQueue<Integer>>> P;
-	static int[][] food; // ÇöÀç ¶¥¿¡ ³²¾ÆÀÖ´Â ¾çºĞ
-	static int[][] A; // ¸Å °Ü¿ï¸¶´Ù Ãß°¡ÇÏ´Â ¾çºĞ
-	static int[][] dead; // Á×¾î¼­ ¾çºĞÀÌ µÉ ³ª¹«
+	static int[][] food; // í˜„ì¬ ë•…ì— ë‚¨ì•„ìˆëŠ” ì–‘ë¶„
+	static int[][] A; // ë§¤ ê²¨ìš¸ë§ˆë‹¤ ì¶”ê°€í•˜ëŠ” ì–‘ë¶„
+	static int[][] dead; // ì£½ì–´ì„œ ì–‘ë¶„ì´ ë  ë‚˜ë¬´
 
 	static final int[] dy = { -1, -1, -1, 0, 0, 1, 1, 1 };
 	static final int[] dx = { -1, 0, 1, -1, 1, -1, 0, 1 };
@@ -23,18 +23,18 @@ public class Main {
 	}
 
 	static void spring() {
-		// ¸ğµç Ä­ÀÇ ¸ğµç ³ª¹«¿¡ ´ëÇØ¼­ ³ªÀÌ°¡ ¾î¸° ³ª¹«ºÎÅÍ ¾çºĞÀ» ¸ÔÀÓ
+		// ëª¨ë“  ì¹¸ì˜ ëª¨ë“  ë‚˜ë¬´ì— ëŒ€í•´ì„œ ë‚˜ì´ê°€ ì–´ë¦° ë‚˜ë¬´ë¶€í„° ì–‘ë¶„ì„ ë¨¹ì„
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
 				PriorityQueue<Integer> here = P.get(i).get(j);
 				PriorityQueue<Integer> next = new PriorityQueue<>();
 				while (!here.isEmpty()) {
 					int tree = here.poll();
-					// ¶¥¿¡ ÃæºĞÇÑ ¾çÀÌ ³²¾ÆÀÖ´Ù¸é ¾çºĞÀ» ¸Ô°í ³ªÀÌ°¡ 1 Áõ°¡ÇÑ´Ù
+					// ë•…ì— ì¶©ë¶„í•œ ì–‘ì´ ë‚¨ì•„ìˆë‹¤ë©´ ì–‘ë¶„ì„ ë¨¹ê³  ë‚˜ì´ê°€ 1 ì¦ê°€í•œë‹¤
 					if (food[i][j] >= tree) {
 						food[i][j] -= tree;
 						next.offer(tree + 1);
-					} else { // ¾Æ´Ï¶ó¸é Á×°ÔµÈ´Ù
+					} else { // ì•„ë‹ˆë¼ë©´ ì£½ê²Œëœë‹¤
 						dead[i][j] += (tree / 2);
 					}
 				}
@@ -50,7 +50,7 @@ public class Main {
 		dead = new int[N][N];
 	}
 
-	// ³ªÀÌ°¡ 5ÀÇ ¹è¼öÀÎ ³ª¹«¿¡ ´ëÇØ ÀÎÁ¢ÇÑ 8Ä­¿¡ ³ªÀÌ°¡ 1ÀÎ ³ª¹«¸¦ Ãß°¡ÇÑ´Ù
+	// ë‚˜ì´ê°€ 5ì˜ ë°°ìˆ˜ì¸ ë‚˜ë¬´ì— ëŒ€í•´ ì¸ì ‘í•œ 8ì¹¸ì— ë‚˜ì´ê°€ 1ì¸ ë‚˜ë¬´ë¥¼ ì¶”ê°€í•œë‹¤
 	static void autumn() {
 		for (int y = 0; y < N; y++) {
 			for (int x = 0; x < N; x++) {
@@ -67,7 +67,7 @@ public class Main {
 		}
 	}
 
-	// ¸ğµç ¶¥¿¡ A¸¦ Ãß°¡
+	// ëª¨ë“  ë•…ì— Aë¥¼ ì¶”ê°€
 	static void winter() {
 		for (int i = 0; i < N; i++)
 			for (int j = 0; j < N; j++)
@@ -78,7 +78,7 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		N = Integer.parseInt(st.nextToken());
-		// 2Â÷¿ø Æò¸é¿¡ ³ª¹«ÀÇ ³ªÀÌµéÀ» ÀúÀåÇÏ´Â P ÃÊ±âÈ­
+		// 2ì°¨ì› í‰ë©´ì— ë‚˜ë¬´ì˜ ë‚˜ì´ë“¤ì„ ì €ì¥í•˜ëŠ” P ì´ˆê¸°í™”
 		P = new ArrayList<>(N);
 		for (int i = 0; i < N; i++) {
 			P.add(new ArrayList<>());
@@ -87,20 +87,20 @@ public class Main {
 		}
 		int M = Integer.parseInt(st.nextToken());
 		int K = Integer.parseInt(st.nextToken());
-		// ÇöÀç ¶¥¿¡ Á¸ÀçÇÏ´Â ¾çºĞÀÇ ¾ç food[y][x], 5·Î ÃÊ±âÈ­ ÇÑ´Ù
+		// í˜„ì¬ ë•…ì— ì¡´ì¬í•˜ëŠ” ì–‘ë¶„ì˜ ì–‘ food[y][x], 5ë¡œ ì´ˆê¸°í™” í•œë‹¤
 		food = new int[N][N];
 		for (int i = 0; i < N; i++)
 			Arrays.fill(food[i], 5);
-		// °Ü¿ï¸¶´Ù Ãß°¡ÇÏ´Â ¾çºĞÀÇ ¾ç A[y][x]
+		// ê²¨ìš¸ë§ˆë‹¤ ì¶”ê°€í•˜ëŠ” ì–‘ë¶„ì˜ ì–‘ A[y][x]
 		A = new int[N][N];
 		for (int i = 0; i < N; i++) {
 			st = new StringTokenizer(br.readLine(), " ");
 			for (int j = 0; j < N; j++)
 				A[i][j] = Integer.parseInt(st.nextToken());
 		}
-		// º½¿¡ Á×¾î¼­ ½×ÀÌ´Â ³ª¹«ÀÇ ¾ç
+		// ë´„ì— ì£½ì–´ì„œ ìŒ“ì´ëŠ” ë‚˜ë¬´ì˜ ì–‘
 		dead = new int[N][N];
-		// ÃÊ±â ³ª¹«ÀÇ À§Ä¡ ÃÊ±âÈ­
+		// ì´ˆê¸° ë‚˜ë¬´ì˜ ìœ„ì¹˜ ì´ˆê¸°í™”
 		for (int i = 0; i < M; i++) {
 			st = new StringTokenizer(br.readLine(), " ");
 			int y = Integer.parseInt(st.nextToken()) - 1;
@@ -108,11 +108,11 @@ public class Main {
 			int a = Integer.parseInt(st.nextToken());
 			P.get(y).get(x).add(a);
 		}
-		// K³âÀ» Áö³ª°Ô ÇÑ´Ù
+		// Kë…„ì„ ì§€ë‚˜ê²Œ í•œë‹¤
 		for (int i = 0; i < K; i++) {
 			spring(); summer(); autumn(); winter();
 		}
-		// »ì¾Æ³²Àº ³ª¹«ÀÇ ¼ö ±¸ÇÏ±â
+		// ì‚´ì•„ë‚¨ì€ ë‚˜ë¬´ì˜ ìˆ˜ êµ¬í•˜ê¸°
 		int sum = 0;
 		for (int i = 0; i < N; i++)
 			for (int j = 0; j < N; j++)

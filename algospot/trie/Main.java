@@ -28,22 +28,22 @@ class TrieNode {
 	TrieNode[] children = new TrieNode[ALPHABETS];
 	boolean terminal;
 
-	// ÀÌ ³ëµå¸¦ ·çÆ®·Î ÇÏ´Â Æ®¶óÀÌ¿¡ ¹®ÀÚ¿­ key[i, ...]¸¦ Ãß°¡ÇÑ´Ù
+	// ì´ ë…¸ë“œë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” íŠ¸ë¼ì´ì— ë¬¸ìì—´ key[i, ...]ë¥¼ ì¶”ê°€í•œë‹¤
 	void insert(String key, int i) {
-		// ¹®ÀÚ¿­ÀÌ ³¡³ª¸é Á¾·á ³ëµå·Î ¹Ù²Ù°í Á¾·á
+		// ë¬¸ìì—´ì´ ëë‚˜ë©´ ì¢…ë£Œ ë…¸ë“œë¡œ ë°”ê¾¸ê³  ì¢…ë£Œ
 		if (i == key.length()) {
 			terminal = true;
 		} else {
 			int next = toNumber(key.charAt(i));
-			// ÇØ´ç ÀÚ½Ä ³ëµå°¡ ¾ø´Ù¸é »ı¼ºÇÑ´Ù
+			// í•´ë‹¹ ìì‹ ë…¸ë“œê°€ ì—†ë‹¤ë©´ ìƒì„±í•œë‹¤
 			if (children[next] == null) children[next] = new TrieNode();
-			// ÇØ´ç ÀÚ½Ä ³ëµå·Î Àç±Í È£Ãâ
+			// í•´ë‹¹ ìì‹ ë…¸ë“œë¡œ ì¬ê·€ í˜¸ì¶œ
 			children[next].insert(key, i + 1);
 		}
 	}
 
-	// ÀÌ ³ëµå¸¦ ·çÆ®·Î ÇÏ´Â Æ®¶óÀÌ¿¡ ¹®ÀÚ¿­ key[i, ...]¿Í ´ëÀÀµÇ´Â ³ëµå¸¦ Ã£´Â´Ù
-	// ¾øÀ¸¸é null ¹İÈ¯
+	// ì´ ë…¸ë“œë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” íŠ¸ë¼ì´ì— ë¬¸ìì—´ key[i, ...]ì™€ ëŒ€ì‘ë˜ëŠ” ë…¸ë“œë¥¼ ì°¾ëŠ”ë‹¤
+	// ì—†ìœ¼ë©´ null ë°˜í™˜
 	TrieNode find(String key, int i) {
 		if (i == key.length()) return this;
 		int next = toNumber(key.charAt(i));

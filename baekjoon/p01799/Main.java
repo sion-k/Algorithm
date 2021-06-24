@@ -7,19 +7,19 @@ import java.util.StringTokenizer;
 
 public class Main {
 	static int N;
-	static boolean[][] MAP; // ºñ¼óÀ» ³õÀ» ¼ö ÀÖ´ÂÁö ¿©ºÎ
+	static boolean[][] MAP; // ë¹„ìˆì„ ë†“ì„ ìˆ˜ ìˆëŠ”ì§€ ì—¬ë¶€
 
 	static boolean inRange(int y, int x) {return 0 <= y && y < N && 0 <= x && x < N;}
 
-	// º¸µå¸¦ ´ë°¢¼±À¸·Î 45µµµ¹·Á¼­ »ı°¢ÇÑ´Ù
-	// used´Â 2 * N - 1Å©±âÀÇ ³õÀ» ¼ö ÀÖ´ÂÁö ¿©ºÎ¸¦ ÀúÀåÇÑ´Ù
-	// ºñ¼óÀº °ËÀº»ö Ä­°ú Èò Ä­Áß ÇÑÂÊ¿¡¸¸ Á¸ÀçÇÒ ¼ö ÀÖÀ¸¹Ç·Î °æ·ç¸¦ ³ª´©¾ú´Ù.
+	// ë³´ë“œë¥¼ ëŒ€ê°ì„ ìœ¼ë¡œ 45ë„ëŒë ¤ì„œ ìƒê°í•œë‹¤
+	// usedëŠ” 2 * N - 1í¬ê¸°ì˜ ë†“ì„ ìˆ˜ ìˆëŠ”ì§€ ì—¬ë¶€ë¥¼ ì €ì¥í•œë‹¤
+	// ë¹„ìˆì€ ê²€ì€ìƒ‰ ì¹¸ê³¼ í° ì¹¸ì¤‘ í•œìª½ì—ë§Œ ì¡´ì¬í•  ìˆ˜ ìˆìœ¼ë¯€ë¡œ ê²½ë£¨ë¥¼ ë‚˜ëˆ„ì—ˆë‹¤.
 	static int btk(int i, boolean[] used) {
 		if (i >= 2 * N - 1) return 0;
 		int max = 0;
 		if (i < N) {
 			int y = 0; int x = i; int j = N - i - 1;
-			// i¹øÂ° ´ë°¢¼±ÀÇ ¸ğµç °æ¿ì¸¦ ½Ãµµ
+			// ië²ˆì§¸ ëŒ€ê°ì„ ì˜ ëª¨ë“  ê²½ìš°ë¥¼ ì‹œë„
 			while (inRange(y, x)) {
 				if (MAP[y][x] && !used[j]) {
 					used[j] = true;
@@ -30,7 +30,7 @@ public class Main {
 			}
 		} else {
 			int y = i - N + 1; int x = N - 1; int j = i - N + 1;
-			// i¹øÂ° ´ë°¢¼±ÀÇ ¸ğµç °æ¿ì¸¦ ½Ãµµ
+			// ië²ˆì§¸ ëŒ€ê°ì„ ì˜ ëª¨ë“  ê²½ìš°ë¥¼ ì‹œë„
 			while (inRange(y, x)) {
 				if (MAP[y][x] && !used[j]) {
 					used[j] = true;

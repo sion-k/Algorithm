@@ -9,11 +9,11 @@ import java.util.StringTokenizer;
 
 public class Main {
 	static int N; static int M;
-	static boolean[][] MAP; // ÀÌµ¿ÇÒ ¼ö ÀÖ´ÂÁö ¿©ºÎ
+	static boolean[][] MAP; // ì´ë™í•  ìˆ˜ ìˆëŠ”ì§€ ì—¬ë¶€
 
 	static int gy; static int gx; static int gd;
 
-	// [1, 4] ¹æÇâÀ» ¹Ù¶óº¼ ¶§ÀÇ ¸ñÀûÁö »ó´ë ÁÂÇ¥ (0Àº ¹«½Ã)
+	// [1, 4] ë°©í–¥ì„ ë°”ë¼ë³¼ ë•Œì˜ ëª©ì ì§€ ìƒëŒ€ ì¢Œí‘œ (0ì€ ë¬´ì‹œ)
 	static final int[] dy = { 0, 0, 0, 1, -1 };
 	static final int[] dx = { 0, 1, -1, 0, 0 };
 
@@ -24,7 +24,7 @@ public class Main {
 		return 0 <= y && y < N && 0 <= x && x < M;
 	}
 
-	// [1, 4] = µ¿¼­³²ºÏ
+	// [1, 4] = ë™ì„œë‚¨ë¶
 	static int BFS(int sy, int sx, int sd) {
 		Queue<int[]> q = new LinkedList<>();
 		boolean[][][] BOOKED = new boolean[N][M][5];
@@ -41,7 +41,7 @@ public class Main {
 			for (int i = 1; i <= 3; i++) {
 				int ty = y + i * dy[d]; int tx = x + i * dx[d];
 				if (inRange(ty, tx) && !BOOKED[ty][tx][d]) {
-					// °æ·ÎÁß¿¡ ÇÏ³ª¶óµµ 1ÀÌ¸é ±× ÈÄ¿¡ À§Ä¡ ¸ø°¨
+					// ê²½ë¡œì¤‘ì— í•˜ë‚˜ë¼ë„ 1ì´ë©´ ê·¸ í›„ì— ìœ„ì¹˜ ëª»ê°
 					if (!MAP[ty][tx]) {break;}
 					q.offer(new int[] {ty, tx, d});
 					BOOKED[ty][tx][d] = true;

@@ -11,7 +11,7 @@ public class Main {
 	static ArrayList<ArrayList<Integer>> children;
 	static int[] amount;
 	
-	// hereÀ» ·çÆ®·Î ÇÏ´Â ¼­ºêÆ®¸®¿¡¼­ ·çÆ®¿¡ µµÂøÇÏ°í »ì¾Æ³²´Â ¾çÀÇ ¼ö
+	// hereì„ ë£¨íŠ¸ë¡œ í•˜ëŠ” ì„œë¸ŒíŠ¸ë¦¬ì—ì„œ ë£¨íŠ¸ì— ë„ì°©í•˜ê³  ì‚´ì•„ë‚¨ëŠ” ì–‘ì˜ ìˆ˜
 	static long inorder(int here) {
 		long sum = amount[here];
 		for (int ch : children.get(here)) sum += inorder(ch);

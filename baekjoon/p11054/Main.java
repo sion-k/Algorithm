@@ -11,7 +11,7 @@ public class Main {
 	static int[] ldsCache;
 	static int[] btnCache;
 
-	// startÀÌÈÄ¿¡¼­ ½ÃÀÛÇÏ´Â °¨¼Ò ºÎºĞ ¼ö¿­ Áß °¡Àå ±ä ±æÀÌ ¹İÈ¯
+	// startì´í›„ì—ì„œ ì‹œì‘í•˜ëŠ” ê°ì†Œ ë¶€ë¶„ ìˆ˜ì—´ ì¤‘ ê°€ì¥ ê¸´ ê¸¸ì´ ë°˜í™˜
 	static int LDS(int start) {
 		if (ldsCache[start] != 0) {return ldsCache[start];}
 		int ret = 1;

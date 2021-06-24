@@ -8,10 +8,10 @@ import java.util.StringTokenizer;
 
 public class Main {
 	static int T;
-	static int[] P; // tÃÊ¿¡ [1, 2]Áß ÇÏ³ª¿¡ ¶³¾îÁø´Ù
+	static int[] P; // tì´ˆì— [1, 2]ì¤‘ í•˜ë‚˜ì— ë–¨ì–´ì§„ë‹¤
 	static int[][][] cache;
 
-	// tÃÊ¿¡ p¿¡ ÀÖÀ» ¶§ ³²Àº ÀÌµ¿ È½¼ö°¡ w¸é ¾òÀ»¼ö ÀÖ´Â ÃÖ´ë Á¡¼ö
+	// tì´ˆì— pì— ìˆì„ ë•Œ ë‚¨ì€ ì´ë™ íšŸìˆ˜ê°€ wë©´ ì–»ì„ìˆ˜ ìˆëŠ” ìµœëŒ€ ì ìˆ˜
 	static int dp(int t, int p, int w) {
 		if (t > T) {return 0;}
 		if (w == 0) {
@@ -19,7 +19,7 @@ public class Main {
 			(P[t] == p ? 1 : 0) + dp(t + 1, p, 0);
 		}
 		if (cache[t][p][w] != -1) {return cache[t][p][w];}
-		// ¼±ÅÃÁö´Â °¡¸¸È÷ ÀÖ°Å³ª ¿òÁ÷ÀÌ°Å³ª
+		// ì„ íƒì§€ëŠ” ê°€ë§Œíˆ ìˆê±°ë‚˜ ì›€ì§ì´ê±°ë‚˜
 		return cache[t][p][w] = (P[t] == p ? 1 : 0) +
 		Math.max(dp(t + 1, p, w), dp(t + 1, p % 2 + 1, w - 1));
 	}

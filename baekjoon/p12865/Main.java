@@ -12,13 +12,13 @@ public class Main {
 	static int[] V;
 	static int[][] cache;
 	
-	// i¹øÂ° ÀÌÈÄ ¹°°ÇµéÀ» °í¸£°Å³ª °í¸£Áö ¾Ê¾ÒÀ» ¶§ ¾òÀ» ¼ö ÀÖ´Â ÃÖ´ë °¡Ä¡
+	// ië²ˆì§¸ ì´í›„ ë¬¼ê±´ë“¤ì„ ê³ ë¥´ê±°ë‚˜ ê³ ë¥´ì§€ ì•Šì•˜ì„ ë•Œ ì–»ì„ ìˆ˜ ìˆëŠ” ìµœëŒ€ ê°€ì¹˜
 	static int dp(int i, int capacity) {
 		if (i == N) {return 0;}
 		if (cache[i][capacity] != -1) {return cache[i][capacity];}
-		// °í¸£Áö ¾Ê´Â °æ¿ì
+		// ê³ ë¥´ì§€ ì•ŠëŠ” ê²½ìš°
 		cache[i][capacity] = dp(i + 1, capacity);
-		// °í¸£´Â °æ¿ì
+		// ê³ ë¥´ëŠ” ê²½ìš°
 		if (W[i] <= capacity) {
 			cache[i][capacity] = Math.max(cache[i][capacity],
 			V[i] + dp(i + 1, capacity - W[i]));

@@ -21,7 +21,7 @@ public class Main {
 		for (int i = 0; i < N; i++) S[i] = Integer.parseInt(st.nextToken());
 		FenwickTree t = new FenwickTree(N);
 		for (int i = 1; i <= N; i++) t.add(i, 1);
-		// map[x] = x°¡ SÀÇ ¸î¹øÂ°¿¡ ÀÖ´ÂÁö ¹ÝÈ¯ (1-based), x°¡ ¿©·¯°³ÀÏ ¼ö ÀÖÀ¸¹Ç·Î ÀÛÀº °Í ºÎÅÍ 
+		// map[x] = xê°€ Sì˜ ëª‡ë²ˆì§¸ì— ìžˆëŠ”ì§€ ë°˜í™˜ (1-based), xê°€ ì—¬ëŸ¬ê°œì¼ ìˆ˜ ìžˆìœ¼ë¯€ë¡œ ìž‘ì€ ê²ƒ ë¶€í„° 
 		Map<Integer, PriorityQueue<Integer>> map = new HashMap<>();
 		for (int i = 0; i < N; i++) {
 			PriorityQueue<Integer> pq = map.get(S[i]);

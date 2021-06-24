@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-	// (µ¿, ¼­, ³², ºÏ) ÇÁ¸°ÅÍ ÁÂÇ¥°è ÀÌµ¿
+	// (ë™, ì„œ, ë‚¨, ë¶) í”„ë¦°í„° ì¢Œí‘œê³„ ì´ë™
 	static final int[] dy = {0, 0, 1, -1};
 	static final int[] dx = {1, -1, 0, 0};
 
@@ -33,7 +33,7 @@ public class Main {
 		for (int i = 0; i < 4; i++)
 			EWSN[i] = (Integer.parseInt(st.nextToken()) / 100d);
 		boolean[][] visit = new boolean[50][50];
-		// (25, 25)¿¡¼­ ½ÃÀÛÇÑ´Ù°í °¡Á¤
+		// (25, 25)ì—ì„œ ì‹œì‘í•œë‹¤ê³  ê°€ì •
 		visit[25][25] = true;
 		System.out.println(btk(visit, 25, 25, N));
 	}

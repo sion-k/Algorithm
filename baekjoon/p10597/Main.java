@@ -14,7 +14,7 @@ public class Main {
 			ans = picked.clone();
 			return;
 		}
-		// 1±ÛÀÚ ¸ÅÄª
+		// 1ê¸€ì ë§¤ì¹­
 		int p1 = S[i];
 		if (!used[p1]) {
 			used[p1] = true;
@@ -22,7 +22,7 @@ public class Main {
 			btk(used, i + 1, picked, j + 1);
 			used[p1] = false;
 		}
-		// 2±ÛÀÚ ¸ÅÄª
+		// 2ê¸€ì ë§¤ì¹­
 		if (i <= S.length - 2) {
 			int p2 = 10 * S[i] + S[i + 1];
 			if (p2 <= used.length - 1 && !used[p2]) {

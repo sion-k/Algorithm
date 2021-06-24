@@ -15,7 +15,7 @@ public class Main {
 		}
 	}
 	
-	// »ó ÇÏ ÁÂ ¿ì ¼ø
+	// ìƒ í•˜ ì¢Œ ìš° ìˆœ
 	static final int[] dy = { -1, 1, 0, 0 };
 	static final int[] dx = { 0, 0, -1, 1 };
 	
@@ -28,7 +28,7 @@ public class Main {
 	
 	static boolean inRange(int y, int x) {return 1 <= y && y <= N && 1 <= x && x <= M;}
 	
-	// (1, 1)¿¡¼­ bfs, ÃÖ´Ü °Å¸®¸¦ ¹İÈ¯ÇÑ´Ù
+	// (1, 1)ì—ì„œ bfs, ìµœë‹¨ ê±°ë¦¬ë¥¼ ë°˜í™˜í•œë‹¤
 	static int bfs() {
 		Queue<Pos> q = new LinkedList<>();
 		q.add(new Pos(1, 1));

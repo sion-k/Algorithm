@@ -13,16 +13,16 @@ public class B {
 	static int[][] cache;
 	
 	static final int INF = 987654321;
-	// S[i]ºÎÅÍ *À» x·Î ¹Ù²Ù±â ½ÃÀÛÇÒ ¶§, ÃÖ¼ÒÇÑÀ¸·Î ¹Ù²Ù´Â ¼ö
-	// last´Â °¡Àå ¸¶Áö¸·À¸·Î ³ª¿Â x
+	// S[i]ë¶€í„° *ì„ xë¡œ ë°”ê¾¸ê¸° ì‹œì‘í•  ë•Œ, ìµœì†Œí•œìœ¼ë¡œ ë°”ê¾¸ëŠ” ìˆ˜
+	// lastëŠ” ê°€ì¥ ë§ˆì§€ë§‰ìœ¼ë¡œ ë‚˜ì˜¨ x
 	static int dp(int i, int last) {
 		if (i == tail) return i - last <= K ? 0 : INF;
 		if (cache[i][last] != -1) return cache[i][last];
 		if (S.charAt(i) == '.') return dp(i + 1, last);
 		if (i - last > K) return INF;
-		// ¾È¹Ù²Ù´Â °æ¿ì
+		// ì•ˆë°”ê¾¸ëŠ” ê²½ìš°
 		int min = dp(i + 1, last);
-		// ¹Ù²Ù±â
+		// ë°”ê¾¸ê¸°
 		min = Math.min(min, 1 + dp(i + 1, i));
 		return cache[i][last] = min;
 	}

@@ -21,8 +21,8 @@ public class Main {
 			S = S.substring(1, S.length() - 1);
 			StringTokenizer st = new StringTokenizer(S, ",");
 			for (int i = 0; i < N; i++) dq.offer(Integer.parseInt(st.nextToken()));
-			int d = 1; // ¿ÞÂÊ¿¡¼­ ¿À¸¥ÂÊ ¹æÇâ (-1ÀÌ¸é ¹Ý´ë)
-			boolean ok = true; // ¿¡·¯°¡ ¹ß»ýÇÏÁö ¾Ê¾Ò´ÂÁö ¿©ºÎ
+			int d = 1; // ì™¼ìª½ì—ì„œ ì˜¤ë¥¸ìª½ ë°©í–¥ (-1ì´ë©´ ë°˜ëŒ€)
+			boolean ok = true; // ì—ëŸ¬ê°€ ë°œìƒí•˜ì§€ ì•Šì•˜ëŠ”ì§€ ì—¬ë¶€
 			for (int i = 0; i < P.length(); i++) {
 				switch (P.charAt(i)) {
 				case 'R':

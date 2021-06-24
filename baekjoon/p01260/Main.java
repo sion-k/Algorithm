@@ -13,15 +13,15 @@ public class Main {
 	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 	
 	static int N;
-	// ÀÎÁ¢ Çà·Ä Ç¥Çö¹ı
+	// ì¸ì ‘ í–‰ë ¬ í‘œí˜„ë²•
 	static int M;
 	static boolean[][] EDGE;
-	// DFS¿ë
+	// DFSìš©
 	static boolean[] VISIT;
-	// BFS¿ë
+	// BFSìš©
 	static boolean[] BOOKED;
 	
-	// Á¤Á¡ here¿¡¼­ dfs
+	// ì •ì  hereì—ì„œ dfs
 	static void dfs(int here) throws IOException {
 		VISIT[here] = true;
 		bw.write(String.valueOf(here));
@@ -34,7 +34,7 @@ public class Main {
 		bw.flush();
 	}
 	
-	// Á¤Á¡ start¿¡¼­ bfs
+	// ì •ì  startì—ì„œ bfs
 	static void bfs(int start) throws IOException {
 		Queue<Integer> q = new LinkedList<>();
 		q.add(start);

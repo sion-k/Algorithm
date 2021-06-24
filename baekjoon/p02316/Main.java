@@ -43,8 +43,8 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		N = Integer.parseInt(st.nextToken());
-		// [1, N] Á¤Á¡Àº [N + 1, N + N]Á¤Á¡À¸·Î ÀÌ¾îÁø´Ù
-		// [1, N]Àº ingoing, [N + 1, N + N]Àº outgoing°£¼±¸¸ ÀÖ´Ù.
+		// [1, N] ì •ì ì€ [N + 1, N + N]ì •ì ìœ¼ë¡œ ì´ì–´ì§„ë‹¤
+		// [1, N]ì€ ingoing, [N + 1, N + N]ì€ outgoingê°„ì„ ë§Œ ìˆë‹¤.
 		capacity = new int[2 * N + 1][2 * N + 1];
 		for (int i = 1; i <= N; i++) capacity[i][N + i] = 1;
 		flow = new int[2 * N + 1][2 * N + 1];

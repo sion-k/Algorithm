@@ -12,10 +12,10 @@ public class Main {
 	static int N;
 	static int[][] capacity; static int[][] flow;
 
-	// (source, sink)°£ÀÇ ÃÖ´ë À¯·® ¹İÈ¯
+	// (source, sink)ê°„ì˜ ìµœëŒ€ ìœ ëŸ‰ ë°˜í™˜
 	static int networkFlow(int source, int sink) {
 		int totalFlow = 0;
-		// Áõ°¡ °æ·Î¸¦ ÃÖ´ëÇÑ Ã£´Â´Ù
+		// ì¦ê°€ ê²½ë¡œë¥¼ ìµœëŒ€í•œ ì°¾ëŠ”ë‹¤
 		while (true) {
 			Queue<Integer> q = new LinkedList<>();
 			q.offer(source);

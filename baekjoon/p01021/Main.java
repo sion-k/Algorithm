@@ -25,7 +25,7 @@ public class Main {
 			int found = 0;
 			Iterator<Integer> itr = dq.iterator();
 			while (itr.hasNext() && itr.next() != toPick) {found++;}
-			// ¿ŞÂÊ ¿¬»êÀÌ ´õ ºü¸¥ °æ¿ì
+			// ì™¼ìª½ ì—°ì‚°ì´ ë” ë¹ ë¥¸ ê²½ìš°
 			if (found <= dq.size() / 2) {
 				for (int i = 0; i < found; i++) {
 					dq.offerLast(dq.pollFirst());

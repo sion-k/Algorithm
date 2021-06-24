@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class Main {
 	static int[][] cache;
 	
-	// 4 * n Å©±âÀÇ Å¸ÀÏÀ» Ã¤¿ì´Â °æ¿ìÀÇ ¼ö
+	// 4 * n í¬ê¸°ì˜ íƒ€ì¼ì„ ì±„ìš°ëŠ” ê²½ìš°ì˜ ìˆ˜
 	// p : [0, 5) -> xxxx, ooxx, oxxo, xoox, xxoo
 	static int dp(int n, int p) {
 		if (n == 0) return p == 0 ? 1 : 0;

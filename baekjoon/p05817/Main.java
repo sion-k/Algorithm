@@ -14,12 +14,12 @@ public class Main {
 		int N = Integer.parseInt(st.nextToken());
 		int M = Integer.parseInt(st.nextToken());
 		st = new StringTokenizer(br.readLine(), " ");
-		int[] S = new int[N]; // i¹øÂ° ¼­ÀÖ´Â ³­ÀïÀÌÀÇ Å°
+		int[] S = new int[N]; // ië²ˆì§¸ ì„œìˆëŠ” ë‚œìŸì´ì˜ í‚¤
 		for (int i = 0; i < N; i++) S[i] = Integer.parseInt(st.nextToken()) - 1;
-		int[] P = new int[N]; // xÀÇ Å°¸¦ °¡Áø ³­ÀïÀÌÀÇ À§Ä¡
+		int[] P = new int[N]; // xì˜ í‚¤ë¥¼ ê°€ì§„ ë‚œìŸì´ì˜ ìœ„ì¹˜
 		for (int i = 0; i < N; i++) P[S[i]] = i;
-		RangeMaxQuery maxSeg = new RangeMaxQuery(); // Å°°¡ iÀÎ ³­ÀïÀÌÀÇ À§Ä¡¸¦ ÀúÀå
-		RangeMinQuery minSeg = new RangeMinQuery(); // Å°°¡ iÀÎ ³­ÀïÀÌÀÇ À§Ä¡¸¦ ÀúÀå
+		RangeMaxQuery maxSeg = new RangeMaxQuery(); // í‚¤ê°€ iì¸ ë‚œìŸì´ì˜ ìœ„ì¹˜ë¥¼ ì €ì¥
+		RangeMinQuery minSeg = new RangeMinQuery(); // í‚¤ê°€ iì¸ ë‚œìŸì´ì˜ ìœ„ì¹˜ë¥¼ ì €ì¥
 		maxSeg.n = N; minSeg.n = N;
 		for (int i = 0; i < N; i++) maxSeg.t[N + i] = minSeg.t[N + i] = P[i];
 		maxSeg.build(); minSeg.build();

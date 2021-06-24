@@ -12,8 +12,8 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
 		// [0, 0] 0
-		// [1, 1,000,000] ¾ç¼ö
-		// [1,000,001, 2,000,000] À½¼ö
+		// [1, 1,000,000] ì–‘ìˆ˜
+		// [1,000,001, 2,000,000] ìŒìˆ˜
 		boolean[] count = new boolean[2000000 + 1];
 		for (int i = 0; i < N; i++) {
 			int temp = Integer.parseInt(br.readLine());

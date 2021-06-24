@@ -10,14 +10,14 @@ public class Main {
 	static int HP;
 	static Skill[] SKILL;
 
-	// ÇöÀç ½Ã°£ÀÌ tÀÌ°í HP°í ½ºÅ³µéÀ» »ç¿ëÇÒ ¼ö ÀÖ°Ô µÇ´Â ½Ã°£µéÀÌ coolÀÏ¶§
-	// Ã³Ä¡ÇÏ´Âµ¥ °É¸®´Â ½Ã°£
+	// í˜„ì¬ ì‹œê°„ì´ tì´ê³  HPê³  ìŠ¤í‚¬ë“¤ì„ ì‚¬ìš©í•  ìˆ˜ ìˆê²Œ ë˜ëŠ” ì‹œê°„ë“¤ì´ coolì¼ë•Œ
+	// ì²˜ì¹˜í•˜ëŠ”ë° ê±¸ë¦¬ëŠ” ì‹œê°„
 	static int BTK(int t, int hp, int[] cool) {
 		if (hp <= 0) {return t;}
 		int min = 1000;
 		boolean used = false;
-		for (int i = 0; i < N; i++) { // N°³ÀÇ ½ºÅ³ Áß¿¡¼­
-			if (t >= cool[i]) { // »ç¿ë ÇÒ ¼ö ÀÖ´Â ½ºÅ³ÀÎ °æ¿ì
+		for (int i = 0; i < N; i++) { // Nê°œì˜ ìŠ¤í‚¬ ì¤‘ì—ì„œ
+			if (t >= cool[i]) { // ì‚¬ìš© í•  ìˆ˜ ìˆëŠ” ìŠ¤í‚¬ì¸ ê²½ìš°
 				used = true;
 				int temp = cool[i];
 				cool[i] = t + SKILL[i].time;
@@ -25,7 +25,7 @@ public class Main {
 				cool[i] = temp;
 			}
 		}
-		// ¸ğµÎ ´Ù »ç¿ëÇÒ ¼ö ¾ø´Â °æ¿ì
+		// ëª¨ë‘ ë‹¤ ì‚¬ìš©í•  ìˆ˜ ì—†ëŠ” ê²½ìš°
 		if (!used) {min = Math.min(min, BTK(t + 1, hp, cool));}
 		return min;
 	}

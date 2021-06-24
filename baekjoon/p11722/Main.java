@@ -10,7 +10,7 @@ public class Main {
 	static int[] S;
 	static int[] cache;
 	
-	// start¿¡¼­ ½ÃÀÛÇÏ´Â °¨¼Ò ºÎºĞ ¼ö¿­ Áß °¡Àå ±ä ±æÀÌ ¹İÈ¯
+	// startì—ì„œ ì‹œì‘í•˜ëŠ” ê°ì†Œ ë¶€ë¶„ ìˆ˜ì—´ ì¤‘ ê°€ì¥ ê¸´ ê¸¸ì´ ë°˜í™˜
 	static int lds(int start) {
 		if (cache[start] != 0) {return cache[start];}
 		int ret = 1;

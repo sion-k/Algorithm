@@ -10,7 +10,7 @@ public class Main {
 	static boolean[][] adj;
 	static boolean[] visit;
 	
-	// hereÀÌ Æ÷ÇÔµÈ ¿¬°á ¿ä¼Ò°¡ Æ®¸®ÀÎÁö ¹İÈ¯
+	// hereì´ í¬í•¨ëœ ì—°ê²° ìš”ì†Œê°€ íŠ¸ë¦¬ì¸ì§€ ë°˜í™˜
 	static boolean dfs(int here, int prev) {
 		visit[here] = true;
 		for (int there = 1; there <= N; there++) {

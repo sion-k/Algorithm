@@ -26,16 +26,16 @@ public class Main {
 			int n = 1;
 			while (!q.isEmpty()) {
 				Pair p = q.peek();
-				// Queue ³»¿¡ pº¸´Ù Å« ¿ø¼Ò°¡ ¾øÀ» °æ¿ì »ÌÀ» ¼ö ÀÖ´Ù
+				// Queue ë‚´ì— pë³´ë‹¤ í° ì›ì†Œê°€ ì—†ì„ ê²½ìš° ë½‘ì„ ìˆ˜ ìˆë‹¤
 				if (p.priority == Collections.max(q).priority) {
-					// QueryÇÑ ¿ø¼ÒÀÎ °æ¿ì ´äº¯
+					// Queryí•œ ì›ì†Œì¸ ê²½ìš° ë‹µë³€
 					if (q.peek().index == M) {
 						ans.append(n).append(NEW_LINE);
 						break;
 					}
 					q.poll();
 					n++;
-				// ´õ Å« ¿ø¼Ò°¡ ÀÖ´Ù¸é QueueÀÇ ¸Ç µÚ¿¡ ¹èÄ¡ÇÑ´Ù
+				// ë” í° ì›ì†Œê°€ ìˆë‹¤ë©´ Queueì˜ ë§¨ ë’¤ì— ë°°ì¹˜í•œë‹¤
 				} else {
 					q.offer(q.poll());
 				}

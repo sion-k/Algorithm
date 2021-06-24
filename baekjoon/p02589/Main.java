@@ -19,7 +19,7 @@ public class Main {
 		return 0 <= y && y < N && 0 <= x && x < M;
 	}
 
-	// Á¤Á¡ start¿¡¼­ bfsÇØ¼­ ÃÖ´ë °Å¸® ¹İÈ¯
+	// ì •ì  startì—ì„œ bfsí•´ì„œ ìµœëŒ€ ê±°ë¦¬ ë°˜í™˜
 	static int BFS(int sy, int sx) {
 		Queue<int[]> q = new LinkedList<>();
 		q.add(new int[] {sy, sx});

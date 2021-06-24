@@ -8,13 +8,13 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int N; // Çà
-	static int M; // ¿­
+	static int N; // í–‰
+	static int M; // ì—´
 	static int[][] TOMATO;
 	static int[][] DAY;
 	static boolean[][] BOOKED;
 	
-	// »óÇÏÁÂ¿ì
+	// ìƒí•˜ì¢Œìš°
 	static int[] dy = { -1, 1, 0, 0 };
 	static int[] dx = { 0, 0, -1, 1 };
 	
@@ -22,7 +22,7 @@ public class Main {
 		return 0 <= y && y < N && 0 <= x && x < M;
 	}
 	
-	// Åä¸¶ÅäµéÀÌ ¸ğµÎ ÀÍ¾ú´ÂÁö ¹İÈ¯
+	// í† ë§ˆí† ë“¤ì´ ëª¨ë‘ ìµì—ˆëŠ”ì§€ ë°˜í™˜
 	static boolean isAllRipe() {
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < M; j++) {
@@ -32,7 +32,7 @@ public class Main {
 		return true; 
 	}
 	
-	// Á¤Á¡ start¿¡¼­ bfsÇÑ ÃÖ´ë °Å¸® ¹İÈ¯
+	// ì •ì  startì—ì„œ bfsí•œ ìµœëŒ€ ê±°ë¦¬ ë°˜í™˜
 	static int bfsAll() {
 		if(isAllRipe()) {return 0;}
 		Queue<int[]> q = new LinkedList<>();

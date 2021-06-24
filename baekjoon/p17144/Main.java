@@ -43,7 +43,7 @@ public class Main {
 	}
 
 	static void circulate() {
-		// °ø±â Ã»Á¤±â À­ÂÊ
+		// ê³µê¸° ì²­ì •ê¸° ìœ—ìª½
 		int uy = filter[0];
 		for (int i = uy; i > 0; i--)
 			MAP[i][0] = MAP[i - 1][0];
@@ -53,7 +53,7 @@ public class Main {
 			MAP[i][M - 1] = MAP[i + 1][M - 1];
 		for (int j = M - 1; j > 1; j--)
 			MAP[uy][j] = MAP[uy][j - 1];
-		// °ø±â Ã»Á¤±â ¾Æ·¡ÂÊ
+		// ê³µê¸° ì²­ì •ê¸° ì•„ëž˜ìª½
 		int dy = filter[1];
 		for (int i = dy; i < N - 1; i++)
 			MAP[i][0] = MAP[i + 1][0];
@@ -65,7 +65,7 @@ public class Main {
 			MAP[dy][j] = MAP[dy][j - 1];
 		MAP[filter[0]][0] = -1;
 		MAP[filter[1]][0] = -1;
-		// °ø±âÃ»Á¤±â¿¡¼­ ³ª¿À¸é Á¤È­µÇ¾îÀÖÀ½
+		// ê³µê¸°ì²­ì •ê¸°ì—ì„œ ë‚˜ì˜¤ë©´ ì •í™”ë˜ì–´ìžˆìŒ
 		MAP[filter[0]][1] = 0;
 		MAP[filter[1]][1] = 0;
 	}

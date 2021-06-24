@@ -10,11 +10,11 @@ public class Main {
 	
 	static int yK; static int xK;
 	
-	// Çà ¿­ÀÌ ºü¸¥ ¼øÀ¸·Î 8°¡Áö ÀÌµ¿ÇÏ´Â À§Ä¡
+	// í–‰ ì—´ì´ ë¹ ë¥¸ ìˆœìœ¼ë¡œ 8ê°€ì§€ ì´ë™í•˜ëŠ” ìœ„ì¹˜
 	static final int[] dy = { -3, -3, -2, -2, 2, 2, 3, 3 };
 	static final int[] dx = { -2, 2, -3, 3, -3, 3, -2, 2 };
 	
-	// 8°¡Áö ÀÌµ¿ ¹æ¹ı¿¡ ´ëÇØ Àå¾Ö¹°ÀÌ Á¸ÀçÇÏ¸é ¾ÈµÇ´Â (y, x) ¼ø¼­ ½Ö
+	// 8ê°€ì§€ ì´ë™ ë°©ë²•ì— ëŒ€í•´ ì¥ì• ë¬¼ì´ ì¡´ì¬í•˜ë©´ ì•ˆë˜ëŠ” (y, x) ìˆœì„œ ìŒ
 	static final int[][][] path =
 	{ {{-1,  0}, {-2, -1}}, {{-1,  0}, {-2,  1}},
 	  {{ 0, -1}, {-1, -2}}, {{ 0,  1}, {-1,  2}},
@@ -26,7 +26,7 @@ public class Main {
 		return 0 <= y && y < 10 && 0 <= x && x < 9;
 	}
 	
-	// (y, x)¿¡¼­ moveWay·Î ÀÌµ¿ÇÏ´Â°Ô °¡´ÉÇÑÁö ¹İÈ¯
+	// (y, x)ì—ì„œ moveWayë¡œ ì´ë™í•˜ëŠ”ê²Œ ê°€ëŠ¥í•œì§€ ë°˜í™˜
 	static boolean reachable(int y, int x, int moveWay) {
 		int ty = y + dy[moveWay]; int tx = x + dx[moveWay];
 		if(!inRange(ty, tx)) {return false;}
@@ -38,7 +38,7 @@ public class Main {
 		return true;
 	}
 	
-	// (y, x)¿¡¼­ ½ÃÀÛÇØ¼­ »óÀÌ ¿Õ¿¡°Ô µµ´ŞÇÏ´Â ÃÖ¼Ò °Å¸® ¹İÈ¯
+	// (y, x)ì—ì„œ ì‹œì‘í•´ì„œ ìƒì´ ì™•ì—ê²Œ ë„ë‹¬í•˜ëŠ” ìµœì†Œ ê±°ë¦¬ ë°˜í™˜
 	static int bfs(int y, int x) {
 		Queue<int[]> q = new LinkedList<>();
 		q.offer(new int[] {y, x});

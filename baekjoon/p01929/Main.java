@@ -15,8 +15,8 @@ public class Main {
 		sc.close();
 		MAX_N = N;
 		int[] S = new int[MAX_N + 1];
-		Arrays.fill(S, -1); // -1Àº °è»ê ¾ÈµÊ
-		S[1] = 0; // 0Àº ¼Ò¼ö°¡ ¾Æ´Ô 1Àº ¼Ò¼öÀÓ
+		Arrays.fill(S, -1); // -1ì€ ê³„ì‚° ì•ˆë¨
+		S[1] = 0; // 0ì€ ì†Œìˆ˜ê°€ ì•„ë‹˜ 1ì€ ì†Œìˆ˜ì„
 		for (int i = 2; i <= MAX_N; i++) {
 			if (S[i] != -1) {continue;}
 			S[i] = 1;

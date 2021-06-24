@@ -13,7 +13,7 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int N = Integer.parseInt(br.readLine());
-		int[] S = new int[N + 1]; // ¸¶Áö¸· ¿ø¼Ò´Â INF
+		int[] S = new int[N + 1]; // ë§ˆì§€ë§‰ ì›ì†ŒëŠ” INF
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		for (int i = 0; i < N; i++)
 			S[i] = Integer.parseInt(st.nextToken());

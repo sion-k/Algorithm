@@ -15,7 +15,7 @@ public class Main {
 	
 	static boolean inRange(int y, int x) { return 0 <= y && y < N && 0 <= x && x < N; }
 	
-	// (u1, u2)¿¡¼­ ½ÃÀÛÇØ¼­ (v1, v2)¿¡¼­ ³¡³ª´Â ±æÀÌ lÀÇ ÆÓ¸°µå·Ò °æ·ÎÀÇ °³¼ö
+	// (u1, u2)ì—ì„œ ì‹œì‘í•´ì„œ (v1, v2)ì—ì„œ ëë‚˜ëŠ” ê¸¸ì´ lì˜ íŒ°ë¦°ë“œë¡¬ ê²½ë¡œì˜ ê°œìˆ˜
 	static int dp(int u1, int u2, int v1, int v2, int l) {
 		if (l == 2) {
 			for (int d = 0; d < 8; d++) {

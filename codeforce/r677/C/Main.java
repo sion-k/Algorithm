@@ -30,7 +30,7 @@ public class Main {
 				ret = maxIndex;
 			}
 			/*
-			 * ¹Ý·Ê
+			 * ë°˜ë¡€
 			 * 1
 			 * 5
 			 * 3 3 2 1 3

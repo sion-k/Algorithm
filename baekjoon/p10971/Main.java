@@ -14,7 +14,7 @@ public class Main {
 	static boolean[] VISIT;
 	static final int INF = 9000001;
 
-	// Á¤Á¡ here¿¡¼­ dfs
+	// ì •ì  hereì—ì„œ dfs
 	static int DFS(int here) {
 		boolean allVisit = true;
 		for (boolean v : VISIT) {if(!v) {allVisit = false;}}

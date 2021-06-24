@@ -10,7 +10,7 @@ public class Main {
 	static int[] COIN;
 	static int[] cache;
 
-	// k¿øÀ» ¸¸µå´Âµ¥ ÇÊ¿äÇÑ ÃÖ¼ÒÀÇ µ¿ÀüÀÇ °³¼ö ¹İÈ¯
+	// kì›ì„ ë§Œë“œëŠ”ë° í•„ìš”í•œ ìµœì†Œì˜ ë™ì „ì˜ ê°œìˆ˜ ë°˜í™˜
 	static int dp(int k) {
 		if (k == 0) {return 0;}
 		if (cache[k] != 0) {return cache[k];}

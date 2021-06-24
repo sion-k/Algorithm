@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class Main {
 	static String S;
 	
-	// s¿¡ ´ëÇØ¼­ ¿¬»ê
+	// sì— ëŒ€í•´ì„œ ì—°ì‚°
 	static int dcMax(String s) {
 		int sum = 0;
 		for (int i = 0; i < s.length(); i++)
@@ -15,7 +15,7 @@ public class Main {
 		if (s.length() == 1) return sum;
 		if (s.length() == 2) return sum + dcMax(String.valueOf((s.charAt(0) - '0') + (s.charAt(1) - '0')));
 		int max = 0;
-		// ¼¼ÀÚ¸® ÀÌ»óÀÌ¸é ÀÓÀÇÀÇ ¼­·Î´Ù¸¥ µÎ ±ºµ¥¿¡¼­ ²÷´Â´Ù
+		// ì„¸ìë¦¬ ì´ìƒì´ë©´ ì„ì˜ì˜ ì„œë¡œë‹¤ë¥¸ ë‘ êµ°ë°ì—ì„œ ëŠëŠ”ë‹¤
 		for (int i = 0; i < s.length() - 1; i++) {
 			for (int j = i + 1; j < s.length() - 1; j++){
 				int temp = Integer.parseInt(s.substring(0, i + 1));
@@ -28,7 +28,7 @@ public class Main {
 		return sum + max;
 	}
 	
-	// s¿¡ ´ëÇØ¼­ ¿¬»ê
+	// sì— ëŒ€í•´ì„œ ì—°ì‚°
 	static int dcMin(String s) {
 		int sum = 0;
 		for (int i = 0; i < s.length(); i++)
@@ -36,7 +36,7 @@ public class Main {
 		if (s.length() == 1) return sum;
 		if (s.length() == 2) return sum + dcMin(String.valueOf((s.charAt(0) - '0') + (s.charAt(1) - '0')));
 		int min = Integer.MAX_VALUE;
-		// ¼¼ÀÚ¸® ÀÌ»óÀÌ¸é ÀÓÀÇÀÇ ¼­·Î´Ù¸¥ µÎ ±ºµ¥¿¡¼­ ²÷´Â´Ù
+		// ì„¸ìë¦¬ ì´ìƒì´ë©´ ì„ì˜ì˜ ì„œë¡œë‹¤ë¥¸ ë‘ êµ°ë°ì—ì„œ ëŠëŠ”ë‹¤
 		for (int i = 0; i < s.length() - 1; i++) {
 			for (int j = i + 1; j < s.length() - 1; j++){
 				int temp = Integer.parseInt(s.substring(0, i + 1));

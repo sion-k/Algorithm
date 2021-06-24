@@ -11,7 +11,7 @@ public class Main {
 	static String A; static String B;
 	static int[][] cache;
 
-	// A[i, ] B[j, ]ÀÇ LCS¹İÈ¯
+	// A[i, ] B[j, ]ì˜ LCSë°˜í™˜
 	static int dp(int i, int j) {
 		if (i == A.length() || j == B.length()) {return 0;}
 		if (cache[i][j] != -1) {return cache[i][j];}

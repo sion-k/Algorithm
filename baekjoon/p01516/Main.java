@@ -14,7 +14,7 @@ public class Main {
 	static List<List<Integer>> adj;
 	static int[] cache;
 
-	// i¹øÂ° °Ç¹°À» Áş´Âµ¥ °É¸®´Â ÃÖ¼Ò ½Ã°£
+	// ië²ˆì§¸ ê±´ë¬¼ì„ ì§“ëŠ”ë° ê±¸ë¦¬ëŠ” ìµœì†Œ ì‹œê°„
 	static int dp(int i) {
 		if (cache[i] != 0) {return cache[i];}
 		int max = 0;

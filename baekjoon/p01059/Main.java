@@ -17,9 +17,9 @@ public class Main {
 		}
 		int mid = Integer.parseInt(br.readLine());
 		if (luckySet[mid]) {System.out.println(0); return;}
-		int left = mid; // °¡Àå ¿ÞÂÊ LuckySet
+		int left = mid; // ê°€ìž¥ ì™¼ìª½ LuckySet
 		while (left > 0 && !luckySet[left]) {left--;}
-		int right = mid;// °¡Àå ¿À¸¥ÂÊ LuckySet
+		int right = mid;// ê°€ìž¥ ì˜¤ë¥¸ìª½ LuckySet
 		while (right <= 1000 && !luckySet[right]) {right++;}
 		int cnt = 0;
 		for (int start = left + 1; start <= mid; start++) {

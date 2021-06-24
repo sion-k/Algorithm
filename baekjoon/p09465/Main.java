@@ -11,19 +11,19 @@ public class Main {
 	static int[][] score;
 	static int[][] cache;
 	
-	// i - 1¹øÂ° ¿­ÀÇ ½ºÆ¼Ä¿¸¦ prev¸¦ °ñ¶úÀ» ¶§ i¹øÂ° ¿­ºÎÅÍ ¾òÀ» ¼ö ÀÖ´Â ÃÖ´ë Á¡¼ö
+	// i - 1ë²ˆì§¸ ì—´ì˜ ìŠ¤í‹°ì»¤ë¥¼ prevë¥¼ ê³¨ëì„ ë•Œ ië²ˆì§¸ ì—´ë¶€í„° ì–»ì„ ìˆ˜ ìˆëŠ” ìµœëŒ€ ì ìˆ˜
 	static int dp(int i, int prev) {
 		if (i >= N) {return 0;}
 		if (cache[i][prev] != -1) {return cache[i][prev];}
-		// À§ÂÊÀÎ °æ¿ì i¹øÂ° ¼±ÅÃÁö´Â ¾Æ·¡ È¤Àº ¾È°í¸§
+		// ìœ„ìª½ì¸ ê²½ìš° ië²ˆì§¸ ì„ íƒì§€ëŠ” ì•„ë˜ í˜¹ì€ ì•ˆê³ ë¦„
 		if (prev == 0) {
 			return cache[i][prev] = Math.max(score[1][i] + dp(i + 1, 1), dp(i + 1, 2));
 		}
-		// ¾Æ·¡ÂÊÀÎ °æ¿ì i¹øÂ° ¼±ÅÃÁö´Â À§ È¤Àº ¾È°í¸§
+		// ì•„ë˜ìª½ì¸ ê²½ìš° ië²ˆì§¸ ì„ íƒì§€ëŠ” ìœ„ í˜¹ì€ ì•ˆê³ ë¦„
 		if (prev == 1) {
 			return cache[i][prev] = Math.max(score[0][i] + dp(i + 1, 0), dp(i + 1, 2));
 		}
-		// ¾È °í¸¥ °æ¿ì i¹øÀç ¼±ÅÃÁö´Â À§ È¤Àº ¾Æ·¡
+		// ì•ˆ ê³ ë¥¸ ê²½ìš° ië²ˆì¬ ì„ íƒì§€ëŠ” ìœ„ í˜¹ì€ ì•„ë˜
 		if (prev == 2) {
 			return cache[i][prev] = Math.max(score[0][i] + dp(i + 1, 0), score[1][i] + dp(i + 1, 1));
 		}

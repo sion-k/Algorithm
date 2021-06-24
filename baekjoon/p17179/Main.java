@@ -7,7 +7,7 @@ public class Main {
 	static int[] S; static int N;
 	static int L;
 	
-	// ÁÖ¾îÁø ¼ö¿­¿¡¼­ ÃÖ¼Ò °Å¸®°¡ dÀÌ»óÀÌ µÇ°Ô q°³¸¦ ¼±ÅÃÇÒ ¼ö ÀÖ´ÂÁö ¹İÈ¯
+	// ì£¼ì–´ì§„ ìˆ˜ì—´ì—ì„œ ìµœì†Œ ê±°ë¦¬ê°€ dì´ìƒì´ ë˜ê²Œ qê°œë¥¼ ì„ íƒí•  ìˆ˜ ìˆëŠ”ì§€ ë°˜í™˜
 	static boolean f(int d, int q) {
 		int last = 0; int cnt = 0;
 		for (int i = 0; i < N; i++) {
@@ -29,7 +29,7 @@ public class Main {
 		for (int i = 0; i < M; i++) {
 			int q = Integer.parseInt(br.readLine());
 			int lo = 1; int hi = L;
-			// f(lo) == true && f(hi) == falseÀÎ lo¹İÈ¯
+			// f(lo) == true && f(hi) == falseì¸ loë°˜í™˜
 			while (lo + 1 < hi) {
 				int mid = (lo + hi) / 2;
 				if (f(mid, q)) lo = mid;

@@ -25,26 +25,26 @@ public class Main {
 		}
 		int minCost = 500 * 500 * 256 * 2;
 		int height = -1;
-		// [min, max]ÀÇ ¹üÀ§¸¦ ¸ğµÎ ½Ãµµ
+		// [min, max]ì˜ ë²”ìœ„ë¥¼ ëª¨ë‘ ì‹œë„
 		for (int h = minHeight; h <= maxHeight; h++) {
 			int cost = 0;
 			int block = B;
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < M; j++) {
 					int diff = Math.abs(MAP[i][j] - h);
-					// ±ğ¾Æ¾ß ÇÏ´Â °æ¿ì
+					// ê¹ì•„ì•¼ í•˜ëŠ” ê²½ìš°
 					if (MAP[i][j] >= h) {
 						cost += (2 * diff);
 						block += diff;
 					}
-					// Ã¤¿ö¾ß ÇÏ´Â °æ¿ì
+					// ì±„ì›Œì•¼ í•˜ëŠ” ê²½ìš°
 					else {
 						cost += diff;
 						block -= diff;
 					}
 				}
 			}
-			// Äµ ºí·Ïµé°ú ½×Àº ºí·ÏµéÀÇ ÇÕµéÀÌ À½¼ö¸é ½×´Â°Ô ºÒ°¡´ÉÇÑ °æ¿ìÀÓ
+			// ìº” ë¸”ë¡ë“¤ê³¼ ìŒ“ì€ ë¸”ë¡ë“¤ì˜ í•©ë“¤ì´ ìŒìˆ˜ë©´ ìŒ“ëŠ”ê²Œ ë¶ˆê°€ëŠ¥í•œ ê²½ìš°ì„
 			if (block >= 0) {
 				if (minCost >= cost) {
 					minCost = cost;

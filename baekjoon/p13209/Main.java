@@ -13,8 +13,8 @@ public class Main {
 	static ArrayList<ArrayList<Integer>> adj;
 	static int cnt;
 	
-	// here ·çÆ®·Î Æ®¸®¿¡ ÇÑ ÄÄÆ÷³ÍÆ®ÀÇ Á¤Á¡ÀÇ °¡ÁßÄ¡ÀÇ ÇÕÀÌ MÀ» ³ÑÁö ¾Ê°Ô
-	// ÃÖÀûÀÇ ¹æ¹ıÀ¸·Î ³ª´©°í hereÀÌ ¼ÓÇÑ ÄÄÆ÷³ÍÆ®ÀÇ °¡ÁßÄ¡ÀÇ ÇÕÀ» ¹İÈ¯
+	// here ë£¨íŠ¸ë¡œ íŠ¸ë¦¬ì— í•œ ì»´í¬ë„ŒíŠ¸ì˜ ì •ì ì˜ ê°€ì¤‘ì¹˜ì˜ í•©ì´ Mì„ ë„˜ì§€ ì•Šê²Œ
+	// ìµœì ì˜ ë°©ë²•ìœ¼ë¡œ ë‚˜ëˆ„ê³  hereì´ ì†í•œ ì»´í¬ë„ŒíŠ¸ì˜ ê°€ì¤‘ì¹˜ì˜ í•©ì„ ë°˜í™˜
 	static long postorder(int here, int parent) {
 		long sum = S[here];
 		PriorityQueue<Long> pq = new PriorityQueue<>(Collections.reverseOrder());
@@ -23,7 +23,7 @@ public class Main {
 			long t = postorder(there, here);
 			sum += t; pq.offer(t);
 		}
-		// ¾îÂ÷ÇÇ ²÷¾î³»¾ß ÇÑ´Ù¸é Å«°ÅºÎÅÍ ²÷¾î³½´Ù
+		// ì–´ì°¨í”¼ ëŠì–´ë‚´ì•¼ í•œë‹¤ë©´ í°ê±°ë¶€í„° ëŠì–´ë‚¸ë‹¤
 		while (!pq.isEmpty() && sum > M) { sum -= pq.poll(); cnt++; }
 		return sum;
 	}
@@ -47,9 +47,9 @@ public class Main {
 				int v = Integer.parseInt(st.nextToken());
 				adj.get(u).add(v); adj.get(v).add(u);
 			}
-			// f(x) = ÇÑ ÄÄÆ÷³ÍÆ®ÀÇ °¡ÁßÄ¡ÀÇ ÇÕÀÌ x°¡ ³ÑÁö ¾Ê°Ô,
-			// ÃÖÀûÀÇ ¹æ¹ıÀ¸·Î Àß¶úÀ» ¶§ ÀÚ¸£´Â È½¼ö°¡ K¸¦ ³ÑÁö ¾Ê°Ô ÀÚ¸¦ ¼ö ÀÖ´ÂÁö ¿©ºÎ
-			// f(lo) = false f(hi) = trueÀÎ hi¸¦ ¹İÈ¯
+			// f(x) = í•œ ì»´í¬ë„ŒíŠ¸ì˜ ê°€ì¤‘ì¹˜ì˜ í•©ì´ xê°€ ë„˜ì§€ ì•Šê²Œ,
+			// ìµœì ì˜ ë°©ë²•ìœ¼ë¡œ ì˜ëì„ ë•Œ ìë¥´ëŠ” íšŸìˆ˜ê°€ Kë¥¼ ë„˜ì§€ ì•Šê²Œ ìë¥¼ ìˆ˜ ìˆëŠ”ì§€ ì—¬ë¶€
+			// f(lo) = false f(hi) = trueì¸ hië¥¼ ë°˜í™˜
 			long lo = 0; long hi = 100000000000000L;
 			int max = 0;
 			for (int i = 1; i <= N; i++) max = Math.max(max, S[i]);

@@ -11,7 +11,7 @@ public class Main {
 	static final String[] TYPE = {"ESTJ", "ESTP", "ESFJ", "ESFP", "ENTJ", "ENTP", "ENFJ", "ENFP",
 			"ISTJ", "ISTP", "ISFJ", "ISFP", "INTJ", "INTP", "INFJ", "INFP"};
 
-	// µÎ À¯Çü »çÀÌÀÇ ½É¸®Àû °Å¸®
+	// ë‘ ìœ í˜• ì‚¬ì´ì˜ ì‹¬ë¦¬ì  ê±°ë¦¬
 	static int dist(String u, String v) {
 		int dist = 0;
 		for (int i = 0; i < 4; i++)

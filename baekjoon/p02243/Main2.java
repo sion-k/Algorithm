@@ -48,10 +48,10 @@ class FenwickTree {
 		return ret;
 	}
 	
-	// k¹øÂ° °ªÀ» ¹İÈ¯
+	// kë²ˆì§¸ ê°’ì„ ë°˜í™˜
 	int kth(int k) {
-		// f(x) = x ¸À ÀÌÇÏÀÇ °³¼ö
-		// f(lo) < k && f(hi) >= kÀÎ hi¸¦ ¹İÈ¯
+		// f(x) = x ë§› ì´í•˜ì˜ ê°œìˆ˜
+		// f(lo) < k && f(hi) >= kì¸ hië¥¼ ë°˜í™˜
 		int lo = 0; int hi = 1000000;
 		while (lo + 1 < hi) {
 			int mid = (lo + hi) / 2;

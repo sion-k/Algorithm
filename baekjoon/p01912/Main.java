@@ -11,7 +11,7 @@ public class Main {
 	static int[] S;
 	static int[][] cache;
 
-	// i¹øÂ° ±îÁöÀÇ ¿¬¼ÓÇÕÁß i¹øÂ° ¿¬¼ÓÇÕÀ» ¼±ÅÃÇÏ°Å³ª ¼±ÅÃÇÏÁö ¾Ê´Â ÇÕ Áß ÃÖ´ë
+	// ië²ˆì§¸ ê¹Œì§€ì˜ ì—°ì†í•©ì¤‘ ië²ˆì§¸ ì—°ì†í•©ì„ ì„ íƒí•˜ê±°ë‚˜ ì„ íƒí•˜ì§€ ì•ŠëŠ” í•© ì¤‘ ìµœëŒ€
 	static int dp(int i, int c) {
 		if (i < 0) {return 0;}
 		if (cache[c][i] != INF) {return cache[c][i];}

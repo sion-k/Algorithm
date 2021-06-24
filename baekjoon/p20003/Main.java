@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-	// A / B ºĞ¼ö ÇüÅÂ¸¦ ÅëºĞÇÑ °ÍÀ» ¹İÈ¯
+	// A / B ë¶„ìˆ˜ í˜•íƒœë¥¼ í†µë¶„í•œ ê²ƒì„ ë°˜í™˜
 	static long[] reduct(long a, long b) {
 		long fac = gcd(a, b);
 		long[] ret = new long[2];
@@ -42,8 +42,8 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
-		long[] A = new long[N]; // ºĞÀÚµéÀÇ ¹è¿­
-		long[] B = new long[N]; // ºĞ¸ğµéÀÇ ¹è¿­
+		long[] A = new long[N]; // ë¶„ìë“¤ì˜ ë°°ì—´
+		long[] B = new long[N]; // ë¶„ëª¨ë“¤ì˜ ë°°ì—´
 		for (int i = 0; i < N; i++) {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 			int a = Integer.parseInt(st.nextToken());
@@ -52,10 +52,10 @@ public class Main {
 			A[i] = r[0]; B[i] = r[1];
 		}
 		br.close();
-		// ºĞ¸ğµéÀÇ ÃÖ¼Ò°ø¹è¼ö·Î ºĞ¸ğ¸¦ ÅëºĞ
+		// ë¶„ëª¨ë“¤ì˜ ìµœì†Œê³µë°°ìˆ˜ë¡œ ë¶„ëª¨ë¥¼ í†µë¶„
 		long lcmB = lcm(B);
 		for (int i = 0; i < N; i++) {A[i] *= (lcmB / B[i]);}
-		// ÅëºĞµÈ ºĞ¼öµéÀÇ ºĞÀÚÀÇ ÃÖ´ë°ø¾à¼ö¸¦ ±¸ÇÑ´Ù
+		// í†µë¶„ëœ ë¶„ìˆ˜ë“¤ì˜ ë¶„ìì˜ ìµœëŒ€ê³µì•½ìˆ˜ë¥¼ êµ¬í•œë‹¤
 		long gcdA = gcd(A);
 		long[] r = reduct(gcdA, lcmB);
 		System.out.println(r[0] + " " + r[1]);

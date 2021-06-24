@@ -29,7 +29,7 @@ public class Main {
 		int C = Integer.parseInt(st.nextToken());
 		int Q = Integer.parseInt(st.nextToken());
 
-		// pictureÀÇ 0ÇàÀº 0, 0¿­Àº 0À¸·Î Á¤ÀÇÇÑ´Ù
+		// pictureì˜ 0í–‰ì€ 0, 0ì—´ì€ 0ìœ¼ë¡œ ì •ì˜í•œë‹¤
 		picture = new int[R + 1][C + 1];
 		for (int i = 1; i < R + 1; i++) {
 			st = new StringTokenizer(br.readLine(), " ");

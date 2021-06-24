@@ -11,7 +11,7 @@ public class Main {
 	static int[][] ICEBERG;
 	static boolean[][] VISIT;
 	
-	// »óÇÏÁÂ¿ì ÀÌµ¿
+	// ìƒí•˜ì¢Œìš° ì´ë™
 	static final int[] dy = {-1, 1, 0, 0};
 	static final int[] dx = {0, 0, -1, 1};
 	
@@ -20,16 +20,16 @@ public class Main {
 		return 0 <= y && y < N && 0 <= x && x < M;
 	}
 	
-	// ºù»êÀ» 1³â °æ°ú ½ÃÅ²´Ù
+	// ë¹™ì‚°ì„ 1ë…„ ê²½ê³¼ ì‹œí‚¨ë‹¤
 	static void melt() {
-		int[][] temp = new int[N][M]; // ÀÌÀüÀÇ ¸ğ½À º¸°ü
+		int[][] temp = new int[N][M]; // ì´ì „ì˜ ëª¨ìŠµ ë³´ê´€
 		for (int i =0 ; i <N; i++) {temp[i] = ICEBERG[i].clone();}
 		
 		for (int y = 0; y < N; y++) {
 			for (int x = 0; x < M; x++) {
 				if (temp[y][x] == 0) {continue;}
 				int cnt = 0;
-				// ÀÎÁ¢ÇÑ 0ÀÇ °³¼ö ÆÄ¾Ç
+				// ì¸ì ‘í•œ 0ì˜ ê°œìˆ˜ íŒŒì•…
 				for (int adj = 0; adj < 4; adj++) {
 					int ty = y + dy[adj]; int tx = x + dx[adj];
 					if(inRange(ty, tx) && temp[ty][tx] == 0) {
@@ -42,7 +42,7 @@ public class Main {
 		}
 	}
 	
-	// ÀüÃ¼¿¡ ´ëÇØ dfs(y, x)°¡ È£ÃâµÈ È½¼ö ¹İÈ¯ (µ¢¾î¸®ÀÇ ¼ö)
+	// ì „ì²´ì— ëŒ€í•´ dfs(y, x)ê°€ í˜¸ì¶œëœ íšŸìˆ˜ ë°˜í™˜ (ë©ì–´ë¦¬ì˜ ìˆ˜)
 	static int dfsAll() {
 		VISIT = new boolean[N][M];
 		int cnt = 0;
@@ -68,7 +68,7 @@ public class Main {
 	}
 	
 	static int solve() {
-		int piece = 1; // Á¦ÀÏ Ã³À½¿¡´Â ÇÑ µ¢¾î¸®ÀÇ ºù»ê
+		int piece = 1; // ì œì¼ ì²˜ìŒì—ëŠ” í•œ ë©ì–´ë¦¬ì˜ ë¹™ì‚°
 		int year = 0;
 		while((piece = dfsAll()) != 0) {
 			if(piece >= 2) {return year;}

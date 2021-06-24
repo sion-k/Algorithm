@@ -11,27 +11,27 @@ public class E {
     
     static final int INF = 10001;
     
-    // root¸¦ ·çÆ®·Î ÇÏ´Â ¼­ºêÆ®¸®ÀÇ ÇÑ ±×·ì¿¡ ÃÖ´ë bound¸¸Å­ ´ãÀ» ¼ö ÀÖÀ» ¶§
-    // °¡Àå ÃÖÀûÀ¸·Î ´ã¾ÒÀ» ¶§, (±×·ìÀÇ ¼ö, ¼­ºêÆ®¸®°¡ ¼ÓÇÑ ±×·ìÀÇ ±Ô¸ğ) ¹İÈ¯
+    // rootë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” ì„œë¸ŒíŠ¸ë¦¬ì˜ í•œ ê·¸ë£¹ì— ìµœëŒ€ boundë§Œí¼ ë‹´ì„ ìˆ˜ ìˆì„ ë•Œ
+    // ê°€ì¥ ìµœì ìœ¼ë¡œ ë‹´ì•˜ì„ ë•Œ, (ê·¸ë£¹ì˜ ìˆ˜, ì„œë¸ŒíŠ¸ë¦¬ê°€ ì†í•œ ê·¸ë£¹ì˜ ê·œëª¨) ë°˜í™˜
     static int[] group(int root, int bound) {
         if (node[root] > bound) return new int[] { INF, INF };
         int[] left = {0, 0};
         if (adj[root][0] != -1) left = group(adj[root][0], bound);
         int[] right = {0, 0};
         if (adj[root][1] != -1) right = group(adj[root][1], bound);
-        // ¸®ÇÁ ³ëµåÀÎ °æ¿ì
+        // ë¦¬í”„ ë…¸ë“œì¸ ê²½ìš°
         if (adj[root][0] == -1 && adj[root][1] == -1) {return new int[] { 1, node[root] };}
-        // ´ãÁö ¾Ê´Â °æ¿ì
+        // ë‹´ì§€ ì•ŠëŠ” ê²½ìš°
         int[] max = { left[0] + right[0] + 1, node[root] };
-        // ¸ğµÎ ´ã´Â °æ¿ì
+        // ëª¨ë‘ ë‹´ëŠ” ê²½ìš°
         if (adj[root][0] != -1 && adj[root][1] != -1 && node[root] + left[1] + right[1] <= bound)
             if (node[root] + left[1] + right[1] > max[1])
                 max = new int[] { left[0] + right[0] - 1, node[root] + left[1] + right[1] };
-        // ¿ŞÂÊ¸¸ ´ã´Â °æ¿ì
+        // ì™¼ìª½ë§Œ ë‹´ëŠ” ê²½ìš°
         if (adj[root][0] != -1 && node[root] + left[1] <= bound)
             if (node[root] + left[1] > max[1])
                 max = new int[] { left[0] + right[0], node[root] + left[1] };
-        // ¿À¸¥ÂÊ¸¸ ´ã´Â °æ¿ì
+        // ì˜¤ë¥¸ìª½ë§Œ ë‹´ëŠ” ê²½ìš°
         if (adj[root][1] != -1 && node[root] + right[1] <= bound)
             if (node[root] + right[1] > max[1])
                 max = new int[] { left[0] + right[0], node[root] + right[1] };
@@ -60,8 +60,8 @@ public class E {
         for (int i = 0; i < adj.length; i++)
             if (!hasParent[i]) {root = i; break;}
         int lo = 0; int hi = 100000000;
-        // f(x) = K°³ ÀÌ»óÀÇ ±×·ìµé·Î ÇÑ ±×·ìÀÇ ÃÖ´ë Å©±â°¡ x°¡ µÇ°Ô ³ª´­ ¼ö ÀÖ´ÂÁö
-        // f(lo) == false && f(hi) == trueÀÎ hi¸¦ ¹İÈ¯
+        // f(x) = Kê°œ ì´ìƒì˜ ê·¸ë£¹ë“¤ë¡œ í•œ ê·¸ë£¹ì˜ ìµœëŒ€ í¬ê¸°ê°€ xê°€ ë˜ê²Œ ë‚˜ëˆŒ ìˆ˜ ìˆëŠ”ì§€
+        // f(lo) == false && f(hi) == trueì¸ hië¥¼ ë°˜í™˜
         while (lo + 1 < hi) {
         	int mid = (lo + hi) / 2;
         	if (group(root, mid)[0] <= K) hi = mid;

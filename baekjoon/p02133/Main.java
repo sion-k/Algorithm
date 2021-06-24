@@ -11,7 +11,7 @@ public class Main {
 	static int N;
 	static int[][] cache;
 
-	// k : 0  Æ¢¾î³ª¿Â °Í ¾øÀ½ k : 1 Æ¢¾î³ª¿ÔÀ½
+	// k : 0  íŠ€ì–´ë‚˜ì˜¨ ê²ƒ ì—†ìŒ k : 1 íŠ€ì–´ë‚˜ì™”ìŒ
 	static int dp(int i, int k) {
 		if (i == N) {return k == 0 ? 1 : 0;}
 		if (cache[i][k] != -1) {return cache[i][k];}

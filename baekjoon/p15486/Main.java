@@ -20,11 +20,11 @@ public class Main {
 		int[] dp = new int[N + 2];
 		for (int i = N; i >= 1; i--) {
 			int max = 0;
-			// ╩С╢Цю╩ ╪╠ецгр ╪Ж юж╢б ╟Ф©Л ╪╠ец
+			// Л┐│К▀╢Л²└ Л└═М┐²М∙═ Л┬≤ Л·┬К┼■ Й╡╫Л ╟ Л└═М┐²
 			int next = i + S[i][0];
 			if (next <= N + 1)
 				max = Math.max(max, S[i][1] + dp[next]);
-			// ╪╠ецгоаЖ ╬й╢б ╟Ф©Л
+			// Л└═М┐²М∙≤Л╖─ Л∙┼К┼■ Й╡╫Л ╟
 			max = Math.max(max, dp[i + 1]);
 			dp[i] = max;
 		}

@@ -8,13 +8,13 @@ import java.util.StringTokenizer;
 public class Main {
 	static int r; static int c;
 
-	// (y1, x1), (y2, x2)±îÁöÀÇ ¹üÀ§¿¡¼­ (r, c)°¡ ¸î¹øÂ°·Î ¹æ¹®µÇ´ÂÁö ¹İÈ¯
+	// (y1, x1), (y2, x2)ê¹Œì§€ì˜ ë²”ìœ„ì—ì„œ (r, c)ê°€ ëª‡ë²ˆì§¸ë¡œ ë°©ë¬¸ë˜ëŠ”ì§€ ë°˜í™˜
 	// l = y2 - y1
 	static int dc(int y1, int x1, int y2, int x2, int l) {
 		if (y1 == y2 && x1 == x2) return 0;
 		int my = (y1 + y2) / 2;
 		int mx = (x1 + x2) / 2;
-		int pos = 0; // ÀüÃ¼ ¹üÀ§¸¦ 4°³·Î ³ª´©°í ¿ŞÂÊ À§ºÎÅÍ 1, 2, 3, 4
+		int pos = 0; // ì „ì²´ ë²”ìœ„ë¥¼ 4ê°œë¡œ ë‚˜ëˆ„ê³  ì™¼ìª½ ìœ„ë¶€í„° 1, 2, 3, 4
 		int ret = 0;
 		if (r <= my) {
 			if (c <= mx) {
@@ -41,7 +41,7 @@ public class Main {
 		int N = Integer.parseInt(st.nextToken());
 		r = Integer.parseInt(st.nextToken());
 		c = Integer.parseInt(st.nextToken());
-		int L = (int)(Math.pow(2, N)); // ÇÑ º¯ÀÇ ±æÀÌ
+		int L = (int)(Math.pow(2, N)); // í•œ ë³€ì˜ ê¸¸ì´
 		System.out.println(dc(0, 0, L - 1, L - 1, L));
 	}
 

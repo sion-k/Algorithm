@@ -6,12 +6,12 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int H; // ³ôÀÌ
-	static int W; // ³Êºñ
+	static int H; // ë†’ì´
+	static int W; // ë„ˆë¹„
 	static boolean[][] LAND;
 	static boolean[][] VISIT;
 	
-	// ¿ŞÂÊ À§ºÎÅÍ °¡¿îµ¥¸¦ Á¦¿ÜÇÏ°í 8°³ÀÇ ÀÌµ¿
+	// ì™¼ìª½ ìœ„ë¶€í„° ê°€ìš´ë°ë¥¼ ì œì™¸í•˜ê³  8ê°œì˜ ì´ë™
 	static final int[] dy = {-1, -1, -1, 0, 0, 1, 1, 1};
 	static final int[] dx = {-1, 0, 1, -1, 1, -1, 0, 1};
 	
@@ -19,7 +19,7 @@ public class Main {
 		return 0 <= y && y < H && 0 <= x && x < W;
 	}
 	
-	// dfs(here)ÀÇ È£Ãâ È½¼ö ¹İÈ¯
+	// dfs(here)ì˜ í˜¸ì¶œ íšŸìˆ˜ ë°˜í™˜
 	static int dfsAll() {
 		int cnt = 0;
 		for (int i = 0; i < H; i++) {

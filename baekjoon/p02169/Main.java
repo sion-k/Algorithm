@@ -16,8 +16,8 @@ public class Main {
 		return 0 <= y && y < N && 0 <= x && x < M;
 	}
 
-	// m == 0 : ¿ŞÂÊ ¿À¸¥ÂÊ µÑ´Ù ÀÌµ¿°¡´É
-	// m == 1 : ¿ŞÂÊ¸¸ m == 2 : ¿À¸¥ÂÊ¸¸
+	// m == 0 : ì™¼ìª½ ì˜¤ë¥¸ìª½ ë‘˜ë‹¤ ì´ë™ê°€ëŠ¥
+	// m == 1 : ì™¼ìª½ë§Œ m == 2 : ì˜¤ë¥¸ìª½ë§Œ
 	static int dp(int m, int y, int x) {
 		if (y == N - 1 && x == M - 1) {return MAP[y][x];}
 		if (cache[m][y][x] != Integer.MIN_VALUE) {return cache[m][y][x];}

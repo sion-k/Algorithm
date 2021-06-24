@@ -7,11 +7,11 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class Graph {
-	static int V; // Á¤Á¡ÀÇ °³¼ö
-	static boolean[][] adj;// ÀÎÁ¢ Çà·Ä Ç¥Çö¹ı
+	static int V; // ì •ì ì˜ ê°œìˆ˜
+	static boolean[][] adj;// ì¸ì ‘ í–‰ë ¬ í‘œí˜„ë²•
 	static boolean[] visit;
 
-	static int N; static int M; // 2Â÷¿ø
+	static int N; static int M; // 2ì°¨ì›
 
 	static final int[] dy = { -1, 1, 0, 0 };
 	static final int[] dx = { 0, 0, -1, 1 };
@@ -20,7 +20,7 @@ public class Graph {
 		return 0 <= y && y < N && 0 <= x && x < M;
 	}
 
-	// Á¤Á¡ here¿¡¼­ dfs
+	// ì •ì  hereì—ì„œ dfs
 	static void dfs(int here) {
 		visit[here] = true;
 		for (int there = 0; there < V; there++)
@@ -28,7 +28,7 @@ public class Graph {
 				dfs(there);
 	}
 
-	// Á¤Á¡ start¿¡¼­ end±îÁö ÃÖ´Ü °Å¸® ¹İÈ¯. µµ´Ş ºÒ°¡´ÉÇÏ¸é -1 ¹İÈ¯
+	// ì •ì  startì—ì„œ endê¹Œì§€ ìµœë‹¨ ê±°ë¦¬ ë°˜í™˜. ë„ë‹¬ ë¶ˆê°€ëŠ¥í•˜ë©´ -1 ë°˜í™˜
 	static int bfs(int start, int end) {
 		Queue<Integer> q = new LinkedList<>();
 		q.add(start);
@@ -48,12 +48,12 @@ public class Graph {
 		return -1;
 	}
 
-	static final int INF = 0; // Á¸ÀçÇÒ ¼ö ÀÖ´Â ÃÖ´ë °æ·ÎÀÇ ±æÀÌ + 1
-	static int[][] adjArray; // ÀÎÁ¢ Çà·Ä Ç¥Çö¹ı
-	static ArrayList<ArrayList<Pair>> adjList; // ÀÎÁ¢ ¸®½ºÆ® Ç¥Çö¹ı
+	static final int INF = 0; // ì¡´ì¬í•  ìˆ˜ ìˆëŠ” ìµœëŒ€ ê²½ë¡œì˜ ê¸¸ì´ + 1
+	static int[][] adjArray; // ì¸ì ‘ í–‰ë ¬ í‘œí˜„ë²•
+	static ArrayList<ArrayList<Pair>> adjList; // ì¸ì ‘ ë¦¬ìŠ¤íŠ¸ í‘œí˜„ë²•
 	static boolean[][] reachable;
 
-	// Á¤Á¡ src¿¡¼­ ´Ù¸¥ ¸ğµç Á¤Á¡±îÁöÀÇ ÃÖ´Ü°Å¸®¸¦ ´ãÀº dist[]¸¦ ¹İÈ¯
+	// ì •ì  srcì—ì„œ ë‹¤ë¥¸ ëª¨ë“  ì •ì ê¹Œì§€ì˜ ìµœë‹¨ê±°ë¦¬ë¥¼ ë‹´ì€ dist[]ë¥¼ ë°˜í™˜
 	static int[] dijkstra(int src) {
 		PriorityQueue<Pair> pq = new PriorityQueue<>();
 		pq.offer(new Pair(src, 0));
@@ -63,13 +63,13 @@ public class Graph {
 		while (!pq.isEmpty()) {
 			Pair p = pq.poll();
 			int here = p.num; int cost = p.cost;
-			// ´õ ³ªÀº °æ·Î¸¦ ¾Ë°í ÀÖ´Ù¸é ¹«½Ã
+			// ë” ë‚˜ì€ ê²½ë¡œë¥¼ ì•Œê³  ìˆë‹¤ë©´ ë¬´ì‹œ
 			if(dist[here] < cost) {continue;}
-			// Á¤Á¡À» ¹æ¹®ÇÏ°í ÀÎÁ¢ Á¤Á¡À» °Ë»ç
+			// ì •ì ì„ ë°©ë¬¸í•˜ê³  ì¸ì ‘ ì •ì ì„ ê²€ì‚¬
 			for (Pair edge : adjList.get(here)) {
 				int there = edge.num;
 				int nextDist = cost + edge.cost;
-				// ±âÁ¸¿¡ ¹ß°ßÇÑ °Íº¸´Ù ´õ ÂªÀº °æ·Î¸¦ ¹ß°ß ÇÑ °æ¿ì ÃÖ½ÅÈ­
+				// ê¸°ì¡´ì— ë°œê²¬í•œ ê²ƒë³´ë‹¤ ë” ì§§ì€ ê²½ë¡œë¥¼ ë°œê²¬ í•œ ê²½ìš° ìµœì‹ í™”
 				if (dist[there] > nextDist) {
 					dist[there] = nextDist;
 					pq.offer(new Pair(there, nextDist));
@@ -79,35 +79,35 @@ public class Graph {
 		return dist;
 	}
 
-	// Á¤Á¡ src¿¡¼­ ´Ù¸¥ ¸ğµç Á¤Á¡±îÁöÀÇ ÃÖ´Ü°Å¸®¸¦ ´ãÀº upper[]¸¦ ¹İÈ¯
-	// ¸¸¾à À½¼ö »çÀÌÅ¬ÀÌ Á¸ÀçÇÏ´Â °æ¿ì ºó ¹è¿­À» ¹İÈ¯ÇÑ´Ù
+	// ì •ì  srcì—ì„œ ë‹¤ë¥¸ ëª¨ë“  ì •ì ê¹Œì§€ì˜ ìµœë‹¨ê±°ë¦¬ë¥¼ ë‹´ì€ upper[]ë¥¼ ë°˜í™˜
+	// ë§Œì•½ ìŒìˆ˜ ì‚¬ì´í´ì´ ì¡´ì¬í•˜ëŠ” ê²½ìš° ë¹ˆ ë°°ì—´ì„ ë°˜í™˜í•œë‹¤
 	static int[] bellmanFord(int src) {
 		int[] upper = new int[V + 1];
 		Arrays.fill(upper, INF);
 		upper[src] = 0;
 		boolean updated = false;
-		// N - 1¹ø ¿ÏÈ­ ½Ãµµ
+		// N - 1ë²ˆ ì™„í™” ì‹œë„
 		for (int n = 1; n <= N - 1; n++) {
 			updated = false;
 			for (int here = 1; here <= N; here++) {
 				for (Pair edge : adjList.get(here)) {
 					int there = edge.num; int cost = edge.cost;
-					// (here, there) °£¼±À» µû¶ó ¿ÏÈ­ ½Ãµµ
+					// (here, there) ê°„ì„ ì„ ë”°ë¼ ì™„í™” ì‹œë„
 					if (upper[there] > upper[here] + cost) {
 						upper[there] = upper[here] + cost;
 						updated = true;
 					}
 				}
 			}
-			// ¸ğµç °£¼±¿¡ ´ëÇØ ¿ÏÈ­½ÃµµÇß´Âµ¥ ¿ÏÈ­µÇÁö ¾ÊÀ¸¸é ÃÖ´Ü °æ·Î
+			// ëª¨ë“  ê°„ì„ ì— ëŒ€í•´ ì™„í™”ì‹œë„í–ˆëŠ”ë° ì™„í™”ë˜ì§€ ì•Šìœ¼ë©´ ìµœë‹¨ ê²½ë¡œ
 			if (!updated) {break;}
 		}
-		// N¹øÂ°ÀÇ ¿ÏÈ­ ½Ãµµ
+		// Në²ˆì§¸ì˜ ì™„í™” ì‹œë„
 		for (int here = 1; here <= N; here++) {
 			for (Pair edge : adjList.get(here)) {
 				int there = edge.num; int cost = edge.cost;
-				// (here, there) °£¼±À» µû¶ó ¿ÏÈ­ ½ÃµµÇß´Âµ¥ ¿ÏÈ­µÇ°í
-				// ½ÃÀÛÁöÁ¡¿¡¼­ ±× ÁöÁ¡±îÁö °æ·Î°¡ ÀÖ´Â °æ¿ì
+				// (here, there) ê°„ì„ ì„ ë”°ë¼ ì™„í™” ì‹œë„í–ˆëŠ”ë° ì™„í™”ë˜ê³ 
+				// ì‹œì‘ì§€ì ì—ì„œ ê·¸ ì§€ì ê¹Œì§€ ê²½ë¡œê°€ ìˆëŠ” ê²½ìš°
 				if (upper[there] > upper[here] + cost && adjArray[src][there] < INF) {
 					return new int[0];
 				}
@@ -116,10 +116,10 @@ public class Graph {
 		return upper;
 	}
 
-	// ¸ğµç Á¤Á¡°£ÀÇ ÃÖ´Ü °Å¸®¸¦ adjArray¿¡ ÀúÀå
-	// ¼± Á¶°Ç : adj(i, j) (°£¼±ÀÌ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é INF·Î ÃÊ±âÈ­)
+	// ëª¨ë“  ì •ì ê°„ì˜ ìµœë‹¨ ê±°ë¦¬ë¥¼ adjArrayì— ì €ì¥
+	// ì„  ì¡°ê±´ : adj(i, j) (ê°„ì„ ì´ ì¡´ì¬í•˜ì§€ ì•Šìœ¼ë©´ INFë¡œ ì´ˆê¸°í™”)
 	static void floyd() {
-		// ÀÚ±â ÀÚ½ÅÀ¸·ÎÀÇ ÃÖ´Ü °æ·Î´Â 0
+		// ìê¸° ìì‹ ìœ¼ë¡œì˜ ìµœë‹¨ ê²½ë¡œëŠ” 0
 		for (int i = 1; i <= N; i++) {adjArray[i][i] = 0;}
 		for (int k = 1; k <= N; k++) {
 			for (int i = 1; i <= N; i++) {
@@ -130,8 +130,8 @@ public class Graph {
 		}
 	}
 
-	// ¸ğµç Á¤Á¡°£ÀÇ µµ´Ş °¡´É¼º ¿©ºÎ¸¦ reachable¿¡ ÀúÀå
-	// ¼± Á¶°Ç : adj(i, j) °£¼±ÀÌ Á¸ÀçÇÏ¸é true
+	// ëª¨ë“  ì •ì ê°„ì˜ ë„ë‹¬ ê°€ëŠ¥ì„± ì—¬ë¶€ë¥¼ reachableì— ì €ì¥
+	// ì„  ì¡°ê±´ : adj(i, j) ê°„ì„ ì´ ì¡´ì¬í•˜ë©´ true
 	static void floydReachable() {
 		for (int k = 1; k <= N; k++) {
 			for (int i = 1; i <= N; i++) {

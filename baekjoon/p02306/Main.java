@@ -9,18 +9,18 @@ public class Main {
 	static char[] S;
 	static int[][] cache;
 
-	// S[i, j]ÀÇ ºÎºĞ ¹®ÀÚ¿­ Áß¿¡¼­ °¡Àå ±ä KOIÀ¯ÀüÀÚ ±æÀÌ¸¦ ¹İÈ¯
+	// S[i, j]ì˜ ë¶€ë¶„ ë¬¸ìì—´ ì¤‘ì—ì„œ ê°€ì¥ ê¸´ KOIìœ ì „ì ê¸¸ì´ë¥¼ ë°˜í™˜
 	static int dp(int i, int j) {
-		// ±¸°£ÀÇ ±æÀÌ°¡ 1ÀÌÇÏÀÎ °æ¿ì
+		// êµ¬ê°„ì˜ ê¸¸ì´ê°€ 1ì´í•˜ì¸ ê²½ìš°
 		if (i >= j) return 0;
 		if (cache[i][j] != -1) return cache[i][j];
 		int max = Math.max(dp(i + 1, j), dp(i, j - 1));
-		// ¾çÂÊ ³¡ÀÌ at°Å³ª gcÀÎ°æ¿ì 2¸¦ Ãß°¡
+		// ì–‘ìª½ ëì´ atê±°ë‚˜ gcì¸ê²½ìš° 2ë¥¼ ì¶”ê°€
 		max = Math.max(max, dp(i + 1, j - 1) + (((S[i] == 'a' && S[j] == 't') || (S[i] == 'g' && S[j] == 'c')) ? 2 : 0));
-		// [i, mid], [mid + 1, j]±¸°£À¸·Î ¹İÀ¸·Î ³ª´©´Â °æ¿ì
+		// [i, mid], [mid + 1, j]êµ¬ê°„ìœ¼ë¡œ ë°˜ìœ¼ë¡œ ë‚˜ëˆ„ëŠ” ê²½ìš°
 		for (int mid = i + 1; mid <= j - 2; mid++) {
 			int L = dp(i, mid); int R = dp(mid + 1, j);
-			// µÑ´Ù KOIÀ¯ÀüÀÚ¶ó¸é ÀÌÀ» ¼ö ÀÖ´Ù.
+			// ë‘˜ë‹¤ KOIìœ ì „ìë¼ë©´ ì´ì„ ìˆ˜ ìˆë‹¤.
 			if (L != 0 && R != 0) max = Math.max(max, L + R);
 		}
 		return cache[i][j] = max;

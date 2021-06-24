@@ -26,25 +26,25 @@ public class Main {
 			}
 	}
 
-	// root¸¦ ¼±ÅÃÇÏ´Â°¡ p ? 1 : 0;
+	// rootë¥¼ ì„ íƒí•˜ëŠ”ê°€ p ? 1 : 0;
 	static int dp(int p, int root) {
 		if (cache[p][root] != -1) {return cache[p][root];}
-		if (p == 1) { // root¸¦ ¼±ÅÃÇÑ °æ¿ì
+		if (p == 1) { // rootë¥¼ ì„ íƒí•œ ê²½ìš°
 			int sum = W[root];
-			// ÀÚ½ÄÀº ¼±ÅÃÇÒ ¼ö ¾ø´Ù
+			// ìì‹ì€ ì„ íƒí•  ìˆ˜ ì—†ë‹¤
 			for (int ch : children.get(root))
 				sum += dp(0, ch);
 			return cache[p][root] = sum;
-		} else { // root¸¦ ¼±ÅÃÇÏÁö ¾ÊÀº °æ¿ì
+		} else { // rootë¥¼ ì„ íƒí•˜ì§€ ì•Šì€ ê²½ìš°
 			int sum = 0;
-			// ÀÚ½ÄÀº ¼±ÅÃÇÒ ¼öµµ ¼±ÅÃÇÏÁö ¾ÊÀ» ¼öµµ ÀÖ´Ù.
+			// ìì‹ì€ ì„ íƒí•  ìˆ˜ë„ ì„ íƒí•˜ì§€ ì•Šì„ ìˆ˜ë„ ìˆë‹¤.
 			for (int ch : children.get(root))
 				sum += Math.max(dp(1, ch), dp(0, ch));
 			return cache[p][root] = sum;
 		}
 	}
 
-	// root¸¦ ¼±ÅÃÇÏ´Â°¡ p ? 1 : 0;
+	// rootë¥¼ ì„ íƒí•˜ëŠ”ê°€ p ? 1 : 0;
 	static void reconstruct(int p, int root) {
 		if (p == 1) {
 			choice[root] = true;

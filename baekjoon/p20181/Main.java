@@ -12,7 +12,7 @@ public class Main {
 	static long[] S;
 	static long[] cache;
 	
-	// S[head, tail]Áß ÇÕÀÌ K¸¦ ³Ñ´Â °¡Àå ÀÛÀº tail ¹İÈ¯
+	// S[head, tail]ì¤‘ í•©ì´ Kë¥¼ ë„˜ëŠ” ê°€ì¥ ì‘ì€ tail ë°˜í™˜
 	static int bin(int head) {
 		int lo = head - 1; int hi = N + 1;
 		while (lo + 1 < hi) {
@@ -23,13 +23,13 @@ public class Main {
 		return hi;
 	}
 	
-	// hereºÎÅÍ Áö³ªÄ¡°Å³ª ¸Ô±â ½ÃÀÛÇÒ ¼ö ÀÖÀ» ¶§
-	// ¾òÀ» ¼ö ÀÖ´Â ÃÖ´ë Å»ÇÇ ¿¡³ÊÁö
+	// hereë¶€í„° ì§€ë‚˜ì¹˜ê±°ë‚˜ ë¨¹ê¸° ì‹œì‘í•  ìˆ˜ ìˆì„ ë•Œ
+	// ì–»ì„ ìˆ˜ ìˆëŠ” ìµœëŒ€ íƒˆí”¼ ì—ë„ˆì§€
 	static long dp(int here) {
 		if (here >= N + 1) return 0;
 		if (cache[here] != -1) return cache[here];
-		long max = dp(here + 1); // Áö³ªÄ¡´Â °æ¿ì
-		// ¸Ô±â ½ÃÀÛÇÏ´Â °æ¿ì
+		long max = dp(here + 1); // ì§€ë‚˜ì¹˜ëŠ” ê²½ìš°
+		// ë¨¹ê¸° ì‹œì‘í•˜ëŠ” ê²½ìš°
 		int tail = bin(here);
 		if (tail != N + 1) {
 			long sum = S[tail] - S[here - 1];

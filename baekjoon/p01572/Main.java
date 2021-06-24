@@ -30,7 +30,7 @@ public class Main {
 class FenwickTree {
 	int[] tree;
 	int K;
-	// ³»ºÎÀûÀ¸·Î [0, 65536] -> [1, 65537]¿¡ ´ëÀÀ
+	// ë‚´ë¶€ì ìœ¼ë¡œ [0, 65536] -> [1, 65537]ì— ëŒ€ì‘
 	public FenwickTree() { tree = new int[65538]; }
 	
 	void add(int pos, int val) {
@@ -52,8 +52,8 @@ class FenwickTree {
 	}
 	
 	int kth() {
-		// f(x) = ±¸°£ Æ®¸® ³»ÀÇ xÀÌÇÏÀÇ ¿ø¼ÒÀÇ °³¼ö, K´Â ¼ö¿­ÀÇ ±æÀÌ
-		// f(lo) < (K + 1) / 2, f(hi) >= (K + 1) / 2ÀÎ hi¹İÈ¯
+		// f(x) = êµ¬ê°„ íŠ¸ë¦¬ ë‚´ì˜ xì´í•˜ì˜ ì›ì†Œì˜ ê°œìˆ˜, KëŠ” ìˆ˜ì—´ì˜ ê¸¸ì´
+		// f(lo) < (K + 1) / 2, f(hi) >= (K + 1) / 2ì¸ hië°˜í™˜
 		int lo = -1; int hi = 65536;
 		while (lo + 1 < hi) {
 			int mid = (lo + hi) / 2;

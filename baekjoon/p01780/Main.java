@@ -23,7 +23,7 @@ public class Main {
 		if (filled(y1, x1, y2, x2)) {
 			COUNT[PAPER[y1][x1] + 1]++; return;
 		}
-		int L = (y2 - y1 + 1) / 3; // ÇÑº¯ÀÇ ±æÀÌ(9µîºĞ)
+		int L = (y2 - y1 + 1) / 3; // í•œë³€ì˜ ê¸¸ì´(9ë“±ë¶„)
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				int ty = y1 + i * L; int tx = x1 + j * L;

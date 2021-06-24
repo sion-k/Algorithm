@@ -9,7 +9,7 @@ public class Main {
 	static char[][] PICTURE;
 	static boolean[][] VISIT;
 	
-	// »óÇÏÁÂ¿ì ÀÌµ¿
+	// ìƒí•˜ì¢Œìš° ì´ë™
 	static final int[] dy = {-1, 1, 0, 0};
 	static final int[] dx = {0, 0, -1, 1};
 	//[0, N)
@@ -39,7 +39,7 @@ public class Main {
 			}
 		}
 		br.close();
-		// Àû·Ï»ö¾àÀÌ ¾Æ´Ñ »ç¶÷
+		// ì ë¡ìƒ‰ì•½ì´ ì•„ë‹Œ ì‚¬ëŒ
 		int cnt1 = 0;
 		VISIT = new boolean[N][N];
 		for (int i = 0; i < N; i++) {
@@ -56,7 +56,7 @@ public class Main {
 				}
 			}
 		}
-		// Àû·Ï»ö¾à
+		// ì ë¡ìƒ‰ì•½
 		int cnt2 = 0;
 		VISIT = new boolean[N][N];
 		for (int i = 0; i < N; i++) {

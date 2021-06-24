@@ -25,7 +25,7 @@ public class Main {
 		}
 	}
 
-	// pos(µÚ¿¡¼­ºÎÅÍ [0, 3])À§Ä¡ÀÇ ¼ö¸¦ d·Î ¹Ù²Û ¼ö ¹İÈ¯
+	// pos(ë’¤ì—ì„œë¶€í„° [0, 3])ìœ„ì¹˜ì˜ ìˆ˜ë¥¼ dë¡œ ë°”ê¾¼ ìˆ˜ ë°˜í™˜
 	static int move(int here, int pos, int d) {
 		int[] digit = new int[4];
 		for (int p = 0; here > 0; p++) {digit[p] = here % 10; here /= 10;}

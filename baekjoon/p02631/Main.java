@@ -8,7 +8,7 @@ public class Main {
 	static int N; static int[] S;
 	static int[] cache;
 
-	// start¿¡¼­ ½ÃÀÛÇÏ´Â LISÀÇ ±æÀÌ ¹İÈ¯
+	// startì—ì„œ ì‹œì‘í•˜ëŠ” LISì˜ ê¸¸ì´ ë°˜í™˜
 	static int dp(int start) {
 		if (cache[start + 1] != 0) {return cache[start + 1];}
 		int max = 1;

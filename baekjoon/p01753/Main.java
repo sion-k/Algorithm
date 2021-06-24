@@ -19,14 +19,14 @@ public class Main {
 		}
 	}
 	
-	static int V; // Á¤Á¡ÀÇ °³¼ö, Á¤Á¡ÀÇ ¹øÈ£´Â [1, V]ÀÌ´Ù
+	static int V; // ì •ì ì˜ ê°œìˆ˜, ì •ì ì˜ ë²ˆí˜¸ëŠ” [1, V]ì´ë‹¤
 	static ArrayList<ArrayList<Pair>> adj;
 	
-	// ½ÃÀÛÁ¡ src·Î ºÎÅÍ ÃÖ´Ü °æ·Î ±æÀÌ¸¦ ´ãÀº ¹è¿­À» ¹İÈ¯ÇÑ´Ù
+	// ì‹œì‘ì  srcë¡œ ë¶€í„° ìµœë‹¨ ê²½ë¡œ ê¸¸ì´ë¥¼ ë‹´ì€ ë°°ì—´ì„ ë°˜í™˜í•œë‹¤
 	static int[] dijkstra(int src) {
 		int[] dist = new int[V + 1];
 		Arrays.fill(dist, Integer.MAX_VALUE);
-		dist[src] = 0;// src ÀÚ½ÅÀ¸·ÎÀÇ ÃÖ´Ü °æ·Î ±æÀÌ´Â 0
+		dist[src] = 0;// src ìì‹ ìœ¼ë¡œì˜ ìµœë‹¨ ê²½ë¡œ ê¸¸ì´ëŠ” 0
 		PriorityQueue<Pair> pq = new PriorityQueue<>();
 		pq.offer(new Pair(src, 0));
 		while(!pq.isEmpty()) {
@@ -35,7 +35,7 @@ public class Main {
 			for (int i = 0; i < adj.get(here).size(); i++) {
 				int there = adj.get(here).get(i).num;
 				int nextDist = cost + adj.get(here).get(i).cost;
-				// ±âÁ¸¿¡ ¹ß°ßÇÑ °Íº¸´Ù ´õ ÂªÀº °æ·Î¸¦ ¹ß°ß ÇÑ °æ¿ì
+				// ê¸°ì¡´ì— ë°œê²¬í•œ ê²ƒë³´ë‹¤ ë” ì§§ì€ ê²½ë¡œë¥¼ ë°œê²¬ í•œ ê²½ìš°
 				if (dist[there] > nextDist) {
 					dist[there] = nextDist;
 					pq.offer(new Pair(there, nextDist));

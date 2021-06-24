@@ -9,7 +9,7 @@ public class Main {
 	static int N;
 	static boolean[][] adj;
 	
-	// hereÀ» ·çÆ®·Î ÇÏ´Â ¼­ºêÆ®¸®¿¡¼­ ·çÆ®ÀÇ ºÎ¸ğ°¡ parentÀÏ ¶§, ¸®ÇÁ ³ëµåÀÇ °³¼ö ¹İÈ¯
+	// hereì„ ë£¨íŠ¸ë¡œ í•˜ëŠ” ì„œë¸ŒíŠ¸ë¦¬ì—ì„œ ë£¨íŠ¸ì˜ ë¶€ëª¨ê°€ parentì¼ ë•Œ, ë¦¬í”„ ë…¸ë“œì˜ ê°œìˆ˜ ë°˜í™˜
 	static int dfs(int here, int parent) {
 		int sum = 0;
 		for (int there = 0; there < N; there++)

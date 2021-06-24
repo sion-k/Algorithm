@@ -13,7 +13,7 @@ public class Main {
 	static int[][] MAP;
 	static PriorityQueue<Pos> CAND = new PriorityQueue<>();
 
-	// »óÇÏÁÂ¿ì ÀÌµ¿
+	// ìƒí•˜ì¢Œìš° ì´ë™
 	static final int[] dy = {-1, 1, 0, 0};
 	static final int[] dx = {0, 0, -1, 1};
 

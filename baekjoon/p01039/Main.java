@@ -13,11 +13,11 @@ public class Main {
 	static int max = -1;
 	static final int[] POW = {1, 10, 100, 1000, 10000, 100000, 1000000};
 
-	// hereÀÇ i¹ø°ú j¹øÂ° ¼ıÀÚÀÇ À§Ä¡¸¦ ¹Ù²ã¼­ ¹İÈ¯
+	// hereì˜ ië²ˆê³¼ jë²ˆì§¸ ìˆ«ìì˜ ìœ„ì¹˜ë¥¼ ë°”ê¿”ì„œ ë°˜í™˜
 	// (0 <= i < j < here.length())
 	// index : 543210
 	//         163750
-	// ¹Ù²Û ¼ö°¡ 0À¸·Î ½ÃÀÛÇÏ¸é -1À» ¹İÈ¯
+	// ë°”ê¾¼ ìˆ˜ê°€ 0ìœ¼ë¡œ ì‹œì‘í•˜ë©´ -1ì„ ë°˜í™˜
 	static int move(int here, int i, int j) {
 		int M = (here + "").length(); int[] digit = new int[7];
 		for (int p = 0; here != 0; here /= 10, p++) {digit[p] = here % 10;}

@@ -10,17 +10,17 @@ public class Main {
 	static boolean[][] MAP;
 
 	static int btk(int[] S) {
-		// °¡Àå ¿ŞÂÊ À§ÀÇ ¾È µ¤ÀÎ°÷À» Ã£´Â´Ù
+		// ê°€ì¥ ì™¼ìª½ ìœ„ì˜ ì•ˆ ë®ì¸ê³³ì„ ì°¾ëŠ”ë‹¤
 		int y = -1; int x = -1;
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++)
 				if (!MAP[i][j]) {y = i; x = j; break;}
 			if (y != -1) break;
 		}
-		// ¸ğµÎ µ¤¿©Á® ÀÖ´Â °æ¿ì 0
+		// ëª¨ë‘ ë®ì—¬ì ¸ ìˆëŠ” ê²½ìš° 0
 		if (y == -1) return 0;
 		int min = 26;
-		// µ¤ÀÌÁö ¾ÊÀº Ä­À» n * n Å©±âÀÇ »öÁ¾ÀÌ·Î µ¤À»¼ö ÀÖÀ¸¸é ½ÃµµÇØº»´Ù
+		// ë®ì´ì§€ ì•Šì€ ì¹¸ì„ n * n í¬ê¸°ì˜ ìƒ‰ì¢…ì´ë¡œ ë®ì„ìˆ˜ ìˆìœ¼ë©´ ì‹œë„í•´ë³¸ë‹¤
 		for (int n = 1; n <= 5; n++) {
 			if (S[n] > 0 && canCover(y, x, n)) {
 				S[n]--;
@@ -37,7 +37,7 @@ public class Main {
 		return 0 <= y && y < 10 && 0 <= x && x < 10;
 	}
 
-	// (y, x)°¡ ¸Ç ¿ŞÂÊ À§°¡ µÇµµ·Ï n * n »öÁ¾ÀÌ¸¦ ºÙÀÏ ¼ö ÀÖ´ÂÁö ¿©ºÎ
+	// (y, x)ê°€ ë§¨ ì™¼ìª½ ìœ„ê°€ ë˜ë„ë¡ n * n ìƒ‰ì¢…ì´ë¥¼ ë¶™ì¼ ìˆ˜ ìˆëŠ”ì§€ ì—¬ë¶€
 	static boolean canCover(int y, int x, int n) {
 		boolean ret = true;
 		for (int dy = 0; dy < n; dy++) {
@@ -50,7 +50,7 @@ public class Main {
 		return ret;
 	}
 
-	// (y, x)°¡ ¸Ç ¿ŞÂÊ À§°¡ µÇµµ·Ï n * n »öÁ¾ÀÌ¸¦ ºÙÀÌ°Å³ª ¶¾´Ù
+	// (y, x)ê°€ ë§¨ ì™¼ìª½ ìœ„ê°€ ë˜ë„ë¡ n * n ìƒ‰ì¢…ì´ë¥¼ ë¶™ì´ê±°ë‚˜ ë—€ë‹¤
 	static void cover(int y, int x, int n, boolean c) {
 		for (int dy = 0; dy < n; dy++)
 			for (int dx = 0; dx < n; dx++)
@@ -59,14 +59,14 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		// ¹®Á¦¿Í ¹İ´ë·Î µ¤¿©Á® ÀÖ´Â ¿©ºÎ¸¦ ÀúÀå
+		// ë¬¸ì œì™€ ë°˜ëŒ€ë¡œ ë®ì—¬ì ¸ ìˆëŠ” ì—¬ë¶€ë¥¼ ì €ì¥
 		MAP = new boolean[10][10];
 		for (int i = 0; i < 10; i++) {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 			for (int j = 0; j < 10; j++)
 				MAP[i][j] = st.nextToken().equals("0");
 		}
-		// 1-based x * x Å©±âÀÇ »öÁ¾ÀÌÀÇ °³¼ö
+		// 1-based x * x í¬ê¸°ì˜ ìƒ‰ì¢…ì´ì˜ ê°œìˆ˜
 		int[] S = new int[6];
 		Arrays.fill(S, 5);
 		int ret = btk(S);

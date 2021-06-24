@@ -6,12 +6,12 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int N; // Á¤Á¡ ¼ö
+	static int N; // ì •ì  ìˆ˜
 	static int[][] HEIGHT;
-	static boolean[][] VISIT;// DFS¿ë
+	static boolean[][] VISIT;// DFSìš©
 	static int waterLevel = 1;
 	
-	// »óÇÏÁÂ¿ì ÀÌµ¿
+	// ìƒí•˜ì¢Œìš° ì´ë™
 	static final int[] dy = {-1, 1, 0, 0};
 	static final int[] dx = {0, 0, -1, 1};
 	
@@ -20,7 +20,7 @@ public class Main {
 	}
 	
 	static int dfsAll() {
-		int cnt = 0;// dfs(y, x) È£Ãâ È½¼ö
+		int cnt = 0;// dfs(y, x) í˜¸ì¶œ íšŸìˆ˜
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
 				if(!VISIT[i][j] && HEIGHT[i][j] > waterLevel) {

@@ -6,14 +6,14 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-	// º®ÀÌ ¾ø¾î¼­ ÀÌµ¿ °¡´ÉÇÑÁö ¿©ºÎ
+	// ë²½ì´ ì—†ì–´ì„œ ì´ë™ ê°€ëŠ¥í•œì§€ ì—¬ë¶€
 	static boolean[][] MOVEABLE;
 	
 	static class Robot {
 		int y; int x; int dir;
 		boolean[][] cleaned;
 		
-		// ÇöÀç ¹Ù¶óº¸´Â ¹æÇâÀÌ ºÏ µ¿ ³² ¼­ ¼øÀ¸·Î ¿ŞÂÊÀÇ À§Ä¡
+		// í˜„ì¬ ë°”ë¼ë³´ëŠ” ë°©í–¥ì´ ë¶ ë™ ë‚¨ ì„œ ìˆœìœ¼ë¡œ ì™¼ìª½ì˜ ìœ„ì¹˜
 		static int[] LDY = { 0, -1, 0, 1 };
 		static int[] LDX = { -1, 0, 1, 0 };
 		static int[] BDY = { 1, 0, -1, 0 };
@@ -27,13 +27,13 @@ public class Main {
 			this.y = y; this.x = x; this.dir = dir;
 		}
 		
-		// ¹İ½Ã°è ¹æÇâ È¸Àü
+		// ë°˜ì‹œê³„ ë°©í–¥ íšŒì „
 		public void rotate() {if(--dir < 0) {dir = 3;}}
 		
-		// ·Îº¿ Ã»¼Ò±âÀÇ ÇöÀç À§Ä¡¿¡¼­ Ã»¼Ò¸¦ ½ÃÀÛÇØ¼­ Ã»¼ÒÇÒ ¼ö ÀÖ´Â Ä­ÀÇ °³¼ö ¹İÈ¯
+		// ë¡œë´‡ ì²­ì†Œê¸°ì˜ í˜„ì¬ ìœ„ì¹˜ì—ì„œ ì²­ì†Œë¥¼ ì‹œì‘í•´ì„œ ì²­ì†Œí•  ìˆ˜ ìˆëŠ” ì¹¸ì˜ ê°œìˆ˜ ë°˜í™˜
 		public int clean() {
 			int cnt = 0;
-			//Ã»¼Ò µÇ¾î ÀÖÁö ¾ÊÀ¸¸é Ã»¼ÒÇÑ´Ù
+			//ì²­ì†Œ ë˜ì–´ ìˆì§€ ì•Šìœ¼ë©´ ì²­ì†Œí•œë‹¤
 			if(!cleaned[y][x]) {cleaned[y][x] = true; cnt++;}
 			
 			for(int d = 0; d < 4; d++) {
@@ -44,13 +44,13 @@ public class Main {
 					return cnt + clean();
 				}
 			}
-			// ³× ¹æÇâ ¸ğµÎ Ã»¼Ò°¡ ÀÌ¹Ì µÇ¾îÀÖ°Å³ª º®ÀÎ °æ¿ì ÈÄÁø
+			// ë„¤ ë°©í–¥ ëª¨ë‘ ì²­ì†Œê°€ ì´ë¯¸ ë˜ì–´ìˆê±°ë‚˜ ë²½ì¸ ê²½ìš° í›„ì§„
 			int ty = y + BDY[dir]; int tx = x + BDX[dir];
 			if(inRange(ty, tx) && MOVEABLE[ty][tx]) {
 				y = ty; x = tx;
 				return cnt + clean();
 			}
-			// ÈÄÁø ÇÒ ¼ö ¾øÀ¸¸é Á¾·á
+			// í›„ì§„ í•  ìˆ˜ ì—†ìœ¼ë©´ ì¢…ë£Œ
 			return cnt;
 		}
 	}

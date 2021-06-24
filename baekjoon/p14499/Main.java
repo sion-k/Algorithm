@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 
 public class Main {
 	static int N; static int M;
-	// µ¿¼­ºÏ³²
+	// ë™ì„œë¶ë‚¨
 	static final int[] dy = {0, 0, -1, 1};
 	static final int[] dx = {1, -1, 0, 0};
 
@@ -55,13 +55,13 @@ public class Main {
 }
 
 class Dice {
-	// µ¿ ¼­ ³² ºÏ À§ ¾Æ·¡ ¹æÇâ¿¡ ÀûÇôÁø ¼ö
+	// ë™ ì„œ ë‚¨ ë¶ ìœ„ ì•„ë˜ ë°©í–¥ì— ì í˜€ì§„ ìˆ˜
 	int north; int south; int west; int east; int up; int down;
-	int y; int x; // ÁÖ»çÀ§ÀÇ ÇöÀç À§Ä¡
+	int y; int x; // ì£¼ì‚¬ìœ„ì˜ í˜„ì¬ ìœ„ì¹˜
 
 	public Dice(int y, int x) {this.y = y; this.x = x;}
 
-	// µ¿¼­ºÏ³² [1, 4] ¹æÇâÀ¸·Î ÁÖ»çÀ§¸¦ ±¼¸°´Ù (¹«Á¶°Ç °¥ ¼ö ÀÖ¾î¾ß ÇÔ)
+	// ë™ì„œë¶ë‚¨ [1, 4] ë°©í–¥ìœ¼ë¡œ ì£¼ì‚¬ìœ„ë¥¼ êµ´ë¦°ë‹¤ (ë¬´ì¡°ê±´ ê°ˆ ìˆ˜ ìˆì–´ì•¼ í•¨)
 	public void roll(int d) {
 		switch (d) {
 		case 1 :

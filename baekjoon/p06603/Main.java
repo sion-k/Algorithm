@@ -22,7 +22,7 @@ public class Main {
 		ans.append("\n");
 	}
 
-	// K°³ÀÇ ¿ø¼öÁß¿¡¼­ toPick°³¸¦ °í¸£´Â °æ¿ì(¿À¸§Â÷ ¼ø¸¸)¸¦ ¸ğµÎ ½Ãµµ
+	// Kê°œì˜ ì›ìˆ˜ì¤‘ì—ì„œ toPickê°œë¥¼ ê³ ë¥´ëŠ” ê²½ìš°(ì˜¤ë¦„ì°¨ ìˆœë§Œ)ë¥¼ ëª¨ë‘ ì‹œë„
 	static void BTK(int toPick, int lastPick) {
 		if (toPick == 0) {print(); return;}
 		for (int pick = lastPick + 1; pick < K; pick++) {

@@ -27,7 +27,7 @@ public class B {
 						if (i == k || j == k) continue;
 						int[] temp = C.clone();
 						int cnt = 0;
-						// i j k¼øÀ¸·Î ÀÌµ¿
+						// i j kìˆœìœ¼ë¡œ ì´ë™
 						if (C[i] > N / 3) {
 							C[(i + 1) % 3] += (C[i] - N / 3);
 							cnt += (C[i] - N / 3);

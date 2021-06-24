@@ -19,7 +19,7 @@ public class Main {
 		return 0 <= y && y < N && 0 <= x && x < M;
 	}
 
-	// 1¹ø ÀÌ»ó 4Á¤Á¡ ÀÌ»óÀ» ¹æ¹®ÇÑ DFS°¡ È£ÃâµÇ¸é 1¿¬¼â Ãß°¡
+	// 1ë²ˆ ì´ìƒ 4ì •ì  ì´ìƒì„ ë°©ë¬¸í•œ DFSê°€ í˜¸ì¶œë˜ë©´ 1ì—°ì‡„ ì¶”ê°€
 	static boolean DFSAll() {
 		VISIT = new boolean[N][M];
 		boolean boom = false;
@@ -38,7 +38,7 @@ public class Main {
 		return boom;
 	}
 
-	// ¼øÈ¸ÇÑ »Ñ¿äÀÇ °³¼ö¸¦ ¹İÈ¯
+	// ìˆœíšŒí•œ ë¿Œìš”ì˜ ê°œìˆ˜ë¥¼ ë°˜í™˜
 	static int DFS(int y, int x) {
 		VISIT[y][x] = true; SELECT[y][x] = true;
 		int cnt = 0;
@@ -51,7 +51,7 @@ public class Main {
 		return 1 + cnt;
 	}
 
-	// ¼±ÅÃ µÇ¾î ÀÖ´Â »Ñ¿äµéÀ» Á¦°Å
+	// ì„ íƒ ë˜ì–´ ìˆëŠ” ë¿Œìš”ë“¤ì„ ì œê±°
 	static void remove() {
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < M; j++) {
@@ -60,7 +60,7 @@ public class Main {
 		}
 	}
 
-	// °øÁß¿¡ ¶°ÀÖ´Â »Ñ¿äµéÀ» ¶³¾î¶ß¸°´Ù
+	// ê³µì¤‘ì— ë– ìˆëŠ” ë¿Œìš”ë“¤ì„ ë–¨ì–´ëœ¨ë¦°ë‹¤
 	static void gravity() {
 		char[][] temp = new char[N][M];
 		for (char[] row : temp) {Arrays.fill(row, '.');}

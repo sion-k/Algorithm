@@ -16,7 +16,7 @@ public class Main {
 		int[] adj = new int[1000001];
 		st = new StringTokenizer(br.readLine(), " ");
 		for (int i = 1; i <= N; i++) adj[Integer.parseInt(st.nextToken())] = i;
-		FenwickTree t = new FenwickTree(N); // i¹øÂ°¿¡ À§Ä¡ÇÑ ±â°è±îÁö ¿¬°áµÈ ÄÉÀÌºí ³¡ÀÇ °³¼ö
+		FenwickTree t = new FenwickTree(N); // ië²ˆì§¸ì— ìœ„ì¹˜í•œ ê¸°ê³„ê¹Œì§€ ì—°ê²°ëœ ì¼€ì´ë¸” ëì˜ ê°œìˆ˜
 		long sum = 0;
 		for (int i = 1; i <= N; i++) {
 			int there = adj[S[i]];

@@ -9,9 +9,9 @@ public class Main {
 	static String S;
 	static int[][] cache;
 
-	// S[i, j]±¸°£¿¡ Á¸ÀçÇÏ´Â ÆÓ¸°µå·Ò ºÎºĞ ¼ö¿­ÀÇ °³¼ö
+	// S[i, j]êµ¬ê°„ì— ì¡´ì¬í•˜ëŠ” íŒ°ë¦°ë“œë¡¬ ë¶€ë¶„ ìˆ˜ì—´ì˜ ê°œìˆ˜
 	static int dp(int i, int j) {
-		// ±¸°£ÀÇ ±æÀÌ°¡ 3¹Ì¸¸ÀÎ °æ¿ì´Â ±âÀú»ç·Ê·Î Ã³¸®
+		// êµ¬ê°„ì˜ ê¸¸ì´ê°€ 3ë¯¸ë§Œì¸ ê²½ìš°ëŠ” ê¸°ì €ì‚¬ë¡€ë¡œ ì²˜ë¦¬
 		if (i == j) return 1;
 		if (i + 1 == j) return S.charAt(i) == S.charAt(j) ? 3 : 2;
 		if (cache[i][j] != -1) return cache[i][j];

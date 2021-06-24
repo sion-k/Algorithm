@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-	// [1, i]±îÁöÀÇ ÇÕ
+	// [1, i]ê¹Œì§€ì˜ í•©
 	static long sum(int i) {return (long)i * (i + 1) / 2;}
 
 	static int binsearch(int dist) {
@@ -31,7 +31,7 @@ public class Main {
 			int x = Integer.parseInt(st.nextToken());
 			int y = Integer.parseInt(st.nextToken());
 			int dist = y - x;
-			// dist¾È¿¡ µé¾î°¥ ¼ö ÀÖ´Â ÃÖ´ëÀÇ 2 * (1ºÎÅÍ i±îÁöÀÇ ÇÕ)
+			// distì•ˆì— ë“¤ì–´ê°ˆ ìˆ˜ ìˆëŠ” ìµœëŒ€ì˜ 2 * (1ë¶€í„° iê¹Œì§€ì˜ í•©)
 			int i = binsearch(dist);
 			int ret = 2 * i;
 			int left = (int)(dist - 2 * sum(i));

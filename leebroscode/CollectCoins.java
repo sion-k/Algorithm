@@ -5,7 +5,7 @@ import java.util.*;
 public class CollectCoins {
     static int N;
     static char[][] S;
-    // [1, 9]¹øÂ° µ¿ÀüÀÇ À§Ä¡, 0°ú 10Àº °¢°¢ S¿Í E¸¦ Ç¥Çö
+    // [1, 9]ë²ˆì§¸ ë™ì „ì˜ ìœ„ì¹˜, 0ê³¼ 10ì€ ê°ê° Sì™€ Eë¥¼ í‘œí˜„
     static int[][] P;
     static int[][] adj;
     

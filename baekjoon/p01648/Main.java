@@ -18,16 +18,16 @@ public class Main {
 		return cache[i][f] = btk(i, 0, f, 0);
 	}
 	
-	// i¹øÂ° ¿­À» j¹øÂ° ÇàºÎÅÍ ¿ÏÀüÈ÷ Ã¤¿ì´Â °æ¿ì¸¦ ¸ðµÎ ½ÃµµÇÑ´Ù
-	// ´Ü ÇöÀç ÀÌ¹Ì Ã¤¿öÁ® ÀÖ´Â Ä­Àº p·Î ³ªÅ¸³»°í
-	// ¸ðµÎ Ã¤¿î°æ¿ì dp(i + 1, f)¸¦ ÅëÇØ ´äÀ» ±¸ÇØ¼­ ¹ÝÈ¯ÇÑ´Ù
+	// ië²ˆì§¸ ì—´ì„ jë²ˆì§¸ í–‰ë¶€í„° ì™„ì „ížˆ ì±„ìš°ëŠ” ê²½ìš°ë¥¼ ëª¨ë‘ ì‹œë„í•œë‹¤
+	// ë‹¨ í˜„ìž¬ ì´ë¯¸ ì±„ì›Œì ¸ ìžˆëŠ” ì¹¸ì€ pë¡œ ë‚˜íƒ€ë‚´ê³ 
+	// ëª¨ë‘ ì±„ìš´ê²½ìš° dp(i + 1, f)ë¥¼ í†µí•´ ë‹µì„ êµ¬í•´ì„œ ë°˜í™˜í•œë‹¤
 	static int btk(int i, int j, int p, int f) {
 		if (j == N) return dp(i + 1, f);
-		// ÀÌ¹Ì Ã¤¿öÁ® ÀÖ´Â ¿­ÀÏ °æ¿ì ´ÙÀ½À¸·Î ³Ñ¾î°£´Ù
+		// ì´ë¯¸ ì±„ì›Œì ¸ ìžˆëŠ” ì—´ì¼ ê²½ìš° ë‹¤ìŒìœ¼ë¡œ ë„˜ì–´ê°„ë‹¤
 		if ((p & (1 << j)) > 0) return btk(i, j + 1, p, f);
-		// °¡·Î·Î ¼³Ä¡ÇÏ´Â °æ¿ì
+		// ê°€ë¡œë¡œ ì„¤ì¹˜í•˜ëŠ” ê²½ìš°
 		int sum = btk(i, j + 1, p, f | (1 << j));
-		// ¼¼·Î·Îµµ ¼³Ä¡ÇÒ ¼ö ÀÖ´Â °æ¿ì
+		// ì„¸ë¡œë¡œë„ ì„¤ì¹˜í•  ìˆ˜ ìžˆëŠ” ê²½ìš°
 		if (j + 1 < N && (p & (1 << (j + 1))) == 0)
 			sum = (sum + btk(i, j + 2, p, f)) % MOD ;
 		return sum;

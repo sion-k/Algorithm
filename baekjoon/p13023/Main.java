@@ -12,7 +12,7 @@ public class Main {
 	static boolean[] visit;
 	static boolean found;
 
-	// °¡´ÉÇÑ ¸ğµç ±æÀÌ 4ÀÌÇÏÀÇ °æ·Î¸¦ Å½»öÇÑ´Ù
+	// ê°€ëŠ¥í•œ ëª¨ë“  ê¸¸ì´ 4ì´í•˜ì˜ ê²½ë¡œë¥¼ íƒìƒ‰í•œë‹¤
 	static void dfs(int here, int depth) {
 		if (depth >= 4) {found = true; return;}
 		visit[here] = true;
@@ -22,7 +22,7 @@ public class Main {
 		visit[here] = false;
 	}
 
-	// ¸ğµç Á¤Á¡¿¡ ´ëÇØ dfsÇÏ¸é¼­ ±æÀÌ 4ÀÇ °æ·Î¸¦ Ã£¾Ò´ÂÁö ¹İÈ¯
+	// ëª¨ë“  ì •ì ì— ëŒ€í•´ dfsí•˜ë©´ì„œ ê¸¸ì´ 4ì˜ ê²½ë¡œë¥¼ ì°¾ì•˜ëŠ”ì§€ ë°˜í™˜
 	static boolean dfsAll() {
 		for (int here = 0; here < N; here++) {
 			if (found) return true;

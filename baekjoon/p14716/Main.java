@@ -10,7 +10,7 @@ public class Main {
 	static boolean[][] MAP;
 	static boolean[][] visit;
 
-	// ´ë°¢¼±À» Æ÷ÇÔÇÑ ÀÎÁ¢ÇÑ ±¸¿ª
+	// ëŒ€ê°ì„ ì„ í¬í•¨í•œ ì¸ì ‘í•œ êµ¬ì—­
 	static final int[] dy = {-1, -1, -1, 0, 0, 1, 1, 1};
 	static final int[] dx = {-1, 0, 1, -1, 1, -1, 0, 1};
 

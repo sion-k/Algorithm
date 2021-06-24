@@ -8,11 +8,11 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int N; //À¯ÀúÀÇ ¼ö
+	static int N; //ìœ ì €ì˜ ìˆ˜
 	static boolean[][] EDGE;
 	static boolean[] BOOKED;
 	
-	// Á¤Á¡ from¿¡¼­ ³ª¸ÓÁö ¸ğµç Á¤Á¡±îÁöÀÇ ÃÖ´Ü°Å¸®¸¦ ´ãÀº DIST ¹İÈ¯
+	// ì •ì  fromì—ì„œ ë‚˜ë¨¸ì§€ ëª¨ë“  ì •ì ê¹Œì§€ì˜ ìµœë‹¨ê±°ë¦¬ë¥¼ ë‹´ì€ DIST ë°˜í™˜
 	static int[] bfs(int from) {
 		int[] dist = new int[N + 1];
 		Queue<Integer> q = new LinkedList<>();
@@ -51,7 +51,7 @@ public class Main {
 			kevin[i] = sum;
 		}
 		
-		int min = 1; // ÄÉºó º£ÀÌÄÁ ¼ö°¡ °¡Àå ÀûÀº »ç¶÷ ÀÎµ¦½º
+		int min = 1; // ì¼€ë¹ˆ ë² ì´ì»¨ ìˆ˜ê°€ ê°€ì¥ ì ì€ ì‚¬ëŒ ì¸ë±ìŠ¤
 		for (int i = 2; i <= N; i++) {
 			if (kevin[i] < kevin[min]) {min = i;}
 		}

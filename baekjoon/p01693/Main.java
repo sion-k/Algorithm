@@ -21,12 +21,12 @@ public class Main {
 			}
 	}
 	
-	// hereÀ» Á¤Á¡À¸·Î ÇÏ´Â ¼­ºêÆ®¸®ÀÇ ºÎ¸ğ°¡ prev»öÀ¸·Î Ä¥ÇßÀ» ¶§,
-	// Æ®¸® ÀüÃ¼¸¦ »öÄ¥ÇÏ´Â ÃÖ¼Ò ºñ¿ë
+	// hereì„ ì •ì ìœ¼ë¡œ í•˜ëŠ” ì„œë¸ŒíŠ¸ë¦¬ì˜ ë¶€ëª¨ê°€ prevìƒ‰ìœ¼ë¡œ ì¹ í–ˆì„ ë•Œ,
+	// íŠ¸ë¦¬ ì „ì²´ë¥¼ ìƒ‰ì¹ í•˜ëŠ” ìµœì†Œ ë¹„ìš©
 	static int dp(int here, int prev) {
 		if (cache[here][prev] != 0) return cache[here][prev];
 		int min = INF;
-		// here ³ëµå¸¦ c»ö±ò·Î Ä¥ÇÑ´Ù
+		// here ë…¸ë“œë¥¼ cìƒ‰ê¹”ë¡œ ì¹ í•œë‹¤
 		for (int c = 1; c <= 10; c++) {
 			if (c == prev) continue;
 			int sum = c;

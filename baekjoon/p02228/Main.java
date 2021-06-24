@@ -13,14 +13,14 @@ public class Main {
 	static final int NULL = 987654321;
 	static final int NINF = -987654321;
 
-	// S[start, ]¿¡¼­ Á¤È®È÷ k°³ÀÇ ±¸°£À» ¼±ÅÃÇÑ ÃÖ´ë ÇÕ
+	// S[start, ]ì—ì„œ ì •í™•íˆ kê°œì˜ êµ¬ê°„ì„ ì„ íƒí•œ ìµœëŒ€ í•©
 	static int dp(int start, int k) {
 		if (start >= N) {return k == 0 ? 0 : NINF;}
 		if (k == 0) {return 0;}
 		if (cache[start][k] != NULL) {return cache[start][k];}
-		// ±¸°£À» ¼±ÅÃÇÏÁö ¾Ê°í ³Ñ¾î°¨
+		// êµ¬ê°„ì„ ì„ íƒí•˜ì§€ ì•Šê³  ë„˜ì–´ê°
 		int max = dp(start + 1, k);
-		// ±¸°£ ¼±ÅÃ
+		// êµ¬ê°„ ì„ íƒ
 		int sum = 0;
 		for (int end = start; end < N; end++) {
 			sum += S[end];

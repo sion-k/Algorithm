@@ -10,7 +10,7 @@ public class Main {
 	static int[][][] cache;
 	static final int INF = 987654321;
 	
-	// u¿¡¼­ v·Î ÀÌµ¿ÇÏ´Âµ¥ ¼Ò¸ğµÇ´Â Èû
+	// uì—ì„œ vë¡œ ì´ë™í•˜ëŠ”ë° ì†Œëª¨ë˜ëŠ” í˜
 	static int dist(int u, int v) {
 		if (u == 0) return 2;
 		if (Math.abs(u - v) == 2) return 4;
@@ -20,11 +20,11 @@ public class Main {
 	static int dp(int l, int r, int i) {
 		if (i == S.length) return 0;
 		if (cache[l][r][i] != 0) return cache[l][r][i];
-		// ÀÌ¹Ì ¾î´À ÇÑ ÂÊ ¹ßÀÌ S[i]ÀÇ À§Ä¡¿¡ ÀÖ´Â °æ¿ì ´Ù¸¥ ¹ßÀ» ÀÌµ¿½ÃÅ³ ¼ø ¾ø´Ù
+		// ì´ë¯¸ ì–´ëŠ í•œ ìª½ ë°œì´ S[i]ì˜ ìœ„ì¹˜ì— ìˆëŠ” ê²½ìš° ë‹¤ë¥¸ ë°œì„ ì´ë™ì‹œí‚¬ ìˆœ ì—†ë‹¤
 		if (l == S[i] || r == S[i]) return cache[l][r][i] = 1 + dp(l, r, i + 1);
 		int min = INF;
-		min = Math.min(min, dist(l, S[i]) + dp(S[i], r, i + 1)); // ¿Ş¹ßÀ» ÀÌµ¿½ÃÅ°´Â °æ¿ì
-		min = Math.min(min, dist(r, S[i]) + dp(l, S[i], i + 1)); // ¿À¸¥¹ßÀ» ÀÌµ¿½ÃÅ°´Â °æ¿ì
+		min = Math.min(min, dist(l, S[i]) + dp(S[i], r, i + 1)); // ì™¼ë°œì„ ì´ë™ì‹œí‚¤ëŠ” ê²½ìš°
+		min = Math.min(min, dist(r, S[i]) + dp(l, S[i], i + 1)); // ì˜¤ë¥¸ë°œì„ ì´ë™ì‹œí‚¤ëŠ” ê²½ìš°
 		return cache[l][r][i] = min;
 	}
 	

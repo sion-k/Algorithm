@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class Main {
 	static int[][] cache;
 
-	// ÀÌÀü¿¡ d¸¦ °ñ¶úÀ» ¶§ N°³ÀÇ ±æÀÌÀÇ °¡´ÉÇÑ ¿À¸£¸· ¼ö
+	// ì´ì „ì— dë¥¼ ê³¨ëì„ ë•Œ Nê°œì˜ ê¸¸ì´ì˜ ê°€ëŠ¥í•œ ì˜¤ë¥´ë§‰ ìˆ˜
 	static int dp(int n, int d) {
 		if (n == 0) {return 1;}
 		if (cache[n][d] != 0) { return cache[n][d];}

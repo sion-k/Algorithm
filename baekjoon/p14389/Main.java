@@ -8,31 +8,31 @@ import java.util.StringTokenizer;
 
 public class Main {
 	static int N, M;
-	static int[] MAP; // i¹øÂ° ¿­ÀÇ ÃÊ±â »óÅÂ¸¦ ÀúÀå
+	static int[] MAP; // ië²ˆì§¸ ì—´ì˜ ì´ˆê¸° ìƒíƒœë¥¼ ì €ìž¥
 	static int[][] cache;
 	
-	// i¹øÂ° ¿­ÀÇ »óÅÂ°¡ fÀÌ°í, ¿©±âºÎÅÍ ºí·°À» ³õÀ» ¶§ ¾òÀ» ¼ö ÀÖ´Â ÃÖ´ë Á¡¼ö
+	// ië²ˆì§¸ ì—´ì˜ ìƒíƒœê°€ fì´ê³ , ì—¬ê¸°ë¶€í„° ë¸”ëŸ­ì„ ë†“ì„ ë•Œ ì–»ì„ ìˆ˜ ìžˆëŠ” ìµœëŒ€ ì ìˆ˜
 	static int dp(int i, int f) {
 		if (i == M) return 0;
 		if (cache[i][f] != -1) return cache[i][f];
 		return cache[i][f] = btk(i, 0, f, i == M - 1 ? 0 : MAP[i + 1]);
 	}
 	
-	// i¹øÂ° ¿­À» j¹øÂ° ÇàºÎÅÍ ¿ÏÀüÈ÷ Ã¤¿ì´Â °æ¿ì¸¦ ¸ðµÎ ½ÃµµÇÑ´Ù
-	// ´Ü ÇöÀç ÀÌ¹Ì Ã¤¿öÁ® ÀÖ´Â Ä­Àº p·Î ³ªÅ¸³»°í
-	// ¸ðµÎ Ã¤¿î°æ¿ì dp(i + 1, f)¸¦ ÅëÇØ ´äÀ» ±¸ÇØ¼­ ¹ÝÈ¯ÇÑ´Ù
-	// *4ºí·ÏÀ» ¼³Ä¡ÇÒ ¼ö ÀÖÀ¸¸é ¹«Á¶°Ç ¼³Ä¡ÇÏ´Â°ÍÀÌ ÃÖÀûÇØ°¡ ¾Æ´Ô
+	// ië²ˆì§¸ ì—´ì„ jë²ˆì§¸ í–‰ë¶€í„° ì™„ì „ížˆ ì±„ìš°ëŠ” ê²½ìš°ë¥¼ ëª¨ë‘ ì‹œë„í•œë‹¤
+	// ë‹¨ í˜„ìž¬ ì´ë¯¸ ì±„ì›Œì ¸ ìžˆëŠ” ì¹¸ì€ pë¡œ ë‚˜íƒ€ë‚´ê³ 
+	// ëª¨ë‘ ì±„ìš´ê²½ìš° dp(i + 1, f)ë¥¼ í†µí•´ ë‹µì„ êµ¬í•´ì„œ ë°˜í™˜í•œë‹¤
+	// *4ë¸”ë¡ì„ ì„¤ì¹˜í•  ìˆ˜ ìžˆìœ¼ë©´ ë¬´ì¡°ê±´ ì„¤ì¹˜í•˜ëŠ”ê²ƒì´ ìµœì í•´ê°€ ì•„ë‹˜
 	// 1..
 	// ...
 	// ...
 	// 1..
 	static int btk(int i, int j, int p, int f) {
 		if (j == N) return dp(i + 1, f);
-		// ÀÌ¹Ì Ã¤¿öÁ® ÀÖ´Â ¿­ÀÏ °æ¿ì ´ÙÀ½À¸·Î ³Ñ¾î°£´Ù
+		// ì´ë¯¸ ì±„ì›Œì ¸ ìžˆëŠ” ì—´ì¼ ê²½ìš° ë‹¤ìŒìœ¼ë¡œ ë„˜ì–´ê°„ë‹¤
 		if ((p & (1 << j)) > 0) return btk(i, j + 1, p, f);
-		// 1ºí·ÏÀ» ¼³Ä¡ÇÏ´Â °æ¿ì
+		// 1ë¸”ë¡ì„ ì„¤ì¹˜í•˜ëŠ” ê²½ìš°
 		int max = 1 + btk(i, j + 1, p, f);
-		// 4ºí·Ïµµ ¼³Ä¡ °¡´ÉÇÏ¸é ¼³Ä¡ÇÏ´Â °æ¿ì
+		// 4ë¸”ë¡ë„ ì„¤ì¹˜ ê°€ëŠ¥í•˜ë©´ ì„¤ì¹˜í•˜ëŠ” ê²½ìš°
 		if (i + 1 < M && j + 1 < N && (p & (1 << (j + 1))) == 0 && (f & (1 << j)) == 0 && (f & (1 << (j + 1))) == 0) {
 			f |= (1 << j); f |= (1 << (j + 1));
 			max = Math.max(max, 16 + btk(i, j + 2, p, f));			

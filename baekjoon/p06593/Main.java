@@ -18,7 +18,7 @@ public class Main {
 	static int sy; static int sx; static int sz;
 	static int gy; static int gx; static int gz;
 
-	// µ¿¼­³²ºÏ»óÇÏ
+	// ë™ì„œë‚¨ë¶ìƒí•˜
 	static final int[] dy = { 0, 0, 1, -1, 0, 0 };
 	static final int[] dx = { 1, -1, 0, 0, 0, 0 };
 	static final int[] dz = { 0, 0, 0, 0, 1, -1 };
@@ -27,7 +27,7 @@ public class Main {
 		return 0 <= y && y < R && 0 <= x && x < C && 0 <= z && z < L;
 	}
 
-	// ½ÃÀÛ ÁöÁ¡À¸·ÎºÎÅÍ ³¡±îÁöÀÇ ÃÖ´Ü °Å¸® ¹İÈ¯
+	// ì‹œì‘ ì§€ì ìœ¼ë¡œë¶€í„° ëê¹Œì§€ì˜ ìµœë‹¨ ê±°ë¦¬ ë°˜í™˜
 	static int BFS() {
 		Queue<int[]> q = new LinkedList<>();
 		q.offer(new int[] {sy, sx, sz});

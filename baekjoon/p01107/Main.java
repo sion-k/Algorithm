@@ -9,8 +9,8 @@ public class Main {
 	static String N;
 	static boolean[] broken;
 
-	// Áö±Ý±îÁö °í¸¥ ¼ö°¡ hereÀÌ°í, i¹øÂ° ÀÚ¸®¸¦ °í¸¦ ¶§
-	// ÇØ´ç Ã¤³Î·Î ÀÌµ¿ÇØ¼­ NÃ¤³Î±îÁö ÀÌµ¿ÇÏ´Âµ¥ ÃÖ¼Ò ºñ¿ë
+	// ì§€ê¸ˆê¹Œì§€ ê³ ë¥¸ ìˆ˜ê°€ hereì´ê³ , ië²ˆì§¸ ìžë¦¬ë¥¼ ê³ ë¥¼ ë•Œ
+	// í•´ë‹¹ ì±„ë„ë¡œ ì´ë™í•´ì„œ Nì±„ë„ê¹Œì§€ ì´ë™í•˜ëŠ”ë° ìµœì†Œ ë¹„ìš©
 	static int dfs(int i, int here) {
 		int cost = String.valueOf(here).length() + Math.abs(Integer.valueOf(N) - here);
 		if (here == -1) cost = Math.abs(Integer.valueOf(N) - 100);
@@ -30,15 +30,15 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		N = br.readLine();
 		int M = Integer.parseInt(br.readLine());
-		broken = new boolean[10]; // [0, 9]±îÁö ºÎ¼­Áø ¿©ºÎ
+		broken = new boolean[10]; // [0, 9]ê¹Œì§€ ë¶€ì„œì§„ ì—¬ë¶€
 		if (M > 0) {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 			for (int i = 0; i < M; i++)
 				broken[Integer.parseInt(st.nextToken())] = true;
 		}
-		// +, -·Î¸¸ ÀÌµ¿ÇÏ´Â °æ¿ì
+		// +, -ë¡œë§Œ ì´ë™í•˜ëŠ” ê²½ìš°
 		int min = Math.abs(Integer.valueOf(N) - 100);
-		// ¼ýÀÚ ¹öÆ°µµ ÀÌ¿ëÇÏ´Â °æ¿ì
+		// ìˆ«ìž ë²„íŠ¼ë„ ì´ìš©í•˜ëŠ” ê²½ìš°
 		min = Math.min(min, dfs(0, -1));
 		System.out.println(min);
 	}

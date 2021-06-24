@@ -10,7 +10,7 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder ans = new StringBuilder();
 		int N = Integer.parseInt(br.readLine());
-		int[] S = new int[N + 1]; int[] P = new int[N + 1]; // x°¡ ¸î¹øÂ° À§Ä¡¿¡ ÀÖ´ÂÁö ÀúÀå
+		int[] S = new int[N + 1]; int[] P = new int[N + 1]; // xê°€ ëª‡ë²ˆì§¸ ìœ„ì¹˜ì— ìˆëŠ”ì§€ ì €ì¥
 		FenwickTree t = new FenwickTree(N);
 		for (int i = 1; i <= N; i++) {
 			S[i] = Integer.parseInt(br.readLine());
@@ -47,7 +47,7 @@ class FenwickTree {
 		}
 	}
 	
-	// pos¹øÂ° À§Ä¡±îÁö ¿ø¼Ò°¡ ¸î°³ ÀÖ´ÂÁö ¹İÈ¯
+	// posë²ˆì§¸ ìœ„ì¹˜ê¹Œì§€ ì›ì†Œê°€ ëª‡ê°œ ìˆëŠ”ì§€ ë°˜í™˜
 	int sum(int pos) {
 		int ret = 0;
 		while (pos > 0) {

@@ -11,13 +11,13 @@ public class Main {
 	static int[] S;
 	static int[] cache;
 	
-	// i¹øÂ°ºÎÅÍ Áö³ªÄ¡°Å³ª ¸Ô±â ½ÃÀÛÇÒ ¼ö ÀÖÀ» ¶§
-	// ¾òÀ» ¼ö ÀÖ´Â ÃÖ´ë Å»ÇÇ ¿¡³ÊÁö
+	// ië²ˆì§¸ë¶€í„° ì§€ë‚˜ì¹˜ê±°ë‚˜ ë¨¹ê¸° ì‹œì‘í•  ìˆ˜ ìˆì„ ë•Œ
+	// ì–»ì„ ìˆ˜ ìˆëŠ” ìµœëŒ€ íƒˆí”¼ ì—ë„ˆì§€
 	static int dp(int i) {
 		if (i == N) return 0;
 		if (cache[i] != -1) return cache[i];
-		int max = dp(i + 1); // Áö³ªÄ¡´Â °æ¿ì
-		// ¸Ô±â ½ÃÀÛÇÏ´Â °æ¿ì
+		int max = dp(i + 1); // ì§€ë‚˜ì¹˜ëŠ” ê²½ìš°
+		// ë¨¹ê¸° ì‹œì‘í•˜ëŠ” ê²½ìš°
 		int here = i; int sum = S[here];
 		while (++here < N && sum < K) sum += S[here];
 		max = Math.max(max, sum - K + dp(here));

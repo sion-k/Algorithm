@@ -10,7 +10,7 @@ public class Main {
 	static int N, M, K;
 	static final int MOD = 1000000007;
 	
-	// a^b¸¦ ±¸ÇÑ´Ù
+	// a^bë¥¼ êµ¬í•œë‹¤
 	static long pow(int a, int b) {
 		if (b == 0) return 1;
 		if (b % 2 == 0) {
@@ -25,12 +25,12 @@ public class Main {
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
 		K = Integer.parseInt(st.nextToken());
-		// [0, n]±îÁö ¿¬¼ÓµÇ´Â »ö±òÀÌ K - 1°³¸¦ ³ÑÁö ¾Ê°Ô Ä¥ÇÏ´Â °æ¿ìÀÇ ¼ö
-		// Áï [1, K - 1]°³¸¸ ¿¬¼ÓµÉ ¼ö ÀÖ°Ô Ä¥ÇÏ´Â °æ¿ìÀÇ ¼ö
+		// [0, n]ê¹Œì§€ ì—°ì†ë˜ëŠ” ìƒ‰ê¹”ì´ K - 1ê°œë¥¼ ë„˜ì§€ ì•Šê²Œ ì¹ í•˜ëŠ” ê²½ìš°ì˜ ìˆ˜
+		// ì¦‰ [1, K - 1]ê°œë§Œ ì—°ì†ë  ìˆ˜ ìˆê²Œ ì¹ í•˜ëŠ” ê²½ìš°ì˜ ìˆ˜
 		long[] dp = new long[N];
 		for (int i = 0; i < K - 1; i++)
 			dp[i] = M;
-		long[] pSum = new long[N]; // dp[0, i]±îÁöÀÇ prefix SumÀúÀå
+		long[] pSum = new long[N]; // dp[0, i]ê¹Œì§€ì˜ prefix Sumì €ì¥
 		pSum[0] = dp[0];
 		for (int i = 1; i < N; i++) {
 			dp[i] = (dp[i] + (M - 1) * (pSum[i - 1] - (i - K >= 0 ? pSum[i - K] : 0))) % MOD;

@@ -8,7 +8,7 @@ import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int N; // Á¤Á¡ÀÇ °³¼ö
+	static int N; // ì •ì ì˜ ê°œìˆ˜
 	static boolean[][] EDGE;
 	/*
 	static boolean[] VISIT;
@@ -21,7 +21,7 @@ public class Main {
 		}
 	}
 
-	// Á¤Á¡ here¿¡¼­ dfs
+	// ì •ì  hereì—ì„œ dfs
 	static void dfs(int here) {
 		VISIT[here] = true;
 		for (int next = 0; next < N; next++) {

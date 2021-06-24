@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
 public class Main {
 	static int N; static int K;
 	
-	// here¿¡¼­ way¹øÂ° ¹æ¹ıÀ¸·Î µµÂøÇÏ´Â °÷ ¹İÈ¯
+	// hereì—ì„œ wayë²ˆì§¸ ë°©ë²•ìœ¼ë¡œ ë„ì°©í•˜ëŠ” ê³³ ë°˜í™˜
 	static int move(int here, int way) {
 		switch (way) {
 		case 0 : return here - 1;

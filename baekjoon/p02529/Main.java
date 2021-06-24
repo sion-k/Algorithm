@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 
 public class Main {
 	static int K;
-	static int[] EQ; //¿ŞÂÊÀÌ ´õ Å©¸é -1 ¾Æ´Ï¸é 1
+	static int[] EQ; //ì™¼ìª½ì´ ë” í¬ë©´ -1 ì•„ë‹ˆë©´ 1
 
 	static long MAX = 0; static long MIN = 9876543210L;
 

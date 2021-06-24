@@ -31,7 +31,7 @@ public class Main {
 		for(int i = 0; i < N; i++) {
 			int rank = 0;
 			for (int j = 0; j < N; j++) {
-				if(S[j].compareTo(S[i]) == 1) {rank++;}// j°¡ iº¸´Ù µ¢Ä¡°¡ Å©´Ù¸é
+				if(S[j].compareTo(S[i]) == 1) {rank++;}// jê°€ ië³´ë‹¤ ë©ì¹˜ê°€ í¬ë‹¤ë©´
 			}
 			bw.write(String.valueOf(rank + 1));
 			if (i != N - 1) {bw.write(" ");}

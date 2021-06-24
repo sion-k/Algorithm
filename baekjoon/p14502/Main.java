@@ -61,7 +61,7 @@ public class Main {
 	
 	static int max = 0;
 	
-	// ÀÌÀü¿¡ py, px¿¡ º®À» ¼¼¿üÀ» ¶§ n°³ÀÇ º®À» ¼¼¿ì´Â ¸ğµç °æ¿ìÀÇ ¼ö¸¦ ½Ãµµ
+	// ì´ì „ì— py, pxì— ë²½ì„ ì„¸ì› ì„ ë•Œ nê°œì˜ ë²½ì„ ì„¸ìš°ëŠ” ëª¨ë“  ê²½ìš°ì˜ ìˆ˜ë¥¼ ì‹œë„
 	static void bfc(int py, int px, int n) {
 		if (n == 0) {max = Math.max(max, bfs()); return;}
 		boolean passed = false;

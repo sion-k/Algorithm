@@ -9,7 +9,7 @@ public class Main {
 	static int[][] cache;
 	static int[] S;
 
-	// [i, j] ÆÄÀÏÀ» ÇÕÄ¥ ¶§ µå´Â ÃÖ¼Ò ºñ¿ë
+	// [i, j] íŒŒì¼ì„ í•©ì¹  ë•Œ ë“œëŠ” ìµœì†Œ ë¹„ìš©
 	static int dp(int i, int j) {
 		if (i == j) {return 0;}
 		if (cache[i][j] != 0) {return cache[i][j];}
@@ -20,7 +20,7 @@ public class Main {
 		return cache[i][j] = min + sum(i, j);
 	}
 
-	// [i, j]±¸°£ ÇÕ ¹İÈ¯
+	// [i, j]êµ¬ê°„ í•© ë°˜í™˜
 	static int sum(int i, int j) {
 		return S[j] - S[i - 1];
 	}

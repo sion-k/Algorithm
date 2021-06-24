@@ -31,7 +31,7 @@ public class B {
 			long move = 0;
 			for (int i = 0; i < N; i++) {
 				if (A[i] == minA && B[i] == minB) {continue;}
-				// ¾çÂÊ ±ï±â
+				// ì–‘ìª½ ê¹ê¸°
 				int minDiff = Math.min(A[i] - minA, B[i] - minB);
 				if (minDiff != 0) {
 					move += minDiff;

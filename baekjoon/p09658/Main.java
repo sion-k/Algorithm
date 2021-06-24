@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class Main {
 	static int N; static int[] cache;
 
-	// i[1, N]¹øÂ°¿¡¼­ ÅÏÀ» ½ÃÀÛÇÒ ¶§ ÀÌ±æ ¼ö ÀÖ´ÂÁö ¿©ºÎ
+	// i[1, N]ë²ˆì§¸ì—ì„œ í„´ì„ ì‹œì‘í•  ë•Œ ì´ê¸¸ ìˆ˜ ìˆëŠ”ì§€ ì—¬ë¶€
 	static int dp(int i) {
 		if (i == N + 1) {return 1;}
 		if (cache[i] != -1) {return cache[i];}

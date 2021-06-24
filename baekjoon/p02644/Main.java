@@ -8,13 +8,13 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int N; // Á¤Á¡ ¼ö
-	static int M; // °£¼± ¼ö
-	static boolean[][] EDGE;// ÀÎÁ¢ Çà·Ä Ç¥Çö¹ı
-	static boolean[] BOOKED;// BFS¿ë
+	static int N; // ì •ì  ìˆ˜
+	static int M; // ê°„ì„  ìˆ˜
+	static boolean[][] EDGE;// ì¸ì ‘ í–‰ë ¬ í‘œí˜„ë²•
+	static boolean[] BOOKED;// BFSìš©
 	static int[] DIS;
 	
-	// Á¤Á¡ from¿¡¼­ to±îÁö ÃÖ´Ü °Å¸® ¹İÈ¯. µµ´Ş ºÒ°¡´ÉÇÏ¸é -1 ¹İÈ¯
+	// ì •ì  fromì—ì„œ toê¹Œì§€ ìµœë‹¨ ê±°ë¦¬ ë°˜í™˜. ë„ë‹¬ ë¶ˆê°€ëŠ¥í•˜ë©´ -1 ë°˜í™˜
 	static int bfs(int from, int to) {
 		Queue<Integer> q = new LinkedList<>();
 		q.add(from); BOOKED[from] = true; DIS[from] = 0;

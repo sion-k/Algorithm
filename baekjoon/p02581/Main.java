@@ -9,7 +9,7 @@ public class Main {
 	static int N;
 	static int[] prime;
 
-	// -1¹Ì°è»ê 0 ¼Ò¼ö°¡ ¾Æ´Ô 1 ¼Ò¼ö
+	// -1ë¯¸ê³„ì‚° 0 ì†Œìˆ˜ê°€ ì•„ë‹˜ 1 ì†Œìˆ˜
 	static void sieve() {
 		for (int i = 2; i <= N; i++) {
 			if(prime[i] == -1) {

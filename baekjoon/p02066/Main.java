@@ -6,18 +6,18 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-	// i¹øÂ° ±×·ìÀÇ j¹øÂ° Ä«µåÀÇ ¼ýÀÚ¸¦ ÀúÀå
+	// ië²ˆì§¸ ê·¸ë£¹ì˜ jë²ˆì§¸ ì¹´ë“œì˜ ìˆ«ìžë¥¼ ì €ìž¥
 	static int[][] S = new int[9][4];
 	static double[] cache;
 	static final int FULL = (int)(Math.pow(2, 27)) - 1;
 
-	// ºñÆ®¸¶½ºÅ·À» ÅëÇØ 9°³ÀÇ ±×·ìÀ» 3ºñÆ®¾¿ ´ëÀÀ½ÃÄÑ 27ºñÆ® ÇÊµå¸¦ Á¤ÀÇÇÑ´Ù
+	// ë¹„íŠ¸ë§ˆìŠ¤í‚¹ì„ í†µí•´ 9ê°œì˜ ê·¸ë£¹ì„ 3ë¹„íŠ¸ì”© ëŒ€ì‘ì‹œì¼œ 27ë¹„íŠ¸ í•„ë“œë¥¼ ì •ì˜í•œë‹¤
 	// 000000000/00/00/00/00/00/00/00/00/00
-	// 876543210 8  7  6  5  4  3  2  1  0 ¹øÂ°ÀÇ ±×·ìÀÇ °¡Àå À§¿¡ ÀÖ´Â Ä«µå°¡ ¸î¹øÂ° Ä«µåÀÎÁö ÀúÀå
-	// ¡è i¹øÂ° ±×·ì¿¡ ³õÀÎ Ä«µå°¡ ¾øÀ»°æ¿ì È°¼ºÈ­
-	// ÇÊµåÀÇ »óÅÂ°¡ f¿Í °°À» ¶§, ³îÀÌ¿¡ ¼º°øÇÒ È®·ü ¹ÝÈ¯ [0 ~ 1.0]
+	// 876543210 8  7  6  5  4  3  2  1  0 ë²ˆì§¸ì˜ ê·¸ë£¹ì˜ ê°€ìž¥ ìœ„ì— ìžˆëŠ” ì¹´ë“œê°€ ëª‡ë²ˆì§¸ ì¹´ë“œì¸ì§€ ì €ìž¥
+	// â†‘ ië²ˆì§¸ ê·¸ë£¹ì— ë†“ì¸ ì¹´ë“œê°€ ì—†ì„ê²½ìš° í™œì„±í™”
+	// í•„ë“œì˜ ìƒíƒœê°€ fì™€ ê°™ì„ ë•Œ, ë†€ì´ì— ì„±ê³µí•  í™•ë¥  ë°˜í™˜ [0 ~ 1.0]
 	static double dp(int f) {
-		// ¸ðµç Ä«µå¸¦ µé¾î³½ °æ¿ì
+		// ëª¨ë“  ì¹´ë“œë¥¼ ë“¤ì–´ë‚¸ ê²½ìš°
 		if (f == FULL) return 1.0;
 		if (Double.compare(cache[f], -1) != 0) return cache[f];
 		return 0;

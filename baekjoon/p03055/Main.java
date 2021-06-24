@@ -25,12 +25,12 @@ public class Main {
 		return 0 <= y && y < N && 0 <= x && x < M;
 	}
 
-	// ÃÖ´Ü °Å¸® ¹İÈ¯. µµ´Ş ºÒ°¡´ÉÇÏ¸é -1 ¹İÈ¯
+	// ìµœë‹¨ ê±°ë¦¬ ë°˜í™˜. ë„ë‹¬ ë¶ˆê°€ëŠ¥í•˜ë©´ -1 ë°˜í™˜
 	static int BFS(int sy, int sx) {
 		Queue<int[]> q = new LinkedList<>();
 		BOOKED = new boolean[N][M][2];
 		DIST = new int[N][M];
-		// ¹°À» ¸ÕÀú Å¥¿¡ Ãß°¡
+		// ë¬¼ì„ ë¨¼ì € íì— ì¶”ê°€
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < M; j++) {
 				if (MAP[i][j] == '*') {
@@ -39,7 +39,7 @@ public class Main {
 				}
 			}
 		}
-		// °í½¿µµÄ¡¸¦ Å¥¿¡ Ãß°¡
+		// ê³ ìŠ´ë„ì¹˜ë¥¼ íì— ì¶”ê°€
 		q.offer(new int[] {sy, sx, 0});
 		BOOKED[sy][sx][0] = true;
 		DIST[sy][sx] = 0;

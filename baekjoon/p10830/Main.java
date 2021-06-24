@@ -9,7 +9,7 @@ public class Main {
 	static int[][] A;
 	static final int MOD = 1000;
 
-	// A^B¸¦ ¹İÈ¯
+	// A^Bë¥¼ ë°˜í™˜
 	static int[][] pow(long B) {
 		if (B == 1) return A;
 		if (B % 2 == 1) return mul(A, pow(B - 1));
@@ -17,7 +17,7 @@ public class Main {
 		return mul(d, d);
 	}
 
-	// Çà·Ä A BÀÇ °öÀ» ¹İÈ¯
+	// í–‰ë ¬ A Bì˜ ê³±ì„ ë°˜í™˜
 	static int[][] mul(int[][] A, int[][] B) {
 		int[][] ret = new int[A.length][B[0].length];
 		for (int i = 0; i < A.length; i++)

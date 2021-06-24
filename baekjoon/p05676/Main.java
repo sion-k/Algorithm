@@ -55,7 +55,7 @@ class RPQ {
 	}
 
 	private int init(int[] array, int node, int left, int right) {
-		// ±âÀú »ç·Ê : ¸®ÇÁ ³ëµå
+		// ê¸°ì € ì‚¬ë¡€ : ë¦¬í”„ ë…¸ë“œ
 		if (left == right) {return rangeProduct[node] = array[left];}
 		int mid = (left + right) / 2;
 		int leftProduct = init(array, 2 * node, left, mid);
@@ -64,9 +64,9 @@ class RPQ {
 	}
 
 	private int query(int left, int right, int node, int nodeLeft, int nodeRight) {
-		// ±³ÁıÇÕÀÌ °øÁıÇÕÀÎ °æ¿ì
+		// êµì§‘í•©ì´ ê³µì§‘í•©ì¸ ê²½ìš°
 		if (right < nodeLeft || nodeRight < left) {return 1;}
-		// ±¸°£ ³ëµå°¡ Æ÷ÇÔµÇ´Â °æ¿ì
+		// êµ¬ê°„ ë…¸ë“œê°€ í¬í•¨ë˜ëŠ” ê²½ìš°
 		if (left <= nodeLeft && nodeRight <= right) {return rangeProduct[node];}
 		int mid = (nodeLeft + nodeRight) / 2;
 		return query(left, right, 2 * node, nodeLeft, mid) *

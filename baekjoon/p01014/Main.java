@@ -8,26 +8,26 @@ import java.util.StringTokenizer;
 
 public class Main {
 	static int N, M;
-	static boolean[][] MAP; // ³õÀ» ¼ö ÀÖ´ÂÁö ¿©ºÎ
+	static boolean[][] MAP; // ë†“ì„ ìˆ˜ ìˆëŠ”ì§€ ì—¬ë¶€
 	static int[][] cache;
 	
-	// i - 1¹øÂ° Çà¿¡ ³õÀÎ ÇĞ»ıµéÀÇ Á¤º¸°¡ fÀÏ¶§, i¹øÂ° ÇàºÎÅÍ ³õÀ» ¼ö ÀÖ´Â ÇĞ»ıÀÇ ÃÖ´ë ¼ö
+	// i - 1ë²ˆì§¸ í–‰ì— ë†“ì¸ í•™ìƒë“¤ì˜ ì •ë³´ê°€ fì¼ë•Œ, ië²ˆì§¸ í–‰ë¶€í„° ë†“ì„ ìˆ˜ ìˆëŠ” í•™ìƒì˜ ìµœëŒ€ ìˆ˜
 	static int dp(int i, int f) {
 		if (i == N) return 0;
 		if (cache[i][f] != -1) return cache[i][f];
 		return cache[i][f] = btk(i, 0, f, 0);
 	}
 	
-	// i¹øÂ° Çà, j¹øÂ° ¿­ºÎÅÍ ÇĞ»ıÀ» ³õÀ» ¶§ ³õÀ» ¼ö ÀÖ´Â ÃÖ´ë ¼ö
-	// i - 1¹øÂ° ÇàÀÇ Á¤º¸ f, ±×¸®°í Àç±Í È£Ãâ½Ã¿¡ ³Ñ°ÜÁÙ ÇöÀç ÇàÀÇ Á¤º¸ nf
+	// ië²ˆì§¸ í–‰, jë²ˆì§¸ ì—´ë¶€í„° í•™ìƒì„ ë†“ì„ ë•Œ ë†“ì„ ìˆ˜ ìˆëŠ” ìµœëŒ€ ìˆ˜
+	// i - 1ë²ˆì§¸ í–‰ì˜ ì •ë³´ f, ê·¸ë¦¬ê³  ì¬ê·€ í˜¸ì¶œì‹œì— ë„˜ê²¨ì¤„ í˜„ì¬ í–‰ì˜ ì •ë³´ nf
 	static int btk(int i, int j, int f, int nf) {
 		if (j >= M) return dp(i + 1, nf);
-		int max = btk(i, j + 1, f, nf); // ³õÁö ¾Ê´Â °æ¿ì
+		int max = btk(i, j + 1, f, nf); // ë†“ì§€ ì•ŠëŠ” ê²½ìš°
 		if (MAP[i][j]) {
-			// ¾ç ³¡ ¿¹¿Ü Ã³¸®
+			// ì–‘ ë ì˜ˆì™¸ ì²˜ë¦¬
 			if (j == 0) {if ((f & (1 << (j + 1))) == 0) max = Math.max(max, 1 + btk(i, j + 2, f, nf | (1 << j)));}
 			else if (j == M - 1) {if ((f & (1 << (j - 1))) == 0) max = Math.max(max, 1 + btk(i, j + 2, f, nf | (1 << j)));}
-			// ÀÏ¹İÀûÀÎ °æ¿ì
+			// ì¼ë°˜ì ì¸ ê²½ìš°
 			else if ((f & (1 << (j - 1))) == 0 && (f & (1 << (j + 1))) == 0) {max = Math.max(max, 1 + btk(i, j + 2, f, nf | (1 << j)));}
 		}
 		return max;

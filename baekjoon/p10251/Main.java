@@ -17,7 +17,7 @@ public class Main {
 		return 0 <= y && y < N &&  0 <= x && x < M;
 	}
 
-	// (y, x, d)±îÁö k¹ø ¹æÇâ ÀüÈ¯ ÇßÀ» ¶§, ÃÖ¼Ò ¿¬·á »ç¿ë·®
+	// (y, x, d)ê¹Œì§€ kë²ˆ ë°©í–¥ ì „í™˜ í–ˆì„ ë•Œ, ìµœì†Œ ì—°ë£Œ ì‚¬ìš©ëŸ‰
 	static int dp(int y, int x, int d, int k) {
 		if (y == N - 1 && x == M - 1) {return 0;}
 		if (cache[y][x][d][k] != 0) {return cache[y][x][d][k];}

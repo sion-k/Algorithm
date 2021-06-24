@@ -7,13 +7,13 @@ import java.util.StringTokenizer;
 
 public class Main {
 	static int N;
-	// ÀÎÁ¢ Çà·Ä Ç¥Çö¹ı
+	// ì¸ì ‘ í–‰ë ¬ í‘œí˜„ë²•
 	static int M;
 	static boolean[][] EDGE;
-	// DFS¿ë
+	// DFSìš©
 	static boolean[] VISIT;
 		
-	// hereÄÄÇ»ÅÍ°¡ ¿ú ¹ÙÀÌ·¯½º¿¡ °É·ÈÀ» ¶§ ±×·Î ÀÎÇØ °É¸®´Â ÃÑ ÄÄÇ»ÅÍÀÇ ¼ö ¹İÈ¯
+	// hereì»´í“¨í„°ê°€ ì›œ ë°”ì´ëŸ¬ìŠ¤ì— ê±¸ë ¸ì„ ë•Œ ê·¸ë¡œ ì¸í•´ ê±¸ë¦¬ëŠ” ì´ ì»´í“¨í„°ì˜ ìˆ˜ ë°˜í™˜
 	static int dfs(int here)  {
 		int infect = 1;
 		VISIT[here] = true;
@@ -39,7 +39,7 @@ public class Main {
 			EDGE[here][next] = EDGE[next][here]  = true;
 		}
 		br.close();
-		System.out.println(dfs(1) - 1);// 1¹ø ÄÄÇ»ÅÍ Á¦¿Ü
+		System.out.println(dfs(1) - 1);// 1ë²ˆ ì»´í“¨í„° ì œì™¸
 	}
 
 }

@@ -35,7 +35,7 @@ public class Main {
 	}
 	
 }
-// ±¸°£ ÃÖ´ë ÃÖ¼Ò Äõ¸®
+// êµ¬ê°„ ìµœëŒ€ ìµœì†Œ ì¿¼ë¦¬
 class RMQ {
 	int n;
 	int[][] range;
@@ -46,14 +46,14 @@ class RMQ {
 		init(array, 1, 0, n - 1);
 	}
 	
-	// node°¡ Ç¥ÇöÇÏ´Â [left, right]±¸°£À» ÃÊ±âÈ­ÇÏ°í ±× ±¸°£ÀÇ ´ä ¹İÈ¯
+	// nodeê°€ í‘œí˜„í•˜ëŠ” [left, right]êµ¬ê°„ì„ ì´ˆê¸°í™”í•˜ê³  ê·¸ êµ¬ê°„ì˜ ë‹µ ë°˜í™˜
 	private int[] init(int[] array, int node, int left, int right) {
 		if (left == right) {
 			range[node][0] = range[node][1] = array[left];
 			return range[node];
 		}
 		int mid = (left + right) / 2;
-		// Àç±ÍÈ£ÃâÀ» ÅëÇØ ÃÊ±âÈ­
+		// ì¬ê·€í˜¸ì¶œì„ í†µí•´ ì´ˆê¸°í™”
 		int[] l = init(array, 2 * node, left, mid);
 		int[] r = init(array, 2 * node + 1, mid + 1, right);
 		range[node][0] = Math.max(l[0], r[0]);
@@ -61,14 +61,14 @@ class RMQ {
 		return range[node];
 	}
 	
-	// [left, right]±¸°£¿¡ ´ëÇÑ Äõ¸®
+	// [left, right]êµ¬ê°„ì— ëŒ€í•œ ì¿¼ë¦¬
 	int[] query(int left, int right) { return query(left, right, 1, 0, n - 1); }
 	
-	// node[nodeLeft, nodeRight]±¸°£°ú [left, right]±¸°£ÀÇ ±³ÁıÇÕÀÇ ´äÀ» ¹İÈ¯
+	// node[nodeLeft, nodeRight]êµ¬ê°„ê³¼ [left, right]êµ¬ê°„ì˜ êµì§‘í•©ì˜ ë‹µì„ ë°˜í™˜
 	private int[] query(int left, int right, int node, int nodeLeft, int nodeRight) {
-		// ±³ÁıÇÕÀÌ ¾ø´Â °æ¿ì ¹Ù·Î ¹İÈ¯
+		// êµì§‘í•©ì´ ì—†ëŠ” ê²½ìš° ë°”ë¡œ ë°˜í™˜
 		if (right < nodeLeft || nodeRight < left) return new int[] { -1, 100000 };
-		// Æ÷ÇÔµÇ´Â °æ¿ì
+		// í¬í•¨ë˜ëŠ” ê²½ìš°
 		if (left <= nodeLeft && nodeRight <= right) return range[node];
 		int mid = (nodeLeft + nodeRight) / 2;
 		int[] l = query(left, right, 2 * node, nodeLeft, mid);

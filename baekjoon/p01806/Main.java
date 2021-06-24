@@ -11,7 +11,7 @@ public class Main {
 	
 	static final int INF = 100000;
 	
-	// S[head, tail]ÀÇ ºÎºĞÇÕ Áß¿¡¼­ K¸¦ ³Ñ´Â °¡Àå ÀÛÀº tailÀ» Ã£´Â´Ù
+	// S[head, tail]ì˜ ë¶€ë¶„í•© ì¤‘ì—ì„œ Kë¥¼ ë„˜ëŠ” ê°€ì¥ ì‘ì€ tailì„ ì°¾ëŠ”ë‹¤
 	static int bin(int head) {
 		int lo = head - 1; int hi = N + 1;
 		while (lo + 1 < hi) {

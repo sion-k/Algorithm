@@ -6,11 +6,11 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int[][] POS; // Á¤Á¡µé
+	static int[][] POS; // ì •ì ë“¤
 	static boolean[][] EDGE;
 	static boolean[] VISIT;
 	
-	// Á¤Á¡ ¹øÈ£ here·Î ºÎÅÍ ¸ñÀûÁö(¸¶Áö¸· Á¤Á¡ : POS.length - 1)¿¡ µµ´Ş °¡´ÉÇÑÁö ¹İÈ¯
+	// ì •ì  ë²ˆí˜¸ hereë¡œ ë¶€í„° ëª©ì ì§€(ë§ˆì§€ë§‰ ì •ì  : POS.length - 1)ì— ë„ë‹¬ ê°€ëŠ¥í•œì§€ ë°˜í™˜
 	static boolean dfs(int here) {
 		if (here == POS.length - 1) {return true;}
 		VISIT[here] = true;
@@ -34,14 +34,14 @@ public class Main {
 			int conv = Integer.parseInt(br.readLine());
 			POS = new int[conv + 2][2];
 			VISIT = new boolean[POS.length];
-			// Á¤Á¡ ÀÔ·Â
+			// ì •ì  ì…ë ¥
 			for(int i = 0; i < POS.length; i++) {
 				StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 				int x = Integer.parseInt(st.nextToken());
 				int y = Integer.parseInt(st.nextToken());
 				POS[i] = new int[] {x, y};
 			}
-			// °£¼± »ı¼º
+			// ê°„ì„  ìƒì„±
 			EDGE = new boolean[POS.length][POS.length];
 			for (int i = 0; i < POS.length - 1; i++) {
 				for (int j = i; j < POS.length; j++) {

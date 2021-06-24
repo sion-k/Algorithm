@@ -11,7 +11,7 @@ public class Main {
 	static int[][] BOARD;
 	static long[][] cache;
 
-	// ¾Æ·¡ ¿À¸¥ÂÊ ¿À¸¥ÂÊ ¾Æ·¡
+	// ì•„ë˜ ì˜¤ë¥¸ìª½ ì˜¤ë¥¸ìª½ ì•„ë˜
 	static final int[] dy = {1, 0, 1};
 	static final int[] dx = {0, 1, 1};
 
@@ -24,10 +24,10 @@ public class Main {
 		if (BOARD[y][x] == 0) {return 0;}
 		if (cache[y][x] != -1) {return cache[y][x];}
 		long sum = 0;
-		if (inRange(y, x + BOARD[y][x])) {// ¿À¸¥ÂÊ Á¡ÇÁ
+		if (inRange(y, x + BOARD[y][x])) {// ì˜¤ë¥¸ìª½ ì í”„
 			sum += dp(y, x + BOARD[y][x]);
 		}
-		if (inRange(y + BOARD[y][x], x )) {// ¾Æ·¡ Á¡ÇÁ
+		if (inRange(y + BOARD[y][x], x )) {// ì•„ë˜ ì í”„
 			sum += dp(y + BOARD[y][x], x);
 		}
 		return cache[y][x] = sum;

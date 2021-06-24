@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 public class Main {
 	static int N; static int[][] S;
 	
-	// Á¤¼ö ´õ¹Ì ³»¿¡ xÀÌÇÏÀÇ Á¤¼öÀÇ °³¼ö ¹İÈ¯
+	// ì •ìˆ˜ ë”ë¯¸ ë‚´ì— xì´í•˜ì˜ ì •ìˆ˜ì˜ ê°œìˆ˜ ë°˜í™˜
 	static long f(long x) {
 		long sum = 0;
 		for (int i = 0; i < N; i++)
@@ -16,9 +16,9 @@ public class Main {
 		return sum;
 	}
 	
-	// [A, C]¿¡¼­ xº¸´Ù °°°Å³ª ÀÛÀº ¼öÀÇ °³¼ö ¹İÈ¯ 
+	// [A, C]ì—ì„œ xë³´ë‹¤ ê°™ê±°ë‚˜ ì‘ì€ ìˆ˜ì˜ ê°œìˆ˜ ë°˜í™˜ 
 	static int cnt(int x, int A, int C, int B) {
-		// [A, C]°¡ °øÁıÇÕÀÌ°Å³ª, x°¡ Aº¸´Ù ÀÛÀº °æ¿ì´Â ±³ÁıÇÕÀÌ ¾øÀ½
+		// [A, C]ê°€ ê³µì§‘í•©ì´ê±°ë‚˜, xê°€ Aë³´ë‹¤ ì‘ì€ ê²½ìš°ëŠ” êµì§‘í•©ì´ ì—†ìŒ
 		if (A > C || x < A) return 0;
 		C = Math.min(C, x);
 		return (C - A) / B + 1;
@@ -32,7 +32,7 @@ public class Main {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");		
 			for (int j = 0; j < 3; j++) S[i][j] = Integer.parseInt(st.nextToken());
 		}
-		// f(lo) == Â¦¼ö f(hi) == È¦¼öÀÎ hi¹İÈ¯
+		// f(lo) == ì§ìˆ˜ f(hi) == í™€ìˆ˜ì¸ hië°˜í™˜
 		long lo = 0; long hi = Integer.MAX_VALUE;
 		if (f(hi) % 2 == 0) { System.out.println("NOTHING"); System.exit(0); }
 		while (lo + 1 < hi) {

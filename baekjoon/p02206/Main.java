@@ -8,7 +8,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
-	// »ó ÇÏ ÁÂ ¿ì ¼ø
+	// ìƒ í•˜ ì¢Œ ìš° ìˆœ
 	static final int[] dy = { -1, 1, 0, 0 };
 	static final int[] dx = { 0, 0, -1, 1 };
 	
@@ -17,15 +17,15 @@ public class Main {
 	
 	static boolean[][] MAZE;
 	static boolean[][][] BOOKED;
-	// (y, x)±îÁö ºÎ¼ö°Å³ª ºÎ¼öÁö ¾ÊÀº »óÅÂ·Î °¡´Â ÃÖ´Ü °Å¸®
+	// (y, x)ê¹Œì§€ ë¶€ìˆ˜ê±°ë‚˜ ë¶€ìˆ˜ì§€ ì•Šì€ ìƒíƒœë¡œ ê°€ëŠ” ìµœë‹¨ ê±°ë¦¬
 	static int[][][] DIS;
 	
 	static boolean inRange(int y, int x) {return 1 <= y && y <= N && 1 <= x && x <= M;}
 	
-	// (1, 1)¿¡¼­ bfs, (N, M)±îÁöÀÇ ÃÖ´Ü °Å¸®¸¦ ¹İÈ¯ÇÑ´Ù
+	// (1, 1)ì—ì„œ bfs, (N, M)ê¹Œì§€ì˜ ìµœë‹¨ ê±°ë¦¬ë¥¼ ë°˜í™˜í•œë‹¤
 	static int bfs() {
 		Queue<int[]> q = new LinkedList<>();
-		// 0 : º®À» ºÎ¼öÁö ¾ÊÀ½ 1 : ÀÌ¹Ì ºÎ¼û
+		// 0 : ë²½ì„ ë¶€ìˆ˜ì§€ ì•ŠìŒ 1 : ì´ë¯¸ ë¶€ìˆ¨
 		q.add(new int[] {1, 1, 0});
 		BOOKED[1][1][0] = true;
 		DIS[1][1][0] = 1;
@@ -38,12 +38,12 @@ public class Main {
 				int tx = here[1] + dx[move];
 				int crush = here[2];
 				if (inRange(ty, tx) && !BOOKED[ty][tx][crush]) {
-					// ±×³É ÀÌµ¿ÇÒ ¼ö ÀÖ´Â °æ¿ì
+					// ê·¸ëƒ¥ ì´ë™í•  ìˆ˜ ìˆëŠ” ê²½ìš°
 					if (MAZE[ty][tx]) {
 						q.offer(new int[] { ty, tx, crush });						
 						BOOKED[ty][tx][crush] = true;
 						DIS[ty][tx][crush] = DIS[here[0]][here[1]][crush] + 1;
-					} else if(crush == 0) { //ºÎ¼ú ¼ö ÀÖ´Â ±âÈ¸°¡ ÀÖ´Â °æ¿ì
+					} else if(crush == 0) { //ë¶€ìˆ  ìˆ˜ ìˆëŠ” ê¸°íšŒê°€ ìˆëŠ” ê²½ìš°
 						q.offer(new int[] { ty, tx, 1 });						
 						BOOKED[ty][tx][1] = true;
 						DIS[ty][tx][1] = DIS[here[0]][here[1]][crush] + 1;

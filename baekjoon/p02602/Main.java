@@ -6,14 +6,14 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class Main {
-	static char[] S; static int L; // ¹®ÀÚ¿­ ±æÀÌ
-	static char[][] B; static int N; // ´Ù¸® ±æÀÌ
+	static char[] S; static int L; // ë¬¸ìì—´ ê¸¸ì´
+	static char[][] B; static int N; // ë‹¤ë¦¬ ê¸¸ì´
 
 	static int[][][] cache;
 
-	// (y, x, k)´Ù¸®¸¦ °Ç³Ê°¡´Â ¹æ¹ıÀÇ ¼ö ¹İÈ¯
+	// (y, x, k)ë‹¤ë¦¬ë¥¼ ê±´ë„ˆê°€ëŠ” ë°©ë²•ì˜ ìˆ˜ ë°˜í™˜
 	static int dp(int y, int x, int k) {
-		if (k == L - 1) {return 1;} // ¹®ÀÚ¿­ÀÇ ³¡¿¡ µµÂøÇÏ¸é ¹æ¹ıÀ» ÇÏ³ª Ã£À½
+		if (k == L - 1) {return 1;} // ë¬¸ìì—´ì˜ ëì— ë„ì°©í•˜ë©´ ë°©ë²•ì„ í•˜ë‚˜ ì°¾ìŒ
 		if (cache[y][x][k] != -1) {return cache[y][x][k];}
 		int sum = 0;
 		int ny = (y + 1) % 2;

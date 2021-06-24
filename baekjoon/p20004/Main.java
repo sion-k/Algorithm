@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class Main {
 	static int[][] cache;
 
-	// i¹øÂ° ºÎÅÍ ºÎ¸£±â ½ÃÀÛÇÒ ¶§ ÃÖ´ë n°³ ºÎ¸¦¼ö ÀÖÀ» ¶§ ÀÌ±æ ¼ö ÀÖ´ÂÁö ¿©ºÎ
+	// ië²ˆì§¸ ë¶€í„° ë¶€ë¥´ê¸° ì‹œìž‘í•  ë•Œ ìµœëŒ€ nê°œ ë¶€ë¥¼ìˆ˜ ìžˆì„ ë•Œ ì´ê¸¸ ìˆ˜ ìžˆëŠ”ì§€ ì—¬ë¶€
 	static int canBeat(int i, int n) {
 		if (i >= 31) {return 0;}
 		if (cache[i][n] != -1) {return cache[i][n];}

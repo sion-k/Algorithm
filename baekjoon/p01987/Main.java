@@ -10,11 +10,11 @@ public class Main {
 	static boolean[] VISIT = new boolean[26];
 	static int R; static int C;
 	
-	// »óÇÏÁÂ¿ì
+	// ìƒí•˜ì¢Œìš°
 	static final int[] dy = { -1, 1, 0, 0 };
 	static final int[] dx = { 0, 0, -1, 1 };
 	
-	// (y, x)¿¡¼­ ½ÃÀÛÇÏ´Â ÃÖ´ë °æ·Î
+	// (y, x)ì—ì„œ ì‹œì‘í•˜ëŠ” ìµœëŒ€ ê²½ë¡œ
 	static int maxPath(int y, int x) {
 		if (y < 0 || R <= y || x < 0 || C <= x) {return 0;}
 		if (VISIT[BOARD[y][x]]) {return 0;}
@@ -24,7 +24,7 @@ public class Main {
 			max = Math.max(max, maxPath(y + dy[next], x + dx[next]));
 		}
 		VISIT[BOARD[y][x]] = false;
-		return 1 + max; // (y, x)´Â ¹æ¹® °¡´ÉÇÏ¹Ç·Î
+		return 1 + max; // (y, x)ëŠ” ë°©ë¬¸ ê°€ëŠ¥í•˜ë¯€ë¡œ
 	}
 	
 	public static void main(String[] args) throws IOException {

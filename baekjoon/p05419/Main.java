@@ -26,7 +26,7 @@ public class Main {
 				yLoc.add(S.get(i).y);
 			}
 			Collections.sort(S);
-			// ÁÂÇ¥ ¾ÐÃà
+			// ì¢Œí‘œ ì••ì¶•
 			Collections.sort(yLoc);
 			Map<Integer, Integer> compress = new HashMap<>();
 			int index = 1;

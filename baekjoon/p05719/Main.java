@@ -41,7 +41,7 @@ public class Main {
 		return dist;
 	}
 	
-	// here¿¡¼­ ¿ª¹æÇâ °£¼±À» Ã£¾Æ°¡¸é¼­ ÃÖ´Ü°æ·Î¿¡ ¼ÓÇÏ´Â °£¼±À» Áö¿î´Ù
+	// hereì—ì„œ ì—­ë°©í–¥ ê°„ì„ ì„ ì°¾ì•„ê°€ë©´ì„œ ìµœë‹¨ê²½ë¡œì— ì†í•˜ëŠ” ê°„ì„ ì„ ì§€ìš´ë‹¤
 	static void bfs(int[] dist, int start) {
 		Queue<Integer> q = new LinkedList<>();
 		q.offer(start);

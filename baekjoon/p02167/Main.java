@@ -15,7 +15,7 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		int N = Integer.parseInt(st.nextToken());
 		int M = Integer.parseInt(st.nextToken());
-		// (1, 1) (i, j)·Î ÀÌ·ç¾îÁø »ç°¢ÇüµéÀÇ ºÎºĞ ÇÕ
+		// (1, 1) (i, j)ë¡œ ì´ë£¨ì–´ì§„ ì‚¬ê°í˜•ë“¤ì˜ ë¶€ë¶„ í•©
 		int[][] partSum = new int[N + 1][M + 1];
 		for (int i = 1; i <= N; i++) {
 			st = new StringTokenizer(br.readLine(), " ");
