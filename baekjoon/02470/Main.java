@@ -6,28 +6,28 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
-		ArrayList<Integer> S = new ArrayList<>(N);
+		int[] S = new int[N];
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-		for (int i = 0; i < N; i++) S.add(Integer.parseInt(st.nextToken()));
-		Collections.sort(S);
+		for (int i = 0; i < N; i++) S[i] = Integer.parseInt(st.nextToken());
+		Arrays.sort(S);
 		int head = 0; int tail = N - 1;
-		int sum = S.get(head) + S.get(tail);
-		int min = Math.abs(sum); int[] p = new int[] { head, tail };
+		int sum = Math.abs(S[head] + S[tail]);
+		int min = sum; int[] p = new int[] { head, tail };
 		while (head < tail) {
 			// S[head]와 더했을 때 가장 0에 가까운 S[tail]까지 이동시킨다
 			while (head < tail - 1 &&
-			Math.abs(S.get(head) + S.get(tail - 1)) < Math.abs(sum)) {
+			Math.abs(S[head] + S[tail - 1]) < sum) {
 				tail--;
-				sum = S.get(head) + S.get(tail);
+				sum = Math.abs(S[head] + S[tail]);
 			}
-			if (min > Math.abs(sum)) {
-				min = Math.abs(sum);
+			if (min > sum) {
+				min = sum;
 				p[0] = head; p[1] = tail;
 			}
 			head++;
-			sum = S.get(head) + S.get(tail);
+			sum = Math.abs(S[head] + S[tail]);
 		}
-		System.out.printf("%d %d\n", S.get(p[0]), S.get(p[1]));
+		System.out.printf("%d %d\n", S[p[0]], S[p[1]]);
 	}
 
 }
