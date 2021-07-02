@@ -1,9 +1,5 @@
-package codeforce.r1520;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class D {
 	
@@ -13,12 +9,14 @@ public class D {
 		int TC = Integer.parseInt(br.readLine());
 		for (int tc = 0; tc < TC; tc++) {
 			int N = Integer.parseInt(br.readLine());
+			// (a_i - i + N, a_i - i + N의 개수)
+			long[] S = new long[2 * N + 1];
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+			for (int i = 0; i < N; i++)
+				S[Integer.parseInt(st.nextToken()) - i + N]++;
 			long cnt = 0;
-			for (int i = 1; i <= N; i++)
-				if (Integer.parseInt(st.nextToken()) - i == 0)
-					cnt++;
-			ans.append((cnt - 1) * cnt / 2).append("\n");
+			for (long x : S) cnt += (x - 1) * x / 2;
+			ans.append(cnt).append("\n");
 		}
 		System.out.print(ans);
 	}
