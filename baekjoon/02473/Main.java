@@ -16,20 +16,6 @@ public class Main {
 		for (int i = 0; i < N - 2; i++) {
 			for (int j = i + 1; j < N - 1; j++) {
 				sum = S[i] + S[j];
-				if (sum + S[N - 1] < 0) {
-					if (best > Math.abs(sum + S[N - 1])) {
-						best = Math.abs(sum + S[N - 1]);
-						p = i; q = j; r = N - 1;
-					}
-					continue;
-				}
-				if (sum + S[j + 1] >= 0) {
-					if (best > Math.abs(sum + S[j + 1])) {
-						best = Math.abs(sum + S[j + 1]);
-						p = i; q = j; r = j + 1;
-					}
-					continue;
-				}
 				// S[j + 1, N)에서 S[i] + S[j] + S[k]가 0에 가장 가까운 k를 찾는다
 				// S[hi] = 더했을 때 0보다 같거나 큼
 				// S[lo] = 더했을 때 0보다 작음 
