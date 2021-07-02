@@ -13,17 +13,12 @@ public class D {
 		int TC = Integer.parseInt(br.readLine());
 		for (int tc = 0; tc < TC; tc++) {
 			int N = Integer.parseInt(br.readLine());
-			int[] S = new int[N];
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-			for (int i = 0; i < N; i++) S[i] = Integer.parseInt(st.nextToken());
-			long cnt = 0; int last = N - 1;
-			for (int i = N - 2; i >= 0; i--) {
-				if (last - i == S[last] - S[i]) {
+			long cnt = 0;
+			for (int i = 1; i <= N; i++)
+				if (Integer.parseInt(st.nextToken()) - i == 0)
 					cnt++;
-					last = i;
-				}
-			}
-			ans.append(cnt * (cnt + 1) / 2).append("\n");
+			ans.append((cnt - 1) * cnt / 2).append("\n");
 		}
 		System.out.print(ans);
 	}
