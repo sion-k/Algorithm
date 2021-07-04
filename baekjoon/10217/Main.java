@@ -1,55 +1,68 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class Main {
-	static int N;
-	static int[][] C;
-	static int[][] D;
-	static int[][] cache;
-
-	static final int INF = Integer.MAX_VALUE;
-
-	static int dp(int here, int leftCost) {
-		if (here == N) return 0;
-		if (cache[here][leftCost] != 0) return cache[here][leftCost];
-		int min = INF;
-		for (int there = 1; there <= N; there++)
-			if (C[here][there] != 0 && C[here][there] <= leftCost)
-				min = Math.min(min, D[here][there] + dp(there, leftCost - C[here][there]));
-		return cache[here][leftCost] = min;
+	static int N, M;
+	static ArrayList<ArrayList<Tuple>> adj;
+	
+	static final int INF = 987654321;
+	
+	static int dijkstra() {
+		PriorityQueue<Tuple> pq = new PriorityQueue<>();
+		pq.offer(new Tuple(1, 0, 0));
+		// N번 정점까지 M비용을 소모했을 때 최단 거리
+		int[][] time = new int[N + 1][M + 1];
+		for (int i = 0; i <= N; i++) Arrays.fill(time[i], INF);
+		time[1][0] = 0;
+		while (!pq.isEmpty()) {
+			Tuple t = pq.poll();
+			int here = t.num; int hereCost = t.cost; int hereTime = t.time;
+			if (time[here][hereCost] < hereTime) continue;
+			for (Tuple e : adj.get(here)) {
+				int there = e.num; int thereCost = hereCost + e.cost; int thereTime = hereTime + e.time;
+				if (thereCost <= M && time[there][thereCost] > thereTime) {
+					time[there][thereCost] = thereTime;
+					pq.offer(new Tuple(there, thereCost, thereTime));
+				}
+			}
+		}
+		int min = time[N][0];
+		for (int i = 1; i <= M; i++) min = Math.min(min, time[N][i]);
+		return min;
 	}
-
+	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		int T = Integer.parseInt(br.readLine());
-		for (int t = 0; t < T; t++) {
+		StringBuilder bw = new StringBuilder();
+		int TC = Integer.parseInt(br.readLine());
+		while (TC-- > 0) {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 			N = Integer.parseInt(st.nextToken());
-			int M = Integer.parseInt(st.nextToken());
+			M = Integer.parseInt(st.nextToken());
 			int K = Integer.parseInt(st.nextToken());
-			C = new int[N + 1][N + 1]; D = new int[N + 1][N + 1];
+			adj = new ArrayList<>(N);
+			for (int i = 0; i <= N; i++) adj.add(new ArrayList<>());
 			for (int i = 0; i < K; i++) {
 				st = new StringTokenizer(br.readLine(), " ");
 				int u = Integer.parseInt(st.nextToken());
 				int v = Integer.parseInt(st.nextToken());
 				int c = Integer.parseInt(st.nextToken());
 				int d = Integer.parseInt(st.nextToken());
-				C[u][v] = c; D[u][v] = d;
+				adj.get(u).add(new Tuple(v, c, d));
 			}
-			cache = new int[N + 1][M + 1];
-			int ret = dp(1, M);
-			if (ret >= INF)
-				bw.write("Poor KCM");
-			else
-				bw.write(String.valueOf(ret));
-			bw.newLine();
+			int ret = dijkstra();
+			bw.append(ret == INF ? "Poor KCM" : ret).append("\n");
 		}
-		bw.close();
+		System.out.print(bw);
 	}
 
+}
+
+class Tuple implements Comparable<Tuple> {
+	int num, cost, time;
+	
+	Tuple(int n, int c, int t) { num = n; cost = c; time = t;}
+	
+	public int compareTo(Tuple o) { return time - o.time; }
+	
 }
