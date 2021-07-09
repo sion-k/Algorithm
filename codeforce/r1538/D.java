@@ -8,6 +8,18 @@ public class D {
 		return gcd(b, a % b);
 	}
 	
+	// 1과 자기 자신을 제외한 약수의 개수 반환
+	static int fac(int a) {
+		int ret = 0;
+		int range = (int)(Math.sqrt(a));
+		for (int i = 2; i <= range; i++)
+			while (a % i == 0) {
+				a /= i;
+				ret++;
+			}
+		return ret == 0 ? 1 : ret;
+	}
+	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder bw = new StringBuilder();
@@ -17,16 +29,12 @@ public class D {
 			int a = Integer.parseInt(st.nextToken());
 			int b = Integer.parseInt(st.nextToken());
 			int k = Integer.parseInt(st.nextToken());
-			int lo = 2;
-			if (a != b && (a % b == 0 || b % a == 0)) lo = 1;
-			int gcd = gcd(a, b); int cnt = 0;
-			for (int i = 1; i <= (int)(Math.sqrt(gcd)); i++) {
-				if (gcd % i == 0) cnt++;
-			}
-			int hi = lo + 2 * (cnt % 2 == 1 ? cnt / 2 + 1 : cnt / 2);
-			boolean flag = lo <= k && k <= hi;
-			if (a == b && k == 1) flag = false;
-			bw.append(flag ? "YES" : "NO").append("\n");
+			int af = fac(a); int bf = fac(b); int gf = fac(gcd(a, b));
+			int min = (af - gf > 0 ? 1 : 0) + (bf - gf > 0 ? 1 : 0);
+			int mid = (a == b ? min : af + bf);
+			int max = (a == 1 && b == 1 ? 0 : mid + 2 * gf);
+			// System.out.printf("min : %d, mid : %d + %d = %d, max : %d + 2 * %d = %d\n", min, af, bf, mid, mid, gf, max);
+			bw.append((min <= k && k <= mid || (mid < k && k <= max && (k - mid) % 2 == 0)) ? "YES" : "NO").append("\n");
 		}
 		System.out.print(bw);
 	}
