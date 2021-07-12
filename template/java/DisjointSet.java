@@ -1,5 +1,3 @@
-package competition;
-
 class DisjointSet {
 	int[] parent; int[] rank;
 

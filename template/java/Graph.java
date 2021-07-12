@@ -1,10 +1,4 @@
-package competition;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 public class Graph {
 	static int V; // 정점의 개수

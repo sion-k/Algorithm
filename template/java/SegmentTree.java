@@ -1,8 +1,3 @@
-package competition;
-
-public class SegmentTree {
-
-}
 //구간 최소 쿼리
 class RMQ {
 	int n; // 배열의 크기

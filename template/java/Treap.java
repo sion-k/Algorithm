@@ -1,9 +1,3 @@
-package competition;
-
-public class Treap {
-
-}
-
 class Node {
 	int key; // 노드에 저장된 원소
 	int priority; // 노드의 우선 순위
