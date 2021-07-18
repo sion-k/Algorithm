@@ -42,9 +42,13 @@ public class Main {
 			}
 			if (hd != 0 && flag) continue;
 			for (int d = 0; d < 4; d++) {
-				int ny = hy + dy[d]; int nx = hx + dx[d]; 
+				int ny = hy + dy[d]; int nx = hx + dx[d];
+				// 범위 밖이거나 이동할 수 없는 경우
 				if (!inRange(ny, nx) || R[ny][nx] == -1) continue;
+				// 세력이 다른 유닛이 있는 경우
+				if (S[ny][nx] != null && U[u].t != S[ny][nx].t) continue;
 				int nd = hd + R[ny][nx];
+				// 한 번의 약진에 소모할 수 있는 행동력을 넘어가는 경우
 				if (nd > U[u].m) continue;
 				if (dist[ny][nx] > nd) {
 					dist[ny][nx] = nd;
@@ -52,6 +56,7 @@ public class Main {
 				}
 			}
 		}
+		// 유닛을 이동시킨다
 		if (dist[y][x] != Integer.MAX_VALUE) {
 			S[U[u].y][U[u].x] = null;
 			U[u].y = y; U[u].x = x;
