@@ -16,7 +16,7 @@ public class Main {
 			pq.offer(t); pq.offer(t);
 		}
 		long sum = 0;
-		while (!pq.isEmpty()) sum += pq.poll();
+		for (long x : pq) sum += x;
 		System.out.println(sum);
 	}
 
