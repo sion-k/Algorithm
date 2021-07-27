@@ -17,17 +17,11 @@ public class Main {
 			} else if (q == 1) {
 				q = p + 1; p = 1;
 			} else if (p > q) {
-				int cnt = 0;
-				while (p > q) {
-					p -= q;
-					cnt++;
-				}
-				long t = p;
-				p = q;
-				q -= t;
-				while (cnt-- > 0) {
-					q += p;
-				}
+				long cnt = (p - 1) / q;
+				p -= q * cnt;
+				q -= p;
+				p += q;
+				q += p * cnt;
 			} else {
 				long t = p;
 				p = q;
