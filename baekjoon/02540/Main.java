@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+	static int cnt = 1;
 	
 	static void print(StringBuilder bw, PriorityQueue<Pair> pq) {
 		int[] S = new int[4];
@@ -10,6 +11,7 @@ public class Main {
 			bw.append(S[i]);
 			if (i != 3) bw.append(" ");
 		}
+		cnt++;
 		bw.append("\n");
 	}
 	
@@ -47,6 +49,23 @@ public class Main {
 			if (m1.value > 0) pq.offer(m1);
 			if (m2.value > 0) pq.offer(m2);
 			pq.offer(t);
+			print(bw, pq);
+		}
+	}
+	
+	static void is3x(StringBuilder bw, PriorityQueue<Pair> pq) {
+		Pair m1 = pq.poll(); Pair m2 = pq.poll();
+		pq.offer(m1); pq.offer(m2);
+		Pair m3 = new Pair(getExtra(m1, m2), 0);
+		pq.offer(m3);
+		int range = m1.value / 3;
+		while (m3.value < 2 * range) {
+			move(m1, m2, m3);
+			print(bw, pq);
+		}
+		// 다시 한 곳에 담기
+		while (m1.value > 0) {
+			move(m1, m3, m2);
 			print(bw, pq);
 		}
 	}
@@ -99,6 +118,10 @@ public class Main {
 			// 작은 쪽이 홀수일 경우 짝수로 만들어 준다.
 			if (m1.value % 2 == 1) {
 				pq.offer(m1); pq.offer(m2);
+				if (m1.value % 3 == 0) {
+					is3x(bw, pq);
+					System.out.print(bw); return;
+				}
 				toEven(bw, pq);
 				if (pq.size() == 1) { System.out.print(bw); return; }
 				m1 = pq.poll(); m2 = pq.poll();
@@ -137,6 +160,9 @@ public class Main {
 					print(bw, pq);
 				}
 			}
+		}
+		if (cnt != K) {
+			int a = 1 / 0;
 		}
 		System.out.print(bw);
 	}
