@@ -1,72 +1,63 @@
-import java.util.*;
-
 public class Graph {
-	static int V; // 정점의 개수
-	static boolean[][] adj;// 인접 행렬 표현법
-	static boolean[] visit;
-
-	static int N; static int M; // 2차원
+	static int N, M;
 
 	static final int[] dy = { -1, 1, 0, 0 };
 	static final int[] dx = { 0, 0, -1, 1 };
 
-	static boolean inRange(int y, int x) {
-		return 0 <= y && y < N && 0 <= x && x < M;
+	static boolean inRange(int y, int x) { return 0 <= y && y < N && 0 <= x && x < M; }
+
+	static boolean[][] visit;
+	static int[][] dist;
+	
+	static ArrayList<ArrayList<Pair>> adj;
+	adj = new ArrayList<>(N);
+	for (int i = 0; i <= N; i++) adj.add(new ArrayList<>());
+	
+	static void dfs(int y, int x) {
+		visit[y][x] = true;
+		for (int d = 0; d < 4; d++) {
+			int ny = y + dy[d]; int nx = x + dx[d];
+			if (!inRange(ny, nx) || visit[ny][nx]) continue;
+			dfs(ny, nx);
+		}
 	}
 
-	// 정점 here에서 dfs
-	static void dfs(int here) {
-		visit[here] = true;
-		for (int there = 0; there < V; there++)
-			if (adj[here][there] && !visit[there])
-				dfs(there);
-	}
-
-	// 정점 start에서 end까지 최단 거리 반환. 도달 불가능하면 -1 반환
-	static int bfs(int start, int end) {
+	// (sy, sx) -> (ey, ex) 최단 거리 반환. 도달 불가능하면 -1 반환
+	static int bfs(int sy, int sx, int ey, int ex) {
 		Queue<Integer> q = new LinkedList<>();
-		q.add(start);
-		int[] dist = new int[V];
-		Arrays.fill(dist, -1);
-		dist[start] = 0;
+		q.offer(new int[] { sy, sx });
+		dist = new int[N][M];
+		for (int i = 0; i < N; i++) Arrays.fill(dist[i], -1);
+		dist[sy][sx] = 0;
 		while (!q.isEmpty()) {
-			int here = q.poll();
-			for (int there = 0; there < V; there++) {
-				if (adj[here][there] && dist[there] != -1) {
-					if (there == end) {return dist[here] + 1;}
-					q.offer(there);
-					dist[there] = dist[here] + 1;
-				}
+			int[] p = q.poll();
+			int y = p[0]; int x = p[1];
+			for (int d = 0; d < 4; d++) {
+				int ny = y + dy[d]; int nx = x + dx[d];
+				if (!inRange(ny, nx) || dist[ny][nx] != -1) continue;
+				q.offer(new int[] { ny, nx });
+				dist[ny][nx] = dist[y][x] + 1;
 			}
 		}
-		return -1;
+		return dist[ey][ex];
 	}
 
-	static final int INF = 0; // 존재할 수 있는 최대 경로의 길이 + 1
-	static int[][] adjArray; // 인접 행렬 표현법
-	static ArrayList<ArrayList<Pair>> adjList; // 인접 리스트 표현법
-	static boolean[][] reachable;
-
 	// 정점 src에서 다른 모든 정점까지의 최단거리를 담은 dist[]를 반환
-	static int[] dijkstra(int src) {
+	static int[] dijkstra(int start) {
 		PriorityQueue<Pair> pq = new PriorityQueue<>();
-		pq.offer(new Pair(src, 0));
-		int[] dist = new int[V + 1];
-		Arrays.fill(dist, INF);
-		dist[src] = 0;
+		pq.offer(new Pair(start, 0));
+		int[] dist = new int[N + 1];
+		Arrays.fill(dist, Integer.MAX_VALUE);
+		dist[start] = 0;
 		while (!pq.isEmpty()) {
 			Pair p = pq.poll();
 			int here = p.num; int cost = p.cost;
-			// 더 나은 경로를 알고 있다면 무시
-			if(dist[here] < cost) {continue;}
-			// 정점을 방문하고 인접 정점을 검사
-			for (Pair edge : adjList.get(here)) {
-				int there = edge.num;
-				int nextDist = cost + edge.cost;
-				// 기존에 발견한 것보다 더 짧은 경로를 발견 한 경우 최신화
-				if (dist[there] > nextDist) {
-					dist[there] = nextDist;
-					pq.offer(new Pair(there, nextDist));
+			if(dist[here] < cost) continue;
+			for (Pair e : adj.get(here)) {
+				int there = e.num; int thereCost = cost + e.cost;
+				if (dist[there] > thereCost) {
+					dist[there] = thereCost;
+					pq.offer(new Pair(there, thereCost));
 				}
 			}
 		}
@@ -138,8 +129,10 @@ public class Graph {
 }
 
 class Pair implements Comparable<Pair> {
-	int num; int cost;
-	public Pair(int n, int c) {num = n; cost = c;}
+	int num, cost;
+	
+	public Pair(int n, int c) { num = n; cost = c; }
+	
 	@Override
-	public int compareTo(Pair o) {return cost - o.cost;}
+	public int compareTo(Pair o) { return cost - o.cost; }
 }

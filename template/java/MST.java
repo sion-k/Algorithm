@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class MST {
 	static int V;
 	static ArrayList<Edge> edges;
@@ -20,8 +18,10 @@ public class MST {
 }
 
 class Edge implements Comparable<Edge> {
-	int start; int end; int weight;
-	public Edge(int s, int e, int w) {start = s; end = e; weight = w;}
+	int start, end, weight;
+	
+	public Edge(int s, int e, int w) { start = s; end = e; weight = w; }
+	
 	@Override
-	public int compareTo(Edge o) {return weight - o.weight;}
+	public int compareTo(Edge o) { return weight - o.weight; }
 }

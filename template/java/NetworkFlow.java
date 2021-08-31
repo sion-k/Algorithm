@@ -1,17 +1,5 @@
-package competition;
-
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
-
 public class NetworkFlow {
-	// 양방향 간선인지 유의
-	static int[][] capacity = new int[52][52];
-	static int[][] flow = new int[52][52];
-
-	static final int V = 52;
-	static final int INF = 987654321;
-
+	
 	static int networkFlow(int source, int sink) {
 		int totalFlow = 0;
 		while (true) {

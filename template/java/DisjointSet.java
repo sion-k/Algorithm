@@ -9,7 +9,7 @@ class DisjointSet {
 	void union(int u, int v) {
 		u = find(u); v = find(v);
 		if (u == v) return;
-		if (rank[u] > rank[v]) {int temp = u; u = v; v = temp;}
+		if (rank[u] > rank[v]) { int temp = u; u = v; v = temp; }
 		parent[u] = v;
 		if (rank[u] == rank[v]) rank[v]++;
 	}
