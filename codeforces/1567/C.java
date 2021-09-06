@@ -11,19 +11,17 @@ public class C {
 		int sum = 0;
 		for (int u = 0; u <= 9; u++) {
 			for (int v = 0; v <= 9; v++) {
-				int k = (b & 1) + u + v;
-				if (k % 10 == S[i]) {
-					if (k >= 10) {
-						sum += dp(i - 1, (b | (1 << 2)) >> 1);
-					} else {
-						sum += dp(i - 1, b >> 1);
-					}
+				int k = u + v + (b & 1);
+				if (k % 10 != S[i]) continue;
+				if (k >= 10) {
+					sum += dp(i - 1, (b | (1 << 2)) >> 1);
+				} else {
+					sum += dp(i - 1, b >> 1);
 				}
 			}
 		}
 		return cache[i][b] = sum;
 	}
-	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder bw = new StringBuilder();
@@ -31,9 +29,9 @@ public class C {
 		while (TC-- > 0) {
 			char[] temp = br.readLine().toCharArray();
 			S = new int[temp.length];
-			for (int i = 0; i < S.length; i++) S[i] = temp[i] - '0';
-			cache = new int[S.length][8];
-			for (int i = 0; i < cache.length; i++)
+			for (int i = 0; i < temp.length; i++) S[i] = temp[i] - '0';
+			cache = new int[S.length][1 << 3];
+			for (int i = 0; i < S.length; i++)
 				Arrays.fill(cache[i], -1);
 			bw.append(dp(S.length - 1, 0) - 2);
 			bw.append("\n");

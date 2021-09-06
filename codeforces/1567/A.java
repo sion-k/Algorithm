@@ -11,20 +11,10 @@ public class A {
 			int N = Integer.parseInt(br.readLine());
 			char[] S = br.readLine().toCharArray();
 			char[] R = new char[N];
-			boolean flag = false;
-			for (char x : S) if (x == 'U') flag = true;
-			if (flag) {
-				for (int i = 0; i < N; i++) {
-					if (S[i] == 'L') R[i] = 'L';
-					if (S[i] == 'R') R[i] = 'R';
-					if (S[i] == 'U') R[i] = 'D';
-				}	
-			} else {
-				for (int i = 0; i < N; i++) {
-					if (S[i] == 'L') R[i] = 'L';
-					if (S[i] == 'R') R[i] = 'R';
-					if (S[i] == 'D') R[i] = 'U';
-				}	
+			for (int i = 0; i < N; i++) {
+				if (S[i] == 'U') R[i] = 'D';
+				else if (S[i] == 'D') R[i] = 'U';
+				else R[i] = S[i];
 			}
 			bw.append(String.valueOf(R));
 			bw.append("\n");

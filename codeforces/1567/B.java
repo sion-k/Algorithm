@@ -6,21 +6,19 @@ public class B {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder bw = new StringBuilder();
-		int[] S = new int[300001];
-		for (int i = 1; i <= 300000; i++) S[i] = S[i - 1] ^ i;
+		int[] P = new int[300001];
+		for (int i = 1; i <= 300000; i++) P[i] = i ^ P[i - 1];
 		int TC = Integer.parseInt(br.readLine());
-		while (TC-- > 0) {
+		while (TC -- > 0) {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 			int a = Integer.parseInt(st.nextToken());
 			int b = Integer.parseInt(st.nextToken());
-			int sum = S[a - 1];
 			int ret = a;
-			if (sum != b) {
+			if (P[a - 1] != b) {
 				ret++;
-				if ((sum ^ a) == b) ret++;
+				if ((P[a - 1] ^ a) == b) ret++;
 			}
-			bw.append(ret);
-			bw.append("\n");
+			bw.append(ret).append("\n");
 		}
 		System.out.print(bw);
 	}
