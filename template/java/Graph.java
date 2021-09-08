@@ -27,7 +27,7 @@ public class Graph {
 
 	// (sy, sx) -> (ey, ex) 최단 거리 반환. 도달 불가능하면 -1 반환
 	static int bfs(int sy, int sx, int ey, int ex) {
-		Queue<Integer> q = new LinkedList<>();
+		Queue<int[]> q = new LinkedList<>();
 		q.offer(new int[] { sy, sx });
 		dist = new int[N][M];
 		for (int i = 0; i < N; i++) Arrays.fill(dist[i], -1);
