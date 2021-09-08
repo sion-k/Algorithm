@@ -4,6 +4,9 @@ public class Graph {
 	static final int[] dy = { -1, 1, 0, 0 };
 	static final int[] dx = { 0, 0, -1, 1 };
 
+	static final int[] dy = { -1, -1, -1, 0, 0, 1, 1, 1 };
+	static final int[] dx = { -1, 0, 1, -1, 1, -1, 0, 1 };
+	
 	static boolean inRange(int y, int x) { return 0 <= y && y < N && 0 <= x && x < M; }
 
 	static boolean[][] visit;
