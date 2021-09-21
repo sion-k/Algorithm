@@ -19,7 +19,7 @@ public class Main {
 			min = Math.min(min, S[i].weight + dp(i + 1, v - S[i].value));
 		return cache[i][v] = min;
 	}
-	
+
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
@@ -36,15 +36,12 @@ public class Main {
 		for (int i = 0; i < N; i++) Arrays.fill(cache[i], -1);
 		int[] R = new int[M];
 		for (int i = 0; i < M; i++) R[i] = Integer.parseInt(br.readLine());
-		// V[w] = w무게로 만들어 낼 수 있는 최대 가치
-		int[] V = new int[1000001];
-		for (int v = 0; v <= 1000 * N; v++) {
-			int w = dp(0, v);
-			if (w <= 1000000) V[w] = Math.max(V[w], v);
-		}
 		double max = 0; int maxIndex = 0;
 		for (int i = 0; i < M; i++) {
-			double cand = (double)V[R[i]] / R[i];
+			int maxValue = 0;
+			for (int j = 0; j <= 1000 * N; j++)
+				if (dp(0, j) <= R[i]) maxValue = j;
+			double cand = (double)maxValue / R[i];
 			if (max < cand) {
 				max = cand;
 				maxIndex = i + 1;
