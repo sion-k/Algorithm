@@ -9,7 +9,7 @@ public class Main {
 	
 	static final int INF = 987654321;
 	
-	// i번째 물품부터 고르기 시작해서 v만큼의 가치를 확보하는데
+	// i번째 물품부터 고르기 시작해서 정확히 v만큼의 가치를 확보하는데
 	// 필요한 최소 비용
 	static int dp(int i, int v) {
 		if (i == N) return v != 0 ? INF : 0;
