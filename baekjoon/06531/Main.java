@@ -17,6 +17,7 @@ public class Main {
 
     static int isList(int start, int end) {
         if (isElement(start, end)) return 1;
+        if (cache[start][end] != -1) return cache[start][end];
         for (int mid = start; mid <= end; mid++) if (S[mid] == ',') {
             if ((mid - 1) - start + 1 >= 1 && end - (mid + 1) + 1 >= 1) {
                 if (isElement(start, mid - 1) && isList(mid + 1, end) == 1) {
