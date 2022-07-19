@@ -43,7 +43,7 @@ int dp(int here, int mask) {
 }
 
 int main() {
-    // FAST();
+    FAST();
     cin >> n >> m;
     if (n < m) swap(n, m);
     cache = vector<vector<int>>(n * m, vector<int>(1 << (m + 1)));
