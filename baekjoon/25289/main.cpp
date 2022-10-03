@@ -12,23 +12,28 @@
 
 using namespace std;
 
-const int AI_MIN = 1, AI_MAX = 100;
+const int AI_MAX = 100;
 
 int solve(int n, vector<int>& a) {
-    int ret = 0;
-    for (int d = -AI_MAX + 1; d < AI_MAX; d++) {
-        // 공차가 d일때 ai로 끝나는 등차 부분 수열의 최대 길이
-        vector<int> dp(AI_MAX + 1);
-        for (int i = 0; i < n; i++) {
-            if (AI_MIN <= a[i] - d && a[i] - d <= AI_MAX) {
-                dp[a[i]] = max(dp[a[i]], 1 + dp[a[i] - d]);
-            }
-            dp[a[i]] = max(dp[a[i]], 1);
+    // 마지막 항이 i이고, 공차가 j인 등차 부분수열의 최대 길이
+    vector<vector<int>> dp(AI_MAX + 1, vector<int>(AI_MAX + 1));
+
+    for (int i = 0; i < n; i++) {
+        for (int d = a[i] - 1; d >= 0; d--) {
+            dp[a[i]][d] = max(dp[a[i]][d], 1 + dp[a[i] - d][d]);
         }
-        ret = max(ret, *max_element(ALL(dp)));
+        for (int d = 0; d <= AI_MAX; d++) {
+            dp[a[i]][d] = max(dp[a[i]][d], 1);
+        }
     }
 
-    return ret;
+    int max = 0;
+    for (int ai = 1; ai <= 100; ai++) {
+        for (int d = 0; d < 100; d++) {
+            max = ::max(max, dp[ai][d]);
+        }
+    }
+    return max;
 }
 
 int main() {
@@ -40,5 +45,8 @@ int main() {
         cin >> x;
     }
 
-    cout << solve(n, a) << "\n";
+    int max = solve(n, a);
+    reverse(ALL(a));
+    max = ::max(max, solve(n, a));
+    cout << max << "\n";
 }
