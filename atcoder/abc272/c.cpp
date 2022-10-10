@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+
+#define FAST() cin.tie(0)->sync_with_stdio(0)
+#define OPEN(t) freopen("data.txt", (t), (t == "r" ? stdin : stdout))
+#define ALL(x) (x).begin(), (x).end()
+#define SIZE(x) (int)((x).size())
+
+#define deb(x) cout << #x << " : " << (x) << "\n"
+#define deb_pair(x, y) cout << "(" << #x << ", " << #y << ") : (" << (x) << ", " << (y) << ")\n"
+#define deb_triplet(x, y, z) cout << "(" << #x << ", " << #y << ", " << #z << ") : (" << (x) << ", " << (y) << ", " << (z) << ")\n"
+#define deb_tuple(s) for (int i = 0; i < SIZE(s); i++) cout << s[i] << " \n"[i == SIZE(s) - 1];
+
+using namespace std;
+
+int main() {
+    FAST();
+
+    int n;
+    cin >> n;
+
+    vector<int> a(n);
+    for (auto& x : a) {
+        cin >> x;
+    }
+
+    vector<vector<int>> p(2, vector<int>());
+    for (int i = 0; i < n; i++) {
+        p[a[i] % 2].push_back(a[i]);
+    }
+
+    sort(ALL(p[0]));
+    reverse(ALL(p[0]));
+
+    sort(ALL(p[1]));
+    reverse(ALL(p[1]));
+
+    if (SIZE(p[0]) < 2 && SIZE(p[1]) < 2) {
+        cout << -1 << "\n";
+        return 0;
+    }
+
+    cout << max(SIZE(p[0]) >= 2 ? p[0][0] + p[0][1] : 0, SIZE(p[1]) >= 2 ? p[1][0] + p[1][1] : 0) << "\n";
+}
