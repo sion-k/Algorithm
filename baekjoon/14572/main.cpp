@@ -13,7 +13,7 @@
 using namespace std;
 
 int main() {
-    // FAST();
+    FAST();
 
     int n, k, d;
     cin >> n >> k >> d;
