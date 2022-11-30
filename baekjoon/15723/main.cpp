@@ -24,10 +24,11 @@ int main() {
     }
 
     for (int i = 0; i < n; i++) {
-        string x, is, y;
+        char x, y;
+        string is;
         cin >> x >> is >> y;
 
-        adj[x[0]][y[0]] = true;
+        adj[x][y] = true;
     }
 
     for (int k = 'a'; k <= 'z'; k++) {
@@ -42,9 +43,11 @@ int main() {
     cin >> m;
 
     for (int i = 0; i < m; i++) {
-        string x, is, y;
+        char x, y;
+        string is;
         cin >> x >> is >> y;
 
-        cout << (adj[x[0]][y[0]] ? "T" : "F") << "\n";
+
+        cout << (adj[x][y] ? "T" : "F") << "\n";
     }
 }
