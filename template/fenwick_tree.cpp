@@ -16,7 +16,7 @@ class Fenwick_Tree {
 public:
     vector<long long> t;
 
-    Fenwick_Tree(int n) : t(n) {}
+    Fenwick_Tree(int n): t(n) {}
 
     void add(int i, long long x) {
         while (i < SIZE(t)) {
