@@ -21,39 +21,46 @@ public:
         init(1, 0, n - 1, a);
     }
 
-    void init(int v, int l, int r, vector<int>& a) {
-        if (l == r) {
-            t[v] = a[l];
+    void init(int v, int vl, int vr, vector<int>& a) {
+        if (vl == vr) {
+            t[v] = a[vl];
         } else {
-            int m = (l + r) / 2;
-            init(2 * v, l, m, a);
-            init(2 * v + 1, m + 1, r, a);
+            int vm = (vl + vr) / 2;
+
+            init(2 * v, vl, vm, a);
+            init(2 * v + 1, vm + 1, vr, a);
+
             t[v] = max(t[2 * v], t[2 * v + 1]);
         }
     }
 
-    void update(int v, int l, int r, int k, int x) {
-        if (l == r) {
+    void update(int v, int vl, int vr, int k, int x) {
+        if (vl == vr) {
             t[v] = x;
         } else {
-            int m = (l + r) / 2;
-            if (k <= m) {
-                update(2 * v, l, m, k, x);
+            int vm = (vl + vr) / 2;
+
+            if (k <= vm) {
+                update(2 * v, vl, vm, k, x);
             } else {
-                update(2 * v + 1, m + 1, r, k, x);
+                update(2 * v + 1, vm + 1, vr, k, x);
             }
+
             t[v] = max(t[2 * v], t[2 * v + 1]);
         }
     }
 
-    int query(int v, int l, int r, int ql, int qr) {
-        if (ql <= l && r <= qr) {
-            return t[v];
-        }
-        if (qr < l || r < ql) {
+    int query(int v, int vl, int vr, int ql, int qr) {
+        if (qr < vl || vr < ql) {
             return 0;
         }
-        int m = (l + r) / 2;
-        return max(query(2 * v, l, m, ql, qr), query(2 * v + 1, m + 1, r, ql, qr));
+
+        if (ql <= vl && vr <= qr) {
+            return t[v];
+        }
+
+        int vm = (vl + vr) / 2;
+
+        return max(query(2 * v, vl, vm, ql, qr), query(2 * v + 1, vm + 1, vr, ql, qr));
     }
 };
