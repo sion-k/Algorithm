@@ -18,11 +18,11 @@
 
 using namespace std;
 
-unordered_map<int, int> f(vector<int>& a, int x) {
+vector<int> f(vector<int>& a, int x) {
     int n = SIZE(a);
-    unordered_map<int, int> m;
+    vector<int> ret;
 
-    for (int i = 1; i < (1 << n); i++) {
+    for (int i = 0; i < (1 << n); i++) {
         long long sum = 0;
 
         for (int j = 0; j < n; j++) if (i & (1 << j)) {
@@ -30,11 +30,11 @@ unordered_map<int, int> f(vector<int>& a, int x) {
         }
 
         if (sum <= x) {
-            m[sum]++;
+            ret.push_back(sum);
         }
     }
 
-    return m;
+    return ret;
 }
 
 int main() {
@@ -52,12 +52,14 @@ int main() {
     vector<int> b(t.begin() + n / 2, t.end());
 
     auto left = f(a, x), right = f(b, x);
+    sort(ALL(left)), sort(ALL(right));
 
-    long long sum = left[x] + right[x];
-    for (auto p : left) {
-        if (right.count(x - p.first)) {
-            sum += (long long)p.second * right[x - p.first];
-        }
+    long long sum = 0;
+    for (int p : left) {
+        auto start = lower_bound(ALL(right), x - p);
+        auto end = upper_bound(ALL(right), x - p);
+
+        sum += end - start;
     }
 
     cout << sum << "\n";
