@@ -18,44 +18,31 @@
 
 using namespace std;
 
-bool inRange(int y, int x, int n) {
-    return 0 <= y && y < n && 0 <= x && x < n;
-}
-
-int sum(vector<vector<int>>& p, int i, int l, int r, int n) {
-    if (!(0 <= i && i < n)) return 0;
-    l = ::max(l, 0);
-    r = ::min(r, n - 1);
-
-    int sum = p[i][r];
-
-    if (l - 1 >= 0) {
-        sum -= p[i][l - 1];
-    }
-
-    return sum;
-}
-
 int main() {
     FAST();
 
-    int n, m;
-    cin >> n >> m;
+    int n, k;
+    cin >> n >> k;
 
-    vector<vector<int>> a(n, vector<int>(n));
+    vector<vector<int>> p(2 * n - 1, vector<int>(2 * n - 1));
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            cin >> a[i][j];
+            cin >> p[i + j][n - 1 - i + j];
         }
     }
 
-    vector<vector<int>> p(n, vector<int>(n));
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            p[i][j] = a[i][j];
+    for (int i = 0; i < 2 * n - 1; i++) {
+        for (int j = 0; j < 2 * n - 1; j++) {
+            if (i - 1 >= 0) {
+                p[i][j] += p[i - 1][j];
+            }
 
             if (j - 1 >= 0) {
                 p[i][j] += p[i][j - 1];
+            }
+
+            if (i - 1 >= 0 && j - 1 >= 0) {
+                p[i][j] -= p[i - 1][j - 1];
             }
         }
     }
@@ -64,11 +51,25 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            int sum = ::sum(p, i, j - m, j + m, n);
+            int y = i + j, x = n - 1 - i + j;
+            int y1 = y - k, x1 = x - k;
+            int y2 = y + k, x2 = x + k;
 
-            for (int k = 0; k < m; k++) {
-                sum += ::sum(p, i - m + k, j - k, j + k, n);
-                sum += ::sum(p, i + m - k, j - k, j + k, n);
+            y1 = ::max(y1, 0), x1 = ::max(x1, 0);
+            y2 = ::min(y2, 2 * n - 2), x2 = ::min(x2, 2 * n - 2);
+
+            int sum = p[y2][x2];
+
+            if (y1 - 1 >= 0) {
+                sum -= p[y1 - 1][x2];
+            }
+
+            if (x1 - 1 >= 0) {
+                sum -= p[y2][x1 - 1];
+            }
+
+            if (y1 - 1 >= 0 && x1 - 1 >= 0) {
+                sum += p[y1 - 1][x1 - 1];
             }
 
             max = ::max(max, sum);
