@@ -50,8 +50,6 @@ bool f(int n, int m, vector<pll>& a, ll d) {
 
 int main() {
     FAST();
-    freopen("socdist.in", "r", stdin);
-    freopen("socdist.out", "w", stdout);
 
     int n, m;
     cin >> n >> m;
