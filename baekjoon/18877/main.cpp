@@ -61,7 +61,7 @@ int main() {
 
     sort(ALL(a));
 
-    ll lo = 0, hi = 1000000000000000000LL;
+    ll lo = 0, hi = 1000000000000000001LL;
     while (lo + 1 < hi) {
         ll mid = (lo + hi) / 2;
 
