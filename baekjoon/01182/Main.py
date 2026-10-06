@@ -1,14 +1,27 @@
-L, K = tuple(map(int, input().split()))
-S = (0,) + tuple(map(int, input().split()))
-# S[here] 까지 1개 이상 골랐는지 여부 picked와 그 합이 sum일 때
-# 합이 K인 경우의 수 반환
-def btk(here, picked, sum) :
-    global L
-    if here > N :
-        # 최소 1개 이상 골라야 함
-        if not picked : return 0
-        global K
-        return 1 if sum == K else 0
-    return btk(here + 1, picked, sum) + btk(here + 1, True, sum + S[here])
+n, s = map(int, input().split())
+a = list(map(int, input().split()))
 
-print(btk(1, False, 0))
+cnt = 0
+
+
+def dfs(here, pick):
+    """
+    지금까지 고른 수열이 pick일 때, a[here]부터 고를지 말지를 선택하기 시작해서
+    모든 가능한 경우의 수를 탐색하는 함수
+    """
+    if here == n:
+        if pick and sum(pick) == s:
+            global cnt
+            cnt += 1
+    else:
+        # a[here]을 선택하는 경우
+        pick.append(a[here])
+        dfs(here + 1, pick)
+
+        # a[here]을 선택하지 않는 경우
+        pick.pop()
+        dfs(here + 1, pick)
+
+
+dfs(0, [])
+print(cnt)
