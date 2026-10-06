@@ -28,6 +28,10 @@ struct vector {
         a[s++] = x;
     }
 
+    void pop_back() {
+        s--;
+    }
+
     T* begin() {
         return a;
     }
@@ -42,5 +46,9 @@ struct vector {
 
     T& operator[](int i) {
         return a[i];
+    }
+
+    int size() const {
+        return s;
     }
 };
