@@ -4,10 +4,15 @@ struct vector {
     int s, c;
 
     vector() : a(new T[1]), s(0), c(1) {}
-
-    vector(const vector& v) : a(new T[v.c]), s(v.s), c(v.c) {
+    vector(int n) : a(new T[2 * n]{}), s(n), c(2 * n) {}
+    vector(int n, T x) : a(new T[2 * n]{}), s(n), c(2 * n) {
         for (int i = 0; i < s; i++) {
-            a[i] = v.a[i];
+            a[i] = x;
+        }
+    }
+    vector(const vector& o) : a(new T[o.c]{}), s(o.s), c(o.c) {
+        for (int i = 0; i < s; i++) {
+            a[i] = o.a[i];
         }
     }
 
@@ -46,6 +51,21 @@ struct vector {
 
     T& operator[](int i) {
         return a[i];
+    }
+
+    vector& operator=(const vector& o) {
+        if (this == &o) return *this;
+
+        T* b = new T[o.c]{};
+        for (int i = 0; i < o.s; i++) {
+            b[i] = o.a[i];
+        }
+        delete[] a;
+
+        a = b;
+        s = o.s;
+        c = o.c;
+        return *this;
     }
 
     int size() const {
